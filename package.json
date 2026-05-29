@@ -333,7 +333,7 @@
     "type-fest": "5.5.0",
     "typescript": "6.0.3",
     "url": "0.11.4",
-    "uuid": "13.0.0",
+    "uuid": "14.0.0",
     "wait-on": "9.0.5",
     "webpack": "5.96.1",
     "write-file-atomic": "7.0.1",
