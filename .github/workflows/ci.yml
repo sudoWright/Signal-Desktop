@@ -19,7 +19,7 @@ jobs:
     steps:
     - run: lsb_release -a
     - run: uname -a
-    - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
+    - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v6
     - name: Setup pnpm
       uses: pnpm/action-setup@41ff72655975bd51cab0327fa583b6e92b6d3061 # v4
     - name: Setup node.js
@@ -86,7 +86,7 @@ jobs:
 
     steps:
     - run: uname -a
-    - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
+    - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v6
     - name: Setup pnpm
       uses: pnpm/action-setup@41ff72655975bd51cab0327fa583b6e92b6d3061 # v4
     - name: Setup node.js
@@ -161,7 +161,7 @@ jobs:
     steps:
     - run: lsb_release -a
     - run: uname -a
-    - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
+    - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v6
     - name: Setup pnpm
       uses: pnpm/action-setup@41ff72655975bd51cab0327fa583b6e92b6d3061 # v4
     - name: Setup node.js
@@ -230,7 +230,7 @@ jobs:
     - run: xvfb-run --auto-servernum pnpm run test-node
 
     - name: Clone backup integration tests
-      uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
+      uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v6
       with:
         repository: 'signalapp/Signal-Message-Backup-Tests'
         ref: 'a0f900243210efbedc72f0907c5d2f140385daa4'
@@ -262,7 +262,7 @@ jobs:
 
     steps:
     - run: systeminfo
-    - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
+    - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v6
     - name: Setup pnpm
       uses: pnpm/action-setup@41ff72655975bd51cab0327fa583b6e92b6d3061 # v4
     - name: Setup node.js
@@ -336,7 +336,7 @@ jobs:
         working-directory: sticker-creator
 
     steps:
-    - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
+    - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v6
     - name: Setup pnpm
       uses: pnpm/action-setup@41ff72655975bd51cab0327fa583b6e92b6d3061 # v4
     - name: Setup node.js
@@ -379,7 +379,7 @@ jobs:
       run: uname -a
 
     - name: Clone Desktop repo
-      uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
+      uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v6
 
     - name: Setup pnpm
       uses: pnpm/action-setup@41ff72655975bd51cab0327fa583b6e92b6d3061 # v4
@@ -477,7 +477,7 @@ jobs:
 
     steps:
     - run: uname -a
-    - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
+    - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v6
     - name: Setup pnpm
       uses: pnpm/action-setup@41ff72655975bd51cab0327fa583b6e92b6d3061 # v4
     - name: Setup node.js
