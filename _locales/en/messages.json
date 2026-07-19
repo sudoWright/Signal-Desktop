@@ -31,6 +31,10 @@
     "messageformat": "Clear",
     "description": "Axo Design System > Text Field Component > Clear Button > Generic accessibility label"
   },
+  "icu:AxoBadge.MaxOverflow": {
+    "messageformat": "{max, number}+",
+    "description": "Axo Design System > Badge Component > When numeric value is greater than max (Ex: 99 -> '99', 100 -> '99+')"
+  },
   "icu:AddUserToAnotherGroupModal__title": {
     "messageformat": "Add to a group",
     "description": "Shown as the title of the dialog that allows you to add a contact to an group"
@@ -126,6 +130,10 @@
   "icu:unknownContact": {
     "messageformat": "Unknown contact",
     "description": "Shown as the name of a contact if we don't have any displayable information about them"
+  },
+  "icu:deletedAccount": {
+    "messageformat": "Deleted Account",
+    "description": "Shown as the name of a contact if they are no longer registered and we don't have any displayable information about them"
   },
   "icu:unknownContactShort": {
     "messageformat": "Unknown",
@@ -429,7 +437,11 @@
   },
   "icu:LeftPaneChatFolders__ItemUnreadBadge__MaxCount": {
     "messageformat": "{maxCount, number}+",
-    "description": "Left Pane > Inbox > Chat List > Chat Folders > Item > Badge Count > When over the max count (Example: 1000 or more would be 999+)"
+    "description": "(Deleted 2026/07/15) Left Pane > Inbox > Chat List > Chat Folders > Item > Badge Count > When over the max count (Example: 1000 or more would be 999+)"
+  },
+  "icu:LeftPaneChatFolders__ItemUnreadBadge__AccessibleLabel": {
+    "messageformat": "{count, plural, one {# Unread Message} other {# Unread Messages}}",
+    "description": "Left Pane > Inbox > Chat List > Chat Folders > Item > Badge Count > Accessible Label"
   },
   "icu:LeftPaneChatFolders__Item__ContextMenu__MarkAllRead": {
     "messageformat": "Mark all read",
@@ -611,8 +623,8 @@
     "messageformat": "Unpin chat",
     "description": "Undoes Archive Conversation action, and unpins the conversation from the top of the conversation list"
   },
-  "icu:pinnedConversationsFull": {
-    "messageformat": "You can only pin up to 4 chats",
+  "icu:pinnedConversations--max": {
+    "messageformat": "You can only pin up to {maxPinnedConversations, plural, one {# chat} other {# chats}}",
     "description": "Shown in a toast when a user attempts to pin more than the maximum number of chats"
   },
   "icu:view": {
@@ -3004,10 +3016,6 @@
     "messageformat": "Partially sent, click for details",
     "description": "Shown on outgoing message if it is partially sent"
   },
-  "icu:partiallyDeleted": {
-    "messageformat": "Partially deleted, click to retry",
-    "description": "(Deleted 2026/03/04) Shown on a message which was deleted for everyone if the delete wasn't successfully sent to everyone"
-  },
   "icu:partiallyDeleted--clickForDetails": {
     "messageformat": "Partially deleted, click for details",
     "description": "Shown on a message which was deleted for everyone if the delete wasn't successfully sent to everyone"
@@ -3277,7 +3285,7 @@
     "description": "Shown if user's manual request to download attachment fails"
   },
   "icu:Toast--unable-download-from-backup-tier": {
-    "messageformat": "Attachment missing from backup CDN",
+    "messageformat": "Attachment missing from backup CDN, please share desktop & primary logs",
     "description": "Shown for internal users for debugging backup attachments."
   },
   "icu:ToastManager__CannotAddMemberLabel": {
@@ -3562,10 +3570,6 @@
     "messageformat": "GIF",
     "description": "Shown when quoting a GIF."
   },
-  "icu:message--deletedForEveryone": {
-    "messageformat": "This message was deleted.",
-    "description": "(Deleted 2026/03/04) Shown in a message's bubble when the message has been deleted for everyone."
-  },
   "icu:message--deletedByAdmin": {
     "messageformat": "Admin {admin} deleted this message",
     "description": "Shown in a message's bubble when the message has been deleted by a group admin."
@@ -3686,17 +3690,13 @@
     "messageformat": "Sticker pack could not be installed",
     "description": "Shown in a toast if the user attempts to install a sticker pack and it fails"
   },
-  "icu:stickers--StickerManager--Available": {
-    "messageformat": "Available",
-    "description": "Shown in the sticker pack manager as a tab for available stickers"
+  "icu:stickers--StickerManager--MyStickers--None": {
+    "messageformat": "No sticker packs, add stickers to send to your friends.",
+    "description": "Text shown in the sticker pack manager on the installed stickers tab when you don't have any installed sticker packs."
   },
-  "icu:stickers--StickerManager--InstalledPacks": {
-    "messageformat": "Installed",
-    "description": "Shown in the sticker pack manager above your installed sticker packs."
-  },
-  "icu:stickers--StickerManager--InstalledPacks--Empty": {
-    "messageformat": "No stickers installed",
-    "description": "Shown in the sticker pack manager when you don't have any installed sticker packs."
+  "icu:stickers--StickerManager--AddStickers": {
+    "messageformat": "Add stickers",
+    "description": "Button in the sticker pack manager on the installed stickers tab when you don't have any installed sticker packs. The button takes you to the All Stickers tab where you can install stickers."
   },
   "icu:stickers--StickerManager--BlessedPacks": {
     "messageformat": "Signal Artist Series",
@@ -3706,17 +3706,21 @@
     "messageformat": "No Signal Artist stickers available",
     "description": "Shown in the sticker pack manager when there are no blessed sticker packs available."
   },
-  "icu:stickers--StickerManager--ReceivedPacks": {
-    "messageformat": "Stickers You Received",
+  "icu:stickers--StickerManager--ReceivedPacks2": {
+    "messageformat": "Shared With You",
     "description": "Shown in the sticker pack manager above sticker packs which you have received in messages."
   },
-  "icu:stickers--StickerManager--ReceivedPacks--Empty": {
-    "messageformat": "Stickers from incoming messages will appear here",
-    "description": "Shown in the sticker pack manager when you have not received any sticker packs in messages."
+  "icu:stickers--StickerManager--ReceivedPacksDescription": {
+    "messageformat": "When you receive a sticker from someone, the sticker pack will appear here.",
+    "description": "Section description shown in the sticker pack manager above sticker packs which you have received in messages."
   },
   "icu:stickers--StickerManager--Install": {
     "messageformat": "Install",
     "description": "Shown in the sticker pack manager next to sticker packs which can be installed."
+  },
+  "icu:stickers--StickerManager--Installed": {
+    "messageformat": "Installed",
+    "description": "Accessibility label in the sticker pack manager next to sticker packs which are already installed."
   },
   "icu:stickers--StickerManager--Uninstall": {
     "messageformat": "Uninstall",
@@ -3726,6 +3730,38 @@
     "messageformat": "You may not be able to re-install this sticker pack if you no longer have the source message.",
     "description": "Shown in the sticker pack manager next to sticker packs which are already installed."
   },
+  "icu:stickers--StickerManagerHeader--All": {
+    "messageformat": "All",
+    "description": "Shown in the sticker pack manager in the navigation tabs. This tab shows all sticker packs available to install."
+  },
+  "icu:stickers--StickerManagerHeader--MyStickers": {
+    "messageformat": "My Stickers",
+    "description": "Shown in the sticker pack manager in the navigation tabs. This tab shows all sticker packs you have currently installed."
+  },
+  "icu:stickers--StickerManagerPackContextMenu--Add": {
+    "messageformat": "Add",
+    "description": "Context menu item to add a sticker pack. Shown in the sticker pack manager when right clicking a sticker pack."
+  },
+  "icu:stickers--StickerManagerPackContextMenu--Remove": {
+    "messageformat": "Remove",
+    "description": "Context menu item to remove a sticker pack. Shown in the sticker pack manager when right clicking a sticker pack."
+  },
+  "icu:stickers--StickerManagerPackDragHandle--Label": {
+    "messageformat": "Drag to reorder sticker pack",
+    "description": "Sticker Manager > Installed Sticker Packs > Sticker Pack row > Drag Handle > Accessibility Label"
+  },
+  "icu:stickers--StickerManagerBlessedPacksList--Label": {
+    "messageformat": "Signal Artist Series sticker packs",
+    "description": "Sticker Manager > Received Sticker Packs List > Accessibility Label"
+  },
+  "icu:stickers--StickerManagerReceivedPacksList--Label": {
+    "messageformat": "Received sticker packs",
+    "description": "Sticker Manager > Received Sticker Packs List > Accessibility Label"
+  },
+  "icu:stickers--StickerManagerInstalledPacksList--Label": {
+    "messageformat": "Installed sticker packs",
+    "description": "Sticker Manager > Installed Sticker Packs List > Accessibility Label"
+  },
   "icu:stickers--StickerPreview--Title": {
     "messageformat": "Sticker Pack",
     "description": "The title that appears in the sticker pack preview modal."
@@ -3733,6 +3769,38 @@
   "icu:stickers--StickerPreview--Error": {
     "messageformat": "Error opening sticker pack. Check your internet connection and try again.",
     "description": "The message that appears in the sticker preview modal when there is an error."
+  },
+  "icu:stickers--StickerPreview--Install": {
+    "messageformat": "Add Stickers",
+    "description": "Primary button to install a sticker pack in the sticker pack preview modal."
+  },
+  "icu:stickers--StickerPreview--Remove": {
+    "messageformat": "Remove",
+    "description": "Button to uninstall and remove a sticker pack in the sticker pack preview modal."
+  },
+  "icu:stickers--StickerPreview--Link": {
+    "messageformat": "Link",
+    "description": "Button to copy the link URL of a sticker pack in the sticker pack preview modal."
+  },
+  "icu:stickers--StickerPreview--LinkCopied": {
+    "messageformat": "Link copied",
+    "description": "Toast text shown after copying the link URL of a sticker pack in the sticker pack preview modal."
+  },
+  "icu:stickers--StickerPreview--StickerCount": {
+    "messageformat": "{count, plural, one {# sticker} other {# stickers}}",
+    "description": "Text showing count of stickers in the sticker pack preview modal."
+  },
+  "icu:stickers--StickerPreview--StickerNoEmojiAriaLabel": {
+    "messageformat": "Sticker without an emoji",
+    "description": "Accessibility label for sticker without an assigned emoji in the sticker pack preview modal."
+  },
+  "icu:stickers--StickerPackLinkPreviewDescription": {
+    "messageformat": "Sticker Pack by {author}",
+    "description": "Description for a sticker pack preview in the chat, when someone sends a link to a sticker pack. Shown next to the title of the sticker pack."
+  },
+  "icu:stickers--ViewPack": {
+    "messageformat": "View Pack",
+    "description": "Action button for a sticker pack preview in the chat, when someone sends a link to a sticker pack. When clicked it opens the sticker preview dialog."
   },
   "icu:FunPicker__Tab--Emojis": {
     "messageformat": "Emoji",
@@ -4017,6 +4085,22 @@
   "icu:FunButton__Label--StickerPicker": {
     "messageformat": "Add a Sticker",
     "description": "Sticker Picker > Trigger Button > Accessibility label"
+  },
+  "icu:FunPicker__Label--StickerReply": {
+    "messageformat": "Reply",
+    "description": "When replying to a message and previewing a sticker to send, this is the label for the preview view."
+  },
+  "icu:FunPicker__Label--SendStickerReply": {
+    "messageformat": "Send",
+    "description": "When replying to a message and previewing a sticker to send, this is the accessibility label for the Send button. Sticker Picker > Preview sticker > Send button > Accessibility label"
+  },
+  "icu:FunPicker__Label--CancelStickerReply": {
+    "messageformat": "Cancel",
+    "description": "When replying to a message and previewing a sticker to send, this is the accessibility label for the Cancel button. Sticker Picker > Preview sticker > Cancel button > Accessibility label"
+  },
+  "icu:FunPicker__Label--Sticker": {
+    "messageformat": "Sticker",
+    "description": "When replying to a message and previewing a sticker to send, this is the accessibility label for the sticker preview image."
   },
   "icu:confirmation-dialog--Cancel": {
     "messageformat": "Cancel",
@@ -6242,10 +6326,6 @@
     "messageformat": "Expand",
     "description": "Aria label for expanding composition area"
   },
-  "icu:CompositionArea--attach-file": {
-    "messageformat": "Attach file",
-    "description": "(Deleted 2026/03/04) Aria label for file attachment button in composition area"
-  },
   "icu:CompositionArea__AttachMenu__PhotosAndVideos": {
     "messageformat": "Photos & videos",
     "description": "Menu item to attach photos and videos"
@@ -6846,10 +6926,6 @@
     "messageformat": "Forward selected messages",
     "description": "conversation > in select mode > composition area actions > forward selected messsages action > accessibility label"
   },
-  "icu:DeleteMessagesModal--title": {
-    "messageformat": "Delete {count, plural, one {message} other {# messages}}?",
-    "description": "(Deleted 2026/03/04) delete selected messages > confirmation modal > title"
-  },
   "icu:DeleteMessagesModal--title-2": {
     "messageformat": "Delete selected {count, plural, one {message} other {# messages}}?",
     "description": "delete selected messages > confirmation modal > title"
@@ -6858,10 +6934,6 @@
     "messageformat": "Who would you like to delete {count, plural, one {this message} other {these messages}} for?",
     "description": "delete selected messages > confirmation modal > description"
   },
-  "icu:DeleteMessagesModal--description--noteToSelf": {
-    "messageformat": "What devices would you like to delete {count, plural, one {this message} other {these messages}} from?",
-    "description": "(Deleted 2026/03/04) within note to self conversation > delete selected messages > confirmation modal > description"
-  },
   "icu:DeleteMessagesModal--description--noteToSelf--deleteSync": {
     "messageformat": "{count, plural, one {This message} other {These messages}} will be deleted from all your devices.",
     "description": "within note to self conversation > delete selected messages > confirmation modal > description"
@@ -6869,10 +6941,6 @@
   "icu:DeleteMessagesModal--deleteForMe": {
     "messageformat": "Delete for me",
     "description": "delete selected messages > confirmation modal > delete for me"
-  },
-  "icu:DeleteMessagesModal--deleteFromThisDevice": {
-    "messageformat": "Delete from this device",
-    "description": "(Deleted 2026/03/04) within note to self conversation > delete selected messages > confirmation modal > delete from this device (same as delete for me)"
   },
   "icu:DeleteMessagesModal--deleteForEveryone": {
     "messageformat": "Delete for everyone",
@@ -6890,10 +6958,6 @@
   "icu:DeleteMessagesModal--adminDeleteConfirmation--description__rollout": {
     "messageformat": "Group members on the latest versions of Signal will see that you deleted {count, plural, one {this message} other {these messages}}.",
     "description": "delete selected messages > admin delete confirmation modal > description"
-  },
-  "icu:DeleteMessagesModal--deleteFromAllDevices": {
-    "messageformat": "Delete from all devices",
-    "description": "(Deleted 2026/03/04) within note to self conversation > delete selected messages > confirmation modal > delete from all devices (same as delete for everyone)"
   },
   "icu:DeleteMessagesModal--noteToSelf--deleteSync": {
     "messageformat": "Delete",
@@ -8504,13 +8568,33 @@
     "messageformat": "Enter key",
     "description": "Placeholder text for the text box used to confirm the backup key for local message backups."
   },
-  "icu:Preferences--local-backups-record-recovery-key": {
-    "messageformat": "Record your recovery key",
+  "icu:Preferences--local-backups-recovery-key--title": {
+    "messageformat": "Your recovery key",
     "description": "Title for viewing the recovery (backup) key for local message backups."
   },
-  "icu:Preferences--local-backups-record-backup-key-description": {
-    "messageformat": "This key is required to recover your account and data. Store this key somewhere safe. If you lose it, you won’t be able to recover your account. <learnMoreLink>Learn more.</learnMoreLink>",
+  "icu:Preferences--local-backups-recovery-key--description": {
+    "messageformat": "This key is required to recover your account and data. Store it somewhere safe and never share it with anyone. Signal will never message you for your recovery key. <learnMoreLink>Learn more.</learnMoreLink>",
     "description": "Description for viewing the recovery (backup) key for local message backups."
+  },
+  "icu:Preferences__recovery-key__do-not-share-title": {
+    "messageformat": "Do not share recovery key",
+    "description": "Title of the dialog warning the user not to share their recovery key, shown after copying the recovery key."
+  },
+  "icu:Preferences__recovery-key__do-not-share-confirm": {
+    "messageformat": "Got it",
+    "description": "Button to dismiss the dialog warning the user not to share their recovery key."
+  },
+  "icu:CompositionInput__recovery-key-paste__share-key": {
+    "messageformat": "Share key",
+    "description": "Button on the dialog warning the user not to paste their recovery key into a chat. Pressing it proceeds to a second confirmation."
+  },
+  "icu:CompositionInput__recovery-key-paste__do-not-share-key": {
+    "messageformat": "Do not share key",
+    "description": "Button on the dialog warning the user not to paste their recovery key into a chat. Pressing it cancels the paste."
+  },
+  "icu:CompositionInput__recovery-key-warning--description": {
+    "messageformat": "Do not share your recovery key with anyone. This will let them take over your account. <strong>Signal will never message you</strong> for your recovery key. Never respond to a chat pretending to be Signal. <learnMoreLink>Learn more.</learnMoreLink>",
+    "description": "Body of the confirmation dialog shown before allowing the user to paste their recovery key into a chat."
   },
   "icu:Preferences--local-backups-confirm-recovery-key": {
     "messageformat": "Confirm your recovery key",
@@ -8595,6 +8679,10 @@
   "icu:Preferences__local-backups-auth-error--unauthorized": {
     "messageformat": "This action could not be completed because system authentication failed. Please try again or open the Signal app on your mobile device and go to Backup Settings to view your recovery key.",
     "description": "Error shown in local backups settings when system authentication fails while trying to view the recovery key."
+  },
+  "icu:Preferences__local-backups-auth-error--unknown-error": {
+    "messageformat": "An error occurred while requesting system authentication for this action.",
+    "description": "Error shown in local backups settings when system authentication fails for an unknown reason."
   },
   "icu:Preferences__view-key": {
     "messageformat": "View key",
@@ -8816,6 +8904,14 @@
     "messageformat": "Update Downloaded",
     "description": "The title of update dialog when update download is completed."
   },
+  "icu:DialogUpdate__upgrade-mas": {
+    "messageformat": "Click to go to the App Store",
+    "description": "The title of update dialog when a new app version is available in the App Store."
+  },
+  "icu:DialogExpiredBuild__upgrade-mas": {
+    "messageformat": "Click to go to the App Store",
+    "description": "The action text of build expiration dialog when app is installed from the App Store"
+  },
   "icu:CriticalIdlePrimaryDevice__title": {
     "messageformat": "Open Signal on your phone",
     "description": "Title of a banner alerting users if their primary device (e.g. phone) has not been logged into recently."
@@ -8867,6 +8963,538 @@
   "icu:InstallScreenUpdateDialog--cannot-update__body": {
     "messageformat": "Signal Desktop failed to update, but there is a new version available. Go to {downloadUrl} and install the new version manually, then either contact support or file a bug about this problem.",
     "description": "The body of the update dialog on install screen when update cannot be installed."
+  },
+  "icu:StandaloneRegistration--signal-logo": {
+    "messageformat": "Signal Logo",
+    "description": "Alt text for the signal logo at the top left of the standalone registration screens"
+  },
+  "icu:StandaloneRegistration--back": {
+    "messageformat": "Back",
+    "description": "Button at the top of some registration pages to go back a step"
+  },
+  "icu:StandaloneRegistration--PhoneNumber--header": {
+    "messageformat": "Phone number",
+    "description": "Header of the standalone registration screen where phone number is entered"
+  },
+  "icu:StandaloneRegistration--PhoneNumber--description--line-1": {
+    "messageformat": "Enter your phone number to verify your account.",
+    "description": "Description (line 1) of the standalone registration screen where phone number is entered"
+  },
+  "icu:StandaloneRegistration--PhoneNumber--description--line-2": {
+    "messageformat": "Carrier rates may apply.",
+    "description": "Description (line 2) of the standalone registration screen where phone number is entered"
+  },
+  "icu:StandaloneRegistration--PhoneNumber--waiting": {
+    "messageformat": "Please try again in {duration}",
+    "description": "Wait time countdown shown on the standalone registration screen where phone number is entered"
+  },
+  "icu:StandaloneRegistration--PhoneNumber--placeholder": {
+    "messageformat": "Phone number",
+    "description": "Placeholder in the text box of the standalone registration screen where phone number is entered"
+  },
+  "icu:StandaloneRegistration--PhoneNumber--button": {
+    "messageformat": "Continue",
+    "description": "Button to go to the next step of the standalone registration process"
+  },
+  "icu:StandaloneRegistration--PhoneNumber--Confirmation--description": {
+    "messageformat": "Is your phone number above correct?",
+    "description": "Description text of phone number confirmation dialog"
+  },
+  "icu:StandaloneRegistration--PhoneNumber--Confirmation--cancel": {
+    "messageformat": "Edit number",
+    "description": "Cancel button of phone number confirmation dialog"
+  },
+  "icu:StandaloneRegistration--PhoneNumber--Confirmation--confirm": {
+    "messageformat": "Yes",
+    "description": "Confirm button of phone number confirmation dialog"
+  },
+  "icu:StandaloneRegistration--Captcha--header": {
+    "messageformat": "Verify you’re a human to continue",
+    "description": "Header of the standalone registration captcha screen"
+  },
+  "icu:StandaloneRegistration--Captcha--description": {
+    "messageformat": "To help prevent spam on Signal, please complete verification. After verifying, you can continue with registration.",
+    "description": "Description of the standalone registration captcha screen"
+  },
+  "icu:StandaloneRegistration--Captcha--retry-button": {
+    "messageformat": "Retry verification",
+    "description": "Button to open browser again on the standalone registration captcha screen"
+  },
+  "icu:StandaloneRegistration--Captcha--button": {
+    "messageformat": "Verify in browser",
+    "description": "Button to start captcha on the standalone registration captcha screen"
+  },
+  "icu:StandaloneRegistration--Captcha--button--wait": {
+    "messageformat": "Verify in {duration}",
+    "description": "When needing to wait, the button to start captcha on the standalone registration captcha screen"
+  },
+  "icu:StandaloneRegistration--Captcha--NeedAnother--header": {
+    "messageformat": "Further verification required",
+    "description": "Header of popup shown when user needs to complete another captcha"
+  },
+  "icu:StandaloneRegistration--Captcha--NeedAnother--description": {
+    "messageformat": "Please complete another captcha to continue registration.",
+    "description": "Description of popup shown when user needs to complete another captcha"
+  },
+  "icu:StandaloneRegistration--Captcha--NeedAnother--cancel": {
+    "messageformat": "Cancel",
+    "description": "Cancel button on popup shown when user needs to complete another captcha"
+  },
+  "icu:StandaloneRegistration--Captcha--NeedAnother--retry": {
+    "messageformat": "Retry verification",
+    "description": "Try again button on popup shown when user needs to complete another captcha"
+  },
+  "icu:StandaloneRegistration--Captcha--MustWait--aria-title": {
+    "messageformat": "Try again later",
+    "description": "Screenreader-only title of popup shown when user must wait try the captcha again"
+  },
+  "icu:StandaloneRegistration--Captcha--MustWait--line-1": {
+    "messageformat": "Can’t complete verification right now.",
+    "description": "Description (line 1) of popup shown when user must wait try the captcha again"
+  },
+  "icu:StandaloneRegistration--Captcha--MustWait--line-2": {
+    "messageformat": "Try again in {duration}",
+    "description": "Description (line 2) of popup shown when user must wait try the captcha again"
+  },
+  "icu:StandaloneRegistration--Captcha--MustWait--button": {
+    "messageformat": "OK",
+    "description": "Button to close popup shown when user must wait try the captcha again"
+  },
+  "icu:StandaloneRegistration--Captcha--Error--header": {
+    "messageformat": "Verification error",
+    "description": "Header of of popup shown when captcha completion didn't work"
+  },
+  "icu:StandaloneRegistration--Captcha--Error--description": {
+    "messageformat": "Try verifying again to continue registration.",
+    "description": "Description of popup shown when captcha completion didn't work"
+  },
+  "icu:StandaloneRegistration--Captcha--Error--try-again": {
+    "messageformat": "Try again",
+    "description": "Try again button on popup shown when captcha completion didn't work"
+  },
+  "icu:StandaloneRegistration--Captcha--Error--cancel": {
+    "messageformat": "Cancel",
+    "description": "Cancel button on popup shown when captcha completion didn't work"
+  },
+  "icu:StandaloneRegistration--VerificationCode--header": {
+    "messageformat": "Verification code",
+    "description": "Header of standalone registration verification code screen"
+  },
+  "icu:StandaloneRegistration--VerificationCode--description": {
+    "messageformat": "Enter the code we sent to {phoneNumber}",
+    "description": "Description of standalone registration verification code screen"
+  },
+  "icu:StandaloneRegistration--VerificationCode--button": {
+    "messageformat": "Continue",
+    "description": "Button to continue forward on standalone registration verification code screen"
+  },
+  "icu:StandaloneRegistration--VerificationCode--send-sms": {
+    "messageformat": "Resend code",
+    "description": "Button to resend sms on standalone registration verification code screen"
+  },
+  "icu:StandaloneRegistration--VerificationCode--send-sms--duration": {
+    "messageformat": "Resend code in {duration}",
+    "description": "Disabled due to wait time button to resend sms on standalone registration verification code screen"
+  },
+  "icu:StandaloneRegistration--VerificationCode--call-me": {
+    "messageformat": "Call me",
+    "description": "Button to start phone call to deliver code on standalone registration verification code screen"
+  },
+  "icu:StandaloneRegistration--VerificationCode--call-me--duration": {
+    "messageformat": "Call me in {duration}",
+    "description": "Disabled due to wait time button to start phone call to deliver code on standalone registration verification code screen"
+  },
+  "icu:StandaloneRegistration--VerificationCode--wrong-number": {
+    "messageformat": "Wrong number?",
+    "description": "Helper text shown on when verification code hasn't been completed for a while"
+  },
+  "icu:StandaloneRegistration--VerificationCode--having-trouble": {
+    "messageformat": "Having trouble registering?",
+    "description": "Button shown when the verification code hasn't been completed for a while"
+  },
+  "icu:StandaloneRegistration--VerificationCode--IncorrectCode--aria-title": {
+    "messageformat": "Incorrect code",
+    "description": "Screenreader-only title for popup shown when the verification code provided was incorrect"
+  },
+  "icu:StandaloneRegistration--VerificationCode--IncorrectCode--description": {
+    "messageformat": "The code you entered is incorrect. Please review the 6 digit code and try again.",
+    "description": "Description for popup shown when the verification code provided was incorrect"
+  },
+  "icu:StandaloneRegistration--VerificationCode--IncorrectCode--button": {
+    "messageformat": "OK",
+    "description": "Button for popup shown when the verification code provided was incorrect"
+  },
+  "icu:StandaloneRegistration--VerificationCode--CodeInvalid--aria-title": {
+    "messageformat": "Invalid code",
+    "description": "Screenreader-only title for popup shown when the verification code has expired or is otherwise invalid"
+  },
+  "icu:StandaloneRegistration--VerificationCode--CodeInvalid--description": {
+    "messageformat": "The code you entered is not valid. Please resend the code and try again.",
+    "description": "Description for popup shown when the verification code has expired or is otherwise invalid"
+  },
+  "icu:StandaloneRegistration--VerificationCode--CodeInvalid--resend-button": {
+    "messageformat": "Resend code",
+    "description": "Resend button for popup shown when the verification code has expired or is otherwise invalid"
+  },
+  "icu:StandaloneRegistration--VerificationCode--CodeInvalid--edit-number-button": {
+    "messageformat": "Edit number",
+    "description": "Edit number button for popup shown when the verification code has expired or is otherwise invalid"
+  },
+  "icu:StandaloneRegistration--VerificationCode--SMSFailed--aria-title": {
+    "messageformat": "Unable to send SMS",
+    "description": "Screenreader-only title for popup shown when the code couldn't be sent by SMS"
+  },
+  "icu:StandaloneRegistration--VerificationCode--SMSFailed--description": {
+    "messageformat": "We couldn't send you a verification code via SMS. Try receiving your code via voice call instead.",
+    "description": "Description for popup shown when the code couldn't be sent by SMS"
+  },
+  "icu:StandaloneRegistration--VerificationCode--SMSFailed--confirm": {
+    "messageformat": "Voice call",
+    "description": "Confirm button for popup shown when the code couldn't be sent by SMS"
+  },
+  "icu:StandaloneRegistration--VerificationCode--SMSFailed--cancel": {
+    "messageformat": "Cancel",
+    "description": "Cancel button for popup shown when the code couldn't be sent by SMS"
+  },
+  "icu:StandaloneRegistration--VerificationCode--MustWait--aria-title": {
+    "messageformat": "Try again later",
+    "description": "Screenreader-only title for popup shown user has tried too many incorrect codes"
+  },
+  "icu:StandaloneRegistration--VerificationCode--MustWait--description": {
+    "messageformat": "You’ve made too many attempts to enter the code. Try again in {duration}.",
+    "description": "Description for popup shown user has tried too many incorrect codes"
+  },
+  "icu:StandaloneRegistration--VerificationCode--MustWait--button": {
+    "messageformat": "OK",
+    "description": "Cancel button for popup shown user has tried too many incorrect codes"
+  },
+  "icu:StandaloneRegistration--VerificationCode--MaximumAttempts--aria-title": {
+    "messageformat": "Too many attempts",
+    "description": "Screenreader-only title for popup shown when the user has submitted an incorrect code too many times"
+  },
+  "icu:StandaloneRegistration--VerificationCode--MaximumAttempts--description": {
+    "messageformat": "You’ve made too many attempts to enter the code. Please resend the code and try again.",
+    "description": "Description for popup shown when the user has submitted an incorrect code too many times"
+  },
+  "icu:StandaloneRegistration--VerificationCode--MaximumAttempts--resend-button": {
+    "messageformat": "Resend code",
+    "description": "Resend button for popup shown when the user has submitted an incorrect code too many times"
+  },
+  "icu:StandaloneRegistration--VerificationCode--MaximumAttempts--edit-number-button": {
+    "messageformat": "Edit number",
+    "description": "Edit number button for popup shown when the user has submitted an incorrect code too many times"
+  },
+  "icu:StandaloneRegistration--VerificationCode--FailedToCall--aria-title": {
+    "messageformat": "Unable to call",
+    "description": "Screenreder-only title for popup shown when the user requested a voice call to get the code, and that didn't work"
+  },
+  "icu:StandaloneRegistration--VerificationCode--FailedToCall--description": {
+    "messageformat": "We couldn't call the phone number you entered. Make sure the phone number is correct and try again.",
+    "description": "Description for popup shown when the user requested a voice call to get the code, and that didn't work"
+  },
+  "icu:StandaloneRegistration--VerificationCode--FailedToCall--ok-button": {
+    "messageformat": "OK",
+    "description": "Button to dismiss popup shown when the user requested a voice call to get the code, and that didn't work"
+  },
+  "icu:StandaloneRegistration--VerificationCode--CannotSendCodePermanent--aria-title": {
+    "messageformat": "Cannot send code",
+    "description": "Screenreader-only title for popup shown when the server told us we can't get the code to the user's number, permanently"
+  },
+  "icu:StandaloneRegistration--VerificationCode--CannotSendCodePermanent--description": {
+    "messageformat": "A verification code cannot be sent to the phone number you’ve entered. Make sure the number you’ve entered is correct, or try a different number.",
+    "description": "Description for popup shown when the server told us we can't get the code to the user's number, permanently"
+  },
+  "icu:StandaloneRegistration--VerificationCode--CannotSendCodePermanent--ok-button": {
+    "messageformat": "OK",
+    "description": "Button to dismiss popup shown when the server told us we can't get the code to the user's number, permanently"
+  },
+  "icu:StandaloneRegistration--VerificationCode--CannotSendCodeTemporary--aria-title": {
+    "messageformat": "Try again later",
+    "description": "Screenreader-only title for popup shown when the server told us we can't get the code to the user's number, temporarily"
+  },
+  "icu:StandaloneRegistration--VerificationCode--CannotSendCodeTemporary--description": {
+    "messageformat": "An error occurred and the verification code could not be sent. Try again in {duration}.",
+    "description": "Description for popup shown when the server told us we can't get the code to the user's number, temporarily"
+  },
+  "icu:StandaloneRegistration--VerificationCode--CannotSendCodeTemporary--ok-button": {
+    "messageformat": "OK",
+    "description": "Button to dismiss popup shown when the server told us we can't get the code to the user's number, temporarily"
+  },
+  "icu:StandaloneRegistration--ProfileEntry--header": {
+    "messageformat": "Set up your profile",
+    "description": "Header for profile entry screen"
+  },
+  "icu:StandaloneRegistration--ProfileEntry--description": {
+    "messageformat": "Profiles are visible to people you message, contacts, and groups.",
+    "description": "Description line 1 for profile entry screen"
+  },
+  "icu:StandaloneRegistration--ProfileEntry--learn-more": {
+    "messageformat": "Learn more",
+    "description": "Description line 2 for profile entry screen"
+  },
+  "icu:StandaloneRegistration--ProfileEntry--add-photo": {
+    "messageformat": "Add photo",
+    "description": "Button allowing user to edit their profile avatar on profile entry screen"
+  },
+  "icu:StandaloneRegistration--ProfileEntry--first-name": {
+    "messageformat": "First name (required)",
+    "description": "Button allowing user to edit their profile avatar on profile entry screen"
+  },
+  "icu:StandaloneRegistration--ProfileEntry--last-name": {
+    "messageformat": "Last name (optional)",
+    "description": "Button allowing user to edit their profile avatar on profile entry screen"
+  },
+  "icu:StandaloneRegistration--ProfileEntry--discoverability": {
+    "messageformat": "Who can find me by phone number",
+    "description": "Label for the phone number discoverability option on profile entry screen"
+  },
+  "icu:StandaloneRegistration--ProfileEntry--discoverability--change-button": {
+    "messageformat": "Change",
+    "description": "Button to open phone number discoverability dialog on profile entry screen"
+  },
+  "icu:StandaloneRegistration--ProfileEntry--discoverability--done-button": {
+    "messageformat": "Done",
+    "description": "Button to close phone number discoverability dialog on profile entry screen"
+  },
+  "icu:StandaloneRegistration--ProfileEntry--continue": {
+    "messageformat": "Continue",
+    "description": "Button to finish the profile entry screen"
+  },
+  "icu:StandaloneRegistration--ProfileEntry--AvatarModal--header": {
+    "messageformat": "Your avatar",
+    "description": "Heading on the popup dialog which allows the user to choose an avatar"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--header": {
+    "messageformat": "Enter your PIN",
+    "description": "Header on screen asking user to verify their PIN"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--description": {
+    "messageformat": "Enter the PIN you created for your account. This is different from your SMS verification code. <needHelp>Need help?</needHelp>",
+    "description": "Description on screen asking user to verify their PIN"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--placeholder": {
+    "messageformat": "Enter your PIN",
+    "description": "Description on screen asking user to verify their PIN"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--incorrect-pin": {
+    "messageformat": "Incorrect PIN",
+    "description": "Error shown when entered PIN is incorrect"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--incorrect-pin--with-count": {
+    "messageformat": "Incorrect PIN. {triesRemaining, plural, one {# attempt remaining} other {# attempts remaining}}.",
+    "description": "Error shown when entered PIN is incorrect, and "
+  },
+  "icu:StandaloneRegistration--VerifyPIN--NeedHelp--header": {
+    "messageformat": "Need help?",
+    "description": "Header for dialog shown when user clicks Need Help?"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--NeedHelp--description--no-reglock": {
+    "messageformat": "Your PIN is a 4+ digit code you created that can be numeric or alphanumeric. If you can’t remember your PIN, you can create a new one. You can register and use your account but you’ll lose some saved settings like your profile information. <learnMore>Learn more</learnMore>.",
+    "description": "Description for dialog shown when user clicks Need Help? (no-reglock)"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--NeedHelp--description--reglock": {
+    "messageformat": "Your PIN is a 4+ digit code you created that can be numeric or alphanumeric. If you can’t remember your PIN, you’ll have to wait 7 days to re-register your account. <learnMore>Learn more</learnMore>.",
+    "description": "Description for dialog shown when user clicks Need Help? (reglock)"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--NeedHelp--skip-button--no-reglock": {
+    "messageformat": "Skip and create new PIN",
+    "description": "Button allowing user to skip pin verification on dialog shown when user clicks Need Help? (not shown if reglock is enabled)"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--NeedHelp--contact-support-button": {
+    "messageformat": "Contact Support",
+    "description": "Button allowing user to contact support on dialog shown when user clicks Need Help?"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--NeedHelp--cancel": {
+    "messageformat": "Cancel",
+    "description": "Button allowing user to close dialog shown when user clicks Need Help?"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--FewRemainingTries--header": {
+    "messageformat": "Incorrect PIN",
+    "description": "Header for dialog shown when user has tried an incorrect PIN and is down to just a few remaining attempts"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--FewRemainingTries--description--no-reglock": {
+    "messageformat": "You have {triesRemaining, plural, one {# attempt remaining} other {# attempts remaining}}. If you run out of attempts, you can create a new PIN. You can register and use your account but you’ll lose some saved settings like your profile information. <learnMore>Learn more</learnMore>.",
+    "description": "Description for dialog shown when user has tried an incorrect PIN and is down to just a few remaining attempts (no reglock)"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--FewRemainingTries--description--reglock": {
+    "messageformat": "You have {triesRemaining, plural, one {# attempt remaining} other {# attempts remaining}}. If you run out of attempts, your account will be locked for 7 days. After 7 days of inactivity, you can re-register without your PIN. All content will be deleted. <learnMore>Learn more</learnMore>.",
+    "description": "Description for dialog shown when user has tried an incorrect PIN and is down to just a few remaining attempts (reglock)"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--FewRemainingTries--button": {
+    "messageformat": "OK",
+    "description": "Button for dialog shown when user has tried an incorrect PIN and is down to just a few remaining attempts"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--NoRemainingTries--header": {
+    "messageformat": "Incorrect PIN",
+    "description": "Header for dialog shown when user has tried an incorrect PIN there are no remaining tries left"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--NoRemainingTries--description": {
+    "messageformat": "You’ve run out of PIN guesses, but you can still access your Signal account by creating a new PIN. For your privacy and security your account will be restored without any saved profile information or settings.",
+    "description": "Description for dialog shown when user has tried an incorrect PIN there are no remaining tries left"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--NoRemainingTries--create-new-pin": {
+    "messageformat": "Create new PIN",
+    "description": "Button for dialog shown when user has tried an incorrect PIN there are no remaining tries left"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--NoRemainingTries--learn-more": {
+    "messageformat": "Learn more about PINs",
+    "description": "Button for dialog shown when user has tried an incorrect PIN there are no remaining tries left"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--menu--skip-pin": {
+    "messageformat": "Skip PIN",
+    "description": "Menu item on Verify PIN screens, allowing skip of restoring data with PIN, instead starting over from scratch with a new PIN"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--SkipPIN--header": {
+    "messageformat": "Skip PIN entry?",
+    "description": "Header for dialog shown when user chooses to skip PIN entry on the Verify PIN screen"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--SkipPIN--description": {
+    "messageformat": "If you can’t remember your PIN, you can create a new one. You can register and use your account but you’ll lose some saved settings like your profile information. Learn more.",
+    "description": "Description for dialog shown when user chooses to skip PIN entry on the Verify PIN screen"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--SkipPIN--skip-button": {
+    "messageformat": "Skip and create new PIN",
+    "description": "Confirm button for dialog shown when user chooses to skip PIN entry on the Verify PIN screen"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--SkipPIN--cancel-button": {
+    "messageformat": "Cancel",
+    "description": "Cancel button for dialog shown when user chooses to skip PIN entry on the Verify PIN screen"
+  },
+  "icu:StandaloneRegistration--CreatePIN--header": {
+    "messageformat": "Create your PIN",
+    "description": "Header on screen asking user to create a new PIN"
+  },
+  "icu:StandaloneRegistration--CreatePIN--description": {
+    "messageformat": "PINs can help you restore your account and keep your info encrypted with Signal. <learnMore>Learn More</learnMore>",
+    "description": "Description on screen asking user to create a new PIN"
+  },
+  "icu:StandaloneRegistration--CreatePIN--placeholder": {
+    "messageformat": "Create your PIN",
+    "description": "Placeholder in text box on screen asking user to create a new PIN"
+  },
+  "icu:StandaloneRegistration--CreatePIN--helper-text": {
+    "messageformat": "PIN must be at least 4 characters",
+    "description": "Helper text below text box on screen asking user to create a new PIN"
+  },
+  "icu:StandaloneRegistration--CreatePIN--continue": {
+    "messageformat": "Continue",
+    "description": "Button to finish on screen asking user to create a new PIN"
+  },
+  "icu:StandaloneRegistration--CreatePIN--open-menu": {
+    "messageformat": "Open menu",
+    "description": "Accessibility text for the triple-dot button on the screen asking user to create a new PIN"
+  },
+  "icu:StandaloneRegistration--CreatePIN--menu--more-about": {
+    "messageformat": "More about PINs",
+    "description": "Menu item to get more information on screen asking user to create a new PIN"
+  },
+  "icu:StandaloneRegistration--CreatePIN--menu--disable": {
+    "messageformat": "Disable PIN",
+    "description": "Menu item to get more information on screen asking user to create a new PIN"
+  },
+  "icu:StandaloneRegistration--CreatePIN--DisableWarning--header": {
+    "messageformat": "Warning",
+    "description": "Header on dialog shown when user chooses to disable the PIN entirely"
+  },
+  "icu:StandaloneRegistration--CreatePIN--DisableWarning--description": {
+    "messageformat": "If you disable the PIN, you will lose all data when you re-register Signal unless you transfer it from another iOS device. You can not turn on Registration Lock while the PIN is disabled.",
+    "description": "Description on dialog shown when user chooses to disable the PIN entirely"
+  },
+  "icu:StandaloneRegistration--CreatePIN--DisableWarning--disable-button": {
+    "messageformat": "Disable PIN",
+    "description": "Confirm button on dialog shown when user chooses to disable the PIN entirely"
+  },
+  "icu:StandaloneRegistration--CreatePIN--DisableWarning--cancel": {
+    "messageformat": "Cancel",
+    "description": "Cancel button on dialog shown when user chooses to disable the PIN entirely"
+  },
+  "icu:StandaloneRegistration--CreatePIN--AboutPINs--header": {
+    "messageformat": "About Signal PINs",
+    "description": "Header on dialog showing more information about PINs"
+  },
+  "icu:StandaloneRegistration--CreatePIN--AboutPINs--description": {
+    "messageformat": "PINs keep your information stored with Signal encrypted so only you can access it. Your profile, settings and contacts will restore when you reinstall.",
+    "description": "Header on dialog showing more information about PINs"
+  },
+  "icu:StandaloneRegistration--CreatePIN--AboutPINs--learn-more-button": {
+    "messageformat": "Learn more",
+    "description": "Button on dialog showing more information about PINs"
+  },
+  "icu:StandaloneRegistration--CreatePIN--AboutPINs--ok-button": {
+    "messageformat": "OK",
+    "description": "Button to dimiss dialog showing more information about PINs"
+  },
+  "icu:StandaloneRegistration--CreatePIN--confirming--header": {
+    "messageformat": "Confirm your PIN",
+    "description": "Header on screen asking user to confirm their new PIN"
+  },
+  "icu:StandaloneRegistration--CreatePIN--confirming--description": {
+    "messageformat": "Re-enter the PIN you just created.",
+    "description": "Description on screen asking user to confirm their new PIN"
+  },
+  "icu:StandaloneRegistration--CreatePIN--confirming--placeholder": {
+    "messageformat": "Enter your PIN",
+    "description": "Placeholder in text box on screen asking user to confirm their new PIN"
+  },
+  "icu:StandaloneRegistration--AccountLocked--header": {
+    "messageformat": "Account locked",
+    "description": "Header on screen shown when account with reglock has had too many PIN tries"
+  },
+  "icu:StandaloneRegistration--AccountLocked--description": {
+    "messageformat": "Your account has been locked to protect your privacy and security. After 7 days of inactivity in your account you’ll be able to reregister this phone number without needing your PIN. All content will be deleted.",
+    "description": "Description on screen shown when account with reglock has had too many PIN tries"
+  },
+  "icu:StandaloneRegistration--AccountLocked--start-over-button": {
+    "messageformat": "Use a different number",
+    "description": "Button shown to start process over on screen shown when account with reglock has had too many PIN tries"
+  },
+  "icu:StandaloneRegistration--AccountLocked--help-button": {
+    "messageformat": "Learn about locked accounts",
+    "description": "Button shown to get more information on screen shown when account with reglock has had too many PIN tries"
+  },
+  "icu:StandaloneRegistration--UpdateRequired--header": {
+    "messageformat": "Update required",
+    "description": "Header for dialog shown during registration if Desktop discovers it is out of date"
+  },
+  "icu:StandaloneRegistration--UpdateRequired--description": {
+    "messageformat": "To continue with registration, please update to the latest version of Signal.",
+    "description": "Description for dialog shown during registration if Desktop discovers it is out of date"
+  },
+  "icu:StandaloneRegistration--UpdateRequired--update": {
+    "messageformat": "Update",
+    "description": "Confirm button for dialog shown during registration if Desktop discovers it is out of date"
+  },
+  "icu:StandaloneRegistration--UpdateRequired--cancel": {
+    "messageformat": "Cancel",
+    "description": "Cancel button for dialog shown during registration if Desktop discovers it is out of date"
+  },
+  "icu:StandaloneRegistration--ConnectionProblem--header": {
+    "messageformat": "Check your connection",
+    "description": "Header for dialog shown during registration if Desktop runs into a connectivity problem"
+  },
+  "icu:StandaloneRegistration--ConnectionProblem--description": {
+    "messageformat": "To continue, check your computer’s Internet connection and try again.",
+    "description": "Description for dialog shown during registration if Desktop runs into a connectivity problem"
+  },
+  "icu:StandaloneRegistration--ConnectionProblem--button": {
+    "messageformat": "OK",
+    "description": "Description for dialog shown during registration if Desktop runs into a connectivity problem"
+  },
+  "icu:StandaloneRegistration--UnexpectedError--header": {
+    "messageformat": "Can’t complete registration",
+    "description": "Header for dialog shown during registration if something unexpected goes wrong"
+  },
+  "icu:StandaloneRegistration--UnexpectedError--description": {
+    "messageformat": "An error occurred and registration cannot be completed. If this problem persists, please contact support.",
+    "description": "Description for dialog shown during registration if something unexpected goes wrong"
+  },
+  "icu:StandaloneRegistration--UnexpectedError--try-again-button": {
+    "messageformat": "Try again",
+    "description": "Button to restart process, on dialog shown during registration if something unexpected goes wrong"
+  },
+  "icu:StandaloneRegistration--UnexpectedError--contact-support-button": {
+    "messageformat": "Contact support",
+    "description": "Button to contact support, on dialog shown during registration if something unexpected goes wrong"
   },
   "icu:NSIS__retry-dialog--first-line": {
     "messageformat": "Signal cannot be closed.",
@@ -9193,18 +9821,6 @@
   "icu:SignalConnectionsModal__footer": {
     "messageformat": "Your connections can see your name and photo, and can see posts to \"My Story\" unless you hide it from them",
     "description": "Additional information about signal connections and the stories they can see"
-  },
-  "icu:LocalDeleteWarningModal__header": {
-    "messageformat": "Deleting is synced across your devices",
-    "description": "(Deleted 2026/02/18) Emphasized text at the top of the explainer dialog you get when you first delete a message or conversation"
-  },
-  "icu:LocalDeleteWarningModal__description": {
-    "messageformat": "When you delete messages or chats, they will be deleted from all of your devices.",
-    "description": "(Deleted 2026/02/18) More detailed description of new delete behavior shown in explainer dialog"
-  },
-  "icu:LocalDeleteWarningModal__confirm": {
-    "messageformat": "Got it",
-    "description": "(Deleted 2026/02/18) Button to dismiss the dialog explaining that 'delete for me' now syncs between devices"
   },
   "icu:Stories__title": {
     "messageformat": "Stories",
@@ -9942,10 +10558,6 @@
     "messageformat": "Send",
     "description": "Draft GIF Message Send Modal > Send Button > Label"
   },
-  "icu:DraftGifMessageSendModal__CancelButtonLabel": {
-    "messageformat": "Cancel",
-    "description": "(Deleted 2026/05/27) Draft GIF Message Send Modal > Cancel Button > Label"
-  },
   "icu:EditHistoryMessagesModal__title": {
     "messageformat": "Edit history",
     "description": "Modal title for the edit history messages modal"
@@ -10317,10 +10929,6 @@
   "icu:PreferencesDonations__privacy-modal-title": {
     "messageformat": "Your information is private",
     "description": "Title for the modal that explains donation privacy information"
-  },
-  "icu:PreferencesDonations__privacy-modal-content": {
-    "messageformat": "<paragraph>Signal does not collect or store any of your personal information when you make a donation.</paragraph><paragraph>We use Stripe as our payment processor to receive your donations. We don't access, store, or save any of the information you provide to them.</paragraph><paragraph>Signal does not and cannot connect your donation to your Signal account.</paragraph><paragraph>Thank you for your support!</paragraph>",
-    "description": "(Deleted 2026/02/12) Content for the modal that explains donation privacy information"
   },
   "icu:PreferencesDonations__privacy-modal-intro": {
     "messageformat": "As an independent nonprofit, Signal is committed to private messaging and calls. No ads, no trackers, no surveillance. Donate today to support Signal.",
@@ -10909,12 +11517,20 @@
     "description": "Release notes for releases that only include bug fixes",
     "ignoreUnused": true
   },
-  "icu:WhatsNew__8.12--0": {
-    "messageformat": "On the one hand, you can click on the raise hand icon during group calls. But on the other hand, now you can use a new keyboard shortcut too (Shift-H).",
-    "description": "(Deleted 2026/05/27) Release notes for 8.12"
+  "icu:WhatsNew__8.18--0": {
+    "messageformat": "Polls can now be created in individual chats too. Present a curated list of choices to your indecisive friend, or recapture the magic of passing a note to your crush by creating a “Do you like me? Y/N/Maybe” poll.",
+    "description": "(Deleted 2026/07/09) Release notes for 8.18"
   },
-  "icu:WhatsNew__8.13--0": {
-    "messageformat": "The new raised-hand indicators are now also displayed in the list of raised hands during group calls. It's a second-hand place to figure out who you should hand it over to when you're done speaking.",
-    "description": "Release notes for 8.13"
+  "icu:WhatsNew__8.19--0": {
+    "messageformat": "Group admins can now bring chats to their natural conclusion with the new \"End Group\" option in group settings. Ending a group prevents group members from sending messages or starting calls, and also disables invites. Now you can make sure everyone stays on the right thread by ending last year's sewing meetup group before stitching a new one together.",
+    "description": "(Deleted 2026/07/15) Release notes for 8.19"
+  },
+  "icu:WhatsNew__8.20--0": {
+    "messageformat": "Introducing disappearing call events: Missed, outgoing, and received calls that occur after you install this update will now automatically disappear in any chat where disappearing messages are enabled.",
+    "description": "Release notes for 8.20"
+  },
+  "icu:WhatsNew__8.20--1": {
+    "messageformat": "Now you can reorder installed sticker packs so your new favorites don’t get stuck in the back of the line.",
+    "description": "Release notes for 8.20"
   }
 }

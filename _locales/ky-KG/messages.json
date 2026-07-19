@@ -14,6 +14,9 @@
   "icu:AxoTextField.Clear": {
     "messageformat": "Тазалоо"
   },
+  "icu:AxoBadge.MaxOverflow": {
+    "messageformat": "{max,number}+"
+  },
   "icu:AddUserToAnotherGroupModal__title": {
     "messageformat": "Топко кошуу"
   },
@@ -85,6 +88,9 @@
   },
   "icu:unknownContact": {
     "messageformat": "Белгисиз байланыш"
+  },
+  "icu:deletedAccount": {
+    "messageformat": "Өчүрүлгөн аккаунт"
   },
   "icu:unknownContactShort": {
     "messageformat": "Белгисиз"
@@ -314,6 +320,9 @@
   "icu:LeftPaneChatFolders__ItemUnreadBadge__MaxCount": {
     "messageformat": "{maxCount,number}+"
   },
+  "icu:LeftPaneChatFolders__ItemUnreadBadge__AccessibleLabel": {
+    "messageformat": "{count, plural, one {{count,number} Unread Message} other {{count,number} Unread Messages}}"
+  },
   "icu:LeftPaneChatFolders__Item__ContextMenu__MarkAllRead": {
     "messageformat": "Баарын окулду деп белгилөө"
   },
@@ -449,8 +458,8 @@
   "icu:unpinConversation": {
     "messageformat": "Маекти бошотуу"
   },
-  "icu:pinnedConversationsFull": {
-    "messageformat": "4 чейин гана маек кадай аласыз"
+  "icu:pinnedConversations--max": {
+    "messageformat": "{maxPinnedConversations, plural, one {{maxPinnedConversations,number} гана маек кадай аласыз} other {{maxPinnedConversations,number} гана маек кадай аласыз}}"
   },
   "icu:view": {
     "messageformat": "Карап көрүү"
@@ -2261,9 +2270,6 @@
   "icu:partiallySent": {
     "messageformat": "Жарым-жартылай жөнөтүлдү. Кененирээк маалымат үчүн басыңыз."
   },
-  "icu:partiallyDeleted": {
-    "messageformat": "Жарым-жартылай өчүрүлдү. Кайра аракет кылуу үчүн басыңыз."
-  },
   "icu:partiallyDeleted--clickForDetails": {
     "messageformat": "Жарым-жартылай өчтү, себебин билүү үчүн басыңыз"
   },
@@ -2466,7 +2472,7 @@
     "messageformat": "Жүктөлүп алынган жок"
   },
   "icu:Toast--unable-download-from-backup-tier": {
-    "messageformat": "Attachment missing from backup CDN"
+    "messageformat": "Attachment missing from backup CDN, please share desktop & primary logs"
   },
   "icu:ToastManager__CannotAddMemberLabel": {
     "messageformat": "Бул топто катышуучулардын энбелгилерин администраторлор гана кошо алышат."
@@ -2687,9 +2693,6 @@
   "icu:message--getDescription--gif": {
     "messageformat": "GIF"
   },
-  "icu:message--deletedForEveryone": {
-    "messageformat": "Бул билдирүү өчүрүлгөн."
-  },
   "icu:message--deletedByAdmin": {
     "messageformat": "Админ {admin} бул билдирүүнү өчүрдү"
   },
@@ -2780,14 +2783,11 @@
   "icu:stickers--toast--InstallFailed": {
     "messageformat": "Стикерлер топтому орнотулбай койду"
   },
-  "icu:stickers--StickerManager--Available": {
-    "messageformat": "Жеткиликтүү"
+  "icu:stickers--StickerManager--MyStickers--None": {
+    "messageformat": "Стикер топтомдору жок, досторуңузга жөнөтө турган стикерлерди кошуңуз."
   },
-  "icu:stickers--StickerManager--InstalledPacks": {
-    "messageformat": "Орнотулган"
-  },
-  "icu:stickers--StickerManager--InstalledPacks--Empty": {
-    "messageformat": "Бир да стикер орнотула элек"
+  "icu:stickers--StickerManager--AddStickers": {
+    "messageformat": "Стикер кошуу"
   },
   "icu:stickers--StickerManager--BlessedPacks": {
     "messageformat": "Signal cүрөтчүлөрүнүн стикерлери"
@@ -2795,14 +2795,17 @@
   "icu:stickers--StickerManager--BlessedPacks--Empty": {
     "messageformat": "Signal cүрөтчүлөрүнүн стикерлери жеткиликсиз"
   },
-  "icu:stickers--StickerManager--ReceivedPacks": {
-    "messageformat": "Алынган стикерлер"
+  "icu:stickers--StickerManager--ReceivedPacks2": {
+    "messageformat": "Сиз менен бөлүшкөндөр"
   },
-  "icu:stickers--StickerManager--ReceivedPacks--Empty": {
-    "messageformat": "Келген билдирүүлөрдөгү стикерлер ушул жерде көрүнөт"
+  "icu:stickers--StickerManager--ReceivedPacksDescription": {
+    "messageformat": "Кимдир бирөөдөн стикер алсаңыз, стикерлер топтому ушул жерде көрүнөт."
   },
   "icu:stickers--StickerManager--Install": {
     "messageformat": "Орнотуу"
+  },
+  "icu:stickers--StickerManager--Installed": {
+    "messageformat": "Орнотулган"
   },
   "icu:stickers--StickerManager--Uninstall": {
     "messageformat": "Орнотууларды алып салуу"
@@ -2810,11 +2813,59 @@
   "icu:stickers--StickerManager--UninstallWarning": {
     "messageformat": "Эгер сизде баштапкы билдирүү жок болсо, бул стикер топтомун кайра орното албай каласыз."
   },
+  "icu:stickers--StickerManagerHeader--All": {
+    "messageformat": "Баары"
+  },
+  "icu:stickers--StickerManagerHeader--MyStickers": {
+    "messageformat": "Менин стикерлерим"
+  },
+  "icu:stickers--StickerManagerPackContextMenu--Add": {
+    "messageformat": "Кошуу"
+  },
+  "icu:stickers--StickerManagerPackContextMenu--Remove": {
+    "messageformat": "Алып салуу"
+  },
+  "icu:stickers--StickerManagerPackDragHandle--Label": {
+    "messageformat": "Drag to reorder sticker pack"
+  },
+  "icu:stickers--StickerManagerBlessedPacksList--Label": {
+    "messageformat": "Signal Artist Series sticker packs"
+  },
+  "icu:stickers--StickerManagerReceivedPacksList--Label": {
+    "messageformat": "Received sticker packs"
+  },
+  "icu:stickers--StickerManagerInstalledPacksList--Label": {
+    "messageformat": "Installed sticker packs"
+  },
   "icu:stickers--StickerPreview--Title": {
     "messageformat": "Стикерлер топтому"
   },
   "icu:stickers--StickerPreview--Error": {
     "messageformat": "Стикерлер топтомун ачуу катасы. Интернет туташууңузду текшерип, кайра аракет кылыңыз."
+  },
+  "icu:stickers--StickerPreview--Install": {
+    "messageformat": "Стикер кошуу"
+  },
+  "icu:stickers--StickerPreview--Remove": {
+    "messageformat": "Алып салуу"
+  },
+  "icu:stickers--StickerPreview--Link": {
+    "messageformat": "Шилтеме"
+  },
+  "icu:stickers--StickerPreview--LinkCopied": {
+    "messageformat": "Шилтеме көчүрүлдү"
+  },
+  "icu:stickers--StickerPreview--StickerCount": {
+    "messageformat": "{count, plural, one {{count,number} стикер} other {{count,number} стикер}}"
+  },
+  "icu:stickers--StickerPreview--StickerNoEmojiAriaLabel": {
+    "messageformat": "Быйтыкчасы жок стикер"
+  },
+  "icu:stickers--StickerPackLinkPreviewDescription": {
+    "messageformat": "Стикерлер топтомунун автору: {author}"
+  },
+  "icu:stickers--ViewPack": {
+    "messageformat": "Топтомду карап көрүү"
   },
   "icu:FunPicker__Tab--Emojis": {
     "messageformat": "Быйтыкча"
@@ -3028,6 +3079,18 @@
   },
   "icu:FunButton__Label--StickerPicker": {
     "messageformat": "Стикер кошуу"
+  },
+  "icu:FunPicker__Label--StickerReply": {
+    "messageformat": "Reply"
+  },
+  "icu:FunPicker__Label--SendStickerReply": {
+    "messageformat": "Send"
+  },
+  "icu:FunPicker__Label--CancelStickerReply": {
+    "messageformat": "Cancel"
+  },
+  "icu:FunPicker__Label--Sticker": {
+    "messageformat": "Sticker"
   },
   "icu:confirmation-dialog--Cancel": {
     "messageformat": "Жок"
@@ -4700,9 +4763,6 @@
   "icu:CompositionArea--expand": {
     "messageformat": "Кеңейтүү"
   },
-  "icu:CompositionArea--attach-file": {
-    "messageformat": "Файлды тиркөө"
-  },
   "icu:CompositionArea__AttachMenu__PhotosAndVideos": {
     "messageformat": "Сүрөттөр/Видеолор"
   },
@@ -5153,26 +5213,17 @@
   "icu:SelectModeActions--forwardSelectedMessages": {
     "messageformat": "Тандалган билдирүүлөрдү башка дарекке жөнөтүү"
   },
-  "icu:DeleteMessagesModal--title": {
-    "messageformat": "{count, plural, other {{count,number} билдирүүнү өчүрөсүзбү?}}"
-  },
   "icu:DeleteMessagesModal--title-2": {
     "messageformat": "{count, plural, other {Тандалган {count,number} билдирүүнү өчүрөсүзбү?}}"
   },
   "icu:DeleteMessagesModal--description": {
     "messageformat": "{count, plural, other {Бул билдирүүлөрдү кимдер үчүн өчүрөсүз?}}"
   },
-  "icu:DeleteMessagesModal--description--noteToSelf": {
-    "messageformat": "{count, plural, other {Бул билдирүүлөрдү кайсы түзмөктөрдөн өчүрөсүз?}}"
-  },
   "icu:DeleteMessagesModal--description--noteToSelf--deleteSync": {
     "messageformat": "{count, plural, other {Бул билдирүүлөр бардык түзмөктөрүңүздөн өчүрүлөт.}}"
   },
   "icu:DeleteMessagesModal--deleteForMe": {
     "messageformat": "Өзүмдө эле өчсүн"
-  },
-  "icu:DeleteMessagesModal--deleteFromThisDevice": {
-    "messageformat": "Ушул түзмөктөн өчсүн"
   },
   "icu:DeleteMessagesModal--deleteForEveryone": {
     "messageformat": "Бардык жерде өчсүн"
@@ -5186,9 +5237,6 @@
   },
   "icu:DeleteMessagesModal--adminDeleteConfirmation--description__rollout": {
     "messageformat": "{count, plural, other {Signal'дын соңку версияларындагы топтун катышуучулары ушул билдирүүлөрдү өчүргөнүңүздү көрүшөт.}}"
-  },
-  "icu:DeleteMessagesModal--deleteFromAllDevices": {
-    "messageformat": "Бардык түзмөктөрдөн өчүрүү"
   },
   "icu:DeleteMessagesModal--noteToSelf--deleteSync": {
     "messageformat": "Өчүрүү"
@@ -6397,11 +6445,26 @@
   "icu:Preferences--local-backups-enter-backup-key": {
     "messageformat": "Ачкычты киргизүү"
   },
-  "icu:Preferences--local-backups-record-recovery-key": {
-    "messageformat": "Калыбына келтирүү ачкычыңызды жаздырып алыңыз"
+  "icu:Preferences--local-backups-recovery-key--title": {
+    "messageformat": "Калыбына келтирүү ачкычыңыз"
   },
-  "icu:Preferences--local-backups-record-backup-key-description": {
-    "messageformat": "Бул ачкыч менен аккаунтуңузду жана андагы нерселерди калыбына келтиресиз. Аны коопсуз жерде сактаңыз. Жоготуп алсаңыз, аккаунтуңузду калыбына келтире албай каласыз. <learnMoreLink>Кененирээк маалымат.</learnMoreLink>"
+  "icu:Preferences--local-backups-recovery-key--description": {
+    "messageformat": "Бул ачкыч менен аккаунтуңузду жана андагы нерселерди калыбына келтиресиз. Аны коопсуз жерде сактап, эч ким менен бөлүшпөңүз. Signal эч качан сизден калыбына келтирүү ачкычын сурабайт. <learnMoreLink>Кененирээк маалымат.</learnMoreLink>"
+  },
+  "icu:Preferences__recovery-key__do-not-share-title": {
+    "messageformat": "Калыбына келтирүү ачкычын бөлүшпөңүз"
+  },
+  "icu:Preferences__recovery-key__do-not-share-confirm": {
+    "messageformat": "Түшүндүм"
+  },
+  "icu:CompositionInput__recovery-key-paste__share-key": {
+    "messageformat": "Бөлүшөм"
+  },
+  "icu:CompositionInput__recovery-key-paste__do-not-share-key": {
+    "messageformat": "Ачкычты бөлүшпөйм"
+  },
+  "icu:CompositionInput__recovery-key-warning--description": {
+    "messageformat": "Калыбына келтирүү ачкычын эч ким менен бөлүшпөңүз. Болбосо, аккаунтуңузга уруксатсыз кирип алышат. <strong>Signal эч качан сизден калыбына келтирүү ачкычын сурабайт</strong>. Өзүн Signal катары көрсөткөн маекке эч качан жооп бербеңиз. <learnMoreLink>Кененирээк маалымат.</learnMoreLink>"
   },
   "icu:Preferences--local-backups-confirm-recovery-key": {
     "messageformat": "Камдык көчүрмөнүн ачкычын ырастаңыз"
@@ -6465,6 +6528,9 @@
   },
   "icu:Preferences__local-backups-auth-error--unauthorized": {
     "messageformat": "Системдик аутентификация процесси ишке ашпай калгандыктан, бул аракет аягына чыкпайт. Кайталап көрүңүз же мобилдик түзмөгүңүздөгү Signal колдонмосун ачып, калыбына келтирүүчү ачкычты көрүү үчүн Камдык көчүрмөлөрдүн параметрлерине өтүңүз."
+  },
+  "icu:Preferences__local-backups-auth-error--unknown-error": {
+    "messageformat": "Бул аракетти системдик аутентификациядан өткөрүүдө ката кетти."
   },
   "icu:Preferences__view-key": {
     "messageformat": "Ачкычты карап көрүү"
@@ -6631,6 +6697,12 @@
   "icu:DialogUpdate__downloaded": {
     "messageformat": "Жаңы версия жүктөлүп алынды"
   },
+  "icu:DialogUpdate__upgrade-mas": {
+    "messageformat": "App Store'го өтүү үчүн бул жерди басыңыз"
+  },
+  "icu:DialogExpiredBuild__upgrade-mas": {
+    "messageformat": "App Store'го өтүү үчүн бул жерди басыңыз"
+  },
   "icu:CriticalIdlePrimaryDevice__title": {
     "messageformat": "Телефонуңузда Signal'ды ачыңыз"
   },
@@ -6669,6 +6741,405 @@
   },
   "icu:InstallScreenUpdateDialog--cannot-update__body": {
     "messageformat": "Signal Desktop жаңырбай калды, бирок анын жаңы версиясы жеткиликтүү. Бул дарек боюнча өтүп {downloadUrl}, жаңы версияны кол менен орнотсоңуз болот же кардарларды тейлеген борборго кайрылыңыз же ката тууралуу кабарлаңыз."
+  },
+  "icu:StandaloneRegistration--signal-logo": {
+    "messageformat": "Signal логотиби"
+  },
+  "icu:StandaloneRegistration--back": {
+    "messageformat": "Артка"
+  },
+  "icu:StandaloneRegistration--PhoneNumber--header": {
+    "messageformat": "Телефон номериңиз"
+  },
+  "icu:StandaloneRegistration--PhoneNumber--description--line-1": {
+    "messageformat": "Телефон номериңизди киргизип, аккаунтуңузду ырастаңыз."
+  },
+  "icu:StandaloneRegistration--PhoneNumber--description--line-2": {
+    "messageformat": "Байланыш операторуңуз акы алышы мүмкүн."
+  },
+  "icu:StandaloneRegistration--PhoneNumber--waiting": {
+    "messageformat": "{duration} кийин кайталап көрүңүз"
+  },
+  "icu:StandaloneRegistration--PhoneNumber--placeholder": {
+    "messageformat": "Телефон номериңиз"
+  },
+  "icu:StandaloneRegistration--PhoneNumber--button": {
+    "messageformat": "Улантуу"
+  },
+  "icu:StandaloneRegistration--PhoneNumber--Confirmation--description": {
+    "messageformat": "Сиздин жогорудагы номериңиз туурабы?"
+  },
+  "icu:StandaloneRegistration--PhoneNumber--Confirmation--cancel": {
+    "messageformat": "Номерди алмаштыруу"
+  },
+  "icu:StandaloneRegistration--PhoneNumber--Confirmation--confirm": {
+    "messageformat": "Ооба"
+  },
+  "icu:StandaloneRegistration--Captcha--header": {
+    "messageformat": "Улантуу үчүн адам экениңизди ырастаңыз"
+  },
+  "icu:StandaloneRegistration--Captcha--description": {
+    "messageformat": "Signal кызматында спамдарга жол бербөө үчүн текшерүүдөн өтүп коюңуз. Текшерилгенден кийин каттоону уланта берсеңиз болот."
+  },
+  "icu:StandaloneRegistration--Captcha--retry-button": {
+    "messageformat": "Кайра ырастоо"
+  },
+  "icu:StandaloneRegistration--Captcha--button": {
+    "messageformat": "Браузерде ырастоо"
+  },
+  "icu:StandaloneRegistration--Captcha--button--wait": {
+    "messageformat": "{duration} кийин ырастаңыз"
+  },
+  "icu:StandaloneRegistration--Captcha--NeedAnother--header": {
+    "messageformat": "Ырастоо талап кылынат"
+  },
+  "icu:StandaloneRegistration--Captcha--NeedAnother--description": {
+    "messageformat": "Каттоону аягына чыгаруу үчүн дагы бир captcha колдонуңуз."
+  },
+  "icu:StandaloneRegistration--Captcha--NeedAnother--cancel": {
+    "messageformat": "Жок"
+  },
+  "icu:StandaloneRegistration--Captcha--NeedAnother--retry": {
+    "messageformat": "Кайра ырастоо"
+  },
+  "icu:StandaloneRegistration--Captcha--MustWait--aria-title": {
+    "messageformat": "Бир аздан соң кайталаңыз"
+  },
+  "icu:StandaloneRegistration--Captcha--MustWait--line-1": {
+    "messageformat": "Азырынча ырастай албайсыз."
+  },
+  "icu:StandaloneRegistration--Captcha--MustWait--line-2": {
+    "messageformat": "{duration} кийин кайталап көрүңүз"
+  },
+  "icu:StandaloneRegistration--Captcha--MustWait--button": {
+    "messageformat": "OK"
+  },
+  "icu:StandaloneRegistration--Captcha--Error--header": {
+    "messageformat": "Текшерүү катасы"
+  },
+  "icu:StandaloneRegistration--Captcha--Error--description": {
+    "messageformat": "Каттоону улантуу үчүн кайра текшерип көрүңүз."
+  },
+  "icu:StandaloneRegistration--Captcha--Error--try-again": {
+    "messageformat": "Кайталап көрүңүз"
+  },
+  "icu:StandaloneRegistration--Captcha--Error--cancel": {
+    "messageformat": "Жок"
+  },
+  "icu:StandaloneRegistration--VerificationCode--header": {
+    "messageformat": "Текшерүү коду"
+  },
+  "icu:StandaloneRegistration--VerificationCode--description": {
+    "messageformat": "{phoneNumber}номерине жиберилген кодду киргизиңиз"
+  },
+  "icu:StandaloneRegistration--VerificationCode--button": {
+    "messageformat": "Улантуу"
+  },
+  "icu:StandaloneRegistration--VerificationCode--send-sms": {
+    "messageformat": "Кодду кайра жөнөтүү"
+  },
+  "icu:StandaloneRegistration--VerificationCode--send-sms--duration": {
+    "messageformat": "Код кайра {duration} кийин жөнөтүлөт"
+  },
+  "icu:StandaloneRegistration--VerificationCode--call-me": {
+    "messageformat": "Мага чал"
+  },
+  "icu:StandaloneRegistration--VerificationCode--call-me--duration": {
+    "messageformat": "Мага {duration} кийин чалып кой"
+  },
+  "icu:StandaloneRegistration--VerificationCode--wrong-number": {
+    "messageformat": "Номер туура эмеспи?"
+  },
+  "icu:StandaloneRegistration--VerificationCode--having-trouble": {
+    "messageformat": "Каттала албай жатасызбы?"
+  },
+  "icu:StandaloneRegistration--VerificationCode--IncorrectCode--aria-title": {
+    "messageformat": "Код туура эмес"
+  },
+  "icu:StandaloneRegistration--VerificationCode--IncorrectCode--description": {
+    "messageformat": "Код туура эмес. 6 орундуу кодду текшерип, кайталап көрүңүз."
+  },
+  "icu:StandaloneRegistration--VerificationCode--IncorrectCode--button": {
+    "messageformat": "OK"
+  },
+  "icu:StandaloneRegistration--VerificationCode--CodeInvalid--aria-title": {
+    "messageformat": "Код туура эмес"
+  },
+  "icu:StandaloneRegistration--VerificationCode--CodeInvalid--description": {
+    "messageformat": "Киргизилген код жарабайт. Кодду кайра жөнөтүп, кайталап көрүңүз."
+  },
+  "icu:StandaloneRegistration--VerificationCode--CodeInvalid--resend-button": {
+    "messageformat": "Кодду кайра жөнөтүү"
+  },
+  "icu:StandaloneRegistration--VerificationCode--CodeInvalid--edit-number-button": {
+    "messageformat": "Номерди алмаштыруу"
+  },
+  "icu:StandaloneRegistration--VerificationCode--SMSFailed--aria-title": {
+    "messageformat": "SMS жөнөтүлгөн жок"
+  },
+  "icu:StandaloneRegistration--VerificationCode--SMSFailed--description": {
+    "messageformat": "Ырастоо кодун SMS аркылуу жөнөтө албайбыз. Кодду аудио чалуу аркылуу алганга аракет кылып көрүңүз."
+  },
+  "icu:StandaloneRegistration--VerificationCode--SMSFailed--confirm": {
+    "messageformat": "Аудио чалуу"
+  },
+  "icu:StandaloneRegistration--VerificationCode--SMSFailed--cancel": {
+    "messageformat": "Жок"
+  },
+  "icu:StandaloneRegistration--VerificationCode--MustWait--aria-title": {
+    "messageformat": "Бир аздан соң кайталаңыз"
+  },
+  "icu:StandaloneRegistration--VerificationCode--MustWait--description": {
+    "messageformat": "Кодду киргизгенге көп жолу аракет кылдыңыз. {duration} кийин кайталап көрүңүз."
+  },
+  "icu:StandaloneRegistration--VerificationCode--MustWait--button": {
+    "messageformat": "OK"
+  },
+  "icu:StandaloneRegistration--VerificationCode--MaximumAttempts--aria-title": {
+    "messageformat": "Ашыкча көп аракет көрүлдү"
+  },
+  "icu:StandaloneRegistration--VerificationCode--MaximumAttempts--description": {
+    "messageformat": "Кодду киргизгенге көп жолу аракет кылдыңыз. Кодду кайра жөнөтүп, кайталап көрүңүз."
+  },
+  "icu:StandaloneRegistration--VerificationCode--MaximumAttempts--resend-button": {
+    "messageformat": "Кодду кайра жөнөтүү"
+  },
+  "icu:StandaloneRegistration--VerificationCode--MaximumAttempts--edit-number-button": {
+    "messageformat": "Номерди алмаштыруу"
+  },
+  "icu:StandaloneRegistration--VerificationCode--FailedToCall--aria-title": {
+    "messageformat": "Чала алган жоксуз"
+  },
+  "icu:StandaloneRegistration--VerificationCode--FailedToCall--description": {
+    "messageformat": "Киргизилген телефон номерине чала алган жокпуз. Телефон номеринин туура киргизилгенин текшерип, кайталап көрүңүз."
+  },
+  "icu:StandaloneRegistration--VerificationCode--FailedToCall--ok-button": {
+    "messageformat": "OK"
+  },
+  "icu:StandaloneRegistration--VerificationCode--CannotSendCodePermanent--aria-title": {
+    "messageformat": "Код жөнөтүлгөн жок"
+  },
+  "icu:StandaloneRegistration--VerificationCode--CannotSendCodePermanent--description": {
+    "messageformat": "Киргизилген телефон номерине ырастоо коду жөнөтүлгөн жок. Телефон номерин туура киргизгениңизди текшериңиз же башка номерди байкап көрүңүз."
+  },
+  "icu:StandaloneRegistration--VerificationCode--CannotSendCodePermanent--ok-button": {
+    "messageformat": "OK"
+  },
+  "icu:StandaloneRegistration--VerificationCode--CannotSendCodeTemporary--aria-title": {
+    "messageformat": "Бир аздан соң кайталаңыз"
+  },
+  "icu:StandaloneRegistration--VerificationCode--CannotSendCodeTemporary--description": {
+    "messageformat": "Ката кетип, текшерүү коду жөнөтүлгөн жок. {duration} кийин кайталап көрүңүз."
+  },
+  "icu:StandaloneRegistration--VerificationCode--CannotSendCodeTemporary--ok-button": {
+    "messageformat": "OK"
+  },
+  "icu:StandaloneRegistration--ProfileEntry--header": {
+    "messageformat": "Профилиңизди түзүп алыңыз"
+  },
+  "icu:StandaloneRegistration--ProfileEntry--description": {
+    "messageformat": "Профилиңиз жазышкан адамдарыңызга, байланыштарыңызга жана топторго көрүнөт."
+  },
+  "icu:StandaloneRegistration--ProfileEntry--learn-more": {
+    "messageformat": "Кененирээк маалымат"
+  },
+  "icu:StandaloneRegistration--ProfileEntry--add-photo": {
+    "messageformat": "Сүрөт кошуу"
+  },
+  "icu:StandaloneRegistration--ProfileEntry--first-name": {
+    "messageformat": "Атыңыз (талап кылынат)"
+  },
+  "icu:StandaloneRegistration--ProfileEntry--last-name": {
+    "messageformat": "Фамилияңыз (көрсөтпөй деле койсоңуз болот)"
+  },
+  "icu:StandaloneRegistration--ProfileEntry--discoverability": {
+    "messageformat": "Мени кимдер телефон номерим аркылуу таба алат"
+  },
+  "icu:StandaloneRegistration--ProfileEntry--discoverability--change-button": {
+    "messageformat": "Өзгөртүү"
+  },
+  "icu:StandaloneRegistration--ProfileEntry--discoverability--done-button": {
+    "messageformat": "Бүттү"
+  },
+  "icu:StandaloneRegistration--ProfileEntry--continue": {
+    "messageformat": "Улантуу"
+  },
+  "icu:StandaloneRegistration--ProfileEntry--AvatarModal--header": {
+    "messageformat": "Аватарыңыз"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--header": {
+    "messageformat": "PIN-кодду киргизиңиз"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--description": {
+    "messageformat": "Аккаунтуңуздун PIN кодун киргизиңиз. Бул код SMS'теги кодго дал келген жок. <needHelp>Жардам керекпи?</needHelp>"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--placeholder": {
+    "messageformat": "PIN-кодду киргизиңиз"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--incorrect-pin": {
+    "messageformat": "Туура эмес PIN-код"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--incorrect-pin--with-count": {
+    "messageformat": "{triesRemaining, plural, one {Туура эмес PIN-код. {triesRemaining,number} аракет калды.} other {Туура эмес PIN-код. {triesRemaining,number} аракет калды.}}"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--NeedHelp--header": {
+    "messageformat": "Жардам керекпи?"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--NeedHelp--description--no-reglock": {
+    "messageformat": "PIN кодуңуз сандар менен тамгалардан өзүңүз түзгөн 4 ашуун орундуу код. Эгер PIN кодуңузду унутуп койсоңуз, жаңысын түзсөңүз болот. Аккаунтуңузду каттап, колдонсоңуз болот, бирок профилиңиздин маалыматы сыяктуу айрым сакталган параметрлер өчүп калышы мүмкүн. <learnMore>Кененирээк маалымат</learnMore>."
+  },
+  "icu:StandaloneRegistration--VerifyPIN--NeedHelp--description--reglock": {
+    "messageformat": "PIN кодуңуз сандар менен тамгалардан өзүңүз түзгөн 4 ашуун орундуу код. Эгер PIN кодуңузду унутуп койсоңуз, аккаунтуңузду кайра 7 күндөн кийин гана каттай аласыз. <learnMore>Кененирээк маалымат</learnMore>."
+  },
+  "icu:StandaloneRegistration--VerifyPIN--NeedHelp--skip-button--no-reglock": {
+    "messageformat": "Өткөрүп жиберип, жаңы PIN код түзүү"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--NeedHelp--contact-support-button": {
+    "messageformat": "Кардарларды колдоо кызматына кайрылуу"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--NeedHelp--cancel": {
+    "messageformat": "Жок"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--FewRemainingTries--header": {
+    "messageformat": "Туура эмес PIN-код"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--FewRemainingTries--description--no-reglock": {
+    "messageformat": "{triesRemaining, plural, one {{triesRemaining,number} мүмкүнчүлүк гана калды. Эгер баарын колдонуп салсаңыз, жаңы PIN код түзүшүңүз керек. Аккаунт түзүп, аны колдоно алганыңыз менен, профилиңиздеги маалымат сыяктуу айрым сакталган нерселерди жоготуп алышыңыз мүмкүн. <learnMore>Кененирээк маалымат</learnMore>.} other {{triesRemaining,number} мүмкүнчүлүк гана калды. Эгер баарын колдонуп салсаңыз, жаңы PIN код түзүшүңүз керек. Аккаунт түзүп, аны колдоно алганыңыз менен, профилиңиздеги маалымат сыяктуу айрым сакталган нерселерди жоготуп алышыңыз мүмкүн. <learnMore>Кененирээк маалымат</learnMore>.}}"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--FewRemainingTries--description--reglock": {
+    "messageformat": "{triesRemaining, plural, one {{triesRemaining,number} мүмкүнчүлүгүңүз калды. Ошондо да болбосо, аккаунтуңуз 7 күнгө кулпуланат. Аккаунт 7 күн колдонулбагандан кийин ага кайра PIN кодсуз каттала аласыз. Андагы бардык нерселер өчүп калат. <learnMore>Кененирээк маалымат</learnMore>.} other {{triesRemaining,number} мүмкүнчүлүгүңүз калды. Ошондо да болбосо, аккаунтуңуз 7 күнгө кулпуланат. Аккаунт 7 күн колдонулбагандан кийин ага кайра PIN кодсуз каттала аласыз. Андагы бардык нерселер өчүп калат. <learnMore>Кененирээк маалымат</learnMore>.}}"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--FewRemainingTries--button": {
+    "messageformat": "OK"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--NoRemainingTries--header": {
+    "messageformat": "Туура эмес PIN-код"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--NoRemainingTries--description": {
+    "messageformat": "PIN кодду эстегенге өтө көп жолу аракет кылдыңыз, эми Signal аккаунтуңузга жаңы PIN код түзүп кириңиз. Купуялыгыңыз жана коопсуздугуңуз үчүн аккаунтуңуз профилиңизде сакталган маалыматсыз же параметрлерсиз калыбына келет."
+  },
+  "icu:StandaloneRegistration--VerifyPIN--NoRemainingTries--create-new-pin": {
+    "messageformat": "Жаңы PIN код түзүү"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--NoRemainingTries--learn-more": {
+    "messageformat": "PIN коддор тууралуу көбүрөөк билүү"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--menu--skip-pin": {
+    "messageformat": "PIN кодду өткөрүп жиберүү"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--SkipPIN--header": {
+    "messageformat": "PIN кодду киргизбейсизби?"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--SkipPIN--description": {
+    "messageformat": "Эгер PIN кодуңузду унутуп койсоңуз, жаңысын түзсөңүз болот. Аккаунтуңузду каттап, колдонсоңуз болот, бирок профилиңиздин маалыматы сыяктуу айрым сакталган параметрлер өчүп калышы мүмкүн. Кененирээк маалымат."
+  },
+  "icu:StandaloneRegistration--VerifyPIN--SkipPIN--skip-button": {
+    "messageformat": "Өткөрүп жиберип, жаңы PIN код түзүү"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--SkipPIN--cancel-button": {
+    "messageformat": "Жок"
+  },
+  "icu:StandaloneRegistration--CreatePIN--header": {
+    "messageformat": "PIN код түзүңүз"
+  },
+  "icu:StandaloneRegistration--CreatePIN--description": {
+    "messageformat": "PIN коддор аркылуу аккаунтуңузду калыбына келтирип, маалыматыңыз Signal'да шифрленет. <learnMore>Кененирээк маалымат</learnMore>"
+  },
+  "icu:StandaloneRegistration--CreatePIN--placeholder": {
+    "messageformat": "PIN код түзүңүз"
+  },
+  "icu:StandaloneRegistration--CreatePIN--helper-text": {
+    "messageformat": "PIN код кеминде 4 белгиден турушу керек"
+  },
+  "icu:StandaloneRegistration--CreatePIN--continue": {
+    "messageformat": "Улантуу"
+  },
+  "icu:StandaloneRegistration--CreatePIN--open-menu": {
+    "messageformat": "Менюну ачуу"
+  },
+  "icu:StandaloneRegistration--CreatePIN--menu--more-about": {
+    "messageformat": "PIN коддор тууралуу кененирээк маалымат"
+  },
+  "icu:StandaloneRegistration--CreatePIN--menu--disable": {
+    "messageformat": "PIN кодду өчүрүү"
+  },
+  "icu:StandaloneRegistration--CreatePIN--DisableWarning--header": {
+    "messageformat": "Эскертүү"
+  },
+  "icu:StandaloneRegistration--CreatePIN--DisableWarning--description": {
+    "messageformat": "PIN кодду өчүрсөңүз, Signal'ды кайра каттап жатканда бардык нерселериңизди жоготуп алышыңыз мүмкүн (эгер аларды iOS түзмөгүнөн өткөрүп эле албасаңыз). PIN өчүк болсо, Каттоо кулпусун күйгүзө албайсыз."
+  },
+  "icu:StandaloneRegistration--CreatePIN--DisableWarning--disable-button": {
+    "messageformat": "PIN кодду өчүрүү"
+  },
+  "icu:StandaloneRegistration--CreatePIN--DisableWarning--cancel": {
+    "messageformat": "Жок"
+  },
+  "icu:StandaloneRegistration--CreatePIN--AboutPINs--header": {
+    "messageformat": "Signal PIN коддору жөнүндө"
+  },
+  "icu:StandaloneRegistration--CreatePIN--AboutPINs--description": {
+    "messageformat": "ПИН коддор Signal'дагы маалыматтарыңызды өзүңүз гана көрө алгыдай, шифрленген бойдон сактайт. Signal'ды кайра орноткоңузда, профилиңиз, параметрлериңиз жана байланыштарыңыз калыбына келет."
+  },
+  "icu:StandaloneRegistration--CreatePIN--AboutPINs--learn-more-button": {
+    "messageformat": "Кененирээк маалымат"
+  },
+  "icu:StandaloneRegistration--CreatePIN--AboutPINs--ok-button": {
+    "messageformat": "OK"
+  },
+  "icu:StandaloneRegistration--CreatePIN--confirming--header": {
+    "messageformat": "PIN кодуңузду ырастаңыз"
+  },
+  "icu:StandaloneRegistration--CreatePIN--confirming--description": {
+    "messageformat": "Жаңы түзүлгөн PIN кодду кайра киргизиңиз."
+  },
+  "icu:StandaloneRegistration--CreatePIN--confirming--placeholder": {
+    "messageformat": "PIN-кодду киргизиңиз"
+  },
+  "icu:StandaloneRegistration--AccountLocked--header": {
+    "messageformat": "Аккаунт кулпуланган"
+  },
+  "icu:StandaloneRegistration--AccountLocked--description": {
+    "messageformat": "Купуялык жана коопсуздук максатында аккаунтуңуз кулпуланды. Аккаунтуңуз 7 күн колдонулбаса, бул телефон номерин каттоо үчүн PIN код керек болот. Бардык нерселер өчөт."
+  },
+  "icu:StandaloneRegistration--AccountLocked--start-over-button": {
+    "messageformat": "Башка номерди колдонуу"
+  },
+  "icu:StandaloneRegistration--AccountLocked--help-button": {
+    "messageformat": "Кулпуланган аккаунттар жөнүндө кененирээк маалымат"
+  },
+  "icu:StandaloneRegistration--UpdateRequired--header": {
+    "messageformat": "Колдонмону жаңыртыңыз"
+  },
+  "icu:StandaloneRegistration--UpdateRequired--description": {
+    "messageformat": "Катталууну улантуу үчүн Signal'дын эң акыркы версиясын орнотуңуз."
+  },
+  "icu:StandaloneRegistration--UpdateRequired--update": {
+    "messageformat": "Жаңыртуу"
+  },
+  "icu:StandaloneRegistration--UpdateRequired--cancel": {
+    "messageformat": "Жок"
+  },
+  "icu:StandaloneRegistration--ConnectionProblem--header": {
+    "messageformat": "Байланышыңызды текшериңиз"
+  },
+  "icu:StandaloneRegistration--ConnectionProblem--description": {
+    "messageformat": "Улантуу үчүн компьютериңиздеги Интернет байланышты текшерип, кайталап көрүңүз."
+  },
+  "icu:StandaloneRegistration--ConnectionProblem--button": {
+    "messageformat": "OK"
+  },
+  "icu:StandaloneRegistration--UnexpectedError--header": {
+    "messageformat": "Каттоо процесси аяктаган жок"
+  },
+  "icu:StandaloneRegistration--UnexpectedError--description": {
+    "messageformat": "Ката кетип, каттоо процесси бүтпөй калды. Эгер маселе чечилбесе, кардарларды тейлеген кызматка кайрылыңыз."
+  },
+  "icu:StandaloneRegistration--UnexpectedError--try-again-button": {
+    "messageformat": "Кайталап көрүңүз"
+  },
+  "icu:StandaloneRegistration--UnexpectedError--contact-support-button": {
+    "messageformat": "Кардарларды колдоо кызматына кайрылуу"
   },
   "icu:NSIS__retry-dialog--first-line": {
     "messageformat": "Сигнал жабылбай калды.",
@@ -6915,15 +7386,6 @@
   },
   "icu:SignalConnectionsModal__footer": {
     "messageformat": "Байланыштарыңыз аты-жөнүңүздү жана сүрөтүңүздү, \"Менин окуям\" бөлүмүндөгү постторду көрө алышат (эгер аларды жашырып койбосоңуз)"
-  },
-  "icu:LocalDeleteWarningModal__header": {
-    "messageformat": "Бардык түзмөктөрүңүздө өчүрүлөт"
-  },
-  "icu:LocalDeleteWarningModal__description": {
-    "messageformat": "Билдирүүлөрдү же маектерди өчүргөнүңүздө, алар бардык түзмөктөрүңүздөн өчүп калат."
-  },
-  "icu:LocalDeleteWarningModal__confirm": {
-    "messageformat": "Түшүндүм"
   },
   "icu:Stories__title": {
     "messageformat": "Окуялар"
@@ -7478,9 +7940,6 @@
   "icu:DraftGifMessageSendModal__SendButtonLabel": {
     "messageformat": "Жөнөтүү"
   },
-  "icu:DraftGifMessageSendModal__CancelButtonLabel": {
-    "messageformat": "Жок"
-  },
   "icu:EditHistoryMessagesModal__title": {
     "messageformat": "Оңдолгондор"
   },
@@ -7759,9 +8218,6 @@
   },
   "icu:PreferencesDonations__privacy-modal-title": {
     "messageformat": "Маалыматыңыз купуя сакталууда"
-  },
-  "icu:PreferencesDonations__privacy-modal-content": {
-    "messageformat": "<paragraph>Салым кошкондо, Signal сизге байланыштуу эч кандай жеке маалымат чогултпайт же сактабайт.</paragraph><paragraph>Салым түрүндөгү төлөмдөрүңүздү Stripe кызматы аркылуу алабыз. Аларга берген бир дагы маалыматыңызды албайбыз, сактабайбыз же жазып албайбыз.</paragraph><paragraph>Signal салымыңызды Signal аккаунтуңузга байланыштыра албайт жана байланыштырбайт.</paragraph><paragraph>Колдоо көрсөткөнүңүз үчүн чоң рахмат!</paragraph>"
   },
   "icu:PreferencesDonations__privacy-modal-intro": {
     "messageformat": "Көзкарандысыз коммерциялык эмес уюм катары Signal жазышуулар менен чалуулардын купуялыгын камсыз кылганга аракет кылат. Жарнамалар жок, эч ким сизге көз салбайт жана аңдыбайт. Signal'га колдоо көрсөтүп, бүгүн салым кошуңуз."
@@ -8205,10 +8661,16 @@
     "messageformat": "Майда-барат өзгөрүүлөрдү киргизип, мүчүлүштүктөрдү оңдоп, колдонмонун иштешин жакшыртып жатабыз. Signal'ды колдонгонуңуз үчүн чоң рахмат!",
     "ignoreUnused": true
   },
-  "icu:WhatsNew__8.12--0": {
-    "messageformat": "Бир чети, топтук чалуу учурунда кол көтөрүү деген сүрөтчөнү басып койсоңуз болот. Экинчи чети, эми жаңы ыкчам баскычты колдоносуз (Shift-H)."
+  "icu:WhatsNew__8.18--0": {
+    "messageformat": "Эми сурамжылоолорду жеке маектерде да түзсө болот. Арсар болуп жаткан досуңузга бир нече жооптуу суроо бериңиз же „Мен сага жагамбы? Ооба/Жок/Мүмкүн“ деп суроону кабыргасынан коюп, мектептеги сүйүү каттарынын керемет көз ирмемдерин кайра сезиңиз."
   },
-  "icu:WhatsNew__8.13--0": {
-    "messageformat": "The new raised-hand indicators are now also displayed in the list of raised hands during group calls. It's a second-hand place to figure out who you should hand it over to when you're done speaking."
+  "icu:WhatsNew__8.19--0": {
+    "messageformat": "★ Топтун администраторлору эми параметрлериндеги жаңы «Топту аяктоо» функциясы аркылуу маектерди өз нугунда жыйынтыктай алышат. Топ жабылганда, анын мүчөлөрү билдирүү жөнөтө албай же чала албай же чакырууларды жөнөтө албай калышат. Баары бир талкууда болушу үчүн жаңы топко которулардан мурун өткөн жылы тигүүчүлөр кездешкен топту жабыңыз.\n"
+  },
+  "icu:WhatsNew__8.20--0": {
+    "messageformat": "Introducing disappearing call events: Missed, outgoing, and received calls that occur after you install this update will now automatically disappear in any chat where disappearing messages are enabled."
+  },
+  "icu:WhatsNew__8.20--1": {
+    "messageformat": "Now you can reorder installed sticker packs so your new favorites don’t get stuck in the back of the line."
   }
 }

@@ -147,6 +147,7 @@ export type OwnProps = Readonly<{
   onClearAttachments: (conversationId: string) => unknown;
   onCloseLinkPreview: (conversationId: string) => unknown;
   platform: string;
+  textIncludesRecoveryKey: (text: string) => boolean;
   showToast: ShowToastAction;
   processAttachments: (options: {
     conversationId: string;
@@ -267,6 +268,7 @@ export const CompositionArea = memo(function CompositionArea({
   lastEditableMessageId,
   pushPanelForConversation,
   platform,
+  textIncludesRecoveryKey,
   processAttachments,
   removeAttachment,
   sendEditedMessage,
@@ -777,7 +779,7 @@ export const CompositionArea = memo(function CompositionArea({
       >
         <AxoConfirmDialog.Cancel />
         <AxoConfirmDialog.Action
-          variant="primary"
+          variant="strong-primary"
           onClick={handleConfirmGifSelection}
         >
           {i18n('icu:CompositionArea__ConfirmGifSelection__ReplaceButton')}
@@ -791,6 +793,7 @@ export const CompositionArea = memo(function CompositionArea({
         )}
       >
         <FunPicker
+          isReply={Boolean(quotedMessageId)}
           placement="top start"
           open={funPickerOpen}
           onOpenChange={handleFunPickerOpenChange}
@@ -852,7 +855,7 @@ export const CompositionArea = memo(function CompositionArea({
           <div className={actionSlotClassName}>
             <AxoDropdownMenu.Trigger>
               <AxoIconButton.Root
-                variant="borderless-secondary"
+                variant="implied-secondary"
                 size="md"
                 label={i18n('icu:CompositionArea--attach-plus')}
                 tooltip={false}
@@ -887,7 +890,7 @@ export const CompositionArea = memo(function CompositionArea({
         <div className={actionSlotClassName}>
           <AxoIconButton.Root
             symbol="send-fill"
-            variant="primary"
+            variant="strong-primary"
             size="md"
             label={i18n('icu:sendMessageToContact')}
             onClick={handleForceSend}
@@ -986,8 +989,8 @@ export const CompositionArea = memo(function CompositionArea({
     return (
       <div
         className={tw(
-          'border-t border-border-primary py-[16px]',
-          'text-center type-body-small text-label-secondary select-none'
+          'border-t border-primary py-[16px]',
+          'text-center type-body-small text-secondary'
         )}
         data-testid="CompositionArea--group-terminated"
       >
@@ -1289,6 +1292,7 @@ export const CompositionArea = memo(function CompositionArea({
             linkPreviewLoading={linkPreviewLoadingForInput}
             linkPreviewResult={linkPreviewResultForInput}
             quotedMessageId={quotedMessageIdForInput}
+            showRecoveryKeyPasteWarning={textIncludesRecoveryKey}
             onCloseLinkPreview={onCloseLinkPreview}
             onDirtyChange={setDirty}
             onEditorStateChange={onEditorStateChange}
@@ -1312,7 +1316,7 @@ export const CompositionArea = memo(function CompositionArea({
             <div className={actionSlotClassName}>
               <AxoIconButton.Root
                 size="md"
-                variant="primary"
+                variant="strong-primary"
                 symbol="send-fill"
                 label={i18n('icu:sendMessageToContact')}
                 onClick={handleForceSend}

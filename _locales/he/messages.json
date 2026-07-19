@@ -14,6 +14,9 @@
   "icu:AxoTextField.Clear": {
     "messageformat": "נקה"
   },
+  "icu:AxoBadge.MaxOverflow": {
+    "messageformat": "{max,number}+"
+  },
   "icu:AddUserToAnotherGroupModal__title": {
     "messageformat": "הוסף אל קבוצה"
   },
@@ -85,6 +88,9 @@
   },
   "icu:unknownContact": {
     "messageformat": "איש קשר בלתי ידוע"
+  },
+  "icu:deletedAccount": {
+    "messageformat": "חשבון שנמחק"
   },
   "icu:unknownContactShort": {
     "messageformat": "בלתי ידוע"
@@ -314,6 +320,9 @@
   "icu:LeftPaneChatFolders__ItemUnreadBadge__MaxCount": {
     "messageformat": "{maxCount,number}+"
   },
+  "icu:LeftPaneChatFolders__ItemUnreadBadge__AccessibleLabel": {
+    "messageformat": "{count, plural, one {{count,number} Unread Message} other {{count,number} Unread Messages}}"
+  },
   "icu:LeftPaneChatFolders__Item__ContextMenu__MarkAllRead": {
     "messageformat": "סמן הכול כנקרא"
   },
@@ -449,8 +458,8 @@
   "icu:unpinConversation": {
     "messageformat": "ביטול הצמדת צ'אט"
   },
-  "icu:pinnedConversationsFull": {
-    "messageformat": "אפשר להצמיד עד 4 צ'אטים בלבד"
+  "icu:pinnedConversations--max": {
+    "messageformat": "{maxPinnedConversations, plural, one {אפשר להצמיד רק עד צ׳אט {maxPinnedConversations,number}} two {אפשר להצמיד רק עד {maxPinnedConversations,number} צ׳אטים} many {אפשר להצמיד רק עד {maxPinnedConversations,number} צ׳אטים} other {אפשר להצמיד רק עד {maxPinnedConversations,number} צ׳אטים}}"
   },
   "icu:view": {
     "messageformat": "צפיה"
@@ -2261,9 +2270,6 @@
   "icu:partiallySent": {
     "messageformat": "נשלח חלקית, לחץ לפרטים"
   },
-  "icu:partiallyDeleted": {
-    "messageformat": "נמחקה חלקית, אפשר ללחוץ כדי לנסות שוב"
-  },
   "icu:partiallyDeleted--clickForDetails": {
     "messageformat": "נמחק חלקית, יש ללחוץ לפרטים"
   },
@@ -2466,7 +2472,7 @@
     "messageformat": "ההורדה נכשלה"
   },
   "icu:Toast--unable-download-from-backup-tier": {
-    "messageformat": "Attachment missing from backup CDN"
+    "messageformat": "Attachment missing from backup CDN, please share desktop & primary logs"
   },
   "icu:ToastManager__CannotAddMemberLabel": {
     "messageformat": "רק מנהלים יכולים להגדיר תוויות חברים בקבוצה זו."
@@ -2687,9 +2693,6 @@
   "icu:message--getDescription--gif": {
     "messageformat": "GIF"
   },
-  "icu:message--deletedForEveryone": {
-    "messageformat": "הודעה זו נמחקה."
-  },
   "icu:message--deletedByAdmin": {
     "messageformat": "ההודעה הזו נמחקה על ידי מנהל/ת הקבוצה {admin}"
   },
@@ -2780,14 +2783,11 @@
   "icu:stickers--toast--InstallFailed": {
     "messageformat": "חבילת מדבקות לא יכלה להיות מותקנת"
   },
-  "icu:stickers--StickerManager--Available": {
-    "messageformat": "זמין"
+  "icu:stickers--StickerManager--MyStickers--None": {
+    "messageformat": "אין חבילות סטיקרים, אפשר להוסיף סטיקרים כדי לשלוח לחברים."
   },
-  "icu:stickers--StickerManager--InstalledPacks": {
-    "messageformat": "הותקן"
-  },
-  "icu:stickers--StickerManager--InstalledPacks--Empty": {
-    "messageformat": "אין מדבקות מותקנות"
+  "icu:stickers--StickerManager--AddStickers": {
+    "messageformat": "הוספת סטיקרים"
   },
   "icu:stickers--StickerManager--BlessedPacks": {
     "messageformat": "סדרת אומנים Signal"
@@ -2795,14 +2795,17 @@
   "icu:stickers--StickerManager--BlessedPacks--Empty": {
     "messageformat": "אין מדבקות אומנים Signal זמינות"
   },
-  "icu:stickers--StickerManager--ReceivedPacks": {
-    "messageformat": "מדבקות שקיבלת"
+  "icu:stickers--StickerManager--ReceivedPacks2": {
+    "messageformat": "שותף איתך"
   },
-  "icu:stickers--StickerManager--ReceivedPacks--Empty": {
-    "messageformat": "מדבקות מהודעות נכנסות יופיעו כאן"
+  "icu:stickers--StickerManager--ReceivedPacksDescription": {
+    "messageformat": "כשמקבלים סטיקר ממישהו או מישהי, חבילת הסטיקרים תופיע כאן."
   },
   "icu:stickers--StickerManager--Install": {
     "messageformat": "התקן"
+  },
+  "icu:stickers--StickerManager--Installed": {
+    "messageformat": "הותקן"
   },
   "icu:stickers--StickerManager--Uninstall": {
     "messageformat": "הסר"
@@ -2810,11 +2813,59 @@
   "icu:stickers--StickerManager--UninstallWarning": {
     "messageformat": "ייתכן שלא תוכל להתקין מחדש חבילת מדבקות זו אם אין לך עוד את הודעת המקור."
   },
+  "icu:stickers--StickerManagerHeader--All": {
+    "messageformat": "הכל"
+  },
+  "icu:stickers--StickerManagerHeader--MyStickers": {
+    "messageformat": "הסטיקרים שלי"
+  },
+  "icu:stickers--StickerManagerPackContextMenu--Add": {
+    "messageformat": "הוסף"
+  },
+  "icu:stickers--StickerManagerPackContextMenu--Remove": {
+    "messageformat": "הסרה"
+  },
+  "icu:stickers--StickerManagerPackDragHandle--Label": {
+    "messageformat": "Drag to reorder sticker pack"
+  },
+  "icu:stickers--StickerManagerBlessedPacksList--Label": {
+    "messageformat": "Signal Artist Series sticker packs"
+  },
+  "icu:stickers--StickerManagerReceivedPacksList--Label": {
+    "messageformat": "Received sticker packs"
+  },
+  "icu:stickers--StickerManagerInstalledPacksList--Label": {
+    "messageformat": "Installed sticker packs"
+  },
   "icu:stickers--StickerPreview--Title": {
     "messageformat": "חבילת מדבקות"
   },
   "icu:stickers--StickerPreview--Error": {
     "messageformat": "שגיאה בפתיחת חבילת מדבקות. בדוק את חיבור האינטרנט שלך ונסה שוב."
+  },
+  "icu:stickers--StickerPreview--Install": {
+    "messageformat": "הוספת סטיקרים"
+  },
+  "icu:stickers--StickerPreview--Remove": {
+    "messageformat": "הסרה"
+  },
+  "icu:stickers--StickerPreview--Link": {
+    "messageformat": "לינק"
+  },
+  "icu:stickers--StickerPreview--LinkCopied": {
+    "messageformat": "קישור הועתק"
+  },
+  "icu:stickers--StickerPreview--StickerCount": {
+    "messageformat": "{count, plural, one {סטיקר {count,number}} two {{count,number} סטיקרים} many {{count,number} סטיקרים} other {{count,number} סטיקרים}}"
+  },
+  "icu:stickers--StickerPreview--StickerNoEmojiAriaLabel": {
+    "messageformat": "סטיקר בלי אימוג׳י"
+  },
+  "icu:stickers--StickerPackLinkPreviewDescription": {
+    "messageformat": "חבילת סטיקרים מאת {author}"
+  },
+  "icu:stickers--ViewPack": {
+    "messageformat": "הצגת חבילה"
   },
   "icu:FunPicker__Tab--Emojis": {
     "messageformat": "אמוג'י"
@@ -3028,6 +3079,18 @@
   },
   "icu:FunButton__Label--StickerPicker": {
     "messageformat": "הוסף מדבקה"
+  },
+  "icu:FunPicker__Label--StickerReply": {
+    "messageformat": "Reply"
+  },
+  "icu:FunPicker__Label--SendStickerReply": {
+    "messageformat": "Send"
+  },
+  "icu:FunPicker__Label--CancelStickerReply": {
+    "messageformat": "Cancel"
+  },
+  "icu:FunPicker__Label--Sticker": {
+    "messageformat": "Sticker"
   },
   "icu:confirmation-dialog--Cancel": {
     "messageformat": "ביטול"
@@ -4700,9 +4763,6 @@
   "icu:CompositionArea--expand": {
     "messageformat": "הרחב"
   },
-  "icu:CompositionArea--attach-file": {
-    "messageformat": "צרף קובץ"
-  },
   "icu:CompositionArea__AttachMenu__PhotosAndVideos": {
     "messageformat": "תמונות וסרטונים"
   },
@@ -5153,26 +5213,17 @@
   "icu:SelectModeActions--forwardSelectedMessages": {
     "messageformat": "העברת הודעות נבחרות"
   },
-  "icu:DeleteMessagesModal--title": {
-    "messageformat": "{count, plural, one {למחוק הודעה?} two {למחוק {count,number} הודעות?} many {למחוק {count,number} הודעות?} other {למחוק {count,number} הודעות?}}"
-  },
   "icu:DeleteMessagesModal--title-2": {
     "messageformat": "{count, plural, one {למחוק הודעה שנבחרה?} two {למחוק {count,number} הודעות שנבחרו?} many {למחוק {count,number} הודעות שנבחרו?} other {למחוק {count,number} הודעות שנבחרו?}}"
   },
   "icu:DeleteMessagesModal--description": {
     "messageformat": "{count, plural, one {עבור מי בא לך למחוק את ההודעה זו?} two {עבור מי בא לך למחוק את ההודעות האלה?} many {עבור מי בא לך למחוק את ההודעות האלה?} other {עבור מי בא לך למחוק את ההודעות האלה?}}"
   },
-  "icu:DeleteMessagesModal--description--noteToSelf": {
-    "messageformat": "{count, plural, one {מאילו מכשירים בא לך למחוק את ההודעה הזו?} two {מאילו מכשירים בא לך למחוק את ההודעות האלה?} many {מאילו מכשירים בא לך למחוק את ההודעות האלה?} other {מאילו מכשירים בא לך למחוק את ההודעות האלה?}}"
-  },
   "icu:DeleteMessagesModal--description--noteToSelf--deleteSync": {
     "messageformat": "{count, plural, one {ההודעה הזו תימחק מכל המכשירים שלך.} two {ההודעות האלה יימחקו מכל המכשירים שלך.} many {ההודעות האלה יימחקו מכל המכשירים שלך.} other {ההודעות האלה יימחקו מכל המכשירים שלך.}}"
   },
   "icu:DeleteMessagesModal--deleteForMe": {
     "messageformat": "מחיקה עבורי"
-  },
-  "icu:DeleteMessagesModal--deleteFromThisDevice": {
-    "messageformat": "מחיקה ממכשיר זה"
   },
   "icu:DeleteMessagesModal--deleteForEveryone": {
     "messageformat": "מחיקה עבור כולם"
@@ -5186,9 +5237,6 @@
   },
   "icu:DeleteMessagesModal--adminDeleteConfirmation--description__rollout": {
     "messageformat": "{count, plural, one {חברי קבוצה בגרסאות העדכניות ביותר של Signal יוכלו לראות שמחקת את ההודעה הזו.} two {חברי קבוצה בגרסאות העדכניות ביותר של Signal יוכלו לראות שמחקת את ההודעות האלה.} many {חברי קבוצה בגרסאות העדכניות ביותר של Signal יוכלו לראות שמחקת את ההודעות האלה.} other {חברי קבוצה בגרסאות העדכניות ביותר של Signal יוכלו לראות שמחקת את ההודעות האלה.}}"
-  },
-  "icu:DeleteMessagesModal--deleteFromAllDevices": {
-    "messageformat": "מחיקה מכל המכשירים"
   },
   "icu:DeleteMessagesModal--noteToSelf--deleteSync": {
     "messageformat": "מחיקה"
@@ -6397,11 +6445,26 @@
   "icu:Preferences--local-backups-enter-backup-key": {
     "messageformat": "הזנת מפתח"
   },
-  "icu:Preferences--local-backups-record-recovery-key": {
-    "messageformat": "תיעוד מפתח השחזור שלך"
+  "icu:Preferences--local-backups-recovery-key--title": {
+    "messageformat": "מפתח השחזור שלך"
   },
-  "icu:Preferences--local-backups-record-backup-key-description": {
-    "messageformat": "המפתח הזה נדרש כדי לשחזר את החשבון והנתונים שלך. חשוב לאחסן את המפתח הזה במקום בטוח. אם הוא נאבד, אי אפשר לשחזר את החשבון שלך. <learnMoreLink>מידע נוסף.</learnMoreLink>"
+  "icu:Preferences--local-backups-recovery-key--description": {
+    "messageformat": "המפתח הזה נדרש כדי לשחזר את החשבון והנתונים שלך. חשוב לאחסן אותו במקום בטוח ולעולם לא לשתף אותו עם אף אחד. Signal לעולם לא תשלח לך הודעה כדי לבקש את מפתח השחזור שלך. <learnMoreLink>למידע נוסף.</learnMoreLink>"
+  },
+  "icu:Preferences__recovery-key__do-not-share-title": {
+    "messageformat": "אין לשתף את מפתח השחזור"
+  },
+  "icu:Preferences__recovery-key__do-not-share-confirm": {
+    "messageformat": "הבנתי"
+  },
+  "icu:CompositionInput__recovery-key-paste__share-key": {
+    "messageformat": "לשתף מפתח"
+  },
+  "icu:CompositionInput__recovery-key-paste__do-not-share-key": {
+    "messageformat": "לא לשתף מפתח"
+  },
+  "icu:CompositionInput__recovery-key-warning--description": {
+    "messageformat": "אין לשתף את מפתח השחזור שלך עם אף אחד. זה יאפשר השתלטות על החשבון שלך. <strong>Signal לעולם לא תשלח לך הודעה</strong> כדי לבקש את מפתח השחזור שלך. אף פעם אין להשיב לצ׳אט ממישהו שמתחזה ל–Signal. <learnMoreLink>למידע נוסף.</learnMoreLink>"
   },
   "icu:Preferences--local-backups-confirm-recovery-key": {
     "messageformat": "אישור מפתח השחזור שלך"
@@ -6465,6 +6528,9 @@
   },
   "icu:Preferences__local-backups-auth-error--unauthorized": {
     "messageformat": "לא ניתן להשלים את הפעולה הזו כי אימות המערכת נכשל. נא לנסות שוב או לפתוח את אפליקציית Signal בנייד שלך ולנווט אל הגדרות הגיבוי כדי להציג את מפתח השחזור שלך."
+  },
+  "icu:Preferences__local-backups-auth-error--unknown-error": {
+    "messageformat": "אירעה שגיאה בעת בקשה מהמערכת לאמת את אותנטיות הפעולה."
   },
   "icu:Preferences__view-key": {
     "messageformat": "הצגת מפתח"
@@ -6631,6 +6697,12 @@
   "icu:DialogUpdate__downloaded": {
     "messageformat": "העדכון ירד"
   },
+  "icu:DialogUpdate__upgrade-mas": {
+    "messageformat": "יש ללחוץ למעבר אל App Store"
+  },
+  "icu:DialogExpiredBuild__upgrade-mas": {
+    "messageformat": "יש ללחוץ למעבר אל App Store"
+  },
   "icu:CriticalIdlePrimaryDevice__title": {
     "messageformat": "פתח את Signal בטלפון שלך"
   },
@@ -6669,6 +6741,405 @@
   },
   "icu:InstallScreenUpdateDialog--cannot-update__body": {
     "messageformat": "העדכון של Signal לשולחן עבודה נכשל, אבל יש גרסה חדשה יותר שזמינה. אפשר ללכת אל {downloadUrl} ולהתקין את הגרסה החדשה באופן ידני, ואז ליצור קשר עם התמיכה או להגיש דיווח על באג לגבי בעיה זו."
+  },
+  "icu:StandaloneRegistration--signal-logo": {
+    "messageformat": "לוגו Signal"
+  },
+  "icu:StandaloneRegistration--back": {
+    "messageformat": "הקודם"
+  },
+  "icu:StandaloneRegistration--PhoneNumber--header": {
+    "messageformat": "מספר טלפון"
+  },
+  "icu:StandaloneRegistration--PhoneNumber--description--line-1": {
+    "messageformat": "צריך להזין את מספר הטלפון שלך כדי לאמת את החשבון."
+  },
+  "icu:StandaloneRegistration--PhoneNumber--description--line-2": {
+    "messageformat": "יתכן שיחולו תעריפי ספק."
+  },
+  "icu:StandaloneRegistration--PhoneNumber--waiting": {
+    "messageformat": "יש לנסות שוב בעוד {duration}"
+  },
+  "icu:StandaloneRegistration--PhoneNumber--placeholder": {
+    "messageformat": "מספר טלפון"
+  },
+  "icu:StandaloneRegistration--PhoneNumber--button": {
+    "messageformat": "המשך"
+  },
+  "icu:StandaloneRegistration--PhoneNumber--Confirmation--description": {
+    "messageformat": "האם מספר הטלפון שלך למעלה נכון?"
+  },
+  "icu:StandaloneRegistration--PhoneNumber--Confirmation--cancel": {
+    "messageformat": "ערוך מספר"
+  },
+  "icu:StandaloneRegistration--PhoneNumber--Confirmation--confirm": {
+    "messageformat": "כן"
+  },
+  "icu:StandaloneRegistration--Captcha--header": {
+    "messageformat": "צריך לאמת את האנושיות שלך כדי להמשיך"
+  },
+  "icu:StandaloneRegistration--Captcha--description": {
+    "messageformat": "כדי לעזור למנוע ספאם ב–Signal, חשוב להשלים אימות. לאחר האימות, אפשר להמשיך בהרשמה."
+  },
+  "icu:StandaloneRegistration--Captcha--retry-button": {
+    "messageformat": "ניסיון אימות חוזר"
+  },
+  "icu:StandaloneRegistration--Captcha--button": {
+    "messageformat": "אימות בדפדפן"
+  },
+  "icu:StandaloneRegistration--Captcha--button--wait": {
+    "messageformat": "אימות בעוד {duration}"
+  },
+  "icu:StandaloneRegistration--Captcha--NeedAnother--header": {
+    "messageformat": "נדרש אימות נוסף"
+  },
+  "icu:StandaloneRegistration--Captcha--NeedAnother--description": {
+    "messageformat": "יש להשלים עוד אימות אנושיות כדי להמשיך בהרשמה."
+  },
+  "icu:StandaloneRegistration--Captcha--NeedAnother--cancel": {
+    "messageformat": "ביטול"
+  },
+  "icu:StandaloneRegistration--Captcha--NeedAnother--retry": {
+    "messageformat": "ניסיון אימות חוזר"
+  },
+  "icu:StandaloneRegistration--Captcha--MustWait--aria-title": {
+    "messageformat": "יש לנסות שוב מאוחר יותר"
+  },
+  "icu:StandaloneRegistration--Captcha--MustWait--line-1": {
+    "messageformat": "לא ניתן להשלים את האימות כעת."
+  },
+  "icu:StandaloneRegistration--Captcha--MustWait--line-2": {
+    "messageformat": "יש לנסות שוב עוד {duration}"
+  },
+  "icu:StandaloneRegistration--Captcha--MustWait--button": {
+    "messageformat": "אישור"
+  },
+  "icu:StandaloneRegistration--Captcha--Error--header": {
+    "messageformat": "שגיאת אימות"
+  },
+  "icu:StandaloneRegistration--Captcha--Error--description": {
+    "messageformat": "יש לבצע אימות מחדש כדי להמשיך בהרשמה."
+  },
+  "icu:StandaloneRegistration--Captcha--Error--try-again": {
+    "messageformat": "נסה שוב"
+  },
+  "icu:StandaloneRegistration--Captcha--Error--cancel": {
+    "messageformat": "ביטול"
+  },
+  "icu:StandaloneRegistration--VerificationCode--header": {
+    "messageformat": "קוד וידוא"
+  },
+  "icu:StandaloneRegistration--VerificationCode--description": {
+    "messageformat": "הכנס את הקוד ששלחנו אל {phoneNumber}"
+  },
+  "icu:StandaloneRegistration--VerificationCode--button": {
+    "messageformat": "המשך"
+  },
+  "icu:StandaloneRegistration--VerificationCode--send-sms": {
+    "messageformat": "שליחת קוד מחדש"
+  },
+  "icu:StandaloneRegistration--VerificationCode--send-sms--duration": {
+    "messageformat": "שלח מחדש קוד עוד {duration}"
+  },
+  "icu:StandaloneRegistration--VerificationCode--call-me": {
+    "messageformat": "חייג אלי"
+  },
+  "icu:StandaloneRegistration--VerificationCode--call-me--duration": {
+    "messageformat": "חייג אליי עוד {duration}"
+  },
+  "icu:StandaloneRegistration--VerificationCode--wrong-number": {
+    "messageformat": "מספר שגוי?"
+  },
+  "icu:StandaloneRegistration--VerificationCode--having-trouble": {
+    "messageformat": "נתקלת בבעיות בהרשמה?"
+  },
+  "icu:StandaloneRegistration--VerificationCode--IncorrectCode--aria-title": {
+    "messageformat": "קוד שגוי"
+  },
+  "icu:StandaloneRegistration--VerificationCode--IncorrectCode--description": {
+    "messageformat": "הקוד שהזנת לא נכון. נא לבדוק את הקוד בן 6 הספרות ולנסות שוב."
+  },
+  "icu:StandaloneRegistration--VerificationCode--IncorrectCode--button": {
+    "messageformat": "אישור"
+  },
+  "icu:StandaloneRegistration--VerificationCode--CodeInvalid--aria-title": {
+    "messageformat": "קוד לא תקין"
+  },
+  "icu:StandaloneRegistration--VerificationCode--CodeInvalid--description": {
+    "messageformat": "הקוד שהכנסת לא חוקי. צריך לשלוח את הקוד מחדש ולנסות שוב."
+  },
+  "icu:StandaloneRegistration--VerificationCode--CodeInvalid--resend-button": {
+    "messageformat": "שליחת קוד מחדש"
+  },
+  "icu:StandaloneRegistration--VerificationCode--CodeInvalid--edit-number-button": {
+    "messageformat": "ערוך מספר"
+  },
+  "icu:StandaloneRegistration--VerificationCode--SMSFailed--aria-title": {
+    "messageformat": "לא ניתן לשלוח SMS"
+  },
+  "icu:StandaloneRegistration--VerificationCode--SMSFailed--description": {
+    "messageformat": "לא הצלחנו לשלוח לך קוד אימות דרך SMS. כדאי לנסות לקבל את הקוד שלך דרך שיחה קולית במקום."
+  },
+  "icu:StandaloneRegistration--VerificationCode--SMSFailed--confirm": {
+    "messageformat": "שיחה קולית"
+  },
+  "icu:StandaloneRegistration--VerificationCode--SMSFailed--cancel": {
+    "messageformat": "ביטול"
+  },
+  "icu:StandaloneRegistration--VerificationCode--MustWait--aria-title": {
+    "messageformat": "יש לנסות שוב מאוחר יותר"
+  },
+  "icu:StandaloneRegistration--VerificationCode--MustWait--description": {
+    "messageformat": "ניסית להכניס את הקוד יותר מדי פעמים. יש לנסות שוב עוד {duration}."
+  },
+  "icu:StandaloneRegistration--VerificationCode--MustWait--button": {
+    "messageformat": "אישור"
+  },
+  "icu:StandaloneRegistration--VerificationCode--MaximumAttempts--aria-title": {
+    "messageformat": "יותר מדי ניסיונות"
+  },
+  "icu:StandaloneRegistration--VerificationCode--MaximumAttempts--description": {
+    "messageformat": "ניסית להכניס את הקוד יותר מדי פעמים. צריך לשלוח את הקוד מחדש ולנסות שוב."
+  },
+  "icu:StandaloneRegistration--VerificationCode--MaximumAttempts--resend-button": {
+    "messageformat": "שליחת קוד מחדש"
+  },
+  "icu:StandaloneRegistration--VerificationCode--MaximumAttempts--edit-number-button": {
+    "messageformat": "ערוך מספר"
+  },
+  "icu:StandaloneRegistration--VerificationCode--FailedToCall--aria-title": {
+    "messageformat": "לא ניתן לבצע את השיחה"
+  },
+  "icu:StandaloneRegistration--VerificationCode--FailedToCall--description": {
+    "messageformat": "לא הצלחנו להתקשר למספר הטלפון שהזנת. יש לוודא שמספר הטלפון נכון ולנסות שוב."
+  },
+  "icu:StandaloneRegistration--VerificationCode--FailedToCall--ok-button": {
+    "messageformat": "אישור"
+  },
+  "icu:StandaloneRegistration--VerificationCode--CannotSendCodePermanent--aria-title": {
+    "messageformat": "לא ניתן לשלוח קוד"
+  },
+  "icu:StandaloneRegistration--VerificationCode--CannotSendCodePermanent--description": {
+    "messageformat": "לא ניתן לשלוח קוד אימות למספר הטלפון שהזנת. יש לוודא שהמספר שהזנת נכון, או לנסות מספר אחר."
+  },
+  "icu:StandaloneRegistration--VerificationCode--CannotSendCodePermanent--ok-button": {
+    "messageformat": "אישור"
+  },
+  "icu:StandaloneRegistration--VerificationCode--CannotSendCodeTemporary--aria-title": {
+    "messageformat": "יש לנסות שוב מאוחר יותר"
+  },
+  "icu:StandaloneRegistration--VerificationCode--CannotSendCodeTemporary--description": {
+    "messageformat": "אירעה שגיאה ולא ניתן היה לשלוח את קוד האימות. יש לנסות שוב בעוד {duration}."
+  },
+  "icu:StandaloneRegistration--VerificationCode--CannotSendCodeTemporary--ok-button": {
+    "messageformat": "אישור"
+  },
+  "icu:StandaloneRegistration--ProfileEntry--header": {
+    "messageformat": "הגדר את הפרופיל שלך"
+  },
+  "icu:StandaloneRegistration--ProfileEntry--description": {
+    "messageformat": "הפרופילים גלויים לאנשים ששולחים להם הודעות, לאנשי קשר ולקבוצות."
+  },
+  "icu:StandaloneRegistration--ProfileEntry--learn-more": {
+    "messageformat": "למידע נוסף"
+  },
+  "icu:StandaloneRegistration--ProfileEntry--add-photo": {
+    "messageformat": "הוסף תמונה"
+  },
+  "icu:StandaloneRegistration--ProfileEntry--first-name": {
+    "messageformat": "שם פרטי (דרוש)"
+  },
+  "icu:StandaloneRegistration--ProfileEntry--last-name": {
+    "messageformat": "שם משפחה (רשותי)"
+  },
+  "icu:StandaloneRegistration--ProfileEntry--discoverability": {
+    "messageformat": "מי יכול למצוא אותי לפי מספר טלפון"
+  },
+  "icu:StandaloneRegistration--ProfileEntry--discoverability--change-button": {
+    "messageformat": "שינוי"
+  },
+  "icu:StandaloneRegistration--ProfileEntry--discoverability--done-button": {
+    "messageformat": "סיים"
+  },
+  "icu:StandaloneRegistration--ProfileEntry--continue": {
+    "messageformat": "המשך"
+  },
+  "icu:StandaloneRegistration--ProfileEntry--AvatarModal--header": {
+    "messageformat": "היצגן שלך"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--header": {
+    "messageformat": "הכנס את ה־PIN שלך"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--description": {
+    "messageformat": "צריך להזין את ה–PIN שיצרת עבור החשבון שלך. קוד זה שונה מקוד האימות שקיבלת בהודעת SMS. <needHelp>יש לך צורך בעזרה?</needHelp>"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--placeholder": {
+    "messageformat": "הכנס את ה־PIN שלך"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--incorrect-pin": {
+    "messageformat": "PIN שגוי"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--incorrect-pin--with-count": {
+    "messageformat": "{triesRemaining, plural, one {PIN שגוי. ניסיון {triesRemaining,number} נותר.} two {PIN שגוי. {triesRemaining,number} ניסיונות נותרים.} many {PIN שגוי. {triesRemaining,number} ניסיונות נותרים.} other {PIN שגוי. {triesRemaining,number} ניסיונות נותרים.}}"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--NeedHelp--header": {
+    "messageformat": "צריך עזרה?"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--NeedHelp--description--no-reglock": {
+    "messageformat": "ה–PIN שלך הוא קוד בעל 4 תווים או יותר שיצרת ויכול להיות מספרי או אלפא–נומרי. אם שכחת את ה–PIN שלך, אפשר ליצור אחד חדש. ניתן להירשם ולהשתמש בחשבון שלך אבל אז יאבדו כמה הגדרות שמורות כמו נתוני הפרופיל שלך. <learnMore>למידע נוסף</learnMore>."
+  },
+  "icu:StandaloneRegistration--VerifyPIN--NeedHelp--description--reglock": {
+    "messageformat": "ה–PIN שלך הוא קוד בעל 4 תווים או יותר שיצרת ויכול להיות מספרי או אלפא–נומרי. אם שכחת את ה–PIN שלך, יהיה עליך להמתין 7 ימים כדי להירשם מחדש לחשבון שלך. <learnMore>למידע נוסף</learnMore>."
+  },
+  "icu:StandaloneRegistration--VerifyPIN--NeedHelp--skip-button--no-reglock": {
+    "messageformat": "דלג וצור PIN חדש"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--NeedHelp--contact-support-button": {
+    "messageformat": "צור קשר עם תמיכה"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--NeedHelp--cancel": {
+    "messageformat": "ביטול"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--FewRemainingTries--header": {
+    "messageformat": "PIN שגוי"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--FewRemainingTries--description--no-reglock": {
+    "messageformat": "{triesRemaining, plural, one {נשאר לך עוד ניסיון {triesRemaining,number}. אם ייגמרו לך הניסיונות, תהיה לך אפשרות ליצור PIN חדש. ניתן להירשם ולהשתמש בחשבון שלך אבל אז יאבדו כמה הגדרות שמורות כמו נתוני הפרופיל שלך. <learnMore>למידע נוסף</learnMore>.} two {נשארו לך עוד {triesRemaining,number} ניסיונות. אם ייגמרו לך הניסיונות, תהיה לך אפשרות ליצור PIN חדש. ניתן להירשם ולהשתמש בחשבון שלך אבל אז יאבדו כמה הגדרות שמורות כמו נתוני הפרופיל שלך. <learnMore>למידע נוסף</learnMore>.} many {נשארו לך עוד {triesRemaining,number} ניסיונות. אם ייגמרו לך הניסיונות, תהיה לך אפשרות ליצור PIN חדש. ניתן להירשם ולהשתמש בחשבון שלך אבל אז יאבדו כמה הגדרות שמורות כמו נתוני הפרופיל שלך. <learnMore>למידע נוסף</learnMore>.} other {נשארו לך עוד {triesRemaining,number} ניסיונות. אם ייגמרו לך הניסיונות, תהיה לך אפשרות ליצור PIN חדש. ניתן להירשם ולהשתמש בחשבון שלך אבל אז יאבדו כמה הגדרות שמורות כמו נתוני הפרופיל שלך. <learnMore>למידע נוסף</learnMore>.}}"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--FewRemainingTries--description--reglock": {
+    "messageformat": "{triesRemaining, plural, one {נשאר לך עוד ניסיון {triesRemaining,number}. אם ייגמרו לך הניסיונות, החשבון שלך יינעל למשך 7 ימים. לאחר 7 ימים של אי–פעילות, תהיה לך אפשרות להירשם מחדש בלי ה–PIN שלך. כל התוכן יימחק. <learnMore>למידע נוסף</learnMore>.} two {נשארו לך עוד {triesRemaining,number} ניסיונות. אם ייגמרו לך הניסיונות, החשבון שלך יינעל למשך 7 ימים. לאחר 7 ימים של אי–פעילות, תהיה לך אפשרות להירשם מחדש בלי ה–PIN שלך. כל התוכן יימחק. <learnMore>למידע נוסף</learnMore>.} many {נשארו לך עוד {triesRemaining,number} ניסיונות. אם ייגמרו לך הניסיונות, החשבון שלך יינעל למשך 7 ימים. לאחר 7 ימים של אי–פעילות, תהיה לך אפשרות להירשם מחדש בלי ה–PIN שלך. כל התוכן יימחק. <learnMore>למידע נוסף</learnMore>.} other {נשארו לך עוד {triesRemaining,number} ניסיונות. אם ייגמרו לך הניסיונות, החשבון שלך יינעל למשך 7 ימים. לאחר 7 ימים של אי–פעילות, תהיה לך אפשרות להירשם מחדש בלי ה–PIN שלך. כל התוכן יימחק. <learnMore>למידע נוסף</learnMore>.}}"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--FewRemainingTries--button": {
+    "messageformat": "אישור"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--NoRemainingTries--header": {
+    "messageformat": "PIN שגוי"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--NoRemainingTries--description": {
+    "messageformat": "ניחושי PIN אזלו לך, אבל אתה עדין יכול להשיג גישה אל חשבון Signal שלך ע״י יצירת PIN חדש. למען פרטיותך ואבטחתך, חשבונך ישוחזר בלי מידע פרופיל שמור כלשהו או הגדרות שמורות כלשהן."
+  },
+  "icu:StandaloneRegistration--VerifyPIN--NoRemainingTries--create-new-pin": {
+    "messageformat": "צור PIN חדש"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--NoRemainingTries--learn-more": {
+    "messageformat": "למד עוד על קודי PIN"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--menu--skip-pin": {
+    "messageformat": "דילוג על PIN"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--SkipPIN--header": {
+    "messageformat": "לדלג על הכנסת PIN?"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--SkipPIN--description": {
+    "messageformat": "אם שכחת את ה–PIN שלך, אפשר ליצור אחד חדש. ניתן להירשם ולהשתמש בחשבון שלך אבל אז יאבדו כמה הגדרות שמורות כמו נתוני הפרופיל שלך. למד עוד."
+  },
+  "icu:StandaloneRegistration--VerifyPIN--SkipPIN--skip-button": {
+    "messageformat": "דלג וצור PIN חדש"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--SkipPIN--cancel-button": {
+    "messageformat": "ביטול"
+  },
+  "icu:StandaloneRegistration--CreatePIN--header": {
+    "messageformat": "צור את ה־PIN שלך"
+  },
+  "icu:StandaloneRegistration--CreatePIN--description": {
+    "messageformat": "קודי PIN יכולים לעזור לך לשחזר את החשבון שלך ולשמור על המידע שלך מוצפן עם Signal. <learnMore>למידע נוסף</learnMore>"
+  },
+  "icu:StandaloneRegistration--CreatePIN--placeholder": {
+    "messageformat": "צור את ה־PIN שלך"
+  },
+  "icu:StandaloneRegistration--CreatePIN--helper-text": {
+    "messageformat": "קוד PIN חייב להיות לפחות 4 תווים"
+  },
+  "icu:StandaloneRegistration--CreatePIN--continue": {
+    "messageformat": "המשך"
+  },
+  "icu:StandaloneRegistration--CreatePIN--open-menu": {
+    "messageformat": "פתיחת תפריט"
+  },
+  "icu:StandaloneRegistration--CreatePIN--menu--more-about": {
+    "messageformat": "עוד על קודי PIN"
+  },
+  "icu:StandaloneRegistration--CreatePIN--menu--disable": {
+    "messageformat": "השבת PIN"
+  },
+  "icu:StandaloneRegistration--CreatePIN--DisableWarning--header": {
+    "messageformat": "אזהרה"
+  },
+  "icu:StandaloneRegistration--CreatePIN--DisableWarning--description": {
+    "messageformat": "אם תשבית את ה־PIN, תאבד את כל הנתונים כאשר תירשם מחדש אל Signal אלא אם תעביר אותו ממכשיר iOS אחר. אינך יכול להפעיל נעילת הרשמה בזמן שה־PIN מושבת."
+  },
+  "icu:StandaloneRegistration--CreatePIN--DisableWarning--disable-button": {
+    "messageformat": "השבת PIN"
+  },
+  "icu:StandaloneRegistration--CreatePIN--DisableWarning--cancel": {
+    "messageformat": "ביטול"
+  },
+  "icu:StandaloneRegistration--CreatePIN--AboutPINs--header": {
+    "messageformat": "עוד על קודי PIN של Signal"
+  },
+  "icu:StandaloneRegistration--CreatePIN--AboutPINs--description": {
+    "messageformat": "קודי PIN שומרים על המידע שלך שמאוחסן ב–Signal מוצפן כך שרק לך תהיה גישה אליו. הפרופיל, ההגדרות ואנשי הקשר שלך ישוחזרו בעת התקנה מחדש."
+  },
+  "icu:StandaloneRegistration--CreatePIN--AboutPINs--learn-more-button": {
+    "messageformat": "למידע נוסף"
+  },
+  "icu:StandaloneRegistration--CreatePIN--AboutPINs--ok-button": {
+    "messageformat": "אישור"
+  },
+  "icu:StandaloneRegistration--CreatePIN--confirming--header": {
+    "messageformat": "אישור ה–PIN שלך"
+  },
+  "icu:StandaloneRegistration--CreatePIN--confirming--description": {
+    "messageformat": "יש להכניס שוב את ה–PIN שעכשיו יצרת."
+  },
+  "icu:StandaloneRegistration--CreatePIN--confirming--placeholder": {
+    "messageformat": "הכנס את ה־PIN שלך"
+  },
+  "icu:StandaloneRegistration--AccountLocked--header": {
+    "messageformat": "החשבון ננעל"
+  },
+  "icu:StandaloneRegistration--AccountLocked--description": {
+    "messageformat": "החשבון שלך שלך ננעל כדי להגן על הפרטיות והאבטחה שלך. לאחר 7 ימים של חוסר פעילות בחשבון שלך, תהיה לך אפשרות להירשם מחדש עם מספר טלפון זה ללא צורך ב–PIN שלך. כל התוכן יימחק."
+  },
+  "icu:StandaloneRegistration--AccountLocked--start-over-button": {
+    "messageformat": "שימוש במספר אחר"
+  },
+  "icu:StandaloneRegistration--AccountLocked--help-button": {
+    "messageformat": "מידע נוסף על חשבונות נעולים"
+  },
+  "icu:StandaloneRegistration--UpdateRequired--header": {
+    "messageformat": "נדרש עדכון"
+  },
+  "icu:StandaloneRegistration--UpdateRequired--description": {
+    "messageformat": "כדי להמשיך ברישום, צריך לעדכן לגרסה האחרונה של Signal."
+  },
+  "icu:StandaloneRegistration--UpdateRequired--update": {
+    "messageformat": "עדכן"
+  },
+  "icu:StandaloneRegistration--UpdateRequired--cancel": {
+    "messageformat": "ביטול"
+  },
+  "icu:StandaloneRegistration--ConnectionProblem--header": {
+    "messageformat": "צריך לבדוק את החיבור שלך"
+  },
+  "icu:StandaloneRegistration--ConnectionProblem--description": {
+    "messageformat": "כדי להמשיך, יש לבדוק את חיבור האינטרנט של המחשב שלך ולנסות שוב."
+  },
+  "icu:StandaloneRegistration--ConnectionProblem--button": {
+    "messageformat": "אישור"
+  },
+  "icu:StandaloneRegistration--UnexpectedError--header": {
+    "messageformat": "לא ניתן להשלים את ההרשמה"
+  },
+  "icu:StandaloneRegistration--UnexpectedError--description": {
+    "messageformat": "אירעה שגיאה ולא ניתן היה להשלים את ההרשמה. אם בעיה זו נמשכת, יש ליצור קשר עם התמיכה."
+  },
+  "icu:StandaloneRegistration--UnexpectedError--try-again-button": {
+    "messageformat": "נסה שוב"
+  },
+  "icu:StandaloneRegistration--UnexpectedError--contact-support-button": {
+    "messageformat": "יצירת קשר עם התמיכה"
   },
   "icu:NSIS__retry-dialog--first-line": {
     "messageformat": "Signal לא יכול להיסגר.",
@@ -6915,15 +7386,6 @@
   },
   "icu:SignalConnectionsModal__footer": {
     "messageformat": "חברי ה-Signal שלך יכולים לראות את השם והתמונה שלך, והם יכולים גם לראות פוסטים תחת ״הסטורי שלי״ אלא אם כן בחרת להסתיר אותם מהם"
-  },
-  "icu:LocalDeleteWarningModal__header": {
-    "messageformat": "המחיקה מסונכרנת בכל המכשירים שלך"
-  },
-  "icu:LocalDeleteWarningModal__description": {
-    "messageformat": "בעת מחיקת הודעות או צ׳אטים, הם יימחקו מכל המכשירים שלך."
-  },
-  "icu:LocalDeleteWarningModal__confirm": {
-    "messageformat": "הבנתי"
   },
   "icu:Stories__title": {
     "messageformat": "סטוריז"
@@ -7478,9 +7940,6 @@
   "icu:DraftGifMessageSendModal__SendButtonLabel": {
     "messageformat": "שליחה"
   },
-  "icu:DraftGifMessageSendModal__CancelButtonLabel": {
-    "messageformat": "ביטול"
-  },
   "icu:EditHistoryMessagesModal__title": {
     "messageformat": "היסטוריית עריכות"
   },
@@ -7759,9 +8218,6 @@
   },
   "icu:PreferencesDonations__privacy-modal-title": {
     "messageformat": "המידע שלך פרטי"
-  },
-  "icu:PreferencesDonations__privacy-modal-content": {
-    "messageformat": "<paragraph>Signal לא אוספת או מאחסנת את המידע האישי שלך בעת ביצוע תרומה.</paragraph><paragraph>אנחנו משתמשים ב–Stripe בתור מעבד התשלומים שלנו כדי לקבל את התרומות שלך. אנחנו לא ניגשים לשום מידע שהם מקבלים ממך ולא מאחסנים או שומרים אותו.</paragraph><paragraph>Signal אינה מקשרת את התרומה שלך לחשבון Signal שלך ואין לה אפשרות לעשות זאת.</paragraph><paragraph>תודה על התמיכה שלך!</paragraph>"
   },
   "icu:PreferencesDonations__privacy-modal-intro": {
     "messageformat": "כעמותה עצמאית ללא מטרות רווח, Signal מחויבת להודעות ולשיחות פרטיות. בלי פרסומות, בלי מעקב, בלי ריגול. תרמו היום כדי לתמוך ב-Signal."
@@ -8205,10 +8661,16 @@
     "messageformat": "התאמות קטנות, תיקוני באגים ושיפורי ביצועים. תודה על השימוש ב-Signal!",
     "ignoreUnused": true
   },
-  "icu:WhatsNew__8.12--0": {
-    "messageformat": "הוספנו קיצור מקלדת חדש כדי להרים את היד שלך במהלך שיחות קבוצתיות (Shift-H)."
+  "icu:WhatsNew__8.18--0": {
+    "messageformat": "עכשיו אפשר ליצור סקרים גם בצ׳אטים אחד על אחד."
   },
-  "icu:WhatsNew__8.13--0": {
-    "messageformat": "The new raised-hand indicators are now also displayed in the list of raised hands during group calls. It's a second-hand place to figure out who you should hand it over to when you're done speaking."
+  "icu:WhatsNew__8.19--0": {
+    "messageformat": "מנהלי קבוצות יכולים עכשיו לסיים צ׳אטים עם אפשרות ״סיום קבוצה״ החדשה בהגדרות הקבוצה. סיום קבוצה מונע מחברי הקבוצה לשלוח הודעות או להתחיל שיחות, וגם משבית הזמנות."
+  },
+  "icu:WhatsNew__8.20--0": {
+    "messageformat": "Introducing disappearing call events: Missed, outgoing, and received calls that occur after you install this update will now automatically disappear in any chat where disappearing messages are enabled."
+  },
+  "icu:WhatsNew__8.20--1": {
+    "messageformat": "Now you can reorder installed sticker packs so your new favorites don’t get stuck in the back of the line."
   }
 }

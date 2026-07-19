@@ -11,7 +11,6 @@ import type {
   ReadonlyMessageAttributesType,
 } from '../../model-types.d.ts';
 import type {
-  ActionCreator,
   MessageChangedActionType,
   MessageDeletedActionType,
 } from './conversations.preload.ts';
@@ -42,7 +41,6 @@ import {
   actions as conversationsActions,
 } from './conversations.preload.ts';
 import { isDownloaded } from '../../util/Attachment.std.ts';
-import { isPermanentlyUndownloadable } from '../../jobs/AttachmentDownloadManager.preload.ts';
 import type { MessageRequestState } from '../../components/conversation/MessageRequestActionsConfirmation.dom.tsx';
 import type { MessageForwardDraft } from '../../types/ForwardDraft.std.ts';
 import { hydrateRanges } from '../../util/BodyRange.node.ts';
@@ -64,9 +62,12 @@ import type { BackfillFailureModalKind } from '../../components/BackfillFailureM
 import type { SmartDraftGifMessageSendModalProps } from '../smart/DraftGifMessageSendModal.preload.tsx';
 import { onCriticalIdlePrimaryDeviceModalDismissed } from '../../util/handleServerAlerts.preload.ts';
 import type { PinMessageDialogData } from '../smart/PinMessageDialog.preload.tsx';
-import type { StateThunk } from '../types.std.ts';
+import type { ActionCreator, StateThunk } from '../types.std.ts';
 import { itemStorage } from '../../textsecure/Storage.preload.ts';
 import type { ErrorModalDataProps } from '../../components/ErrorModal.dom.tsx';
+import { isDownloadableOrBackfillable } from '../../util/downloadAttachment.preload.ts';
+import { backupsService } from '../../services/backups/index.preload.ts';
+import { getHasMediaBackups } from '../selectors/items.dom.ts';
 
 const log = createLogger('globalModals');
 
@@ -963,6 +964,7 @@ function toggleForwardMessagesModal(
     }
 
     let messageDrafts: ReadonlyArray<MessageForwardDraft>;
+    const hasMediaBackups = getHasMediaBackups(getState());
 
     if (payload.type === ForwardMessagesModalType.Forward) {
       messageDrafts = await Promise.all(
@@ -979,11 +981,12 @@ function toggleForwardMessagesModal(
             !attachments.every(
               attachment =>
                 isDownloaded(attachment) ||
-                isPermanentlyUndownloadable(
+                !isDownloadableOrBackfillable({
                   attachment,
-                  'attachment',
-                  message.attributes
-                )
+                  attachmentType: 'attachment',
+                  isStory: message.attributes.type === 'story',
+                  hasMediaBackups,
+                })
             )
           ) {
             dispatch(
@@ -999,13 +1002,13 @@ function toggleForwardMessagesModal(
           const messageDraft = toMessageForwardDraft(
             {
               ...messageProps,
-              attachments: (messageProps.attachments ?? []).filter(
-                attachment =>
-                  !isPermanentlyUndownloadable(
-                    attachment,
-                    'attachment',
-                    message.attributes
-                  )
+              attachments: (messageProps.attachments ?? []).filter(attachment =>
+                isDownloadableOrBackfillable({
+                  attachment,
+                  attachmentType: 'attachment',
+                  isStory: message.attributes.type === 'story',
+                  hasMediaBackups,
+                })
               ),
             },
             conversationSelector
@@ -1502,6 +1505,7 @@ function copyOverMessageAttributesIntoForwardMessages(
   messageDrafts: ReadonlyArray<MessageForwardDraft>,
   attributes: ReadonlyDeep<ReadonlyMessageAttributesType>
 ): ReadonlyArray<MessageForwardDraft> {
+  const hasMediaBackups = backupsService.hasMediaBackups();
   return messageDrafts.map(messageDraft => {
     if (messageDraft.originalMessageId !== attributes.id) {
       return messageDraft;
@@ -1509,7 +1513,9 @@ function copyOverMessageAttributesIntoForwardMessages(
     return {
       ...messageDraft,
       attachments: attributes.attachments?.map(attachment =>
-        getPropsForAttachment(attachment, 'attachment', attributes)
+        getPropsForAttachment(attachment, 'attachment', attributes, {
+          hasMediaBackups,
+        })
       ),
     };
   });

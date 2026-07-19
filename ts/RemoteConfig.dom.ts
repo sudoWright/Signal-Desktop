@@ -36,6 +36,8 @@ const SemverKeys = [
   'desktop.adminDelete.send.prod',
   'desktop.binaryServiceId.beta',
   'desktop.binaryServiceId.prod',
+  'desktop.disappearingCalls.beta',
+  'desktop.disappearingCalls.prod',
   'desktop.groupMemberLabels.edit.beta',
   'desktop.groupMemberLabels.edit.prod',
   'desktop.groupTerminate.send.beta',
@@ -44,14 +46,16 @@ const SemverKeys = [
   'desktop.keyTransparency.prod',
   'desktop.localBackups.beta',
   'desktop.localBackups.prod',
-  'desktop.plaintextExport.beta',
-  'desktop.plaintextExport.prod',
   'desktop.pollSend1to1.beta',
   'desktop.pollSend1to1.prod',
   'desktop.remoteMute.send.beta',
   'desktop.remoteMute.send.prod',
   'desktop.retireAccessKeyGroupSend.beta',
   'desktop.retireAccessKeyGroupSend.prod',
+  'desktop.sendMessageViaLibsignal.beta',
+  'desktop.sendMessageViaLibsignal.prod',
+  'desktop.stickerReply.send.beta',
+  'desktop.stickerReply.send.prod',
 ] as const;
 
 export type SemverKeyType = ArrayValues<typeof SemverKeys>;
@@ -84,7 +88,8 @@ const ScalarKeys = [
   'global.nicknames.max',
   'global.nicknames.min',
   'global.normalDeleteMaxAgeInSeconds',
-  'global.pinned_message_limit',
+  'global.pinnedChatLimit',
+  'global.pinnedMessageLimit',
   'global.textAttachmentLimitBytes',
   'global.videoAttachments.transcodeTargetBytes',
 ] as const;
@@ -111,10 +116,6 @@ const KnownDesktopLibsignalNetKeys = [
   'desktop.libsignalNet.grpc.MessagesAnonymousSendSingleRecipientMessage.beta',
   'desktop.libsignalNet.grpc.MessagesSendMessage',
   'desktop.libsignalNet.grpc.MessagesSendMessage.beta',
-  'desktop.libsignalNet.useH2ForAuthChat',
-  'desktop.libsignalNet.useH2ForAuthChat.beta',
-  'desktop.libsignalNet.useH2ForUnauthChat',
-  'desktop.libsignalNet.useH2ForUnauthChat.beta',
 ] as const;
 
 type KnownLibsignalKeysType = StripPrefix<
@@ -292,7 +293,10 @@ export const _refreshRemoteConfig = async ({
       `Remote Config: Flags ${[...changedKeys].join(', ')} have changed`
     );
 
-    if (isEnabled('desktop.loggingErrorToasts')) {
+    if (
+      isEnabled('desktop.loggingErrorToasts') &&
+      Object.keys(oldConfig ?? {}).length > 0
+    ) {
       window.reduxActions.toast.showToast({
         toastType: ToastType.RemoteConfigChanged,
         changes: changeDescriptions,

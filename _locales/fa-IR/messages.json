@@ -14,6 +14,9 @@
   "icu:AxoTextField.Clear": {
     "messageformat": "پاک کردن"
   },
+  "icu:AxoBadge.MaxOverflow": {
+    "messageformat": "{max,number}+"
+  },
   "icu:AddUserToAnotherGroupModal__title": {
     "messageformat": "افزودن به گروه"
   },
@@ -85,6 +88,9 @@
   },
   "icu:unknownContact": {
     "messageformat": "مخاطب ناشناس"
+  },
+  "icu:deletedAccount": {
+    "messageformat": "حساب پاک‌شده"
   },
   "icu:unknownContactShort": {
     "messageformat": "ناشناخته"
@@ -314,6 +320,9 @@
   "icu:LeftPaneChatFolders__ItemUnreadBadge__MaxCount": {
     "messageformat": "{maxCount,number}+"
   },
+  "icu:LeftPaneChatFolders__ItemUnreadBadge__AccessibleLabel": {
+    "messageformat": "{count, plural, one {{count,number} Unread Message} other {{count,number} Unread Messages}}"
+  },
   "icu:LeftPaneChatFolders__Item__ContextMenu__MarkAllRead": {
     "messageformat": "علامت‌گذاری همه به صورت خوانده شده"
   },
@@ -449,8 +458,8 @@
   "icu:unpinConversation": {
     "messageformat": "برداشتن سنجاق گفتگو"
   },
-  "icu:pinnedConversationsFull": {
-    "messageformat": "حداکثر ۴ گفتگو را می‌توانید سنجاق کنید"
+  "icu:pinnedConversations--max": {
+    "messageformat": "{maxPinnedConversations, plural, one {حداکثر {maxPinnedConversations,number} گفتگو را می‌توانید سنجاق کنید} other {حداکثر {maxPinnedConversations,number} گفتگو را می‌توانید سنجاق کنید}}"
   },
   "icu:view": {
     "messageformat": "مشاهده"
@@ -2261,9 +2270,6 @@
   "icu:partiallySent": {
     "messageformat": "به صورت ناقص ارسال شد، برای جزئیات کلیک کنید"
   },
-  "icu:partiallyDeleted": {
-    "messageformat": "به طور کامل پاک نشد، برای تلاش مجدد کلیک کنید"
-  },
   "icu:partiallyDeleted--clickForDetails": {
     "messageformat": "تا حدودی حذف شد، برای جزئیات، کلیک کنید"
   },
@@ -2466,7 +2472,7 @@
     "messageformat": "دانلود انجام نشد"
   },
   "icu:Toast--unable-download-from-backup-tier": {
-    "messageformat": "Attachment missing from backup CDN"
+    "messageformat": "Attachment missing from backup CDN, please share desktop & primary logs"
   },
   "icu:ToastManager__CannotAddMemberLabel": {
     "messageformat": "فقط مدیران می‌توانند برچسب‌های عضو را به این گروه اضافه کنند."
@@ -2687,9 +2693,6 @@
   "icu:message--getDescription--gif": {
     "messageformat": "گیف"
   },
-  "icu:message--deletedForEveryone": {
-    "messageformat": "این پیام پاک شد."
-  },
   "icu:message--deletedByAdmin": {
     "messageformat": "مدیر {admin} این پیام را حذف کرد"
   },
@@ -2780,14 +2783,11 @@
   "icu:stickers--toast--InstallFailed": {
     "messageformat": "پک استیکر نمی تواند نصب شود"
   },
-  "icu:stickers--StickerManager--Available": {
-    "messageformat": "در دسترس"
+  "icu:stickers--StickerManager--MyStickers--None": {
+    "messageformat": "بسته استیکر وجود ندارد، استیکر اضافه کنید تا به دوستانتان بفرستید."
   },
-  "icu:stickers--StickerManager--InstalledPacks": {
-    "messageformat": "نصب شده است"
-  },
-  "icu:stickers--StickerManager--InstalledPacks--Empty": {
-    "messageformat": "هیچ استیکری نصب نیست"
+  "icu:stickers--StickerManager--AddStickers": {
+    "messageformat": "افزودن استیکر"
   },
   "icu:stickers--StickerManager--BlessedPacks": {
     "messageformat": "سری های هنرمند سیگنال"
@@ -2795,14 +2795,17 @@
   "icu:stickers--StickerManager--BlessedPacks--Empty": {
     "messageformat": "هیچ استیکر هنرمند سیگنال موجود نمی باشد"
   },
-  "icu:stickers--StickerManager--ReceivedPacks": {
-    "messageformat": "استیکر هایی که دریافت کردید"
+  "icu:stickers--StickerManager--ReceivedPacks2": {
+    "messageformat": "به‌اشتراک‌گذاشته‌شده با شما"
   },
-  "icu:stickers--StickerManager--ReceivedPacks--Empty": {
-    "messageformat": "استیکر ها از پیام های دریافتی در اینجا پدیدار خواهند شد"
+  "icu:stickers--StickerManager--ReceivedPacksDescription": {
+    "messageformat": "وقتی از کسی استیکر دریافت می‌کنید، بسته استیکر در اینجا نمایش داده می‌شود."
   },
   "icu:stickers--StickerManager--Install": {
     "messageformat": "نصب"
+  },
+  "icu:stickers--StickerManager--Installed": {
+    "messageformat": "نصب شده است"
   },
   "icu:stickers--StickerManager--Uninstall": {
     "messageformat": "حذف"
@@ -2810,11 +2813,59 @@
   "icu:stickers--StickerManager--UninstallWarning": {
     "messageformat": "شاید نتوانید دوباره این پکیج استیکر را نصب کنید اگر پیام اصلی را دیگر ندارید."
   },
+  "icu:stickers--StickerManagerHeader--All": {
+    "messageformat": "همه"
+  },
+  "icu:stickers--StickerManagerHeader--MyStickers": {
+    "messageformat": "استیکرهای من"
+  },
+  "icu:stickers--StickerManagerPackContextMenu--Add": {
+    "messageformat": "افزودن"
+  },
+  "icu:stickers--StickerManagerPackContextMenu--Remove": {
+    "messageformat": "حذف"
+  },
+  "icu:stickers--StickerManagerPackDragHandle--Label": {
+    "messageformat": "Drag to reorder sticker pack"
+  },
+  "icu:stickers--StickerManagerBlessedPacksList--Label": {
+    "messageformat": "Signal Artist Series sticker packs"
+  },
+  "icu:stickers--StickerManagerReceivedPacksList--Label": {
+    "messageformat": "Received sticker packs"
+  },
+  "icu:stickers--StickerManagerInstalledPacksList--Label": {
+    "messageformat": "Installed sticker packs"
+  },
   "icu:stickers--StickerPreview--Title": {
     "messageformat": "پک استیکر"
   },
   "icu:stickers--StickerPreview--Error": {
     "messageformat": "خطا در باز کردن بسته‌ی استیکر. ارتباط اینترنت خود را بررسی کنید و دوباره تلاش کنید."
+  },
+  "icu:stickers--StickerPreview--Install": {
+    "messageformat": "افزودن استیکر"
+  },
+  "icu:stickers--StickerPreview--Remove": {
+    "messageformat": "حذف"
+  },
+  "icu:stickers--StickerPreview--Link": {
+    "messageformat": "پیوند"
+  },
+  "icu:stickers--StickerPreview--LinkCopied": {
+    "messageformat": "پیوند کپی شد"
+  },
+  "icu:stickers--StickerPreview--StickerCount": {
+    "messageformat": "{count, plural, one {{count,number} استیکر} other {{count,number} استیکر}}"
+  },
+  "icu:stickers--StickerPreview--StickerNoEmojiAriaLabel": {
+    "messageformat": "استیکر بدون ایموجی"
+  },
+  "icu:stickers--StickerPackLinkPreviewDescription": {
+    "messageformat": "سازنده بسته استیکر: {author}"
+  },
+  "icu:stickers--ViewPack": {
+    "messageformat": "مشاهده بسته"
   },
   "icu:FunPicker__Tab--Emojis": {
     "messageformat": "ایموجی"
@@ -3028,6 +3079,18 @@
   },
   "icu:FunButton__Label--StickerPicker": {
     "messageformat": "افزودن یک استیکر"
+  },
+  "icu:FunPicker__Label--StickerReply": {
+    "messageformat": "Reply"
+  },
+  "icu:FunPicker__Label--SendStickerReply": {
+    "messageformat": "Send"
+  },
+  "icu:FunPicker__Label--CancelStickerReply": {
+    "messageformat": "Cancel"
+  },
+  "icu:FunPicker__Label--Sticker": {
+    "messageformat": "Sticker"
   },
   "icu:confirmation-dialog--Cancel": {
     "messageformat": "لغو"
@@ -4700,9 +4763,6 @@
   "icu:CompositionArea--expand": {
     "messageformat": "گسترش"
   },
-  "icu:CompositionArea--attach-file": {
-    "messageformat": "پیوست فایل"
-  },
   "icu:CompositionArea__AttachMenu__PhotosAndVideos": {
     "messageformat": "عکس‌ها و ویدیوها"
   },
@@ -5153,26 +5213,17 @@
   "icu:SelectModeActions--forwardSelectedMessages": {
     "messageformat": "بازارسال پیام‌های انتخاب‌شده"
   },
-  "icu:DeleteMessagesModal--title": {
-    "messageformat": "{count, plural, one {پیام پاک شود؟} other {{count,number} پیام پاک شود؟}}"
-  },
   "icu:DeleteMessagesModal--title-2": {
     "messageformat": "{count, plural, one {پیام انتخاب‌شده حذف شود؟} other {‏{count,number} پیام انتخاب‌شده حذف شود؟}}"
   },
   "icu:DeleteMessagesModal--description": {
     "messageformat": "{count, plural, one {می‌خواهید این پیام را برای چه کسانی پاک کنید؟} other {می‌خواهید این پیام‌ها را برای چه کسانی پاک کنید؟}}"
   },
-  "icu:DeleteMessagesModal--description--noteToSelf": {
-    "messageformat": "{count, plural, one {می‌خواهید این پیام را از چه دستگاه‌هایی پاک کنید؟} other {می‌خواهید این پیام‌ها را از چه دستگاه‌هایی پاک کنید؟}}"
-  },
   "icu:DeleteMessagesModal--description--noteToSelf--deleteSync": {
     "messageformat": "{count, plural, one {این پیام از همه دستگاه‌های شما حذف خواهد شد.} other {این پیام‌ها از همه دستگاه‌های شما حذف خواهند شد.}}"
   },
   "icu:DeleteMessagesModal--deleteForMe": {
     "messageformat": "پاک کردن برای من"
-  },
-  "icu:DeleteMessagesModal--deleteFromThisDevice": {
-    "messageformat": "پاک کردن از این دستگاه"
   },
   "icu:DeleteMessagesModal--deleteForEveryone": {
     "messageformat": "پاک کردن برای همه"
@@ -5186,9 +5237,6 @@
   },
   "icu:DeleteMessagesModal--adminDeleteConfirmation--description__rollout": {
     "messageformat": "{count, plural, one {اعضای گروه در جدیدترین نسخه‌های سیگنال خواهند دید که شما این پیام را حذف کردید.} other {اعضای گروه در جدیدترین نسخه‌های سیگنال خواهند دید که شما این پیام‌ها را حذف کردید.}}"
-  },
-  "icu:DeleteMessagesModal--deleteFromAllDevices": {
-    "messageformat": "پاک کردن از همه دستگاه‌ها"
   },
   "icu:DeleteMessagesModal--noteToSelf--deleteSync": {
     "messageformat": "پاک کردن"
@@ -6397,11 +6445,26 @@
   "icu:Preferences--local-backups-enter-backup-key": {
     "messageformat": "رمز را وارد کنید"
   },
-  "icu:Preferences--local-backups-record-recovery-key": {
-    "messageformat": "رمز بازیابی خود را ثبت کنید"
+  "icu:Preferences--local-backups-recovery-key--title": {
+    "messageformat": "رمز بازیابی شما"
   },
-  "icu:Preferences--local-backups-record-backup-key-description": {
-    "messageformat": "این کلید برای بازیابی حساب و اطلاعات شما ضروری است. این کلید را در مکانی امن نگهداری کنید. اگر آن را گم کنید، نمی‌توانید حساب خود را بازیابی کنید. <learnMoreLink>اطلاعات بیشتر.</learnMoreLink>"
+  "icu:Preferences--local-backups-recovery-key--description": {
+    "messageformat": "این رمز برای بازیابی حساب و اطلاعات شما ضروری است. آن را در جایی امن نگهداری کنید و هرگز آن را با کسی به اشتراک نگذارید. سیگنال هرگز برای رمز بازیابی به شما پیام نمی‌دهد. <learnMoreLink>اطلاعات بیشتر.</learnMoreLink>"
+  },
+  "icu:Preferences__recovery-key__do-not-share-title": {
+    "messageformat": "رمز بازیابی را به اشتراک نگذارید"
+  },
+  "icu:Preferences__recovery-key__do-not-share-confirm": {
+    "messageformat": "فهمیدم"
+  },
+  "icu:CompositionInput__recovery-key-paste__share-key": {
+    "messageformat": "اشتراک‌گذاری رمز"
+  },
+  "icu:CompositionInput__recovery-key-paste__do-not-share-key": {
+    "messageformat": "رمز را به اشتراک نگذارید"
+  },
+  "icu:CompositionInput__recovery-key-warning--description": {
+    "messageformat": "رمز بازیابی خود را با کسی به اشتراک نگذارید. با این کار می‌توانند کنترل حسابتان را به دست بگیرند. سیگنال هرگز برای رمز بازیابی <strong>به شما پیام نمی‌دهد.</strong> هیچ‌وقت به گفتگویی که وانمود می‌کند سیگنال است پاسخ ندهید. <learnMoreLink>اطلاعات بیشتر.</learnMoreLink>"
   },
   "icu:Preferences--local-backups-confirm-recovery-key": {
     "messageformat": "رمز بازیابی خود را تأیید کنید"
@@ -6465,6 +6528,9 @@
   },
   "icu:Preferences__local-backups-auth-error--unauthorized": {
     "messageformat": "این اقدام قابل‌تکمیل نیست، زیرا احراز هویت سیستم انجام نشد. لطفاً دوباره تلاش کنید یا برنامه سیگنال را در دستگاه همراهتان باز کنید و برای مشاهده رمز بازیابی، به «تنظیمات پشتیبان» بروید."
+  },
+  "icu:Preferences__local-backups-auth-error--unknown-error": {
+    "messageformat": "هنگام درخواست احراز هویت سیستم برای این اقدام، خطایی رخ داد."
   },
   "icu:Preferences__view-key": {
     "messageformat": "مشاهده رمز"
@@ -6631,6 +6697,12 @@
   "icu:DialogUpdate__downloaded": {
     "messageformat": "به‌روزرسانی بارگیری شد"
   },
+  "icu:DialogUpdate__upgrade-mas": {
+    "messageformat": "برای رفتن به App Store کلیک کنید"
+  },
+  "icu:DialogExpiredBuild__upgrade-mas": {
+    "messageformat": "برای رفتن به App Store کلیک کنید"
+  },
   "icu:CriticalIdlePrimaryDevice__title": {
     "messageformat": "باز کردن سیگنال روی گوشی"
   },
@@ -6669,6 +6741,405 @@
   },
   "icu:InstallScreenUpdateDialog--cannot-update__body": {
     "messageformat": "سیگنال دسکتاپ به‌روزرسانی نشد، اما نسخه جدیدی در دسترس است. به {downloadUrl} بروید و نسخه جدید را به‌طور دستی نصب کنید، سپس یا با پشتیبانی تماس بگیرید یا درباره این مشکل، اشکالی را گزارش کنید."
+  },
+  "icu:StandaloneRegistration--signal-logo": {
+    "messageformat": "لوگوی سیگنال"
+  },
+  "icu:StandaloneRegistration--back": {
+    "messageformat": "بازگشت"
+  },
+  "icu:StandaloneRegistration--PhoneNumber--header": {
+    "messageformat": "شماره تلفن"
+  },
+  "icu:StandaloneRegistration--PhoneNumber--description--line-1": {
+    "messageformat": "برای تأیید حساب، شماره تلفن خود را وارد کنید."
+  },
+  "icu:StandaloneRegistration--PhoneNumber--description--line-2": {
+    "messageformat": "ممکن است شرکت مخابراتی هزینه‌هایی اعمال کند."
+  },
+  "icu:StandaloneRegistration--PhoneNumber--waiting": {
+    "messageformat": "لطفاً بعد از {duration} دوباره تلاش کنید"
+  },
+  "icu:StandaloneRegistration--PhoneNumber--placeholder": {
+    "messageformat": "شماره تلفن"
+  },
+  "icu:StandaloneRegistration--PhoneNumber--button": {
+    "messageformat": "ادامه"
+  },
+  "icu:StandaloneRegistration--PhoneNumber--Confirmation--description": {
+    "messageformat": "آیا شماره تلفن‌تان که در بالا آمده است، صحیح است؟"
+  },
+  "icu:StandaloneRegistration--PhoneNumber--Confirmation--cancel": {
+    "messageformat": "ویرایش شماره"
+  },
+  "icu:StandaloneRegistration--PhoneNumber--Confirmation--confirm": {
+    "messageformat": "بله"
+  },
+  "icu:StandaloneRegistration--Captcha--header": {
+    "messageformat": "برای ادامه، تأیید کنید که انسان هستید"
+  },
+  "icu:StandaloneRegistration--Captcha--description": {
+    "messageformat": "برای کمک به جلوگیری از هرزنگاری در سیگنال، لطفاً تأیید را کامل کنید. پس از تایید، می‌توانید به ثبت‌نام ادامه دهید."
+  },
+  "icu:StandaloneRegistration--Captcha--retry-button": {
+    "messageformat": "تلاش دوباره برای تأیید"
+  },
+  "icu:StandaloneRegistration--Captcha--button": {
+    "messageformat": "تأیید در مرورگر"
+  },
+  "icu:StandaloneRegistration--Captcha--button--wait": {
+    "messageformat": "تأیید تا {duration}"
+  },
+  "icu:StandaloneRegistration--Captcha--NeedAnother--header": {
+    "messageformat": "تأیید بیشتر لازم است"
+  },
+  "icu:StandaloneRegistration--Captcha--NeedAnother--description": {
+    "messageformat": "لطفاً برای ادامه ثبت‌نام، یک کپچای دیگر تکمیل کنید."
+  },
+  "icu:StandaloneRegistration--Captcha--NeedAnother--cancel": {
+    "messageformat": "لغو"
+  },
+  "icu:StandaloneRegistration--Captcha--NeedAnother--retry": {
+    "messageformat": "تلاش دوباره برای تأیید"
+  },
+  "icu:StandaloneRegistration--Captcha--MustWait--aria-title": {
+    "messageformat": "بعداً دوباره امتحان کنید"
+  },
+  "icu:StandaloneRegistration--Captcha--MustWait--line-1": {
+    "messageformat": "در حال حاضر امکان تکمیل تأیید وجود ندارد"
+  },
+  "icu:StandaloneRegistration--Captcha--MustWait--line-2": {
+    "messageformat": "تلاش دوباره در {duration}"
+  },
+  "icu:StandaloneRegistration--Captcha--MustWait--button": {
+    "messageformat": "باشه"
+  },
+  "icu:StandaloneRegistration--Captcha--Error--header": {
+    "messageformat": "خطای تأیید"
+  },
+  "icu:StandaloneRegistration--Captcha--Error--description": {
+    "messageformat": "برای ادامه ثبت‌نام، دوباره تأیید را امتحان کنید."
+  },
+  "icu:StandaloneRegistration--Captcha--Error--try-again": {
+    "messageformat": "دوباره تلاش کنید"
+  },
+  "icu:StandaloneRegistration--Captcha--Error--cancel": {
+    "messageformat": "لغو"
+  },
+  "icu:StandaloneRegistration--VerificationCode--header": {
+    "messageformat": "کد تایید"
+  },
+  "icu:StandaloneRegistration--VerificationCode--description": {
+    "messageformat": "کد‌ی را که به {phoneNumber} ارسال کردیم وارد کنید"
+  },
+  "icu:StandaloneRegistration--VerificationCode--button": {
+    "messageformat": "ادامه"
+  },
+  "icu:StandaloneRegistration--VerificationCode--send-sms": {
+    "messageformat": "ارسال مجدد کد"
+  },
+  "icu:StandaloneRegistration--VerificationCode--send-sms--duration": {
+    "messageformat": "ارسال مجدد کد پس از {duration}"
+  },
+  "icu:StandaloneRegistration--VerificationCode--call-me": {
+    "messageformat": "تماس با من"
+  },
+  "icu:StandaloneRegistration--VerificationCode--call-me--duration": {
+    "messageformat": "با من در {duration} تماس بگیر"
+  },
+  "icu:StandaloneRegistration--VerificationCode--wrong-number": {
+    "messageformat": "شماره اشتباه است؟"
+  },
+  "icu:StandaloneRegistration--VerificationCode--having-trouble": {
+    "messageformat": "مشکلی در ثبت‌نام دارید؟"
+  },
+  "icu:StandaloneRegistration--VerificationCode--IncorrectCode--aria-title": {
+    "messageformat": "کد نادرست"
+  },
+  "icu:StandaloneRegistration--VerificationCode--IncorrectCode--description": {
+    "messageformat": "کدی که وارد کردید نادرست است. لطفاً کد ۶ رقمی را بررسی کرده و دوباره امتحان کنید."
+  },
+  "icu:StandaloneRegistration--VerificationCode--IncorrectCode--button": {
+    "messageformat": "باشه"
+  },
+  "icu:StandaloneRegistration--VerificationCode--CodeInvalid--aria-title": {
+    "messageformat": "کد نامعتبر است"
+  },
+  "icu:StandaloneRegistration--VerificationCode--CodeInvalid--description": {
+    "messageformat": "کد واردشده معتبر نیست. لطفاً کد را دوباره بفرستید و مجدداً تلاش کنید."
+  },
+  "icu:StandaloneRegistration--VerificationCode--CodeInvalid--resend-button": {
+    "messageformat": "ارسال مجدد کد"
+  },
+  "icu:StandaloneRegistration--VerificationCode--CodeInvalid--edit-number-button": {
+    "messageformat": "ویرایش شماره"
+  },
+  "icu:StandaloneRegistration--VerificationCode--SMSFailed--aria-title": {
+    "messageformat": "امکان ارسال پیامک وجود ندارد"
+  },
+  "icu:StandaloneRegistration--VerificationCode--SMSFailed--description": {
+    "messageformat": "نتوانستیم کد تأییدی از طریق پیامک برایتان ارسال کنیم. به جای آن، دریافت کد از طریق تماس را امتحان کنید."
+  },
+  "icu:StandaloneRegistration--VerificationCode--SMSFailed--confirm": {
+    "messageformat": "تماس صوتی"
+  },
+  "icu:StandaloneRegistration--VerificationCode--SMSFailed--cancel": {
+    "messageformat": "لغو"
+  },
+  "icu:StandaloneRegistration--VerificationCode--MustWait--aria-title": {
+    "messageformat": "بعداً دوباره امتحان کنید"
+  },
+  "icu:StandaloneRegistration--VerificationCode--MustWait--description": {
+    "messageformat": "دفعات تلاش‌تان برای وارد کردن کد بیش‌ از حد مجاز بوده است. بعد از {duration} دوباره امتحان کنید."
+  },
+  "icu:StandaloneRegistration--VerificationCode--MustWait--button": {
+    "messageformat": "باشه"
+  },
+  "icu:StandaloneRegistration--VerificationCode--MaximumAttempts--aria-title": {
+    "messageformat": "تلاش‌های بیش از حد"
+  },
+  "icu:StandaloneRegistration--VerificationCode--MaximumAttempts--description": {
+    "messageformat": "دفعات تلاش‌تان برای وارد کردن کد بیش‌ از حد مجاز بوده است. لطفاً کد را دوباره بفرستید و مجدداً تلاش کنید."
+  },
+  "icu:StandaloneRegistration--VerificationCode--MaximumAttempts--resend-button": {
+    "messageformat": "ارسال مجدد کد"
+  },
+  "icu:StandaloneRegistration--VerificationCode--MaximumAttempts--edit-number-button": {
+    "messageformat": "ویرایش شماره"
+  },
+  "icu:StandaloneRegistration--VerificationCode--FailedToCall--aria-title": {
+    "messageformat": "برقراری تماس امکان‌پذیر نیست"
+  },
+  "icu:StandaloneRegistration--VerificationCode--FailedToCall--description": {
+    "messageformat": "ما نتوانستیم با شماره تلفنی که وارد کرده‌اید تماس بگیریم. مطمئن شوید شماره تلفن درست است و دوباره امتحان کنید."
+  },
+  "icu:StandaloneRegistration--VerificationCode--FailedToCall--ok-button": {
+    "messageformat": "باشه"
+  },
+  "icu:StandaloneRegistration--VerificationCode--CannotSendCodePermanent--aria-title": {
+    "messageformat": "ارسال کد امکان‌پذیر نیست"
+  },
+  "icu:StandaloneRegistration--VerificationCode--CannotSendCodePermanent--description": {
+    "messageformat": "کد تأیید را نمی‌توان به شماره تلفنی که وارد کرده‌اید ارسال کرد. مطمئن شوید شماره تلفنی که وارد کرده‌اید صحیح است یا شماره دیگری را امتحان کنید."
+  },
+  "icu:StandaloneRegistration--VerificationCode--CannotSendCodePermanent--ok-button": {
+    "messageformat": "باشه"
+  },
+  "icu:StandaloneRegistration--VerificationCode--CannotSendCodeTemporary--aria-title": {
+    "messageformat": "بعداً دوباره امتحان کنید"
+  },
+  "icu:StandaloneRegistration--VerificationCode--CannotSendCodeTemporary--description": {
+    "messageformat": "خطایی رخ داد و کد تأیید ارسال نشد. بعد از {duration} دوباره امتحان کنید."
+  },
+  "icu:StandaloneRegistration--VerificationCode--CannotSendCodeTemporary--ok-button": {
+    "messageformat": "باشه"
+  },
+  "icu:StandaloneRegistration--ProfileEntry--header": {
+    "messageformat": "پروفایل خود را برپا کنید"
+  },
+  "icu:StandaloneRegistration--ProfileEntry--description": {
+    "messageformat": "نمایه‌ها برای افراد، مخاطبان و گروه‌هایی که به آن‌ها پیام می‌فرستید قابل مشاهده هستند."
+  },
+  "icu:StandaloneRegistration--ProfileEntry--learn-more": {
+    "messageformat": "بیشتر بدانید"
+  },
+  "icu:StandaloneRegistration--ProfileEntry--add-photo": {
+    "messageformat": "افزودن عکس"
+  },
+  "icu:StandaloneRegistration--ProfileEntry--first-name": {
+    "messageformat": "نام کوچک (الزامی)"
+  },
+  "icu:StandaloneRegistration--ProfileEntry--last-name": {
+    "messageformat": "نام خانوادگی (اختیاری)"
+  },
+  "icu:StandaloneRegistration--ProfileEntry--discoverability": {
+    "messageformat": "چه‌کسی می‌تواند من را با شماره تلفنم پیدا کند"
+  },
+  "icu:StandaloneRegistration--ProfileEntry--discoverability--change-button": {
+    "messageformat": "تغییر"
+  },
+  "icu:StandaloneRegistration--ProfileEntry--discoverability--done-button": {
+    "messageformat": "تمام"
+  },
+  "icu:StandaloneRegistration--ProfileEntry--continue": {
+    "messageformat": "ادامه"
+  },
+  "icu:StandaloneRegistration--ProfileEntry--AvatarModal--header": {
+    "messageformat": "آواتار شما"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--header": {
+    "messageformat": "پین خود را وارد کنید"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--description": {
+    "messageformat": "پین ایجادشده برای حساب خود را وارد کنید. این پین با کد تأیید پیامکی شما تفاوت دارد. <needHelp>به راهنمایی نیاز دارید؟</needHelp>"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--placeholder": {
+    "messageformat": "پین خود را وارد کنید"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--incorrect-pin": {
+    "messageformat": "پین نادرست"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--incorrect-pin--with-count": {
+    "messageformat": "{triesRemaining, plural, one {پین نادرست. {triesRemaining,number} تلاش دیگر باقی مانده است.} other {پین نادرست. {triesRemaining,number} تلاش دیگر باقی مانده است.}}"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--NeedHelp--header": {
+    "messageformat": "به راهنمایی نیاز دارید؟"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--NeedHelp--description--no-reglock": {
+    "messageformat": "پین شما یک کد بیش از ۴ رقمی است که شما ساخته‌اید و می‌تواند عدد یا حروف باشد. اگر پین خود را به یاد نمی‌آورید، می‌توانید پین جدیدی بسازید. می‌توانید ثبت‌نام کنید و از حساب کاربری خود استفاده کنید، اما برخی تنظیمات ذخیره‌شده مانند اطلاعات نمایه‌تان را از دست می‌دهید. <learnMore>اطلاعات بیشتر</learnMore>."
+  },
+  "icu:StandaloneRegistration--VerifyPIN--NeedHelp--description--reglock": {
+    "messageformat": "پین شما یک کد بیش از ۴ رقمی است که شما ساخته‌اید و می‌تواند عدد یا حروف باشد. اگر نمی‌توانید پین خود را به یاد بیاورید، باید ۷ روز صبر کنید تا بتوانید حساب خود را دوباره ثبت کنید. <learnMore>اطلاعات بیشتر</learnMore>."
+  },
+  "icu:StandaloneRegistration--VerifyPIN--NeedHelp--skip-button--no-reglock": {
+    "messageformat": "رد شدن و ایجاد یک رمز جدید"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--NeedHelp--contact-support-button": {
+    "messageformat": "تماس با پشتیبانی"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--NeedHelp--cancel": {
+    "messageformat": "لغو"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--FewRemainingTries--header": {
+    "messageformat": "پین نادرست"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--FewRemainingTries--description--no-reglock": {
+    "messageformat": "{triesRemaining, plural, one {‏{triesRemaining,number} فرصت برای تلاش دارید. اگر فرصت‌هایتان تمام شود، می‌توانید پین جدید بسازید. می‌توانید ثبت‌نام و از حساب خود استفاده کنید اما برخی تنظیمات ذخیره‌شده مانند اطلاعات نمایه‌تان را از دست می‌دهید. <learnMore>بیشتر بدانید</learnMore>.} other {‏{triesRemaining,number} فرصت برای تلاش دارید. اگر فرصت‌هایتان تمام شود، می‌توانید پین جدید بسازید. می‌توانید ثبت‌نام و از حساب خود استفاده کنید اما برخی تنظیمات ذخیره‌شده مانند اطلاعات نمایه‌تان را از دست می‌دهید. <learnMore>بیشتر بدانید</learnMore>.}}"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--FewRemainingTries--description--reglock": {
+    "messageformat": "{triesRemaining, plural, one {‏{triesRemaining,number} فرصت برای تلاش دارید. اگر فرصت‌هایتان تمام شود، حساب شما به مدت ۷ روز قفل خواهد شد. پس از ۷ روز عدم فعالیت، می‌توانید بدون نیاز به پین، دوباره ثبت‌نام کنید. همه محتوا حذف خواهد شد. <learnMore>بیشتر بدانید</learnMore>.} other {‏{triesRemaining,number} فرصت برای تلاش دارید. اگر فرصت‌هایتان تمام شود، حساب شما به مدت ۷ روز قفل خواهد شد. پس از ۷ روز عدم فعالیت، می‌توانید بدون نیاز به پین، دوباره ثبت‌نام کنید.همه محتوا حذف خواهد شد. <learnMore>بیشتر بدانید</learnMore>.}}"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--FewRemainingTries--button": {
+    "messageformat": "باشه"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--NoRemainingTries--header": {
+    "messageformat": "پین نادرست"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--NoRemainingTries--description": {
+    "messageformat": "شانس شما برای حدس رمزتان تمام شد، ولی کماکان می توانید با ایجاد یک رمز جدید به حساب سیگنال خود دسترسی داشته باشید. برای امنیت و حریم خصوصی شما، حساب کاربری شما بدون اطلاعات پروفایل و تنظیماتتان بازیابی خواهد شد."
+  },
+  "icu:StandaloneRegistration--VerifyPIN--NoRemainingTries--create-new-pin": {
+    "messageformat": "ایجاد پین جدید"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--NoRemainingTries--learn-more": {
+    "messageformat": "دربارهٔ پین ​​بیشتر یاد بگیرید"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--menu--skip-pin": {
+    "messageformat": "عبور از وارد کردن پین"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--SkipPIN--header": {
+    "messageformat": "رد کردن ورود پین؟"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--SkipPIN--description": {
+    "messageformat": "اگر پین خود را به یاد نمی‌آورید، می‌توانید پین جدیدی بسازید. می‌توانید ثبت‌نام کنید و از حساب کاربری خود استفاده کنید، اما برخی تنظیمات ذخیره‌شده مانند اطلاعات نمایه‌تان را از دست می‌دهید. اطلاعات بیشتر."
+  },
+  "icu:StandaloneRegistration--VerifyPIN--SkipPIN--skip-button": {
+    "messageformat": "رد شدن و ایجاد یک رمز جدید"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--SkipPIN--cancel-button": {
+    "messageformat": "لغو"
+  },
+  "icu:StandaloneRegistration--CreatePIN--header": {
+    "messageformat": "پین خود را ایجاد کنید"
+  },
+  "icu:StandaloneRegistration--CreatePIN--description": {
+    "messageformat": "با کمک پین می‌توانید حسابتان را بازیابی کنید و اطلاعات حساب سیگنال‌تان را رمزگذاری‌شده نگه دارید. <learnMore>اطلاعات بیشتر</learnMore>"
+  },
+  "icu:StandaloneRegistration--CreatePIN--placeholder": {
+    "messageformat": "پین خود را ایجاد کنید"
+  },
+  "icu:StandaloneRegistration--CreatePIN--helper-text": {
+    "messageformat": "رمز شما باید حداقل 4 حرف داشته باشد"
+  },
+  "icu:StandaloneRegistration--CreatePIN--continue": {
+    "messageformat": "ادامه"
+  },
+  "icu:StandaloneRegistration--CreatePIN--open-menu": {
+    "messageformat": "باز کردن منو"
+  },
+  "icu:StandaloneRegistration--CreatePIN--menu--more-about": {
+    "messageformat": "اطلاعات بیشتر درباره پین‌ها"
+  },
+  "icu:StandaloneRegistration--CreatePIN--menu--disable": {
+    "messageformat": "غیرفعال کردن پین"
+  },
+  "icu:StandaloneRegistration--CreatePIN--DisableWarning--header": {
+    "messageformat": "هشدار"
+  },
+  "icu:StandaloneRegistration--CreatePIN--DisableWarning--description": {
+    "messageformat": "اگر پین را غیرفعال کنید، هنگامی که دوباره در سیگنال ثبت‌نام می‌کنید تمامی داده‌ها را از دست خواهید داد، مگر اینکه از یک دستگاه iOS دیگر آنها را منتقل کنید. هنگامی که پین غیرفعال است نمی‌توانید قفل ثبت‌نام را روشن کنید."
+  },
+  "icu:StandaloneRegistration--CreatePIN--DisableWarning--disable-button": {
+    "messageformat": "غیرفعال کردن پین"
+  },
+  "icu:StandaloneRegistration--CreatePIN--DisableWarning--cancel": {
+    "messageformat": "لغو"
+  },
+  "icu:StandaloneRegistration--CreatePIN--AboutPINs--header": {
+    "messageformat": "درباره پین‌های سیگنال"
+  },
+  "icu:StandaloneRegistration--CreatePIN--AboutPINs--description": {
+    "messageformat": "پین‌ها اطلاعات ذخیره‌شده شما نزد سیگنال را رمزگذاری‌شده نگه می‌دارند تا فقط شما به آن دسترسی داشته باشید. نمایه، تنظیمات و مخاطبان شما هنگام نصب دوبارۀ سیگنال بازیابی می‌شوند."
+  },
+  "icu:StandaloneRegistration--CreatePIN--AboutPINs--learn-more-button": {
+    "messageformat": "بیشتر بدانید"
+  },
+  "icu:StandaloneRegistration--CreatePIN--AboutPINs--ok-button": {
+    "messageformat": "باشه"
+  },
+  "icu:StandaloneRegistration--CreatePIN--confirming--header": {
+    "messageformat": "پین خود را تأیید کنید"
+  },
+  "icu:StandaloneRegistration--CreatePIN--confirming--description": {
+    "messageformat": "پینی که به‌تازگی ساختید را دوباره وارد کنید."
+  },
+  "icu:StandaloneRegistration--CreatePIN--confirming--placeholder": {
+    "messageformat": "پین خود را وارد کنید"
+  },
+  "icu:StandaloneRegistration--AccountLocked--header": {
+    "messageformat": "حساب کاربری قفل شد"
+  },
+  "icu:StandaloneRegistration--AccountLocked--description": {
+    "messageformat": "برای حفظ حریم خصوصی و امنیت شما، حسابتان قفل شده است. بعد از ۷ روز عدم فعالیت در حسابتان، قادر به ثبت مجدد این شماره تلفن بدون نیاز به پین خواهید بود. همه محتوا حذف خواهد شد."
+  },
+  "icu:StandaloneRegistration--AccountLocked--start-over-button": {
+    "messageformat": "استفاده از شماره‌ای دیگر"
+  },
+  "icu:StandaloneRegistration--AccountLocked--help-button": {
+    "messageformat": "آشنایی با حساب‌های قفل‌شده"
+  },
+  "icu:StandaloneRegistration--UpdateRequired--header": {
+    "messageformat": "به‌روزرسانی لازم است"
+  },
+  "icu:StandaloneRegistration--UpdateRequired--description": {
+    "messageformat": "برای ادامه ثبت‌نام، لطفاً به جدیدترین نسخه سیگنال به‌روزرسانی کنید."
+  },
+  "icu:StandaloneRegistration--UpdateRequired--update": {
+    "messageformat": "به‌روزرسانی"
+  },
+  "icu:StandaloneRegistration--UpdateRequired--cancel": {
+    "messageformat": "لغو"
+  },
+  "icu:StandaloneRegistration--ConnectionProblem--header": {
+    "messageformat": "اتصال خود را بررسی کنید"
+  },
+  "icu:StandaloneRegistration--ConnectionProblem--description": {
+    "messageformat": "برای ادامه، اتصال اینترنت رایانه خود را بررسی و دوباره امتحان کنید."
+  },
+  "icu:StandaloneRegistration--ConnectionProblem--button": {
+    "messageformat": "باشه"
+  },
+  "icu:StandaloneRegistration--UnexpectedError--header": {
+    "messageformat": "ثبت‌نام کامل نشد"
+  },
+  "icu:StandaloneRegistration--UnexpectedError--description": {
+    "messageformat": "خطایی رخ داد و ثبت‌نام کامل نشد. اگر مشکل همچنان ادامه یافت، لطفاً با پشتیبانی تماس بگیرید."
+  },
+  "icu:StandaloneRegistration--UnexpectedError--try-again-button": {
+    "messageformat": "دوباره تلاش کنید"
+  },
+  "icu:StandaloneRegistration--UnexpectedError--contact-support-button": {
+    "messageformat": "ارتباط با پشتیبانی"
   },
   "icu:NSIS__retry-dialog--first-line": {
     "messageformat": "سیگنال بسته نمی شود",
@@ -6915,15 +7386,6 @@
   },
   "icu:SignalConnectionsModal__footer": {
     "messageformat": "آشنایان شما می‌توانند نام و عکس شما و همچنین پست‌های «استوری من» را ببینند، مگر اینکه آن را از آن‌ها مخفی کنید"
-  },
-  "icu:LocalDeleteWarningModal__header": {
-    "messageformat": "«پاک کردن» در دستگاه‌های شما همگام‌سازی می‌شود"
-  },
-  "icu:LocalDeleteWarningModal__description": {
-    "messageformat": "وقتی پیام‌ها یا گفتگوها را پاک می‌کنید، از همۀ دستگاه‌های شما پاک می‌شوند."
-  },
-  "icu:LocalDeleteWarningModal__confirm": {
-    "messageformat": "فهمیدم"
   },
   "icu:Stories__title": {
     "messageformat": "استوری‌ها"
@@ -7478,9 +7940,6 @@
   "icu:DraftGifMessageSendModal__SendButtonLabel": {
     "messageformat": "ارسال"
   },
-  "icu:DraftGifMessageSendModal__CancelButtonLabel": {
-    "messageformat": "لغو"
-  },
   "icu:EditHistoryMessagesModal__title": {
     "messageformat": "تاریخچه ویرایش‌ها"
   },
@@ -7759,9 +8218,6 @@
   },
   "icu:PreferencesDonations__privacy-modal-title": {
     "messageformat": "اطلاعات شما محرمانه است"
-  },
-  "icu:PreferencesDonations__privacy-modal-content": {
-    "messageformat": "<paragraph>سیگنال هیچ‌گونه اطلاعات شخصی شما را هنگام اهدای کمک مالی جمع آوری یا ذخیره نمی‌کند.</paragraph><paragraph>ما برای دریافت کمک‌های مالی شما از Stripe به‌عنوان پردازش‌گر پرداخت خود استفاده می‌کنیم. به هیچ‌گونه اطلاعاتی که در اختیار آن‌ها قرار می‌دهید دسترسی نداریم، آن‌ها را نگه نمی‌داریم یا ذخیره نمی‌کنیم.</paragraph><paragraph>سیگنال کمک مالی‌تان را به حساب سیگنال شما متصل نمی‌کند و امکان انجام این کار را هم ندارد.</paragraph><paragraph>سپاس از حمایت شما!</paragraph>"
   },
   "icu:PreferencesDonations__privacy-modal-intro": {
     "messageformat": "سیگنال به‌عنوان شرکت مستقل و غیرانتفاعی، متعهد به پیام‌رسانی و تماس خصوصی است. بدون تبلیغات، بدون ردیاب، بدون نظارت. همین امروز برای حمایت از سیگنال، کمک مالی اهدا کنید."
@@ -8205,10 +8661,16 @@
     "messageformat": "تغییرات کوچک، رفع اشکالات و بهبود عملکرد. بابت استفاده از سیگنال سپاسگزاریم!",
     "ignoreUnused": true
   },
-  "icu:WhatsNew__8.12--0": {
-    "messageformat": "یک کلید میان‌بُر جدید برای بالا بردن دست در تماس‌های گروهی اضافه کردیم (Shift-H). ‌"
+  "icu:WhatsNew__8.18--0": {
+    "messageformat": "اکنون می‌توان در گفتگوهای فردی نیز نظرسنجی ساخت."
   },
-  "icu:WhatsNew__8.13--0": {
-    "messageformat": "The new raised-hand indicators are now also displayed in the list of raised hands during group calls. It's a second-hand place to figure out who you should hand it over to when you're done speaking."
+  "icu:WhatsNew__8.19--0": {
+    "messageformat": "مدیران گروه اکنون می‌توانند با گزینه جدید «پایان دادن به گروه» در تنظیمات گروه، به گفتگوها پایان دهند. پایان دادن به گروه، مانع از ارسال پیام یا شروع تماس توسط اعضای گروه می‌شود و همچنین دعوت‌ها را غیرفعال می‌کند."
+  },
+  "icu:WhatsNew__8.20--0": {
+    "messageformat": "Introducing disappearing call events: Missed, outgoing, and received calls that occur after you install this update will now automatically disappear in any chat where disappearing messages are enabled."
+  },
+  "icu:WhatsNew__8.20--1": {
+    "messageformat": "Now you can reorder installed sticker packs so your new favorites don’t get stuck in the back of the line."
   }
 }

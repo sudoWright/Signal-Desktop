@@ -54,7 +54,7 @@ export function InstallScreenUpdateDialog({
         <UpdateRequiredModal
           i18n={i18n}
           onClose={onClose}
-          onForceUpdate={forceUpdate}
+          onAction={forceUpdate}
         />
       );
     }
@@ -64,6 +64,16 @@ export function InstallScreenUpdateDialog({
 
   if (dialogType === DialogType.UnsupportedOS) {
     return <UnsupportedOSModal i18n={i18n} onClose={onClose} OS={OS} />;
+  }
+
+  if (dialogType === DialogType.MASUpdate) {
+    return (
+      <UpdateRequiredModal
+        i18n={i18n}
+        onClose={onClose}
+        onAction={startUpdate}
+      />
+    );
   }
 
   if (dialogType === DialogType.DownloadedUpdate) {
@@ -133,7 +143,7 @@ export function InstallScreenUpdateDialog({
 export function UpdateRequiredModal(props: {
   i18n: LocalizerType;
   onClose: () => void;
-  onForceUpdate: () => void;
+  onAction: () => void;
 }): ReactNode {
   const { i18n } = props;
   return (
@@ -143,7 +153,10 @@ export function UpdateRequiredModal(props: {
       title={i18n('icu:InstallScreenUpdateDialog--update-required__title')}
       description={i18n('icu:InstallScreenUpdateDialog--update-required__body')}
     >
-      <AxoConfirmDialog.Action variant="primary" onClick={props.onForceUpdate}>
+      <AxoConfirmDialog.Action
+        variant="strong-primary"
+        onClick={props.onAction}
+      >
         {i18n('icu:InstallScreenUpdateDialog--update-required__action-update')}
       </AxoConfirmDialog.Action>
     </AxoConfirmDialog.Root>
@@ -167,7 +180,7 @@ export function UpdateAvailableModal(props: {
       description={i18n('icu:InstallScreenUpdateDialog--auto-update__body')}
     >
       <AxoConfirmDialog.Action
-        variant="primary"
+        variant="strong-primary"
         onClick={event => {
           event.preventDefault();
           onStartUpdate();
@@ -238,7 +251,7 @@ export function UpdateDownloadedModal(props: {
       description={i18n('icu:InstallScreenUpdateDialog--downloaded__body')}
     >
       <AxoConfirmDialog.Action
-        variant="primary"
+        variant="strong-primary"
         onClick={event => {
           event.preventDefault();
           onStartUpdate();
@@ -256,7 +269,7 @@ const learnMoreLink = (parts: Array<string | JSX.Element>) => (
     href={UNSUPPORTED_OS_URL}
     rel="noreferrer"
     target="_blank"
-    className={tw('text-label-primary underline')}
+    className={tw('text-primary underline')}
   >
     {parts}
   </a>
@@ -317,7 +330,7 @@ export function CannotUpdateModal(props: {
                 href={url}
                 target="_blank"
                 rel="noreferrer"
-                className={tw('text-label-primary underline')}
+                className={tw('text-primary underline')}
               >
                 {url}
               </a>
@@ -328,7 +341,7 @@ export function CannotUpdateModal(props: {
     >
       {!props.needsManualUpdate && (
         <AxoConfirmDialog.Action
-          variant="primary"
+          variant="strong-primary"
           onClick={event => {
             event.preventDefault();
             onStartUpdate();

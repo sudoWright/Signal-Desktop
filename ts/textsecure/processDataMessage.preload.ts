@@ -57,6 +57,7 @@ import { createLogger } from '../logging/log.std.ts';
 
 import { toNumber } from '../util/toNumber.std.ts';
 import { Emoji } from '../axo/emoji.std.ts';
+import { DurationSecs, SentTimestampMs } from '@signalapp/types';
 
 const { isNumber } = lodash;
 
@@ -115,7 +116,7 @@ export function processAttachment(
     cdnKey: attachmentIdentifier?.cdnKey,
     cdnNumber: cdnNumber ?? 0,
     chunkSize: chunkSize ?? 0,
-    fileName: fileName ?? '',
+    fileName: fileName ?? undefined,
     flags: flags ?? 0,
     width: width ?? 0,
     height: height ?? 0,
@@ -359,13 +360,15 @@ function processPinMessage(
     return undefined;
   }
 
-  const targetSentTimestamp = toNumber(pinMessage.targetSentTimestamp);
-  strictAssert(targetSentTimestamp, 'Missing targetSentTimestamp');
+  strictAssert(pinMessage.targetSentTimestamp, 'Missing targetSentTimestamp');
+  const targetSentTimestamp = SentTimestampMs.fromBigInt(
+    pinMessage.targetSentTimestamp
+  );
 
   const targetAuthorAci = fromAciUuidBytes(pinMessage.targetAuthorAciBinary);
   strictAssert(targetAuthorAci, 'Missing targetAuthorAciBinary');
 
-  let pinDuration: DurationInSeconds | null;
+  let pinDuration: DurationSecs | null;
   if (pinMessage.pinDuration?.pinDurationForever) {
     pinDuration = null;
   } else {
@@ -373,7 +376,7 @@ function processPinMessage(
       pinMessage.pinDuration?.pinDurationSeconds,
       'Missing pinDurationSeconds'
     );
-    pinDuration = DurationInSeconds.fromSeconds(
+    pinDuration = DurationSecs.fromSeconds(
       pinMessage.pinDuration.pinDurationSeconds
     );
   }
@@ -411,11 +414,14 @@ function processPollVote(
     undefined,
     'PollVote.targetAuthorAci'
   );
+  const uniqueOptionIndexes = [
+    ...new Set((pollVote.optionIndexes ?? []).filter(isNotNil)),
+  ];
 
   return {
     targetAuthorAci,
     targetTimestamp: toNumber(pollVote.targetSentTimestamp) ?? 0,
-    optionIndexes: pollVote.optionIndexes?.filter(isNotNil) || [],
+    optionIndexes: uniqueOptionIndexes,
     voteCount: pollVote.voteCount || 0,
   };
 }

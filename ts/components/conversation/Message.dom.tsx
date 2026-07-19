@@ -124,6 +124,7 @@ import type { MemberLabelType } from '../../types/GroupMemberLabels.std.ts';
 import type { ContactModalStateType } from '../../types/globalModals.std.ts';
 import { tw } from '../../axo/tw.dom.tsx';
 import { Emoji } from '../../axo/emoji.std.ts';
+import { AxoButton } from '../../axo/AxoButton.dom.tsx';
 
 const { drop, take, unescape } = lodash;
 
@@ -880,7 +881,7 @@ export class Message extends PureComponent<Props, State> {
       return MetadataPlacement.Bottom;
     }
 
-    if (this.#shouldShowJoinButton()) {
+    if (this.#shouldShowActionButton()) {
       return MetadataPlacement.Bottom;
     }
 
@@ -1071,6 +1072,7 @@ export class Message extends PureComponent<Props, State> {
       isPinned,
       isSMS,
       isSticker,
+      quote,
       retryDeleteForEveryone,
       retryMessageSend,
       pushPanelForConversation,
@@ -1102,6 +1104,7 @@ export class Message extends PureComponent<Props, State> {
         }
         isShowingImage={this.isShowingImage()}
         isSticker={isStickerLike}
+        isStickerReply={isStickerLike && Boolean(quote)}
         onWidthMeasured={isInline ? this.#updateMetadataWidth : undefined}
         pushPanelForConversation={pushPanelForConversation}
         ref={this.#metadataRef}
@@ -1189,8 +1192,10 @@ export class Message extends PureComponent<Props, State> {
     const firstAttachment = attachments[0];
 
     // For attachments which aren't full-frame
+    const isStickerReply = Boolean(isSticker && quote);
     const withContentBelow = Boolean(text || attachmentDroppedDueToSize);
-    const withContentAbove = Boolean(quote) || this.#shouldRenderAuthor();
+    const withContentAbove =
+      !isStickerReply && (Boolean(quote) || this.#shouldRenderAuthor());
     const displayImage = canDisplayImage(attachments);
 
     // attachmentDroppedDueToSize is handled in renderAttachmentTooBig
@@ -1653,7 +1658,12 @@ export class Message extends PureComponent<Props, State> {
           first.domain &&
           previewHasImage &&
           !isFullSizeImage ? (
-            <div className="module-message__link-preview__icon_container">
+            <div
+              className={tw(
+                'me-2 inline-block',
+                first.isStickerPack ? '' : '-m-0.5'
+              )}
+            >
               <Image
                 noBorder
                 noBackground
@@ -1666,8 +1676,8 @@ export class Message extends PureComponent<Props, State> {
                 alt={i18n('icu:previewThumbnail', {
                   domain: first.domain,
                 })}
-                height={72}
-                width={72}
+                height={first.isStickerPack ? 64 : 72}
+                width={first.isStickerPack ? 64 : 72}
                 url={first.image.url}
                 attachment={first.image}
                 blurHash={first.image.blurHash}
@@ -1700,30 +1710,50 @@ export class Message extends PureComponent<Props, State> {
               />
             </div>
           )}
-          <div
-            className={classNames(
-              'module-message__link-preview__text',
-              previewHasImage && !isFullSizeImage
-                ? 'module-message__link-preview__text--with-icon'
-                : null
-            )}
-          >
-            <div className="module-message__link-preview__title">{title}</div>
-            {description && (
-              <div className="module-message__link-preview__description">
-                {unescape(description)}
+          {first.isStickerPack ? (
+            <div>
+              <div
+                className={tw(
+                  'mbs-1 mbe-0.5 type-body-medium font-semibold text-primary'
+                )}
+              >
+                {title}
               </div>
-            )}
-            <div className="module-message__link-preview__footer">
-              <div className="module-message__link-preview__location">
+              {description && (
+                <div className={tw('mbe-0.5 type-body-medium text-primary')}>
+                  {unescape(description)}
+                </div>
+              )}
+              <div className={tw('type-body-small text-secondary')}>
                 {first.domain}
               </div>
-              <LinkPreviewDate
-                date={linkPreviewDate}
-                className="module-message__link-preview__date"
-              />
             </div>
-          </div>
+          ) : (
+            <div
+              className={classNames(
+                'module-message__link-preview__text',
+                previewHasImage && !isFullSizeImage
+                  ? 'module-message__link-preview__text--with-icon'
+                  : null
+              )}
+            >
+              <div className="module-message__link-preview__title">{title}</div>
+              {description && (
+                <div className="module-message__link-preview__description">
+                  {unescape(description)}
+                </div>
+              )}
+              <div className="module-message__link-preview__footer">
+                <div className="module-message__link-preview__location">
+                  {first.domain}
+                </div>
+                <LinkPreviewDate
+                  date={linkPreviewDate}
+                  className="module-message__link-preview__date"
+                />
+              </div>
+            </div>
+          )}
         </div>
       </>
     );
@@ -2507,7 +2537,7 @@ export class Message extends PureComponent<Props, State> {
     );
   }
 
-  #shouldShowJoinButton(): boolean {
+  #shouldShowActionButton(): boolean {
     const { previews } = this.props;
 
     if (previews?.length !== 1) {
@@ -2516,15 +2546,22 @@ export class Message extends PureComponent<Props, State> {
 
     const onlyPreview = previews[0];
     strictAssert(onlyPreview, 'Missing onlyPreview');
-    return Boolean(onlyPreview.isCallLink);
+    return (
+      Boolean(onlyPreview.isCallLink) || Boolean(onlyPreview.isStickerPack)
+    );
   }
 
   #renderAction(): JSX.Element | null {
     const { direction, activeCallConversationId, i18n, previews } = this.props;
 
-    if (this.#shouldShowJoinButton()) {
-      const firstPreview = previews[0];
-      strictAssert(firstPreview, 'Missing firstPreview');
+    if (!this.#shouldShowActionButton()) {
+      return null;
+    }
+
+    const firstPreview = previews[0];
+    strictAssert(firstPreview, 'Missing firstPreview');
+
+    if (firstPreview.isCallLink) {
       const inAnotherCall = Boolean(
         activeCallConversationId &&
         (!firstPreview.callLinkRoomId ||
@@ -2552,6 +2589,25 @@ export class Message extends PureComponent<Props, State> {
         <InAnotherCallTooltip i18n={i18n}>{joinButton}</InAnotherCallTooltip>
       ) : (
         joinButton
+      );
+    }
+
+    if (firstPreview.isStickerPack) {
+      return (
+        <div className={tw('mbs-2 mbe-1.5')}>
+          <AxoButton.Root
+            variant={
+              direction === 'outgoing'
+                ? 'message-outgoing-primary'
+                : 'message-incoming-primary'
+            }
+            size="lg"
+            width="full"
+            onClick={() => openLinkInWebBrowser(firstPreview?.url)}
+          >
+            {i18n('icu:stickers--ViewPack')}
+          </AxoButton.Root>
+        </div>
       );
     }
 
@@ -3255,6 +3311,7 @@ export class Message extends PureComponent<Props, State> {
       return;
     }
 
+    window.enterKeyboardMode();
     this.handleOpen(event);
   };
 
@@ -3283,6 +3340,7 @@ export class Message extends PureComponent<Props, State> {
       isSelectMode,
       isSticker,
       isTapToView,
+      quote,
       renderMessageContextMenu,
       text,
       textDirection,
@@ -3296,7 +3354,8 @@ export class Message extends PureComponent<Props, State> {
       (isSticker &&
         attachments &&
         attachments[0] &&
-        !attachments[0].isPermanentlyUndownloadable);
+        !attachments[0].isPermanentlyUndownloadable &&
+        !quote);
 
     // If it's a mostly-normal gray incoming text box, we don't want to darken it as much
     const lighterSelect =
@@ -3332,7 +3391,7 @@ export class Message extends PureComponent<Props, State> {
       this.props.isSignalConversation
         ? tw(
             // oxlint-disable-next-line better-tailwindcss/no-restricted-classes
-            'bg-legacy-signal-chat-message-bg! **:text-label-primary-on-color!'
+            'bg-(--axo-color-legacy-signal-chat-message-bg)! **:text-primary-oncolor!'
           )
         : null
     );
@@ -3487,6 +3546,11 @@ export class Message extends PureComponent<Props, State> {
           }
         },
         onDoubleClick: event => {
+          // Double-clicks that happen in a portal should not be considered
+          // double-clicking the message
+          if (!event.currentTarget.contains(event.target as Node)) {
+            return;
+          }
           event.stopPropagation();
           event.preventDefault();
           if (!isSelectMode) {

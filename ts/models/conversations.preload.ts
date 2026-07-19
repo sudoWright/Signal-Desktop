@@ -120,6 +120,7 @@ import { signalProtocolStore } from '../SignalProtocolStore.preload.ts';
 import { shouldSaveNotificationAvatarToDisk } from '../services/notifications.preload.ts';
 import { storageServiceUploadJob } from '../services/storage.preload.ts';
 import { challengeHandler } from '../services/challengeHandler.preload.ts';
+import { sendUsernameChangeSyncMessage } from '../services/username.preload.ts';
 import { getSendOptions } from '../util/getSendOptions.preload.ts';
 import type { IsConversationAcceptedOptionsType } from '../util/isConversationAccepted.preload.ts';
 import {
@@ -276,6 +277,7 @@ import { isUsernameValid } from '../util/Username.dom.ts';
 import type { Emoji } from '../axo/emoji.std.ts';
 import { canConversationOnlyBeMutedAlways } from '../conversations/canConversationOnlyBeMutedAlways.dom.ts';
 import { keyTransparency } from '../services/keyTransparency.preload.ts';
+import type { PollSource } from '../messageModifiers/Polls.preload.ts';
 
 const { compact, isNumber, throttle, debounce } = lodash;
 
@@ -2000,7 +2002,11 @@ export class ConversationModel {
 
   async loadAndScroll(
     messageId: string,
-    options: { disableScroll?: boolean; onFinish?: () => void } = {}
+    options: {
+      disableScroll?: boolean;
+      onFinish?: () => void;
+      shouldHighlight?: boolean;
+    } = {}
   ): Promise<void> {
     const { messagesReset, setMessageLoadingState } =
       window.reduxActions.conversations;
@@ -2050,6 +2056,7 @@ export class ConversationModel {
         metrics,
         pinnedMessagesPreloadData,
         scrollToMessageId,
+        shouldHighlight: options.shouldHighlight,
       });
     } catch (error) {
       setMessageLoadingState(conversationId, undefined);
@@ -3343,7 +3350,11 @@ export class ConversationModel {
     drop(this.onNewMessage(message));
     this.throttledUpdateUnread();
 
-    await maybeNotify({ message: message.attributes, conversation: this });
+    await maybeNotify({
+      kind: 'deliveryIssue',
+      message: message.attributes,
+      conversation: this,
+    });
   }
 
   async addKeyChange(
@@ -3566,6 +3577,7 @@ export class ConversationModel {
   async addPollTerminateNotification(params: {
     pollQuestion: string;
     pollTimestamp: number;
+    pollSource: PollSource;
     terminatorId: string;
     timestamp: number;
     isMeTerminating: boolean;
@@ -3602,7 +3614,14 @@ export class ConversationModel {
     drop(this.onNewMessage(message));
 
     this.throttledUpdateUnread();
-    await maybeNotify({ message: message.attributes, conversation: this });
+
+    await maybeNotify({
+      kind: 'pollTerminate',
+      pollSource: params.pollSource,
+      pollTerminatorId: params.terminatorId,
+      message: message.attributes,
+      conversation: this,
+    });
   }
 
   async addPinnedMessageNotification(params: {
@@ -4006,7 +4025,11 @@ export class ConversationModel {
     return getQuoteAttachment(attachments, preview, sticker);
   }
 
-  async sendStickerMessage(packId: string, stickerId: number): Promise<void> {
+  async sendStickerMessage(
+    packId: string,
+    stickerId: number,
+    options?: { quote?: QuotedMessageType; extraReduxActions?: () => void }
+  ): Promise<void> {
     const packData = Stickers.getStickerPack(packId);
     const stickerData = Stickers.getSticker(packId, stickerId);
     if (!stickerData || !packData) {
@@ -4015,6 +4038,8 @@ export class ConversationModel {
       );
       return;
     }
+
+    const { quote, extraReduxActions } = options ?? {};
 
     const { key } = packData;
     const { emoji, width, height } = stickerData;
@@ -4061,9 +4086,13 @@ export class ConversationModel {
         {
           body: undefined,
           attachments: [],
+          quote,
           sticker,
         },
-        { dontClearDraft: true }
+        {
+          dontClearDraft: true,
+          extraReduxActions,
+        }
       )
     );
     window.reduxActions.stickers.useSticker(packId, stickerId);
@@ -4500,6 +4529,9 @@ export class ConversationModel {
       if (itemStorage.get('usernameCorrupted')) {
         log.info('updateUsername: clearing username corruption');
         await itemStorage.remove('usernameCorrupted');
+      }
+      if (!fromStorageService) {
+        await sendUsernameChangeSyncMessage();
       }
     }
     await window.ConversationController.usernameUpdated(this);
@@ -5078,7 +5110,6 @@ export class ConversationModel {
   ): Promise<void> {
     await markConversationRead(this.attributes, readMessage, options);
     this.throttledUpdateUnread();
-    window.reduxActions.callHistory.updateCallHistoryUnreadCount();
   }
 
   async #updateUnread(): Promise<void> {

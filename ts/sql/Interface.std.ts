@@ -80,6 +80,11 @@ import type {
 import { sqlFragment, sqlId, sqlJoin } from './util.std.ts';
 import type { MIMEType } from '../types/MIME.std.ts';
 import type { Emoji } from '../axo/emoji.std.ts';
+import type {
+  ReceivedTimestampMs,
+  SentTimestampMs,
+  ServerTimestampMs,
+} from '@signalapp/types';
 
 export type ReadableDB = Database & { __readable_db: never };
 export type WritableDB = ReadableDB & { __writable_db: never };
@@ -293,7 +298,7 @@ export type SentProtoDBType = {
 export type SentProtoWithMessageIdsType = SentProtoType & {
   messageIds: Array<string>;
 };
-export type SentRecipientsType = Record<ServiceIdString, Array<number>>;
+export type SentRecipientsType = Record<ServiceIdString, ReadonlyArray<number>>;
 export type SentMessagesType = Array<string>;
 
 // These two are for test only
@@ -444,12 +449,12 @@ export type StickerPackRefType = Readonly<{
 
 export type UnprocessedType = {
   id: string;
-  timestamp: number;
+  timestamp: SentTimestampMs;
   /*
    * A client generated date used for removing old envelopes from the table
    * on startup.
    */
-  receivedAtDate: number;
+  receivedAtDate: ReceivedTimestampMs;
   receivedAtCounter: number;
   attempts: number;
   type: number;
@@ -463,7 +468,7 @@ export type UnprocessedType = {
   destinationServiceId: ServiceIdString;
   updatedPni: PniString | undefined;
   serverGuid: string;
-  serverTimestamp: number;
+  serverTimestamp: ServerTimestampMs;
   urgent: boolean;
   story: boolean;
   reportingToken: Uint8Array<ArrayBuffer> | undefined;
@@ -536,6 +541,15 @@ export type GetUnreadByConversationAndMarkReadResultType = Array<
     | 'seenStatus'
     | 'expirationStartTimestamp'
   >
+>;
+
+export type GetUnreadCallMessagesAndMarkReadResult = Pick<
+  MessageType,
+  | 'id'
+  | 'conversationId'
+  | 'readStatus'
+  | 'seenStatus'
+  | 'expirationStartTimestamp'
 >;
 
 export type GetConversationRangeCenteredOnMessageResultType<Message> =
@@ -984,6 +998,7 @@ type ReadableInterface = {
     conversationId: string;
   }) => MessageType | undefined;
   getAllCallHistory: () => ReadonlyArray<CallHistoryDetails>;
+  getCallHistoryUnreadCallConversationIds: () => ReadonlyArray<string>;
   getCallHistoryUnreadCount: () => number;
   getCallHistoryMessageByCallId: (options: {
     conversationId: string;
@@ -1002,6 +1017,10 @@ type ReadableInterface = {
     conversationId: string,
     eraId: string
   ) => boolean;
+  getPrevUnreadCallIdInConversation: (
+    conversationId: string,
+    receivedAt: number
+  ) => string | null;
   callLinkExists: (roomId: string) => boolean;
   defunctCallLinkExists: (roomId: string) => boolean;
   getAllCallLinks: () => ReadonlyArray<CallLinkType>;
@@ -1180,7 +1199,7 @@ type WritableInterface = {
   insertProtoRecipients: (options: {
     id: number;
     recipientServiceId: ServiceIdString;
-    deviceIds: Array<number>;
+    deviceIds: ReadonlyArray<number>;
   }) => void;
   deleteSentProtoRecipient: (
     options:
@@ -1274,9 +1293,20 @@ type WritableInterface = {
   _removeAllCallHistory: () => void;
   markCallHistoryDeleted: (callId: string) => void;
   cleanupCallHistoryMessages: () => void;
-  markCallHistoryRead: (callId: string) => void;
-  markAllCallHistoryRead: (target: CallLogEventTarget) => number;
-  markAllCallHistoryReadInConversation: (target: CallLogEventTarget) => number;
+  getUnreadCallMessagesAndMarkRead: (
+    target: CallLogEventTarget,
+    readAt: number,
+    activeCallIds: Set<string>
+  ) => ReadonlyArray<GetUnreadCallMessagesAndMarkReadResult>;
+  getUnreadCallMessageAndMarkRead: (
+    callId: string,
+    readAt: number
+  ) => GetUnreadCallMessagesAndMarkReadResult | null;
+  getUnreadCallMessagesInConversationAndMarkRead: (
+    target: CallLogEventTarget,
+    readAt: number,
+    activeCallIds: Set<string>
+  ) => ReadonlyArray<GetUnreadCallMessagesAndMarkReadResult>;
   saveCallHistory: (callHistory: CallHistoryDetails) => void;
   markCallHistoryMissed: (callIds: ReadonlyArray<string>) => void;
   getRecentStaleRingsAndMarkOlderMissed: () => ReadonlyArray<MaybeStaleCallHistory>;
@@ -1365,12 +1395,15 @@ type WritableInterface = {
   createOrUpdateStickerPack: (pack: StickerPackType) => void;
   createOrUpdateStickerPacks: (packs: ReadonlyArray<StickerPackType>) => void;
   // Returns previous sticker pack status
-  updateStickerPackStatus: (
+  updateStickerPackStatusAndPosition: (
     id: string,
     status: StickerPackStatusType,
-    options?: { timestamp: number }
+    options?: { timestamp?: number; position?: number }
   ) => StickerPackStatusType | null;
   updateStickerPackInfo: (info: StickerPackInfoType) => void;
+  updateStickerPacksPositions: (
+    packIdsAndPositions: ReadonlyArray<{ id: string; position: number }>
+  ) => void;
   createOrUpdateSticker: (sticker: StickerType) => void;
   createOrUpdateStickers: (sticker: ReadonlyArray<StickerType>) => void;
   updateStickerLastUsed: (
@@ -1390,8 +1423,12 @@ type WritableInterface = {
   addUninstalledStickerPacks: (
     pack: ReadonlyArray<UninstalledStickerPackType>
   ) => void;
-  // Returns `true` if sticker pack was previously uninstalled
-  installStickerPack: (packId: string, timestamp: number) => boolean;
+  // Returns wasPreviouslyUninstalled: `true` if sticker pack was previously uninstalled
+  installStickerPack: (
+    packId: string,
+    timestamp: number,
+    position?: number
+  ) => { wasPreviouslyUninstalled: boolean; position?: number };
   // Returns `true` if sticker pack was not previously uninstalled
   uninstallStickerPack: (packId: string, timestamp: number) => boolean;
   clearAllErrorStickerPackAttempts: () => void;
@@ -1484,20 +1521,12 @@ type WritableInterface = {
     plaintextHash,
     version,
     contentType,
-    messageId,
   }: {
     plaintextHash: string;
     version: number;
     contentType: MIMEType;
-    messageId: string;
-  }) => ExistingAttachmentData | undefined;
-  _protectAttachmentPathFromDeletion: ({
-    path,
-    messageId,
-  }: {
-    path: string;
-    messageId: string;
-  }) => void;
+  }) => (ExistingAttachmentData & { reuseToken: string }) | undefined;
+  _protectAttachmentPathFromDeletion: ({ path }: { path: string }) => string;
   resetProtectedAttachmentPaths: () => void;
 
   removeAll: () => void;

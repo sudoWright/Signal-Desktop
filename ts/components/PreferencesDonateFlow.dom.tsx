@@ -74,13 +74,16 @@ import { missingCaseError } from '../util/missingCaseError.std.ts';
 import { openLinkInWebBrowser } from '../util/openLinkInWebBrowser.dom.ts';
 import { usePreviousDeprecated } from '../hooks/usePrevious.std.ts';
 import { tw } from '../axo/tw.dom.tsx';
-
-const SUPPORT_URL = 'https://support.signal.org/hc/requests/new?desktop';
+import { CONTACT_SUPPORT_URL } from '../util/contactSupport.dom.tsx';
+import type { BadgeType } from '../badges/types.std.ts';
+import { BadgeImage } from './BadgeImage.dom.tsx';
+import { SpinnerV2 } from './SpinnerV2.dom.tsx';
 
 export type PropsDataType = {
   i18n: LocalizerType;
   initialCurrency: string;
   isOnline: boolean;
+  badge: BadgeType | undefined;
   donationAmountsConfig: ReadonlyDeep<OneTimeDonationHumanAmounts> | undefined;
   lastError: DonationErrorType | undefined;
   validCurrencies: ReadonlyArray<string>;
@@ -118,6 +121,7 @@ export function PreferencesDonateFlow({
   i18n,
   initialCurrency,
   isOnline,
+  badge,
   donationAmountsConfig,
   lastError,
   validCurrencies,
@@ -398,13 +402,18 @@ export function PreferencesDonateFlow({
     strictAssert(amount, 'Amount is required for payment processor form');
     innerContent = (
       <>
-        <CardFormHero i18n={i18n} amount={amount} currency={currency} />
+        <CardFormHero
+          i18n={i18n}
+          badge={badge}
+          amount={amount}
+          currency={currency}
+        />
         <button
           className={tw(
             'flex',
-            'bg-color-fill-primary enabled:active:bg-color-fill-primary-pressed',
+            'bg-accent enabled:active:bg-accent-pressed',
             'rounded-md',
-            'justify-center type-body-medium text-label-primary-on-color',
+            'justify-center type-body-medium text-primary-oncolor',
             'mt-6 mb-3 h-[36px] w-[280px] py-2'
           )}
           onClick={() => setStep('stripePaymentDetails')}
@@ -417,9 +426,7 @@ export function PreferencesDonateFlow({
             )}
           />
           <span
-            className={tw(
-              'ms-3 flex type-body-medium text-label-primary-on-color'
-            )}
+            className={tw('ms-3 flex type-body-medium text-primary-oncolor')}
           >
             {i18n('icu:DonateFlow__CreditOrDebitCard')}
           </span>
@@ -444,7 +451,12 @@ export function PreferencesDonateFlow({
     strictAssert(amount, 'Amount is required for payment card form');
     innerContent = (
       <>
-        <CardFormHero i18n={i18n} amount={amount} currency={currency} />
+        <CardFormHero
+          i18n={i18n}
+          badge={badge}
+          amount={amount}
+          currency={currency}
+        />
         <hr className="PreferencesDonations__separator PreferencesDonations__separator--card-form" />
         <CardForm
           amount={amount}
@@ -467,7 +479,12 @@ export function PreferencesDonateFlow({
       workflow?.type !== donationStateSchema.enum.PAYPAL_INTENT;
     innerContent = (
       <>
-        <CardFormHero i18n={i18n} amount={amount} currency={currency} />
+        <CardFormHero
+          i18n={i18n}
+          badge={badge}
+          amount={amount}
+          currency={currency}
+        />
         <hr className="PreferencesDonations__separator PreferencesDonations__separator--card-form" />
         <div className={tw('my-4 flex min-w-[400px] py-4 type-body-large')}>
           <div className={tw('flex grow items-center')}>
@@ -484,7 +501,7 @@ export function PreferencesDonateFlow({
           className={tw('flex min-w-[400px] justify-end gap-3 type-body-large')}
         >
           <AxoButton.Root
-            variant="secondary"
+            variant="strong-secondary"
             size="lg"
             disabled={isDisabled}
             onClick={onBack}
@@ -492,7 +509,7 @@ export function PreferencesDonateFlow({
             {i18n('icu:DonateFlow__Paypal__Cancel')}
           </AxoButton.Root>
           <AxoButton.Root
-            variant="primary"
+            variant="strong-primary"
             size="lg"
             disabled={isDisabled}
             onClick={() => {
@@ -770,7 +787,7 @@ function AmountPicker({
 
   const continueButton = (
     <AxoButton.Root
-      variant={isOnline ? 'primary' : 'secondary'}
+      variant={isOnline ? 'strong-primary' : 'strong-secondary'}
       size="lg"
       disabled={!isContinueEnabled}
       onClick={handleContinueClicked}
@@ -1015,7 +1032,7 @@ function CardForm({
     <AxoButton.Root
       disabled={isDonateDisabled}
       onClick={handleDonateClicked}
-      variant={isOnline ? 'primary' : 'secondary'}
+      variant={isOnline ? 'strong-primary' : 'strong-secondary'}
       size="lg"
     >
       {i18n('icu:PreferencesDonations__donate-button-with-amount', {
@@ -1126,6 +1143,7 @@ function CardForm({
 }
 
 type CardFormHeroProps = {
+  badge: BadgeType | undefined;
   amount: HumanDonationAmount;
   currency: string;
   i18n: LocalizerType;
@@ -1133,6 +1151,7 @@ type CardFormHeroProps = {
 
 // Similar to <DonationHero> or renderDonationHero
 function CardFormHero({
+  badge,
   amount,
   currency,
   i18n,
@@ -1144,7 +1163,11 @@ function CardFormHero({
   return (
     <>
       <div className="PreferencesDonations__avatar">
-        <div className="DonationCardFormHero__Badge" />
+        {badge ? (
+          <BadgeImage badge={badge} size={72} />
+        ) : (
+          <SpinnerV2 size={72} strokeWidth={4} variant="brand" />
+        )}
       </div>
       <div className="PreferencesDonations__title">
         {i18n('icu:DonateFlow__card-form-title-donate-with-amount', {
@@ -1170,7 +1193,7 @@ function HelpFooter({
   const contactSupportLink = (parts: Array<string | JSX.Element>) => (
     <a
       className="DonationFormHelpFooter__ContactSupportLink"
-      href={SUPPORT_URL}
+      href={CONTACT_SUPPORT_URL}
       rel="noreferrer"
       target="_blank"
     >

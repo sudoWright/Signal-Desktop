@@ -1826,19 +1826,32 @@ export class BackupExportStream extends Readable {
     } else if (contact && contact[0]) {
       const [contactDetails] = contact;
 
+      const { name } = contactDetails;
+      const hasName =
+        name != null &&
+        Boolean(
+          name.givenName ||
+          name.familyName ||
+          name.prefix ||
+          name.suffix ||
+          name.middleName ||
+          name.nickname
+        );
+
       item = {
         contactMessage: {
           contact: {
-            name: contactDetails.name
-              ? {
-                  givenName: contactDetails.name.givenName ?? null,
-                  familyName: contactDetails.name.familyName ?? null,
-                  prefix: contactDetails.name.prefix ?? null,
-                  suffix: contactDetails.name.suffix ?? null,
-                  middleName: contactDetails.name.middleName ?? null,
-                  nickname: contactDetails.name.nickname ?? null,
-                }
-              : null,
+            name:
+              hasName && name != null
+                ? {
+                    givenName: name.givenName ?? null,
+                    familyName: name.familyName ?? null,
+                    prefix: name.prefix ?? null,
+                    suffix: name.suffix ?? null,
+                    middleName: name.middleName ?? null,
+                    nickname: name.nickname ?? null,
+                  }
+                : null,
             number:
               contactDetails.number?.map(number => ({
                 value: number.value,
@@ -2499,16 +2512,17 @@ export class BackupExportStream extends Readable {
             previousName: { e164: BigInt(renderInfo.e164) },
           },
         };
-      } else {
-        strictAssert(
-          renderInfo.username,
-          'Title transition must have username or e164'
-        );
+      } else if (renderInfo.username) {
         updateMessage.update = {
           learnedProfileChange: {
             previousName: { username: renderInfo.username },
           },
         };
+      } else {
+        log.warn(
+          `${logId}: Dropping title transition without username or e164`
+        );
+        return { kind: NonBubbleResultKind.Drop };
       }
 
       return { kind: NonBubbleResultKind.Directionless, patch };
@@ -3461,7 +3475,6 @@ export class BackupExportStream extends Readable {
       }
 
       // Filter out our conversationId from non-"Note-to-Self" messages
-      // TODO: DESKTOP-8089
       strictAssert(this.#ourConversation?.id, 'our conversation must exist');
       if (
         id === this.#ourConversation.id &&
@@ -3479,6 +3492,18 @@ export class BackupExportStream extends Readable {
       const sealedSender = serviceId
         ? sealedSenderServiceIds.has(serviceId)
         : false;
+
+      // For note-to-self, we export our own sendStatus as read. Otherwise, we exclude it.
+      if (id === this.#ourConversation.id) {
+        if (conversationId === this.#ourConversation.id) {
+          sendStatuses.push({
+            recipientId,
+            timestamp,
+            deliveryStatus: { read: { sealedSender } },
+          });
+        }
+        continue;
+      }
 
       let deliveryStatus: Backups.SendStatus.Params['deliveryStatus'];
       switch (entry.status) {

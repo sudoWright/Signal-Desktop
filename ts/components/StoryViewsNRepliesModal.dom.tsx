@@ -267,6 +267,7 @@ export function StoryViewsNRepliesModal({
               isFormattingEnabled={isFormattingEnabled}
               moduleClassName="StoryViewsNRepliesModal__input"
               onCloseLinkPreview={noop}
+              showRecoveryKeyPasteWarning={false}
               onEditorStateChange={({ messageText }) => {
                 setMessageBodyText(messageText);
               }}
@@ -501,7 +502,7 @@ export function StoryViewsNRepliesModal({
       >
         <AxoConfirmDialog.Cancel />
         <AxoConfirmDialog.Action
-          variant="destructive"
+          variant="strong-destructive"
           onClick={() => {
             strictAssert(deleteReplyId != null, 'Missing deleteReplyId');
             deleteGroupStoryReply(deleteReplyId);
@@ -518,7 +519,7 @@ export function StoryViewsNRepliesModal({
       >
         <AxoConfirmDialog.Cancel />
         <AxoConfirmDialog.Action
-          variant="destructive"
+          variant="strong-destructive"
           onClick={() => {
             strictAssert(
               deleteForEveryoneReplyId != null,

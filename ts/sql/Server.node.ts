@@ -107,6 +107,7 @@ import {
   DirectCallStatus,
   GroupCallStatus,
   callHistoryDetailsSchema,
+  callHistoryGroupChildSchema,
   callHistoryGroupSchema,
 } from '../types/CallDisposition.std.ts';
 import { redactGenericText } from '../util/privacy.node.ts';
@@ -201,6 +202,7 @@ import type {
   MaybeStaleCallHistory,
   ExistingAttachmentData,
   ExistingAttachmentUploadData,
+  GetUnreadCallMessagesAndMarkReadResult,
 } from './Interface.std.ts';
 import {
   AttachmentDownloadSource,
@@ -302,7 +304,10 @@ import type {
 } from '../types/Colors.std.ts';
 import { sqlLogger } from './sqlLogger.node.ts';
 import { permissiveMessageAttachmentSchema } from './server/messageAttachments.std.ts';
-import { getFilePathsReferencedByMessage } from '../util/messageFilePaths.std.ts';
+import {
+  getFilePathsReferencedByAttachment,
+  getFilePathsReferencedByMessage,
+} from '../util/messageFilePaths.std.ts';
 import { createMessagesOnInsertTrigger } from './migrations/1500-search-polls.std.ts';
 import { isValidPlaintextHash } from '../types/Crypto.std.ts';
 import { Emoji } from '../axo/emoji.std.ts';
@@ -323,7 +328,6 @@ const {
   omit,
   partition,
   pick,
-  sortBy,
 } = lodash;
 
 type ConversationRow = Readonly<{
@@ -484,12 +488,14 @@ export const DataReader: ServerReadableInterface = {
   getConversationMessageStats,
   getLastConversationMessage,
   getAllCallHistory,
+  getCallHistoryUnreadCallConversationIds,
   getCallHistoryUnreadCount,
   getCallHistoryMessageByCallId,
   getCallHistory,
   getCallHistoryGroupsCount,
   getCallHistoryGroups,
   hasGroupCallHistoryMessage,
+  getPrevUnreadCallIdInConversation,
 
   hasMedia,
   getSortedMedia,
@@ -644,6 +650,7 @@ export const DataWriter: ServerWritableInterface = {
   updateAllConversationColors,
   removeAllProfileKeyCredentials,
   getUnreadByConversationAndMarkRead,
+  getUnreadEditedMessagesAndMarkRead,
   getUnreadReactionsAndMarkRead,
   getUnreadPollVotesAndMarkRead,
 
@@ -662,14 +669,13 @@ export const DataWriter: ServerWritableInterface = {
   _removeAllReactions,
   _removeAllMessages,
   _removeMessage: removeMessage,
-  getUnreadEditedMessagesAndMarkRead,
   clearCallHistory,
   _removeAllCallHistory,
   markCallHistoryDeleted,
   cleanupCallHistoryMessages,
-  markCallHistoryRead,
-  markAllCallHistoryRead,
-  markAllCallHistoryReadInConversation,
+  getUnreadCallMessageAndMarkRead,
+  getUnreadCallMessagesAndMarkRead,
+  getUnreadCallMessagesInConversationAndMarkRead,
   saveCallHistory,
   markCallHistoryMissed,
   insertCallLink,
@@ -726,8 +732,9 @@ export const DataWriter: ServerWritableInterface = {
 
   createOrUpdateStickerPack,
   createOrUpdateStickerPacks,
-  updateStickerPackStatus,
+  updateStickerPackStatusAndPosition,
   updateStickerPackInfo,
+  updateStickerPacksPositions,
   createOrUpdateSticker,
   createOrUpdateStickers,
   updateStickerLastUsed,
@@ -1501,7 +1508,7 @@ function insertProtoRecipients(
   }: {
     id: number;
     recipientServiceId: ServiceIdString;
-    deviceIds: Array<number>;
+    deviceIds: ReadonlyArray<number>;
   }
 ): void {
   db.transaction(() => {
@@ -2917,6 +2924,10 @@ function saveMessageAttachment({
 
     logger.info('Recovered from invalid message_attachment save');
   }
+
+  if (attachment.reuseToken != null) {
+    releaseAttachmentPathProtections(db, attachment);
+  }
 }
 
 function getAndProtectExistingAttachmentPath(
@@ -2925,14 +2936,12 @@ function getAndProtectExistingAttachmentPath(
     plaintextHash,
     version,
     contentType,
-    messageId,
   }: {
     plaintextHash: string;
     version: number;
     contentType: string;
-    messageId: string;
   }
-): ExistingAttachmentData | undefined {
+): (ExistingAttachmentData & { reuseToken: string }) | undefined {
   if (!isValidPlaintextHash(plaintextHash)) {
     logger.error('getAndProtectExistingAttachmentPath: Invalid plaintextHash');
     return;
@@ -2972,40 +2981,71 @@ function getAndProtectExistingAttachmentPath(
     LIMIT 1;
   `;
 
-  const existingData = db.prepare(query).get<ExistingAttachmentData>(params);
+  return db.transaction(() => {
+    const existingData = db.prepare(query).get<ExistingAttachmentData>(params);
 
-  if (!existingData) {
-    return undefined;
-  }
+    if (!existingData) {
+      return undefined;
+    }
 
-  const [protectQuery, protectParams] = sql`
+    const reuseToken = randomBytes(16).toString('hex');
+
+    const [protectQuery, protectParams] = sql`
       WITH existingMessageAttachmentPaths(path) AS (
         VALUES
           (${existingData.path}),
           (${existingData.thumbnailPath}),
           (${existingData.screenshotPath})
       )
-      INSERT OR REPLACE INTO attachments_protected_from_deletion(path, messageId)
-      SELECT path, ${messageId}
+      INSERT OR REPLACE INTO attachments_protected_from_deletion(path, reuseToken)
+      SELECT path, ${reuseToken}
       FROM existingMessageAttachmentPaths
       WHERE path IS NOT NULL;
     `;
-  db.prepare(protectQuery).run(protectParams);
+    db.prepare(protectQuery).run(protectParams);
 
-  return existingData;
+    return { ...existingData, reuseToken };
+  })();
 }
 
 function _protectAttachmentPathFromDeletion(
   db: WritableDB,
-  { path, messageId }: { path: string; messageId: string }
-): void {
+  { path }: { path: string }
+): string {
+  const reuseToken = randomBytes(16).toString('hex');
   const [protectQuery, protectParams] = sql`
     INSERT OR REPLACE INTO attachments_protected_from_deletion
-      (path, messageId)
+      (path, reuseToken)
     VALUES
-      (${path}, ${messageId});
+      (${path}, ${reuseToken});
   `;
   db.prepare(protectQuery).run(protectParams);
+  return reuseToken;
+}
+
+function releaseAttachmentPathProtections(
+  db: WritableDB,
+  attachment: AttachmentType
+): void {
+  const { reuseToken } = attachment;
+
+  if (!reuseToken) {
+    return;
+  }
+
+  const { externalAttachments } =
+    getFilePathsReferencedByAttachment(attachment);
+
+  if (!externalAttachments.size) {
+    return;
+  }
+
+  const [query, params] = sql`
+    DELETE FROM attachments_protected_from_deletion
+    WHERE reuseToken = ${reuseToken}
+    AND path IN (${sqlJoin([...externalAttachments])});
+  `;
+  db.prepare(query).run(params);
 }
 
 function resetProtectedAttachmentPaths(db: WritableDB): void {
@@ -3014,7 +3054,7 @@ function resetProtectedAttachmentPaths(db: WritableDB): void {
 
 function getAllProtectedAttachmentPaths(db: ReadableDB): Array<string> {
   return db
-    .prepare('SELECT path FROM attachments_protected_from_deletion', {
+    .prepare('SELECT DISTINCT path FROM attachments_protected_from_deletion', {
       pluck: true,
     })
     .all<string>();
@@ -3585,7 +3625,8 @@ function getUnreadByConversationAndMarkRead(
   }
 ): GetUnreadByConversationAndMarkReadResultType {
   return db.transaction(() => {
-    const expirationStartTimestamp = Math.min(now, readAt ?? Infinity);
+    const expirationStartTimestamp =
+      readAt != null ? Math.min(now, readAt) : now;
 
     const { predicate: storyReplyFilter, isFilteringOnStoryId } =
       _storyIdPredicateAndInfo(storyId, includeStoryReplies);
@@ -3599,6 +3640,7 @@ function getUnreadByConversationAndMarkRead(
         conversationId = ${conversationId} AND
         ${storyReplyFilter} AND
         type IS NOT 'outgoing' AND
+        type IS NOT 'call-history' AND
         hasExpireTimer IS 1 AND
         received_at <= ${readMessageReceivedAt}
     `;
@@ -4807,13 +4849,25 @@ const CALL_STATUS_INCOMING = sqlConstant(CallDirection.Incoming);
 const CALL_MODE_ADHOC = sqlConstant(CallMode.Adhoc);
 const FOUR_HOURS_IN_MS = sqlConstant(4 * 60 * 60 * 1000);
 
+function getCallHistoryUnreadCallConversationIds(
+  db: ReadableDB
+): ReadonlyArray<string> {
+  const [query, params] = sql`
+    SELECT DISTINCT(messages.conversationId) FROM messages
+    INNER JOIN callsHistory ON callsHistory.callId = messages.callId
+    WHERE messages.type IS 'call-history'
+      AND messages.seenStatus IS ${SEEN_STATUS_UNSEEN}
+      AND callsHistory.direction IS ${CALL_STATUS_INCOMING}
+  `;
+  return db.prepare(query, { pluck: true }).all<string>(params);
+}
+
 function getCallHistoryUnreadCount(db: ReadableDB): number {
   const [query, params] = sql`
     SELECT count(*) FROM messages
     INNER JOIN callsHistory ON callsHistory.callId = messages.callId
     WHERE messages.type IS 'call-history'
       AND messages.seenStatus IS ${SEEN_STATUS_UNSEEN}
-      AND callsHistory.status IS ${CALL_STATUS_MISSED}
       AND callsHistory.direction IS ${CALL_STATUS_INCOMING}
   `;
   const row = db
@@ -4822,22 +4876,6 @@ function getCallHistoryUnreadCount(db: ReadableDB): number {
     })
     .get<number>(params);
   return row ?? 0;
-}
-
-function markCallHistoryRead(db: WritableDB, callId: string): void {
-  const jsonPatch = JSON.stringify({
-    seenStatus: SeenStatus.Seen,
-  });
-
-  const [query, params] = sql`
-    UPDATE messages
-    SET
-      seenStatus = ${SEEN_STATUS_SEEN},
-      json = json_patch(json, ${jsonPatch})
-    WHERE type IS 'call-history'
-    AND callId IS ${callId}
-  `;
-  db.prepare(query).run(params);
 }
 
 function getCallHistoryForCallLogEventTarget(
@@ -4979,16 +5017,59 @@ function getMessageReceivedAtForCall(
   return receivedAt;
 }
 
-export function markAllCallHistoryRead(
+function getUnreadCallMessageAndMarkRead(
+  db: WritableDB,
+  callId: string,
+  readAt: number
+): GetUnreadCallMessagesAndMarkReadResult | null {
+  const jsonPatch = JSON.stringify({
+    readStatus: ReadStatus.Read,
+    seenStatus: SeenStatus.Seen,
+  });
+
+  const [query, params] = sql`
+    UPDATE messages
+    SET
+      readStatus = ${READ_STATUS_READ},
+      seenStatus = ${SEEN_STATUS_SEEN},
+      json = json_patch(json, ${jsonPatch}),
+      expirationStartTimestamp = CASE
+        WHEN messages.hasExpireTimer IS 1
+          AND messages.expirationStartTimestamp IS NULL
+        THEN
+          ${readAt}
+        ELSE
+          expirationStartTimestamp
+      END
+    WHERE messages.type IS 'call-history'
+    AND messages.callId IS ${callId}
+    RETURNING
+      messages.id,
+      messages.conversationId,
+      messages.readStatus,
+      messages.seenStatus,
+      messages.expirationStartTimestamp
+  `;
+
+  const result = db
+    .prepare(query)
+    .get<GetUnreadCallMessagesAndMarkReadResult>(params);
+
+  return result ?? null;
+}
+
+export function getUnreadCallMessagesAndMarkRead(
   db: WritableDB,
   target: CallLogEventTarget,
+  readAt: number,
+  activeCallIds: Set<string>,
   inConversation = false
-): number {
+): ReadonlyArray<GetUnreadCallMessagesAndMarkReadResult> {
   return db.transaction(() => {
     const callHistory = getCallHistoryForCallLogEventTarget(db, target);
     if (callHistory == null) {
       logger.warn('markAllCallHistoryRead: Target call not found');
-      return 0;
+      return [];
     }
 
     const { callId } = callHistory;
@@ -5014,7 +5095,7 @@ export function markAllCallHistoryRead(
       const conversationId = getConversationIdForCallHistory(db, callHistory);
       if (conversationId == null) {
         logger.warn('markAllCallHistoryRead: Conversation not found for call');
-        return 0;
+        return [];
       }
 
       logger.info(
@@ -5029,7 +5110,7 @@ export function markAllCallHistoryRead(
 
     if (receivedAt == null) {
       logger.warn('markAllCallHistoryRead: Message not found for call');
-      return 0;
+      return [];
     }
 
     const jsonPatch = JSON.stringify({
@@ -5041,6 +5122,15 @@ export function markAllCallHistoryRead(
       `markAllCallHistoryRead: Marking calls before ${receivedAt} read`
     );
 
+    const returning = sqlFragment`
+      RETURNING
+        messages.id,
+        messages.conversationId,
+        messages.readStatus,
+        messages.seenStatus,
+        messages.expirationStartTimestamp
+    `;
+
     const [updateQuery, updateParams] = sql`
       UPDATE messages
       SET
@@ -5050,19 +5140,63 @@ export function markAllCallHistoryRead(
       WHERE messages.type IS 'call-history'
         AND ${predicate}
         AND messages.seenStatus IS ${SEEN_STATUS_UNSEEN}
-        AND messages.received_at <= ${receivedAt};
+        AND messages.received_at <= ${receivedAt}
+      ${returning}
     `;
 
-    const result = db.prepare(updateQuery).run(updateParams);
-    return result.changes;
+    const updateResult = db
+      .prepare(updateQuery)
+      .all<GetUnreadCallMessagesAndMarkReadResult>(updateParams);
+
+    const [updateExpirationQuery, updateExpirationParams] = sql`
+      UPDATE messages
+      SET
+        expirationStartTimestamp = ${readAt}
+      WHERE messages.type IS 'call-history'
+        AND ${predicate}
+        AND messages.seenStatus IS ${SEEN_STATUS_SEEN}
+        AND messages.received_at <= ${receivedAt}
+        AND hasExpireTimer IS 1
+        AND expirationStartTimestamp IS NULL
+        AND messages.callId NOT IN (${sqlJoin(Array.from(activeCallIds))})
+      ${returning}
+    `;
+    const updateExpirationResult = db
+      .prepare(updateExpirationQuery)
+      .all<GetUnreadCallMessagesAndMarkReadResult>(updateExpirationParams);
+
+    const seen = new Set<string>();
+    const merged: Array<GetUnreadCallMessagesAndMarkReadResult> = [];
+
+    for (const item of updateExpirationResult) {
+      seen.add(item.id);
+      merged.push(item);
+    }
+
+    for (const item of updateResult) {
+      if (seen.has(item.id)) {
+        continue; // prefer data from the second update
+      }
+      merged.push(item);
+    }
+
+    return merged;
   })();
 }
 
-function markAllCallHistoryReadInConversation(
+function getUnreadCallMessagesInConversationAndMarkRead(
   db: WritableDB,
-  target: CallLogEventTarget
-): number {
-  return markAllCallHistoryRead(db, target, true);
+  target: CallLogEventTarget,
+  readAt: number,
+  activeCallIds: Set<string>
+): ReadonlyArray<GetUnreadCallMessagesAndMarkReadResult> {
+  return getUnreadCallMessagesAndMarkRead(
+    db,
+    target,
+    readAt,
+    activeCallIds,
+    true
+  );
 }
 
 function getCallHistoryGroupData(
@@ -5199,8 +5333,8 @@ function getCallHistoryGroupData(
             (
               SELECT JSON_GROUP_ARRAY(
                 JSON_OBJECT(
-                  'callId', callId,
-                  'timestamp', timestamp
+                  'callId', callsHistory.callId,
+                  'timestamp', callsHistory.timestamp
                 )
               )
               FROM callsHistory
@@ -5219,7 +5353,7 @@ function getCallHistoryGroupData(
                 -- Desktop Constraints:
                 AND callsHistory.status IS c.status
                 AND ${filterClause}
-              ORDER BY timestamp DESC
+              ORDER BY callsHistory.timestamp DESC
             ) as possibleChildren,
 
             -- 1c. 'inPeriod': This identifies all calls in a time period after the
@@ -5311,12 +5445,7 @@ const groupsDataSchema = z.array(
   })
 );
 
-const possibleChildrenSchema = z.array(
-  callHistoryDetailsSchema.pick({
-    callId: true,
-    timestamp: true,
-  })
-);
+const possibleChildrenSchema = z.array(callHistoryGroupChildSchema);
 
 function getCallHistoryGroups(
   db: ReadableDB,
@@ -5424,6 +5553,27 @@ function hasGroupCallHistoryMessage(
     });
 
   return exists === 1;
+}
+
+function getPrevUnreadCallIdInConversation(
+  db: ReadableDB,
+  conversationId: string,
+  receivedAt: number
+): string | null {
+  const [query, params] = sql`
+    SELECT messages.callId FROM messages
+    INNER JOIN callsHistory ON callsHistory.callId = messages.callId
+    WHERE messages.conversationId = ${conversationId}
+      AND messages.type IS 'call-history'
+      AND messages.seenStatus IS ${SEEN_STATUS_UNSEEN}
+      AND callsHistory.direction IS ${CALL_STATUS_INCOMING}
+      AND messages.received_at <= ${receivedAt}
+    ORDER BY messages.received_at DESC, messages.sent_at DESC
+    LIMIT 1
+  `;
+
+  const callId = db.prepare(query, { pluck: true }).get<string>(params);
+  return callId ?? null;
 }
 
 function hasMedia(db: ReadableDB, conversationId: string): boolean {
@@ -5818,13 +5968,15 @@ function getSortedDocuments(
       type: 'contacts',
     }) as Array<ContactMediaItemDBType>;
 
-    return sortBy(
-      (documents as Array<MediaItemDBType | ContactMediaItemDBType>).concat(
-        contacts
-      ),
-      [raw => raw.message.receivedAt, raw => raw.message.sentAt],
-      ['DESC', 'DESC']
-    ).slice(0, options.limit);
+    return lodash
+      .orderBy(
+        (documents as Array<MediaItemDBType | ContactMediaItemDBType>).concat(
+          contacts
+        ),
+        [raw => raw.message.receivedAt, raw => raw.message.sentAt],
+        ['desc', 'desc']
+      )
+      .slice(0, options.limit);
   })();
 }
 
@@ -6944,14 +7096,15 @@ function createOrUpdateStickerPacks(
     }
   })();
 }
-function updateStickerPackStatus(
+function updateStickerPackStatusAndPosition(
   db: WritableDB,
   id: string,
   status: StickerPackStatusType,
-  options?: { timestamp: number }
+  options?: { timestamp?: number; position?: number }
 ): StickerPackStatusType | null {
   const timestamp = options ? options.timestamp || Date.now() : Date.now();
   const installedAt = status === 'installed' ? timestamp : null;
+  const position = options?.position;
 
   return db.transaction(() => {
     const [select, selectParams] = sql`
@@ -6965,13 +7118,37 @@ function updateStickerPackStatus(
         })
         .get<StickerPackRow['status']>(selectParams) ?? null;
 
-    const [update, updateParams] = sql`
-      UPDATE sticker_packs
-      SET status = ${status}, installedAt = ${installedAt}
-      WHERE id IS ${id}
-    `;
-
-    db.prepare(update).run(updateParams);
+    if (position != null) {
+      db.prepare(
+        `
+        UPDATE sticker_packs
+        SET
+          status = $status,
+          installedAt = $installedAt,
+          position = $position
+        WHERE id = $id;
+        `
+      ).run({
+        id,
+        status,
+        installedAt,
+        position,
+      });
+    } else {
+      db.prepare(
+        `
+        UPDATE sticker_packs
+        SET
+          status = $status,
+          installedAt = $installedAt
+        WHERE id = $id;
+        `
+      ).run({
+        id,
+        status,
+        installedAt,
+      });
+    }
 
     return oldStatus;
   })();
@@ -7028,6 +7205,25 @@ function updateStickerPackInfo(
     });
   }
 }
+
+function updateStickerPacksPositions(
+  db: WritableDB,
+  packIdsAndPositions: ReadonlyArray<{ id: string; position: number }>
+): void {
+  return db.transaction(() => {
+    for (const packIdsAndPosition of packIdsAndPositions) {
+      const [query, params] = sql`
+        UPDATE sticker_packs
+        SET
+          position = ${packIdsAndPosition.position},
+          storageNeedsSync = 1
+        WHERE id = ${packIdsAndPosition.id}
+      `;
+      db.prepare(query).run(params);
+    }
+  })();
+}
+
 function clearAllErrorStickerPackAttempts(db: WritableDB): void {
   db.prepare(
     `
@@ -7478,30 +7674,56 @@ function getStickerPackInfo(
     return undefined;
   })();
 }
+
 function installStickerPack(
   db: WritableDB,
   packId: string,
-  timestamp: number
-): boolean {
+  timestamp: number,
+  position?: number
+): { wasPreviouslyUninstalled: boolean; position?: number } {
   return db.transaction(() => {
-    const status = 'installed';
     removeUninstalledStickerPack(db, packId);
-    const oldStatus = updateStickerPackStatus(db, packId, status, {
-      timestamp,
-    });
+
+    // Default position to the end of the list
+    const newPosition: number =
+      position ??
+      db
+        .prepare(
+          `
+          SELECT IFNULL(MAX(position) + 1, 0)
+          FROM sticker_packs
+          WHERE id != $packId
+        `,
+          {
+            pluck: true,
+          }
+        )
+        .get({ packId }) ??
+      0;
+
+    const oldStatus = updateStickerPackStatusAndPosition(
+      db,
+      packId,
+      'installed',
+      {
+        position: newPosition,
+        timestamp,
+      }
+    );
 
     const wasPreviouslyUninstalled = oldStatus !== 'installed';
-
-    if (wasPreviouslyUninstalled) {
-      const [query, params] = sql`
-        UPDATE sticker_packs SET
-          storageNeedsSync = 1
-        WHERE id IS ${packId};
-      `;
-      db.prepare(query).run(params);
+    if (!wasPreviouslyUninstalled) {
+      return { wasPreviouslyUninstalled: false };
     }
 
-    return wasPreviouslyUninstalled;
+    const [query, params] = sql`
+      UPDATE sticker_packs SET
+        storageNeedsSync = 1
+      WHERE id IS ${packId};
+    `;
+    db.prepare(query).run(params);
+
+    return { wasPreviouslyUninstalled: true, position: newPosition };
   })();
 }
 function uninstallStickerPack(
@@ -7511,7 +7733,7 @@ function uninstallStickerPack(
 ): boolean {
   return db.transaction(() => {
     const status = 'downloaded';
-    const oldStatus = updateStickerPackStatus(db, packId, status);
+    const oldStatus = updateStickerPackStatusAndPosition(db, packId, status);
 
     const wasPreviouslyInstalled = oldStatus === 'installed';
 

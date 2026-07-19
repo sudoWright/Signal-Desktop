@@ -109,6 +109,8 @@ function getToast(toastType: ToastType): AnyToast {
       return { toastType: ToastType.CopiedBackupKey };
     case ToastType.CopiedCallLink:
       return { toastType: ToastType.CopiedCallLink };
+    case ToastType.CopiedStickerPackLink:
+      return { toastType: ToastType.CopiedStickerPackLink };
     case ToastType.CopiedUsername:
       return { toastType: ToastType.CopiedUsername };
     case ToastType.CopiedUsernameLink:
@@ -208,7 +210,10 @@ function getToast(toastType: ToastType): AnyToast {
     case ToastType.OriginalMessageNotFound:
       return { toastType: ToastType.OriginalMessageNotFound };
     case ToastType.PinnedConversationsFull:
-      return { toastType: ToastType.PinnedConversationsFull };
+      return {
+        toastType: ToastType.PinnedConversationsFull,
+        maxPinnedConversations: 4,
+      };
     case ToastType.PinnedMessageNotFound:
       return { toastType: ToastType.PinnedMessageNotFound };
     case ToastType.PollNotFound:

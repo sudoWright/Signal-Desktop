@@ -881,6 +881,82 @@ export function MediaEditor({
 
   const [isSaving, setIsSaving] = useState(false);
 
+  const handleSave = useCallback(async () => {
+    if (!fabricCanvas) {
+      return;
+    }
+
+    setEditMode(undefined);
+    setIsSaving(true);
+
+    let data: Uint8Array<ArrayBuffer>;
+    let blurHash: string;
+    try {
+      const renderFabricCanvas = await cloneFabricCanvas(fabricCanvas);
+
+      renderFabricCanvas.remove(
+        ...renderFabricCanvas.getObjects().filter(obj => obj.excludeFromExport)
+      );
+
+      let finalImageState: ImageStateType;
+      const pendingCrop = getPendingCrop(fabricCanvas);
+      if (pendingCrop) {
+        finalImageState = getNewImageStateFromCrop(imageState, pendingCrop);
+        moveFabricObjectsForCrop(renderFabricCanvas, pendingCrop);
+        drawFabricBackgroundImage({
+          fabricCanvas: renderFabricCanvas,
+          image,
+          imageState: finalImageState,
+        });
+      } else {
+        finalImageState = imageState;
+      }
+
+      renderFabricCanvas.setDimensions({
+        width: finalImageState.width,
+        height: finalImageState.height,
+      });
+      renderFabricCanvas.setZoom(1);
+      const renderedCanvas = renderFabricCanvas.toCanvasElement();
+
+      data = await canvasToBytes(renderedCanvas);
+
+      const blob = new Blob([data], {
+        type: IMAGE_PNG,
+      });
+
+      blurHash = await imageToBlurHash(blob);
+    } catch (err) {
+      onTryClose();
+      throw err;
+    } finally {
+      setIsSaving(false);
+    }
+
+    onDone({
+      contentType: IMAGE_PNG,
+      data,
+      caption: caption !== '' ? caption : undefined,
+      captionBodyRanges: captionBodyRanges ?? undefined,
+      blurHash,
+      isViewOnce: localIsViewOnce,
+      isHighQuality: localIsHighQuality,
+    });
+  }, [
+    captionBodyRanges,
+    imageState,
+    localIsHighQuality,
+    localIsViewOnce,
+    fabricCanvas,
+    image,
+    imageToBlurHash,
+    caption,
+    onDone,
+    onTryClose,
+    setEditMode,
+    setIsSaving,
+  ]);
+
   // In an ideal world we'd use <ModalHost /> to get the nice animation benefits
   // but because of the way IText is implemented -- with a hidden textarea -- to
   // capture keyboard events, we can't use ModalHost since that traps focus, and
@@ -1416,10 +1492,11 @@ export function MediaEditor({
                     }}
                     emojiSkinToneDefault={emojiSkinToneDefault ?? null}
                     onSelectEmoji={onSelectEmoji}
-                    onSubmit={noop}
+                    onSubmit={handleSave}
                     onTextTooLong={onTextTooLong}
                     ourConversationId={ourConversationId}
                     placeholder={i18n('icu:MediaEditor__input-placeholder')}
+                    showRecoveryKeyPasteWarning={false}
                     platform={platform}
                     quotedMessageId={null}
                     sendCounter={0}
@@ -1447,82 +1524,11 @@ export function MediaEditor({
                   />
                 </div>
                 <AxoButton.Root
-                  variant="primary"
+                  variant="strong-primary"
                   size="md"
                   disabled={!image}
                   pending={isSaving || isSending}
-                  onClick={async () => {
-                    if (!fabricCanvas) {
-                      return;
-                    }
-
-                    setEditMode(undefined);
-                    setIsSaving(true);
-
-                    let data: Uint8Array<ArrayBuffer>;
-                    let blurHash: string;
-                    try {
-                      const renderFabricCanvas =
-                        await cloneFabricCanvas(fabricCanvas);
-
-                      renderFabricCanvas.remove(
-                        ...renderFabricCanvas
-                          .getObjects()
-                          .filter(obj => obj.excludeFromExport)
-                      );
-
-                      let finalImageState: ImageStateType;
-                      const pendingCrop = getPendingCrop(fabricCanvas);
-                      if (pendingCrop) {
-                        finalImageState = getNewImageStateFromCrop(
-                          imageState,
-                          pendingCrop
-                        );
-                        moveFabricObjectsForCrop(
-                          renderFabricCanvas,
-                          pendingCrop
-                        );
-                        drawFabricBackgroundImage({
-                          fabricCanvas: renderFabricCanvas,
-                          image,
-                          imageState: finalImageState,
-                        });
-                      } else {
-                        finalImageState = imageState;
-                      }
-
-                      renderFabricCanvas.setDimensions({
-                        width: finalImageState.width,
-                        height: finalImageState.height,
-                      });
-                      renderFabricCanvas.setZoom(1);
-                      const renderedCanvas =
-                        renderFabricCanvas.toCanvasElement();
-
-                      data = await canvasToBytes(renderedCanvas);
-
-                      const blob = new Blob([data], {
-                        type: IMAGE_PNG,
-                      });
-
-                      blurHash = await imageToBlurHash(blob);
-                    } catch (err) {
-                      onTryClose();
-                      throw err;
-                    } finally {
-                      setIsSaving(false);
-                    }
-
-                    onDone({
-                      contentType: IMAGE_PNG,
-                      data,
-                      caption: caption !== '' ? caption : undefined,
-                      captionBodyRanges: captionBodyRanges ?? undefined,
-                      blurHash,
-                      isViewOnce: localIsViewOnce,
-                      isHighQuality: localIsHighQuality,
-                    });
-                  }}
+                  onClick={handleSave}
                 >
                   {doneButtonLabel || i18n('icu:save')}
                 </AxoButton.Root>

@@ -53,10 +53,13 @@ import { explodePromise } from '../ts/util/explodePromise.std.ts';
 
 import './startup_config.main.ts';
 
-import type { RendererConfigType } from '../ts/types/RendererConfig.std.ts';
+import type {
+  RendererConfigType,
+  SVR2EnclaveType,
+} from '../ts/types/RendererConfig.std.ts';
 import {
-  directoryConfigSchema,
   rendererConfigSchema,
+  svr2ConfigSchema,
 } from '../ts/types/RendererConfig.std.ts';
 import config from './config.main.ts';
 import {
@@ -253,53 +256,51 @@ function showWindow() {
   }
 }
 
-if (!process.mas) {
-  log.info('making app single instance');
-  const gotLock = app.requestSingleInstanceLock();
-  if (!gotLock) {
-    log.info('quitting; we are the second instance');
-    app.exit();
-  } else {
-    app.on('second-instance', (_e: Electron.Event, argv: Array<string>) => {
-      // Workaround to let AllowSetForegroundWindow succeed.
-      // See https://www.npmjs.com/package/@signalapp/windows-dummy-keystroke for a full explanation of why this is needed.
-      if (OS.isWindows()) {
-        sendDummyKeystroke();
+log.info('making app single instance');
+const gotLock = app.requestSingleInstanceLock();
+if (!gotLock) {
+  log.info('quitting; we are the second instance');
+  app.exit();
+} else {
+  app.on('second-instance', (_e: Electron.Event, argv: Array<string>) => {
+    // Workaround to let AllowSetForegroundWindow succeed.
+    // See https://www.npmjs.com/package/@signalapp/windows-dummy-keystroke for a full explanation of why this is needed.
+    if (OS.isWindows()) {
+      sendDummyKeystroke();
+    }
+
+    // Someone tried to run a second instance, we should focus our window
+    if (mainWindow) {
+      if (mainWindow.isMinimized()) {
+        mainWindow.restore();
       }
 
-      // Someone tried to run a second instance, we should focus our window
-      if (mainWindow) {
-        if (mainWindow.isMinimized()) {
-          mainWindow.restore();
-        }
+      showWindow();
+    }
 
-        showWindow();
+    const route = maybeGetIncomingSignalRoute(argv);
+    if (route != null) {
+      handleSignalRoute(route);
+    }
+    return true;
+  });
+
+  // This event is received in macOS packaged builds.
+  app.on('open-url', (event, incomingHref) => {
+    event.preventDefault();
+    const route = parseSignalRoute(incomingHref);
+
+    if (route != null) {
+      // When the app isn't open and you click a signal link to open the app, then
+      // this event will emit before mainWindow is ready. We save the value for later.
+      if (mainWindow == null || !mainWindow.webContents) {
+        macInitialOpenUrlRoute = route;
+        return;
       }
 
-      const route = maybeGetIncomingSignalRoute(argv);
-      if (route != null) {
-        handleSignalRoute(route);
-      }
-      return true;
-    });
-
-    // This event is received in macOS packaged builds.
-    app.on('open-url', (event, incomingHref) => {
-      event.preventDefault();
-      const route = parseSignalRoute(incomingHref);
-
-      if (route != null) {
-        // When the app isn't open and you click a signal link to open the app, then
-        // this event will emit before mainWindow is ready. We save the value for later.
-        if (mainWindow == null || !mainWindow.webContents) {
-          macInitialOpenUrlRoute = route;
-          return;
-        }
-
-        handleSignalRoute(route);
-      }
-    });
-  }
+      handleSignalRoute(route);
+    }
+  });
 }
 
 let sqlInitTimeStart = 0;
@@ -358,6 +359,8 @@ async function getResolvedThemeSetting(
   if (theme === 'system') {
     return nativeTheme.shouldUseDarkColors ? ThemeType.dark : ThemeType.light;
   }
+  // Set window theme from setting as early as possible
+  nativeTheme.themeSource = theme;
   return ThemeType[theme];
 }
 
@@ -366,23 +369,29 @@ type GetBackgroundColorOptionsType = GetThemeSettingOptionsType &
     signalColors?: boolean;
   }>;
 
+const AXO_COLOR_BRAND_LOGO = '#3b45fd';
+const AXO_COLOR_SURFACE_PRIMARY_LIGHT = '#fafafa';
+const AXO_COLOR_SURFACE_PRIMARY_DARK = '#191919';
+
 async function getBackgroundColor(
   options?: GetBackgroundColorOptionsType
 ): Promise<string> {
   const theme = await getResolvedThemeSetting(options);
 
   if (theme === 'light') {
-    return options?.signalColors ? '#3a76f0' : '#ffffff';
+    return options?.signalColors
+      ? AXO_COLOR_BRAND_LOGO
+      : AXO_COLOR_SURFACE_PRIMARY_LIGHT;
   }
 
   if (theme === 'dark') {
-    return '#121212';
+    return AXO_COLOR_SURFACE_PRIMARY_DARK;
   }
 
   throw missingCaseError(theme);
 }
 
-async function getLocaleOverrideSetting(): Promise<string | null> {
+function getLocaleOverrideSetting(): string | null {
   const value = ephemeralConfig.get('localeOverride');
   // oxlint-disable-next-line eqeqeq -- Checking for null explicitly
   if (typeof value === 'string' || value === null) {
@@ -2026,6 +2035,30 @@ function loadPreferredSystemLocales(): Array<string> {
   return app.getPreferredSystemLanguages();
 }
 
+function resolveTranslationsLocale() {
+  if (!resolvedTranslationsLocale) {
+    preferredSystemLocales = resolveCanonicalLocales(
+      loadPreferredSystemLocales()
+    );
+
+    localeOverride = getLocaleOverrideSetting();
+
+    const hourCyclePreference = getHourCyclePreference();
+    log.info(`app.ready: hour cycle preference: ${hourCyclePreference}`);
+
+    log.info('app.ready: preferred system locales:', preferredSystemLocales);
+    resolvedTranslationsLocale = loadLocale({
+      rootDir,
+      hourCyclePreference,
+      isPackaged: app.isPackaged,
+      localeDirectionTestingOverride,
+      localeOverride,
+      logger: log,
+      preferredSystemLocales,
+    });
+  }
+}
+
 async function getDefaultLoginItemSettings(): Promise<Settings> {
   if (!OS.isWindows()) {
     return {};
@@ -2052,6 +2085,9 @@ const featuresToDisable = `HardwareMediaKeyHandling,${app.commandLine.getSwitchV
   'disable-features'
 )}`;
 app.commandLine.appendSwitch('disable-features', featuresToDisable);
+
+resolveTranslationsLocale();
+app.commandLine.appendSwitch('lang', getResolvedMessagesLocale().name);
 
 // This has to run before the 'ready' event.
 electronProtocol.registerSchemesAsPrivileged([
@@ -2120,27 +2156,7 @@ app.on('ready', async () => {
   // ERROR-level logging is sufficient for main process.
   trackHeapSize();
 
-  if (!resolvedTranslationsLocale) {
-    preferredSystemLocales = resolveCanonicalLocales(
-      loadPreferredSystemLocales()
-    );
-
-    localeOverride = await getLocaleOverrideSetting();
-
-    const hourCyclePreference = getHourCyclePreference();
-    log.info(`app.ready: hour cycle preference: ${hourCyclePreference}`);
-
-    log.info('app.ready: preferred system locales:', preferredSystemLocales);
-    resolvedTranslationsLocale = loadLocale({
-      rootDir,
-      hourCyclePreference,
-      isPackaged: app.isPackaged,
-      localeDirectionTestingOverride,
-      localeOverride,
-      logger: log,
-      preferredSystemLocales,
-    });
-  }
+  resolveTranslationsLocale();
 
   sqlInitPromise = initializeSQL(userDataPath);
 
@@ -2266,7 +2282,7 @@ app.on('ready', async () => {
     );
   }
 
-  GlobalErrors.updateLocale(resolvedTranslationsLocale);
+  GlobalErrors.updateLocale(getResolvedMessagesLocale());
 
   // If the sql initialization takes more than three seconds to complete, we
   // want to notify the user that things are happening
@@ -2392,7 +2408,7 @@ app.on('ready', async () => {
   setupMenu();
 
   systemTrayService = new SystemTrayService({
-    i18n: resolvedTranslationsLocale.i18n,
+    i18n: getResolvedMessagesLocale().i18n,
   });
   systemTrayService.setMainWindow(mainWindow);
   systemTrayService.setEnabled(
@@ -2864,15 +2880,15 @@ function removeDarkOverlay() {
 ipc.on('get-config', async event => {
   const theme = await getResolvedThemeSetting();
 
-  const directoryConfig = safeParseLoose(directoryConfigSchema, {
-    directoryUrl: config.get<string | null>('directoryUrl') || undefined,
-    directoryMRENCLAVE:
-      config.get<string | null>('directoryMRENCLAVE') || undefined,
+  const svr2Config = safeParseLoose(svr2ConfigSchema, {
+    svr2Url: config.get<string | null>('svr2Url') || undefined,
+    svr2MRENCLAVE:
+      config.get<Array<SVR2EnclaveType> | null>('svr2MRENCLAVE') || undefined,
   });
-  if (!directoryConfig.success) {
+  if (!svr2Config.success) {
     throw new Error(
-      `prepareUrl: Failed to parse renderer directory config ${JSON.stringify(
-        directoryConfig.error.flatten()
+      `prepareUrl: Failed to parse renderer svr2 config ${JSON.stringify(
+        svr2Config.error.flatten()
       )}`
     );
   }
@@ -2933,7 +2949,7 @@ ipc.on('get-config', async event => {
     installPath: rootDir,
     userDataPath: app.getPath('userData'),
 
-    directoryConfig: directoryConfig.data,
+    svr2Config: svr2Config.data,
 
     // Only used by the main window
     isMainWindowFullScreen: Boolean(mainWindow?.isFullScreen()),

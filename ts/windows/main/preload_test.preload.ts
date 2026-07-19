@@ -141,6 +141,7 @@ window.testUtilities = {
         packs: {},
         recentStickers: [],
         blessedPacks: {},
+        stickerManagerTab: 'all',
       },
       theme: ThemeType.dark,
     });
@@ -151,7 +152,7 @@ window.testUtilities = {
   prepareTests() {
     // oxlint-disable-next-line no-console
     console.log('Preparing tests...');
-    const files = sync('../../test-{both,electron}/**/*_test.*.ts', {
+    const files = sync('../../test-electron/**/*_test.*.{ts,tsx}', {
       absolute: true,
       cwd: __dirname,
     });

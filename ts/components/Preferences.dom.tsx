@@ -204,7 +204,6 @@ export type PropsDataType = {
   isHideMenuBarSupported: boolean;
   isKeyTransparencyAvailable: boolean;
   isNotificationAttentionSupported: boolean;
-  isPlaintextExportEnabled: boolean;
   isSyncSupported: boolean;
   isSystemTraySupported: boolean;
   isMinimizeToAndStartInSystemTraySupported: boolean;
@@ -482,7 +481,6 @@ export function Preferences({
   isHideMenuBarSupported,
   isKeyTransparencyAvailable,
   isNotificationAttentionSupported,
-  isPlaintextExportEnabled,
   isSyncSupported,
   isSystemTraySupported,
   isMinimizeToAndStartInSystemTraySupported,
@@ -1015,14 +1013,14 @@ export function Preferences({
             modalFooter={
               <>
                 <AxoButton.Root
-                  variant="secondary"
+                  variant="subtle-secondary"
                   size="lg"
                   onClick={closeLanguageDialog}
                 >
                   {i18n('icu:cancel')}
                 </AxoButton.Root>
                 <AxoButton.Root
-                  variant="primary"
+                  variant="strong-primary"
                   size="lg"
                   disabled={selectedLanguageLocale === localeOverride}
                   onClick={() => {
@@ -1090,7 +1088,7 @@ export function Preferences({
               {i18n('icu:cancel')}
             </AxoConfirmDialog.Cancel>
             <AxoConfirmDialog.Action
-              variant="primary"
+              variant="strong-primary"
               onClick={() => onLocaleChange(selectedLanguageLocale)}
             >
               {i18n('icu:Preferences__LanguageModal__Restart__Button')}
@@ -1287,7 +1285,7 @@ export function Preferences({
             right={
               <AxoButton.Root
                 size="lg"
-                variant="secondary"
+                variant="subtle-secondary"
                 onClick={() => {
                   setSettingsLocation({
                     page: SettingsPage.ChatFolders,
@@ -1307,33 +1305,29 @@ export function Preferences({
           />
         </SettingsRow>
 
-        {isPlaintextExportEnabled && (
-          <SettingsRow>
-            <Control
-              left={
-                <>
-                  <div>
-                    {i18n('icu:PlaintextExport--PreferencesRow--Header')}
-                  </div>
-                  <div className="Preferences__description">
-                    {i18n('icu:PlaintextExport--PreferencesRow--Description')}
-                  </div>
-                </>
-              }
-              right={
-                <div className="Preferences__right-button">
-                  <AxoButton.Root
-                    variant="secondary"
-                    size="lg"
-                    onClick={startPlaintextExport}
-                  >
-                    {i18n('icu:PlaintextExport--ActionButton')}
-                  </AxoButton.Root>
+        <SettingsRow>
+          <Control
+            left={
+              <>
+                <div>{i18n('icu:PlaintextExport--PreferencesRow--Header')}</div>
+                <div className="Preferences__description">
+                  {i18n('icu:PlaintextExport--PreferencesRow--Description')}
                 </div>
-              }
-            />
-          </SettingsRow>
-        )}
+              </>
+            }
+            right={
+              <div className="Preferences__right-button">
+                <AxoButton.Root
+                  variant="subtle-secondary"
+                  size="lg"
+                  onClick={startPlaintextExport}
+                >
+                  {i18n('icu:PlaintextExport--ActionButton')}
+                </AxoButton.Root>
+              </div>
+            }
+          />
+        </SettingsRow>
 
         {isSyncSupported && (
           <SettingsRow>
@@ -1358,7 +1352,7 @@ export function Preferences({
               right={
                 <div className="Preferences__right-button">
                   <AxoButton.Root
-                    variant="secondary"
+                    variant="subtle-secondary"
                     size="lg"
                     pending={nowSyncing}
                     onClick={async () => {
@@ -1657,7 +1651,7 @@ export function Preferences({
               }
               right={
                 <AxoButton.Root
-                  variant="secondary"
+                  variant="subtle-secondary"
                   size="lg"
                   onClick={() =>
                     setSettingsLocation({
@@ -1726,7 +1720,7 @@ export function Preferences({
               )}
             >
               <AxoButton.Root
-                variant="secondary"
+                variant="subtle-secondary"
                 size="lg"
                 onClick={() => setSettingsLocation({ page: SettingsPage.PNP })}
               >
@@ -1741,7 +1735,7 @@ export function Preferences({
             description={blockedDescription}
             right={
               <AxoButton.Root
-                variant="secondary"
+                variant="subtle-secondary"
                 size="lg"
                 disabled={!blockedContacts.length && !blockedGroups.length}
                 onClick={() =>
@@ -1862,7 +1856,7 @@ export function Preferences({
           >
             <AxoConfirmDialog.Cancel />
             <AxoConfirmDialog.Action
-              variant="destructive"
+              variant="strong-destructive"
               onClick={() => onContentProtectionChange(false)}
             >
               {i18n('icu:Preferences__content-protection__modal--disable')}
@@ -1889,7 +1883,7 @@ export function Preferences({
               {hasStoriesDisabled ? (
                 <AxoButton.Root
                   onClick={() => onHasStoriesDisabledChanged(false)}
-                  variant="secondary"
+                  variant="subtle-secondary"
                   size="lg"
                 >
                   {i18n('icu:Preferences__turn-stories-on')}
@@ -1938,7 +1932,7 @@ export function Preferences({
                     href={KEY_TRANSPARENCY_URL}
                     rel="noreferrer"
                     target="_blank"
-                    className={tw('text-label-primary')}
+                    className={tw('text-primary')}
                   >
                     <I18n
                       i18n={i18n}
@@ -1997,7 +1991,7 @@ export function Preferences({
           >
             <AxoConfirmDialog.Cancel />
             <AxoConfirmDialog.Action
-              variant="destructive"
+              variant="strong-destructive"
               onClick={doDeleteAllData}
             >
               {i18n('icu:clearDataButton')}
@@ -2044,7 +2038,7 @@ export function Preferences({
           >
             <AxoConfirmDialog.Cancel />
             <AxoConfirmDialog.Action
-              variant="destructive"
+              variant="strong-destructive"
               onClick={doDeleteAllData}
             >
               {i18n('icu:deleteAccountButton')}
@@ -2060,7 +2054,7 @@ export function Preferences({
         >
           <AxoConfirmDialog.Cancel />
           <AxoConfirmDialog.Action
-            variant="destructive"
+            variant="strong-destructive"
             onClick={() => onHasStoriesDisabledChanged(true)}
           >
             {i18n('icu:Preferences__turn-stories-off--action')}
@@ -2425,7 +2419,7 @@ export function Preferences({
         >
           <AxoConfirmDialog.Cancel />
           <AxoConfirmDialog.Action
-            variant="primary"
+            variant="strong-primary"
             onClick={() =>
               onWhoCanFindMeChange(PhoneNumberDiscoverability.NotDiscoverable)
             }

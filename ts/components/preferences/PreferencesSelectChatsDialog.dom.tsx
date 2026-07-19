@@ -246,6 +246,7 @@ export function PreferencesSelectChatsDialog(
                       onClickContactCheckbox={handleToggleSelectedConversation}
                       rowCount={rows.length}
                       shouldRecomputeRowHeights={false}
+                      resetShouldRecomputeRowHeights={shouldNeverBeCalled}
                       theme={props.theme}
                       // never called:
                       blockConversation={shouldNeverBeCalled}
@@ -274,7 +275,7 @@ export function PreferencesSelectChatsDialog(
         </AxoDialog.Body>
         <AxoDialog.Footer>
           <AxoDialog.Actions>
-            <AxoDialog.Action variant="primary" onClick={handleClose}>
+            <AxoDialog.Action variant="strong-primary" onClick={handleClose}>
               {i18n(
                 'icu:Preferences__EditChatFolderPage__SelectChatsDialog__DoneButton'
               )}

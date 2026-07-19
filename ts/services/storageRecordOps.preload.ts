@@ -1265,6 +1265,7 @@ export async function mergeGroupV2Record(
     storySendMode,
 
     needsStorageServiceSync: false,
+    needsGroupUpdate: undefined,
   });
 
   // We only update verified name hash if it is truthy, to avoid races where a linked
@@ -2028,29 +2029,44 @@ export async function mergeAccountRecord(
 
   applyAvatarColor(ourConversation, accountRecord.avatarColor);
 
+  if (releaseNotesChatArchived != null) {
+    signalConversation.set({
+      isArchived: releaseNotesChatArchived,
+    });
+  }
+  if (releaseNotesChatMarkedUnread != null) {
+    signalConversation.set({
+      markedUnread: releaseNotesChatMarkedUnread,
+    });
+  }
+
   signalConversation.set({
-    isArchived: releaseNotesChatArchived,
-    markedUnread: releaseNotesChatMarkedUnread,
     storageID,
     storageVersion,
     needsStorageServiceSync: false,
   });
-  await applyMessageRequestState(
-    {
-      blocked: releaseNotesChatBlocked,
-      whitelisted: !releaseNotesChatBlocked,
-    },
-    signalConversation
-  );
-  signalConversation.setMuteExpiration(
-    getTimestampFromLong(
-      releaseNotesChatMutedUntilTimestamp,
-      Number.MAX_SAFE_INTEGER
-    ),
-    {
-      viaStorageServiceSync: true,
-    }
-  );
+
+  if (releaseNotesChatBlocked != null) {
+    await applyMessageRequestState(
+      {
+        blocked: releaseNotesChatBlocked,
+        whitelisted: !releaseNotesChatBlocked,
+      },
+      signalConversation
+    );
+  }
+
+  if (releaseNotesChatMutedUntilTimestamp != null) {
+    signalConversation.setMuteExpiration(
+      getTimestampFromLong(
+        releaseNotesChatMutedUntilTimestamp,
+        Number.MAX_SAFE_INTEGER
+      ),
+      {
+        viaStorageServiceSync: true,
+      }
+    );
+  }
 
   updatedConversations.push(ourConversation);
   updatedConversations.push(signalConversation);
@@ -2291,11 +2307,12 @@ export async function mergeStickerPackRecord(
   const wasUninstalled = Boolean(localStickerPack?.uninstalledAt);
   const isUninstalled = Boolean(stickerPack.uninstalledAt);
 
+  const newPosition = stickerPack.position ?? undefined;
   details.push(
     `wasUninstalled=${wasUninstalled}`,
     `isUninstalled=${isUninstalled}`,
     `oldPosition=${localStickerPack?.position ?? '?'}`,
-    `newPosition=${stickerPack.position ?? '?'}`
+    `newPosition=${newPosition ?? '?'}`
   );
 
   if (!wasUninstalled && isUninstalled) {
@@ -2326,14 +2343,27 @@ export async function mergeStickerPackRecord(
         stickerPack.key,
         {
           actionSource: 'storageService',
+          position: newPosition,
         }
       );
     } else {
-      void Stickers.downloadStickerPack(stickerPack.id, stickerPack.key, {
-        finalStatus: 'installed',
-        actionSource: 'storageService',
-      });
+      drop(
+        Stickers.downloadStickerPack(stickerPack.id, stickerPack.key, {
+          finalStatus: 'installed',
+          actionSource: 'storageService',
+          position: newPosition,
+        })
+      );
     }
+  } else if (
+    localStickerPack &&
+    !isUninstalled &&
+    newPosition &&
+    newPosition !== localStickerPack?.position
+  ) {
+    window.reduxActions.stickers.stickerPackUpdated(localStickerPack.id, {
+      position: newPosition,
+    });
   }
 
   await DataWriter.updateStickerPackInfo(stickerPack);
@@ -2512,7 +2542,7 @@ function protoToChatFolderType(
 function recipientToConversationId(
   recipient: Proto.Recipient,
   logPrefix: string
-): string {
+): string | undefined {
   let match: ConversationModel | undefined;
   if (recipient.identifier?.contact != null) {
     const serviceId = fromServiceIdBinaryOrString(
@@ -2542,7 +2572,10 @@ function recipientToConversationId(
   } else {
     throw new Error('Unexpected type of recipient');
   }
-  strictAssert(match, `${logPrefix}: Missing conversation for recipient`);
+  if (!match) {
+    log.warn(`${logPrefix}: unknown recipient, dropping`);
+    return undefined;
+  }
   return match.id;
 }
 
@@ -2550,9 +2583,11 @@ function recipientsToConversationIds(
   recipients: ReadonlyArray<Proto.Recipient>,
   logPrefix: string
 ): ReadonlyArray<string> {
-  return recipients.map(recipient => {
-    return recipientToConversationId(recipient, logPrefix);
-  });
+  return recipients
+    .map(recipient => {
+      return recipientToConversationId(recipient, logPrefix);
+    })
+    .filter(isNotNil);
 }
 
 export async function mergeChatFolderRecord(

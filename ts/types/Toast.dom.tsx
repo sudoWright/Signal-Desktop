@@ -31,6 +31,7 @@ export enum ToastType {
   ConversationUnarchived = 'ConversationUnarchived',
   CopiedBackupKey = 'CopiedBackupKey',
   CopiedCallLink = 'CopiedCallLink',
+  CopiedStickerPackLink = 'CopiedStickerPackLink',
   CopiedUsername = 'CopiedUsername',
   CopiedUsernameLink = 'CopiedUsernameLink',
   DangerousFileType = 'DangerousFileType',
@@ -159,6 +160,7 @@ export type AnyToast =
   | { toastType: ToastType.ConversationUnarchived }
   | { toastType: ToastType.CopiedBackupKey }
   | { toastType: ToastType.CopiedCallLink }
+  | { toastType: ToastType.CopiedStickerPackLink }
   | { toastType: ToastType.CopiedUsername }
   | { toastType: ToastType.CopiedUsernameLink }
   | { toastType: ToastType.DangerousFileType }
@@ -216,7 +218,10 @@ export type AnyToast =
       parameters: { enabled: boolean; name: string };
     }
   | { toastType: ToastType.OriginalMessageNotFound }
-  | { toastType: ToastType.PinnedConversationsFull }
+  | {
+      toastType: ToastType.PinnedConversationsFull;
+      maxPinnedConversations: number;
+    }
   | { toastType: ToastType.PinnedMessageNotFound }
   | { toastType: ToastType.PollNotFound }
   | { toastType: ToastType.ReactionFailed }

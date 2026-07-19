@@ -14,6 +14,9 @@
   "icu:AxoTextField.Clear": {
     "messageformat": "Изчистване"
   },
+  "icu:AxoBadge.MaxOverflow": {
+    "messageformat": "{max,number}+"
+  },
   "icu:AddUserToAnotherGroupModal__title": {
     "messageformat": "Добави към група"
   },
@@ -85,6 +88,9 @@
   },
   "icu:unknownContact": {
     "messageformat": "Непознат контакт"
+  },
+  "icu:deletedAccount": {
+    "messageformat": "Изтрит акаунт"
   },
   "icu:unknownContactShort": {
     "messageformat": "Непознат"
@@ -314,6 +320,9 @@
   "icu:LeftPaneChatFolders__ItemUnreadBadge__MaxCount": {
     "messageformat": "{maxCount,number}+"
   },
+  "icu:LeftPaneChatFolders__ItemUnreadBadge__AccessibleLabel": {
+    "messageformat": "{count, plural, one {{count,number} Unread Message} other {{count,number} Unread Messages}}"
+  },
   "icu:LeftPaneChatFolders__Item__ContextMenu__MarkAllRead": {
     "messageformat": "Маркиране на всички като прочетени"
   },
@@ -449,8 +458,8 @@
   "icu:unpinConversation": {
     "messageformat": "Откачане на чата"
   },
-  "icu:pinnedConversationsFull": {
-    "messageformat": "Можете да закачите до 4 чата"
+  "icu:pinnedConversations--max": {
+    "messageformat": "{maxPinnedConversations, plural, one {Може да закачите максимум {maxPinnedConversations,number} чат} other {Може да закачите максимум {maxPinnedConversations,number} чата}}"
   },
   "icu:view": {
     "messageformat": "Преглед"
@@ -2261,9 +2270,6 @@
   "icu:partiallySent": {
     "messageformat": "Частично изпратено, натиснете за повече информация"
   },
-  "icu:partiallyDeleted": {
-    "messageformat": "Изтриването е частично, кликнете, за да опитате отново"
-  },
   "icu:partiallyDeleted--clickForDetails": {
     "messageformat": "Частично изтрито, кликнете за повече информация"
   },
@@ -2466,7 +2472,7 @@
     "messageformat": "Неуспешно изтегляне"
   },
   "icu:Toast--unable-download-from-backup-tier": {
-    "messageformat": "Attachment missing from backup CDN"
+    "messageformat": "Attachment missing from backup CDN, please share desktop & primary logs"
   },
   "icu:ToastManager__CannotAddMemberLabel": {
     "messageformat": "Само администраторите могат да добавят етикети на членове в тази група."
@@ -2687,9 +2693,6 @@
   "icu:message--getDescription--gif": {
     "messageformat": "GIF"
   },
-  "icu:message--deletedForEveryone": {
-    "messageformat": "Това съобщение беше изтрито."
-  },
   "icu:message--deletedByAdmin": {
     "messageformat": "Администраторът {admin} изтри това съобщение"
   },
@@ -2780,14 +2783,11 @@
   "icu:stickers--toast--InstallFailed": {
     "messageformat": "Пакетът със стикери не беше инсталиран"
   },
-  "icu:stickers--StickerManager--Available": {
-    "messageformat": "Наличен"
+  "icu:stickers--StickerManager--MyStickers--None": {
+    "messageformat": "Няма пакети със стикери, добавете стикери, за да ги изпращате на приятели."
   },
-  "icu:stickers--StickerManager--InstalledPacks": {
-    "messageformat": "Инсталиран"
-  },
-  "icu:stickers--StickerManager--InstalledPacks--Empty": {
-    "messageformat": "Няма инсталирани стикери"
+  "icu:stickers--StickerManager--AddStickers": {
+    "messageformat": "Добавяне на стикери"
   },
   "icu:stickers--StickerManager--BlessedPacks": {
     "messageformat": "Signal Artist серии"
@@ -2795,14 +2795,17 @@
   "icu:stickers--StickerManager--BlessedPacks--Empty": {
     "messageformat": "Няма налични Signal Artist стикери"
   },
-  "icu:stickers--StickerManager--ReceivedPacks": {
-    "messageformat": "Получени стикери"
+  "icu:stickers--StickerManager--ReceivedPacks2": {
+    "messageformat": "Споделени с вас"
   },
-  "icu:stickers--StickerManager--ReceivedPacks--Empty": {
-    "messageformat": "Стикери от входящи съобщения ще се появяват тук"
+  "icu:stickers--StickerManager--ReceivedPacksDescription": {
+    "messageformat": "Когато получите стикер от някого, пакетът със стикери ще се показва тук."
   },
   "icu:stickers--StickerManager--Install": {
     "messageformat": "Инсталирай"
+  },
+  "icu:stickers--StickerManager--Installed": {
+    "messageformat": "Инсталиран"
   },
   "icu:stickers--StickerManager--Uninstall": {
     "messageformat": "Деинсталиране"
@@ -2810,11 +2813,59 @@
   "icu:stickers--StickerManager--UninstallWarning": {
     "messageformat": "Възможно е да не можете да преинсталирате този пакет със стикери, ако нямате изходящото съобщение."
   },
+  "icu:stickers--StickerManagerHeader--All": {
+    "messageformat": "Всички"
+  },
+  "icu:stickers--StickerManagerHeader--MyStickers": {
+    "messageformat": "Моите стикери"
+  },
+  "icu:stickers--StickerManagerPackContextMenu--Add": {
+    "messageformat": "Добавяне"
+  },
+  "icu:stickers--StickerManagerPackContextMenu--Remove": {
+    "messageformat": "Премахване"
+  },
+  "icu:stickers--StickerManagerPackDragHandle--Label": {
+    "messageformat": "Drag to reorder sticker pack"
+  },
+  "icu:stickers--StickerManagerBlessedPacksList--Label": {
+    "messageformat": "Signal Artist Series sticker packs"
+  },
+  "icu:stickers--StickerManagerReceivedPacksList--Label": {
+    "messageformat": "Received sticker packs"
+  },
+  "icu:stickers--StickerManagerInstalledPacksList--Label": {
+    "messageformat": "Installed sticker packs"
+  },
   "icu:stickers--StickerPreview--Title": {
     "messageformat": "Пакет стикери"
   },
   "icu:stickers--StickerPreview--Error": {
     "messageformat": "Грешка при отварянето на пакета със стикери. Проверете интернет връзката и опитайте отново."
+  },
+  "icu:stickers--StickerPreview--Install": {
+    "messageformat": "Добавяне на стикери"
+  },
+  "icu:stickers--StickerPreview--Remove": {
+    "messageformat": "Премахване"
+  },
+  "icu:stickers--StickerPreview--Link": {
+    "messageformat": "Линк"
+  },
+  "icu:stickers--StickerPreview--LinkCopied": {
+    "messageformat": "Линкът е копиран"
+  },
+  "icu:stickers--StickerPreview--StickerCount": {
+    "messageformat": "{count, plural, one {{count,number} стикер} other {{count,number} стикера}}"
+  },
+  "icu:stickers--StickerPreview--StickerNoEmojiAriaLabel": {
+    "messageformat": "Стикер без емоджи"
+  },
+  "icu:stickers--StickerPackLinkPreviewDescription": {
+    "messageformat": "Пакет със стикери от {author}"
+  },
+  "icu:stickers--ViewPack": {
+    "messageformat": "Преглед на пакета"
   },
   "icu:FunPicker__Tab--Emojis": {
     "messageformat": "Емоджи"
@@ -3028,6 +3079,18 @@
   },
   "icu:FunButton__Label--StickerPicker": {
     "messageformat": "Добавяне на стикер"
+  },
+  "icu:FunPicker__Label--StickerReply": {
+    "messageformat": "Reply"
+  },
+  "icu:FunPicker__Label--SendStickerReply": {
+    "messageformat": "Send"
+  },
+  "icu:FunPicker__Label--CancelStickerReply": {
+    "messageformat": "Cancel"
+  },
+  "icu:FunPicker__Label--Sticker": {
+    "messageformat": "Sticker"
   },
   "icu:confirmation-dialog--Cancel": {
     "messageformat": "Отказ"
@@ -4700,9 +4763,6 @@
   "icu:CompositionArea--expand": {
     "messageformat": "Разшири"
   },
-  "icu:CompositionArea--attach-file": {
-    "messageformat": "Добави файл"
-  },
   "icu:CompositionArea__AttachMenu__PhotosAndVideos": {
     "messageformat": "Снимки и видеа"
   },
@@ -5153,26 +5213,17 @@
   "icu:SelectModeActions--forwardSelectedMessages": {
     "messageformat": "Препращане на избраните съобщения"
   },
-  "icu:DeleteMessagesModal--title": {
-    "messageformat": "{count, plural, one {Изтриване на {count,number} съобщение?} other {Изтриване на {count,number} съобщения?}}"
-  },
   "icu:DeleteMessagesModal--title-2": {
     "messageformat": "{count, plural, one {Изтриване на избраното съобщение?} other {Изтриване на {count,number} избрани съобщения?}}"
   },
   "icu:DeleteMessagesModal--description": {
     "messageformat": "{count, plural, one {За кого искате да изтриете това съобщение?} other {За кого искате да изтриете тези съобщения?}}"
   },
-  "icu:DeleteMessagesModal--description--noteToSelf": {
-    "messageformat": "{count, plural, one {От кои устройства желаете да изтриете това съобщение?} other {От кои устройства желаете да изтриете тези съобщения?}}"
-  },
   "icu:DeleteMessagesModal--description--noteToSelf--deleteSync": {
     "messageformat": "{count, plural, one {Това съобщение ще бъде изтрито от всички ваши устройства.} other {Тези съобщения ще бъдат изтрити от всички ваши устройства.}}"
   },
   "icu:DeleteMessagesModal--deleteForMe": {
     "messageformat": "Изтриване за мен"
-  },
-  "icu:DeleteMessagesModal--deleteFromThisDevice": {
-    "messageformat": "Изтриване от това устройство"
   },
   "icu:DeleteMessagesModal--deleteForEveryone": {
     "messageformat": "Изтриване за всички"
@@ -5186,9 +5237,6 @@
   },
   "icu:DeleteMessagesModal--adminDeleteConfirmation--description__rollout": {
     "messageformat": "{count, plural, one {Членовете на групата, които използват най-новите версии на Signal, ще виждат, че сте изтрили това съобщение.} other {Членовете на групата, които използват най-новите версии на Signal, ще виждат, че сте изтрили тези съобщения.}}"
-  },
-  "icu:DeleteMessagesModal--deleteFromAllDevices": {
-    "messageformat": "Изтриване от всички устройства"
   },
   "icu:DeleteMessagesModal--noteToSelf--deleteSync": {
     "messageformat": "Изтриване"
@@ -6397,11 +6445,26 @@
   "icu:Preferences--local-backups-enter-backup-key": {
     "messageformat": "Въведете ключ"
   },
-  "icu:Preferences--local-backups-record-recovery-key": {
-    "messageformat": "Запишете своя ключ за възстановяване"
+  "icu:Preferences--local-backups-recovery-key--title": {
+    "messageformat": "Вашият ключ за възстановяване"
   },
-  "icu:Preferences--local-backups-record-backup-key-description": {
-    "messageformat": "Този ключ е необходим за възстановяване на акаунта и данните ви. Съхранявайте този ключ на сигурно място. Ако го изгубите, няма да можете да възстановите акаунта си. <learnMoreLink>Научете повече.</learnMoreLink>"
+  "icu:Preferences--local-backups-recovery-key--description": {
+    "messageformat": "Този ключ е необходим за възстановяване на акаунта и данните ви. Съхранявайте го на сигурно място и никога не го споделяйте с никого. Signal никога няма да ви изпраща съобщения, за да иска вашия ключ за възстановяване. <learnMoreLink>Научете повече.</learnMoreLink>"
+  },
+  "icu:Preferences__recovery-key__do-not-share-title": {
+    "messageformat": "Не споделяйте ключа за възстановяване"
+  },
+  "icu:Preferences__recovery-key__do-not-share-confirm": {
+    "messageformat": "Ясно"
+  },
+  "icu:CompositionInput__recovery-key-paste__share-key": {
+    "messageformat": "Споделяне на ключа"
+  },
+  "icu:CompositionInput__recovery-key-paste__do-not-share-key": {
+    "messageformat": "Не споделяйте ключа"
+  },
+  "icu:CompositionInput__recovery-key-warning--description": {
+    "messageformat": "Не споделяйте своя ключ за възстановяване с никого. Това ще позволи на други хора да откраднат акаунта ви. <strong>Signal никога няма да ви изпраща съобщения</strong>, за да иска вашия ключ за възстановяване. Никога не отговаряйте на чатове, в които някой се преструва за Signal. <learnMoreLink>Научете повече.</learnMoreLink>"
   },
   "icu:Preferences--local-backups-confirm-recovery-key": {
     "messageformat": "Потвърдете своя ключ за възстановяване"
@@ -6465,6 +6528,9 @@
   },
   "icu:Preferences__local-backups-auth-error--unauthorized": {
     "messageformat": "Това действие не може да бъде извършено, защото автентикацията на системата беше неуспешна. Моля, опитайте отново или отворете приложението Signal на вашето мобилно устройство и отидете на „Настройки за архивиране“, за да видите своя ключ за възстановяване."
+  },
+  "icu:Preferences__local-backups-auth-error--unknown-error": {
+    "messageformat": "При изпращането на заявка за автентикация на системата за това действие възникна грешка."
   },
   "icu:Preferences__view-key": {
     "messageformat": "Преглед на ключа"
@@ -6631,6 +6697,12 @@
   "icu:DialogUpdate__downloaded": {
     "messageformat": "Актуализацията е изтеглена"
   },
+  "icu:DialogUpdate__upgrade-mas": {
+    "messageformat": "Кликнете, за да отидете в магазина за приложения"
+  },
+  "icu:DialogExpiredBuild__upgrade-mas": {
+    "messageformat": "Кликнете, за да отидете в магазина за приложения"
+  },
   "icu:CriticalIdlePrimaryDevice__title": {
     "messageformat": "Отворете Signal на телефона си"
   },
@@ -6669,6 +6741,405 @@
   },
   "icu:InstallScreenUpdateDialog--cannot-update__body": {
     "messageformat": "Signal Desktop не успя да се актуализира, но има налична нова версия. Отидете на {downloadUrl} и инсталирайте новата версия на ръка, след което или се свържете с отдела за поддръжка, или докладвайте този проблем."
+  },
+  "icu:StandaloneRegistration--signal-logo": {
+    "messageformat": "Лого на Signal"
+  },
+  "icu:StandaloneRegistration--back": {
+    "messageformat": "Обратно"
+  },
+  "icu:StandaloneRegistration--PhoneNumber--header": {
+    "messageformat": "Телефонен номер"
+  },
+  "icu:StandaloneRegistration--PhoneNumber--description--line-1": {
+    "messageformat": "Въведете своя телефонен номер, за да потвърдите акаунта си."
+  },
+  "icu:StandaloneRegistration--PhoneNumber--description--line-2": {
+    "messageformat": "Възможно е да се прилагат тарифи на оператора."
+  },
+  "icu:StandaloneRegistration--PhoneNumber--waiting": {
+    "messageformat": "Моля, опитайте отново след {duration}"
+  },
+  "icu:StandaloneRegistration--PhoneNumber--placeholder": {
+    "messageformat": "Телефонен номер"
+  },
+  "icu:StandaloneRegistration--PhoneNumber--button": {
+    "messageformat": "Продължаване"
+  },
+  "icu:StandaloneRegistration--PhoneNumber--Confirmation--description": {
+    "messageformat": "Телефонният ви номер по-горе правилен ли е?"
+  },
+  "icu:StandaloneRegistration--PhoneNumber--Confirmation--cancel": {
+    "messageformat": "Редакция на номер"
+  },
+  "icu:StandaloneRegistration--PhoneNumber--Confirmation--confirm": {
+    "messageformat": "Да"
+  },
+  "icu:StandaloneRegistration--Captcha--header": {
+    "messageformat": "Потвърдете, че сте човек, за да продължите"
+  },
+  "icu:StandaloneRegistration--Captcha--description": {
+    "messageformat": "С цел да предотвратим спама в Signal, моля, извършете проверка. След като завършите проверката, можете да продължите с регистрацията."
+  },
+  "icu:StandaloneRegistration--Captcha--retry-button": {
+    "messageformat": "Повторен опит за проверка"
+  },
+  "icu:StandaloneRegistration--Captcha--button": {
+    "messageformat": "Потвърждаване в браузър"
+  },
+  "icu:StandaloneRegistration--Captcha--button--wait": {
+    "messageformat": "Извършете проверката след {duration}"
+  },
+  "icu:StandaloneRegistration--Captcha--NeedAnother--header": {
+    "messageformat": "Изисква се допълнителна проверка"
+  },
+  "icu:StandaloneRegistration--Captcha--NeedAnother--description": {
+    "messageformat": "Моля, извършете още една проверка с captcha, за да продължите с регистрацията."
+  },
+  "icu:StandaloneRegistration--Captcha--NeedAnother--cancel": {
+    "messageformat": "Отказ"
+  },
+  "icu:StandaloneRegistration--Captcha--NeedAnother--retry": {
+    "messageformat": "Повторен опит за проверка"
+  },
+  "icu:StandaloneRegistration--Captcha--MustWait--aria-title": {
+    "messageformat": "Опитайте отново по-късно"
+  },
+  "icu:StandaloneRegistration--Captcha--MustWait--line-1": {
+    "messageformat": "Проверката не може да бъде изпълнена сега."
+  },
+  "icu:StandaloneRegistration--Captcha--MustWait--line-2": {
+    "messageformat": "Опитайте отново след {duration}"
+  },
+  "icu:StandaloneRegistration--Captcha--MustWait--button": {
+    "messageformat": "Добре"
+  },
+  "icu:StandaloneRegistration--Captcha--Error--header": {
+    "messageformat": "Грешка при верификация"
+  },
+  "icu:StandaloneRegistration--Captcha--Error--description": {
+    "messageformat": "Опитайте да извършите верификацията отново, за да продължите с регистрацията."
+  },
+  "icu:StandaloneRegistration--Captcha--Error--try-again": {
+    "messageformat": "Опитайте отново"
+  },
+  "icu:StandaloneRegistration--Captcha--Error--cancel": {
+    "messageformat": "Отказ"
+  },
+  "icu:StandaloneRegistration--VerificationCode--header": {
+    "messageformat": "Код за потвърждение"
+  },
+  "icu:StandaloneRegistration--VerificationCode--description": {
+    "messageformat": "Въведете кода, който изпратихме на {phoneNumber}"
+  },
+  "icu:StandaloneRegistration--VerificationCode--button": {
+    "messageformat": "Продължаване"
+  },
+  "icu:StandaloneRegistration--VerificationCode--send-sms": {
+    "messageformat": "Изпращане на нов код"
+  },
+  "icu:StandaloneRegistration--VerificationCode--send-sms--duration": {
+    "messageformat": "Повторно изпращане на кода след {duration}"
+  },
+  "icu:StandaloneRegistration--VerificationCode--call-me": {
+    "messageformat": "Обадете ми се"
+  },
+  "icu:StandaloneRegistration--VerificationCode--call-me--duration": {
+    "messageformat": "Обадете ми се след {duration}"
+  },
+  "icu:StandaloneRegistration--VerificationCode--wrong-number": {
+    "messageformat": "Грешен номер?"
+  },
+  "icu:StandaloneRegistration--VerificationCode--having-trouble": {
+    "messageformat": "Имате затруднения с регистрирането?"
+  },
+  "icu:StandaloneRegistration--VerificationCode--IncorrectCode--aria-title": {
+    "messageformat": "Некоректен код"
+  },
+  "icu:StandaloneRegistration--VerificationCode--IncorrectCode--description": {
+    "messageformat": "Кодът, който сте въвели, е неправилен. Моля, проверете 6-цифрения код и опитайте отново."
+  },
+  "icu:StandaloneRegistration--VerificationCode--IncorrectCode--button": {
+    "messageformat": "Добре"
+  },
+  "icu:StandaloneRegistration--VerificationCode--CodeInvalid--aria-title": {
+    "messageformat": "Невалиден код"
+  },
+  "icu:StandaloneRegistration--VerificationCode--CodeInvalid--description": {
+    "messageformat": "Кодът, който сте въвели, не е валиден. Моля, изпратете кода отново и опитайте пак."
+  },
+  "icu:StandaloneRegistration--VerificationCode--CodeInvalid--resend-button": {
+    "messageformat": "Изпращане на нов код"
+  },
+  "icu:StandaloneRegistration--VerificationCode--CodeInvalid--edit-number-button": {
+    "messageformat": "Редакция на номер"
+  },
+  "icu:StandaloneRegistration--VerificationCode--SMSFailed--aria-title": {
+    "messageformat": "Неуспешно изпращане на SMS"
+  },
+  "icu:StandaloneRegistration--VerificationCode--SMSFailed--description": {
+    "messageformat": "Не можахме да ви изпратим код за потвърждение чрез SMS. Опитайте вместо това да получите кода чрез гласово обаждане."
+  },
+  "icu:StandaloneRegistration--VerificationCode--SMSFailed--confirm": {
+    "messageformat": "Гласово обаждане"
+  },
+  "icu:StandaloneRegistration--VerificationCode--SMSFailed--cancel": {
+    "messageformat": "Отказ"
+  },
+  "icu:StandaloneRegistration--VerificationCode--MustWait--aria-title": {
+    "messageformat": "Опитайте отново по-късно"
+  },
+  "icu:StandaloneRegistration--VerificationCode--MustWait--description": {
+    "messageformat": "Направили сте твърде много опити да въведете кода. Опитайте отново след {duration}."
+  },
+  "icu:StandaloneRegistration--VerificationCode--MustWait--button": {
+    "messageformat": "Добре"
+  },
+  "icu:StandaloneRegistration--VerificationCode--MaximumAttempts--aria-title": {
+    "messageformat": "Прекалено много опити"
+  },
+  "icu:StandaloneRegistration--VerificationCode--MaximumAttempts--description": {
+    "messageformat": "Направили сте твърде много опити да въведете кода. Моля, изпратете кода отново и опитайте пак."
+  },
+  "icu:StandaloneRegistration--VerificationCode--MaximumAttempts--resend-button": {
+    "messageformat": "Изпращане на нов код"
+  },
+  "icu:StandaloneRegistration--VerificationCode--MaximumAttempts--edit-number-button": {
+    "messageformat": "Редакция на номер"
+  },
+  "icu:StandaloneRegistration--VerificationCode--FailedToCall--aria-title": {
+    "messageformat": "Неуспешно обаждане"
+  },
+  "icu:StandaloneRegistration--VerificationCode--FailedToCall--description": {
+    "messageformat": "Не успяхме да се обадим на телефонния номер, който сте въвели. Уверете се, че телефонният номер е правилен, и опитайте отново."
+  },
+  "icu:StandaloneRegistration--VerificationCode--FailedToCall--ok-button": {
+    "messageformat": "Добре"
+  },
+  "icu:StandaloneRegistration--VerificationCode--CannotSendCodePermanent--aria-title": {
+    "messageformat": "Неуспешно изпращане на код"
+  },
+  "icu:StandaloneRegistration--VerificationCode--CannotSendCodePermanent--description": {
+    "messageformat": "На телефонния номер, който сте въвели, не може да бъде изпратен код за потвърждение. Уверете се, че номерът, който сте въвели, е правилен, или опитайте с друг номер."
+  },
+  "icu:StandaloneRegistration--VerificationCode--CannotSendCodePermanent--ok-button": {
+    "messageformat": "Добре"
+  },
+  "icu:StandaloneRegistration--VerificationCode--CannotSendCodeTemporary--aria-title": {
+    "messageformat": "Опитайте отново по-късно"
+  },
+  "icu:StandaloneRegistration--VerificationCode--CannotSendCodeTemporary--description": {
+    "messageformat": "Възникна грешка и кодът за потвърждение не беше изпратен успешно. Опитайте отново след {duration}."
+  },
+  "icu:StandaloneRegistration--VerificationCode--CannotSendCodeTemporary--ok-button": {
+    "messageformat": "Добре"
+  },
+  "icu:StandaloneRegistration--ProfileEntry--header": {
+    "messageformat": "Настройте профила си"
+  },
+  "icu:StandaloneRegistration--ProfileEntry--description": {
+    "messageformat": "Профилите са видими за хора, с които чатите, контакти и групи."
+  },
+  "icu:StandaloneRegistration--ProfileEntry--learn-more": {
+    "messageformat": "Научете повече"
+  },
+  "icu:StandaloneRegistration--ProfileEntry--add-photo": {
+    "messageformat": "Добавяне на снимка"
+  },
+  "icu:StandaloneRegistration--ProfileEntry--first-name": {
+    "messageformat": "Собствено име (задължително)"
+  },
+  "icu:StandaloneRegistration--ProfileEntry--last-name": {
+    "messageformat": "Фамилия (по избор)"
+  },
+  "icu:StandaloneRegistration--ProfileEntry--discoverability": {
+    "messageformat": "Кой може да ме открие по телефонен номер"
+  },
+  "icu:StandaloneRegistration--ProfileEntry--discoverability--change-button": {
+    "messageformat": "Промяна"
+  },
+  "icu:StandaloneRegistration--ProfileEntry--discoverability--done-button": {
+    "messageformat": "Готово"
+  },
+  "icu:StandaloneRegistration--ProfileEntry--continue": {
+    "messageformat": "Продължаване"
+  },
+  "icu:StandaloneRegistration--ProfileEntry--AvatarModal--header": {
+    "messageformat": "Вашият аватар"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--header": {
+    "messageformat": "Въведете вашия ПИН"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--description": {
+    "messageformat": "Въведете ПИН кода, който сте създали за акаунта си. Той е различен от кода за потвърждение от SMS. <needHelp>Нуждаете ли се от помощ?</needHelp>"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--placeholder": {
+    "messageformat": "Въведете вашия ПИН"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--incorrect-pin": {
+    "messageformat": "Грешен ПИН"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--incorrect-pin--with-count": {
+    "messageformat": "{triesRemaining, plural, one {Грешен ПИН. Остава ви {triesRemaining,number} опит.} other {Грешен ПИН. Остават ви {triesRemaining,number} опита.}}"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--NeedHelp--header": {
+    "messageformat": "Нужда от помощ?"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--NeedHelp--description--no-reglock": {
+    "messageformat": "Вашият ПИН е код от 4 или повече цифри, който вие сте създали, и той може да съдържа само цифри или цифри и букви. Ако не си спомняте вашия ПИН, можете да си създадете нов. Можете да се регистрирате и да използвате акаунта си, но ще загубите някои запазени настройки, като например информацията за вашия профил. <learnMore>Научете повече</learnMore>."
+  },
+  "icu:StandaloneRegistration--VerifyPIN--NeedHelp--description--reglock": {
+    "messageformat": "Вашият ПИН е код от 4 или повече цифри, който вие сте създали, и той може да съдържа само цифри или цифри и букви. Ако не си спомняте вашия ПИН, ще трябва да изчакате 7 дни, за да регистрирате акаунта си наново. <learnMore>Научете повече</learnMore>."
+  },
+  "icu:StandaloneRegistration--VerifyPIN--NeedHelp--skip-button--no-reglock": {
+    "messageformat": "Пропускане и създаване на нов ПИН"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--NeedHelp--contact-support-button": {
+    "messageformat": "Връзка с отдела за поддръжка"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--NeedHelp--cancel": {
+    "messageformat": "Отказ"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--FewRemainingTries--header": {
+    "messageformat": "Грешен ПИН"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--FewRemainingTries--description--no-reglock": {
+    "messageformat": "{triesRemaining, plural, one {Остава ви {triesRemaining,number} опит. Ако опитите ви свършат, можете да създадете нов ПИН. Можете да се регистрирате и да използвате акаунта си, но ще загубите някои запазени настройки, като например информацията за вашия профил. <learnMore>Научете повече</learnMore>.} other {Остават ви {triesRemaining,number} опита. Ако опитите ви свършат, можете да създадете нов ПИН. Можете да се регистрирате и да използвате акаунта си, но ще загубите някои запазени настройки, като например информацията за вашия профил. <learnMore>Научете повече</learnMore>.}}"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--FewRemainingTries--description--reglock": {
+    "messageformat": "{triesRemaining, plural, one {Остава ви {triesRemaining,number} опит. Ако опитите ви свършат, акаунтът ви ще бъде заключен за 7 дни. След 7 дни бездействие можете да се регистрирате отново без своя ПИН. Цялото съдържание ще бъде изтрито. <learnMore>Научете повече</learnMore>.} other {Остават ви {triesRemaining,number} опита. Ако опитите ви свършат, акаунтът ви ще бъде заключен за 7 дни. След 7 дни бездействие можете да се регистрирате отново без своя ПИН. Цялото съдържание ще бъде изтрито. <learnMore>Научете повече</learnMore>.}}"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--FewRemainingTries--button": {
+    "messageformat": "Добре"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--NoRemainingTries--header": {
+    "messageformat": "Грешен ПИН"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--NoRemainingTries--description": {
+    "messageformat": "Нямате повече опити за познаване на ПИН кода, но все пак можете да влезете в своя акаунт в Signal, като си създадете нов ПИН. За вашите поверителност и сигурност акаунтът ви ще бъде възстановен без запазени информация за профила или настройки."
+  },
+  "icu:StandaloneRegistration--VerifyPIN--NoRemainingTries--create-new-pin": {
+    "messageformat": "Създайте нов ПИН"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--NoRemainingTries--learn-more": {
+    "messageformat": "Научете повече за ПИН-овете"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--menu--skip-pin": {
+    "messageformat": "Пропускане на ПИН"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--SkipPIN--header": {
+    "messageformat": "Пропускане въвеждането на ПИН?"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--SkipPIN--description": {
+    "messageformat": "Ако не си спомняте вашия ПИН, можете да си създадете нов. Можете да се регистрирате и да използвате акаунта си, но ще загубите някои запазени настройки, като например информацията за вашия профил. Научете повече."
+  },
+  "icu:StandaloneRegistration--VerifyPIN--SkipPIN--skip-button": {
+    "messageformat": "Пропускане и създаване на нов ПИН"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--SkipPIN--cancel-button": {
+    "messageformat": "Отказ"
+  },
+  "icu:StandaloneRegistration--CreatePIN--header": {
+    "messageformat": "Създаване на ПИН"
+  },
+  "icu:StandaloneRegistration--CreatePIN--description": {
+    "messageformat": "ПИН кодовете могат да ви помогнат да възстановите акаунта си и да запазите информацията си криптирана със Signal. <learnMore>Научете повече</learnMore>"
+  },
+  "icu:StandaloneRegistration--CreatePIN--placeholder": {
+    "messageformat": "Създаване на ПИН"
+  },
+  "icu:StandaloneRegistration--CreatePIN--helper-text": {
+    "messageformat": "ПИН кодът трябва да съдържа поне 4 знака"
+  },
+  "icu:StandaloneRegistration--CreatePIN--continue": {
+    "messageformat": "Продължаване"
+  },
+  "icu:StandaloneRegistration--CreatePIN--open-menu": {
+    "messageformat": "Отваряне на менюто"
+  },
+  "icu:StandaloneRegistration--CreatePIN--menu--more-about": {
+    "messageformat": "Научете повече за ПИН кодовете"
+  },
+  "icu:StandaloneRegistration--CreatePIN--menu--disable": {
+    "messageformat": "Деактивиране на ПИН"
+  },
+  "icu:StandaloneRegistration--CreatePIN--DisableWarning--header": {
+    "messageformat": "Внимание"
+  },
+  "icu:StandaloneRegistration--CreatePIN--DisableWarning--description": {
+    "messageformat": "Ако деактивирате ПИН кода, ще загубите всички данни, когато отново регистрирате Signal, освен ако не го прехвърлите от друго устройство с iOS. Не можете да включите „Заключване на регистрацията“, докато ПИН кодът е деактивиран."
+  },
+  "icu:StandaloneRegistration--CreatePIN--DisableWarning--disable-button": {
+    "messageformat": "Деактивиране на ПИН"
+  },
+  "icu:StandaloneRegistration--CreatePIN--DisableWarning--cancel": {
+    "messageformat": "Отказ"
+  },
+  "icu:StandaloneRegistration--CreatePIN--AboutPINs--header": {
+    "messageformat": "Относно ПИН кодовете за Signal"
+  },
+  "icu:StandaloneRegistration--CreatePIN--AboutPINs--description": {
+    "messageformat": "ПИН кодовете пазят вашата информацията, съхранявана в Signal, криптирана, за да имате само вие достъп до нея. Вашите профил, настройки и контакти ще бъдат възстановени, когато инсталирате отново."
+  },
+  "icu:StandaloneRegistration--CreatePIN--AboutPINs--learn-more-button": {
+    "messageformat": "Научете повече"
+  },
+  "icu:StandaloneRegistration--CreatePIN--AboutPINs--ok-button": {
+    "messageformat": "Добре"
+  },
+  "icu:StandaloneRegistration--CreatePIN--confirming--header": {
+    "messageformat": "Потвърдете вашия ПИН"
+  },
+  "icu:StandaloneRegistration--CreatePIN--confirming--description": {
+    "messageformat": "Въведете отново току-що създадения ПИН."
+  },
+  "icu:StandaloneRegistration--CreatePIN--confirming--placeholder": {
+    "messageformat": "Въведете вашия ПИН"
+  },
+  "icu:StandaloneRegistration--AccountLocked--header": {
+    "messageformat": "Заключен акаунт"
+  },
+  "icu:StandaloneRegistration--AccountLocked--description": {
+    "messageformat": "Вашият акаунт е заключен, за да се защитят поверителността и сигурността ви. След 7 дни на неактивност във вашия акаунт ще можете да регистрирате този телефонен номер, без да се нуждаете от вашия ПИН. Цялото съдържание ще бъде изтрито."
+  },
+  "icu:StandaloneRegistration--AccountLocked--start-over-button": {
+    "messageformat": "Използвайте друг номер"
+  },
+  "icu:StandaloneRegistration--AccountLocked--help-button": {
+    "messageformat": "Научете за заключените акаунти"
+  },
+  "icu:StandaloneRegistration--UpdateRequired--header": {
+    "messageformat": "Необходима е актуализация"
+  },
+  "icu:StandaloneRegistration--UpdateRequired--description": {
+    "messageformat": "За да продължите с регистрацията, моля, актуализирате до най-новата версия на Signal."
+  },
+  "icu:StandaloneRegistration--UpdateRequired--update": {
+    "messageformat": "Обновяване"
+  },
+  "icu:StandaloneRegistration--UpdateRequired--cancel": {
+    "messageformat": "Отказ"
+  },
+  "icu:StandaloneRegistration--ConnectionProblem--header": {
+    "messageformat": "Проверете връзката си"
+  },
+  "icu:StandaloneRegistration--ConnectionProblem--description": {
+    "messageformat": "За да продължите, проверете връзката на компютъра си с интернет и опитайте отново."
+  },
+  "icu:StandaloneRegistration--ConnectionProblem--button": {
+    "messageformat": "Добре"
+  },
+  "icu:StandaloneRegistration--UnexpectedError--header": {
+    "messageformat": "Неуспешно завършване на регистрацията"
+  },
+  "icu:StandaloneRegistration--UnexpectedError--description": {
+    "messageformat": "Възникна грешка и регистрацията не може да бъде завършена. Ако този проблем продължава, моля, свържете се с отдела за поддръжка."
+  },
+  "icu:StandaloneRegistration--UnexpectedError--try-again-button": {
+    "messageformat": "Опитайте отново"
+  },
+  "icu:StandaloneRegistration--UnexpectedError--contact-support-button": {
+    "messageformat": "Връзка с отдела за поддръжка"
   },
   "icu:NSIS__retry-dialog--first-line": {
     "messageformat": "Signal не може да се затвори.",
@@ -6915,15 +7386,6 @@
   },
   "icu:SignalConnectionsModal__footer": {
     "messageformat": "Вашите връзки виждат името и снимката ви и могат да виждат публикациите в „Моята история“, освен ако не ги скриете от тях"
-  },
-  "icu:LocalDeleteWarningModal__header": {
-    "messageformat": "Изтриването е синхронизирано на устройствата ви"
-  },
-  "icu:LocalDeleteWarningModal__description": {
-    "messageformat": "Когато изтриете съобщения или чатове, те ще бъдат изтрити от всички ваши устройства."
-  },
-  "icu:LocalDeleteWarningModal__confirm": {
-    "messageformat": "Ясно"
   },
   "icu:Stories__title": {
     "messageformat": "Истории"
@@ -7478,9 +7940,6 @@
   "icu:DraftGifMessageSendModal__SendButtonLabel": {
     "messageformat": "Изпращане"
   },
-  "icu:DraftGifMessageSendModal__CancelButtonLabel": {
-    "messageformat": "Отказ"
-  },
   "icu:EditHistoryMessagesModal__title": {
     "messageformat": "История на редакциите"
   },
@@ -7759,9 +8218,6 @@
   },
   "icu:PreferencesDonations__privacy-modal-title": {
     "messageformat": "Вашата информация е частна"
-  },
-  "icu:PreferencesDonations__privacy-modal-content": {
-    "messageformat": "<paragraph>Signal не събира и не съхранява никаква лична информация, когато правите дарение.</paragraph><paragraph>Използваме Stripe за обработване на плащанията и за да получим вашите дарения. Ние не упражняваме достъп до, не съхраняваме и не запазваме никаква информация, която им предоставите.</paragraph><paragraph>Signal не свързва и не може да свърже вашето дарение с акаунта ви в Signal.</paragraph><paragraph>Благодарим Ви за подкрепата!</paragraph>"
   },
   "icu:PreferencesDonations__privacy-modal-intro": {
     "messageformat": "Като независима организация с нестопанска цел, Signal се ангажира да предоставя поверителни съобщения и разговори. Без реклами, без тракери, без следене. Дарете днес, за да подкрепите Signal."
@@ -8205,10 +8661,16 @@
     "messageformat": "Дребни корекции, поправки на бъгове и подобрения на работата. Благодарим ви, че използвате Signal!",
     "ignoreUnused": true
   },
-  "icu:WhatsNew__8.12--0": {
-    "messageformat": "Добавихме нова клавишна комбинация за вдигане на ръка по време на групови разговори (Shift+H)."
+  "icu:WhatsNew__8.18--0": {
+    "messageformat": "Анкетите вече могат да се създават и в индивидуалните чатове."
   },
-  "icu:WhatsNew__8.13--0": {
-    "messageformat": "The new raised-hand indicators are now also displayed in the list of raised hands during group calls. It's a second-hand place to figure out who you should hand it over to when you're done speaking."
+  "icu:WhatsNew__8.19--0": {
+    "messageformat": "Администраторите на групите вече могат да слагат край на чатовете с новата опция „Прекратяване на групата“ в настройките на групите. Прекратяването на групите не позволява на членовете на групите да изпращат съобщения или да започват разговори и също така деактивира поканите."
+  },
+  "icu:WhatsNew__8.20--0": {
+    "messageformat": "Introducing disappearing call events: Missed, outgoing, and received calls that occur after you install this update will now automatically disappear in any chat where disappearing messages are enabled."
+  },
+  "icu:WhatsNew__8.20--1": {
+    "messageformat": "Now you can reorder installed sticker packs so your new favorites don’t get stuck in the back of the line."
   }
 }

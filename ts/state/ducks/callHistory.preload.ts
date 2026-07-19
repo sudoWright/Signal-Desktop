@@ -8,12 +8,13 @@ import type { StateType as RootStateType } from '../reducer.preload.ts';
 import {
   clearCallHistoryDataAndSync,
   markAllCallHistoryReadAndSync,
+  markCallHistoryReadWithoutSync,
 } from '../../util/callDisposition.preload.ts';
 import type { BoundActionCreatorsMapObject } from '../../hooks/useBoundActions.std.ts';
 import { useBoundActions } from '../../hooks/useBoundActions.std.ts';
 import type { ToastActionType } from './toast.preload.ts';
 import { showToast } from './toast.preload.ts';
-import { DataReader, DataWriter } from '../../sql/Client.preload.ts';
+import { DataReader } from '../../sql/Client.preload.ts';
 import { ToastType } from '../../types/Toast.dom.tsx';
 import {
   ClearCallHistoryResult,
@@ -36,6 +37,7 @@ import { getIntl } from '../selectors/user.std.ts';
 import type { ShowErrorModalActionType } from './globalModals.preload.ts';
 import { SHOW_ERROR_MODAL } from './globalModals.preload.ts';
 import type { ErrorModalDataProps } from '../../components/ErrorModal.dom.tsx';
+import { strictAssert } from '../../util/assert.std.ts';
 
 const { debounce, omit } = lodash;
 
@@ -114,52 +116,47 @@ const updateCallHistoryUnreadCountDebounced = debounce(
   300
 );
 
-function updateCallHistoryUnreadCount(): ThunkAction<
-  void,
-  RootStateType,
-  unknown,
-  CallHistoryUpdateUnread
-> {
+function updateConversationsUnreadCounts(
+  conversationIdsOrConversationPeerIds: ReadonlyArray<string>
+) {
+  for (const id of conversationIdsOrConversationPeerIds) {
+    const conversation = window.ConversationController.get(id);
+    strictAssert(conversation, `Missing conversation: ${id}`);
+    conversation.throttledUpdateUnread();
+  }
+}
+
+function updateCallHistoryUnreadCount(
+  conversationIdsOrConversationPeerIds: ReadonlyArray<string>
+): ThunkAction<void, RootStateType, unknown, CallHistoryUpdateUnread> {
   return async dispatch => {
+    updateConversationsUnreadCounts(conversationIdsOrConversationPeerIds);
     await updateCallHistoryUnreadCountDebounced(dispatch);
   };
 }
 
 function markCallHistoryRead(
-  conversationId: string,
   callId: string
 ): ThunkAction<void, RootStateType, unknown, CallHistoryUpdateUnread> {
-  return async dispatch => {
-    try {
-      await DataWriter.markCallHistoryRead(callId);
-      window.ConversationController.get(
-        conversationId
-      )?.throttledUpdateUnread();
-    } catch (error) {
-      log.error(
-        'markCallHistoryRead: Error marking call history read',
-        Errors.toLogFormat(error)
-      );
-    } finally {
-      dispatch(updateCallHistoryUnreadCount());
-    }
+  return async () => {
+    await markCallHistoryReadWithoutSync({
+      mode: 'only-target-call',
+      target: { callId },
+      readAt: Date.now(),
+    });
   };
 }
 
 export function markCallHistoryReadInConversation(
   callId: string
 ): ThunkAction<void, RootStateType, unknown, CallHistoryUpdateUnread> {
-  return async (dispatch, getState) => {
+  return async (_dispatch, getState) => {
     const callHistorySelector = getCallHistorySelector(getState());
     const callHistory = callHistorySelector(callId);
     if (callHistory == null) {
       return;
     }
-    try {
-      await markAllCallHistoryReadAndSync(callHistory, true);
-    } finally {
-      dispatch(updateCallHistoryUnreadCount());
-    }
+    await markAllCallHistoryReadAndSync(callHistory, Date.now(), true);
   };
 }
 
@@ -169,11 +166,10 @@ function markCallsTabViewed(): ThunkAction<
   unknown,
   CallHistoryUpdateUnread
 > {
-  return async (dispatch, getState) => {
+  return async (_dispatch, getState) => {
     const latestCall = getCallHistoryLatestCall(getState());
     if (latestCall != null) {
-      await markAllCallHistoryReadAndSync(latestCall, false);
-      dispatch(updateCallHistoryUnreadCount());
+      await markAllCallHistoryReadAndSync(latestCall, Date.now(), false);
     }
   };
 }
@@ -207,13 +203,17 @@ function clearAllCallHistory(): ThunkAction<
   CallHistoryReset | ToastActionType | ShowErrorModalActionType
 > {
   return async (dispatch, getState) => {
+    let unreadConversationIds: ReadonlyArray<string> = [];
     try {
       const latestCall = getCallHistoryLatestCall(getState());
       if (latestCall == null) {
         return;
       }
 
+      unreadConversationIds =
+        await DataReader.getCallHistoryUnreadCallConversationIds();
       const result = await clearCallHistoryDataAndSync(latestCall);
+
       if (result === ClearCallHistoryResult.Success) {
         dispatch(showToast({ toastType: ToastType.CallHistoryCleared }));
       } else if (result === ClearCallHistoryResult.Error) {
@@ -241,6 +241,9 @@ function clearAllCallHistory(): ThunkAction<
     } catch (error) {
       log.error('Error clearing call history', Errors.toLogFormat(error));
     } finally {
+      // Ensure previously unread conversations are updated
+      updateConversationsUnreadCounts(unreadConversationIds);
+
       // Just force a reload, even if the clear failed.
       dispatch(reloadCallHistory());
     }
@@ -276,6 +279,7 @@ export const actions = {
   clearAllCallHistory,
   updateCallHistoryUnreadCount,
   markCallHistoryRead,
+  markCallHistoryReadInConversation,
   markCallsTabViewed,
 };
 

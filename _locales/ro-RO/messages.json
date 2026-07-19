@@ -14,6 +14,9 @@
   "icu:AxoTextField.Clear": {
     "messageformat": "Eliminare"
   },
+  "icu:AxoBadge.MaxOverflow": {
+    "messageformat": "{max,number}+"
+  },
   "icu:AddUserToAnotherGroupModal__title": {
     "messageformat": "Adaugă la un grup"
   },
@@ -85,6 +88,9 @@
   },
   "icu:unknownContact": {
     "messageformat": "Contact necunoscut"
+  },
+  "icu:deletedAccount": {
+    "messageformat": "Cont șters"
   },
   "icu:unknownContactShort": {
     "messageformat": "Necunoscut"
@@ -314,6 +320,9 @@
   "icu:LeftPaneChatFolders__ItemUnreadBadge__MaxCount": {
     "messageformat": "{maxCount,number}+"
   },
+  "icu:LeftPaneChatFolders__ItemUnreadBadge__AccessibleLabel": {
+    "messageformat": "{count, plural, one {{count,number} Unread Message} other {{count,number} Unread Messages}}"
+  },
   "icu:LeftPaneChatFolders__Item__ContextMenu__MarkAllRead": {
     "messageformat": "Marchează tot ca citit"
   },
@@ -449,8 +458,8 @@
   "icu:unpinConversation": {
     "messageformat": "Defixează conversația"
   },
-  "icu:pinnedConversationsFull": {
-    "messageformat": "Poți fixa până la 4 conversații"
+  "icu:pinnedConversations--max": {
+    "messageformat": "{maxPinnedConversations, plural, one {Poți fixa până la {maxPinnedConversations,number} conversație} few {Poți fixa până la {maxPinnedConversations,number} conversații} other {Poți fixa până la {maxPinnedConversations,number} de conversații}}"
   },
   "icu:view": {
     "messageformat": "Vizualizare"
@@ -2261,9 +2270,6 @@
   "icu:partiallySent": {
     "messageformat": "Trimis parțial, fă click pentru detalii"
   },
-  "icu:partiallyDeleted": {
-    "messageformat": "Șters parțial, fă click pentru a reîncerca"
-  },
   "icu:partiallyDeleted--clickForDetails": {
     "messageformat": "Eliminat parțial, dă clic pentru detalii"
   },
@@ -2298,7 +2304,7 @@
     "messageformat": "1h"
   },
   "icu:hoursAgo": {
-    "messageformat": "{hours,number}o"
+    "messageformat": "{hours,number}h"
   },
   "icu:minutesAgo": {
     "messageformat": "{minutes,number}m"
@@ -2466,7 +2472,7 @@
     "messageformat": "A eșuat descărcarea"
   },
   "icu:Toast--unable-download-from-backup-tier": {
-    "messageformat": "Attachment missing from backup CDN"
+    "messageformat": "Attachment missing from backup CDN, please share desktop & primary logs"
   },
   "icu:ToastManager__CannotAddMemberLabel": {
     "messageformat": "Doar administratorii pot seta roluri de membru în acest grup."
@@ -2687,9 +2693,6 @@
   "icu:message--getDescription--gif": {
     "messageformat": "GIF"
   },
-  "icu:message--deletedForEveryone": {
-    "messageformat": "Acest mesaj a fost șters."
-  },
   "icu:message--deletedByAdmin": {
     "messageformat": "Administratorul {admin} a eliminat acest mesaj"
   },
@@ -2780,14 +2783,11 @@
   "icu:stickers--toast--InstallFailed": {
     "messageformat": "Pachetul cu autocolante nu a putut fi instalat"
   },
-  "icu:stickers--StickerManager--Available": {
-    "messageformat": "Disponibil"
+  "icu:stickers--StickerManager--MyStickers--None": {
+    "messageformat": "Nu ai pachete de abțibilduri; adaugă abțibilduri de trimis prietenilor tăi."
   },
-  "icu:stickers--StickerManager--InstalledPacks": {
-    "messageformat": "Instalat"
-  },
-  "icu:stickers--StickerManager--InstalledPacks--Empty": {
-    "messageformat": "Nici un autocolant instalat"
+  "icu:stickers--StickerManager--AddStickers": {
+    "messageformat": "Adaugă Abțibilduri"
   },
   "icu:stickers--StickerManager--BlessedPacks": {
     "messageformat": "Seria artistică Signal"
@@ -2795,14 +2795,17 @@
   "icu:stickers--StickerManager--BlessedPacks--Empty": {
     "messageformat": "Nu sunt disponibile autocolante din seria artistică Signal"
   },
-  "icu:stickers--StickerManager--ReceivedPacks": {
-    "messageformat": "Autocolante primite"
+  "icu:stickers--StickerManager--ReceivedPacks2": {
+    "messageformat": "Împărtășite cu tine"
   },
-  "icu:stickers--StickerManager--ReceivedPacks--Empty": {
-    "messageformat": "Autocolantele de la mesajele primite se vor afișa aici"
+  "icu:stickers--StickerManager--ReceivedPacksDescription": {
+    "messageformat": "Când primești un abțibild de la cineva, pachetul de abțibilduri va apărea aici."
   },
   "icu:stickers--StickerManager--Install": {
     "messageformat": "Instalează"
+  },
+  "icu:stickers--StickerManager--Installed": {
+    "messageformat": "Instalate"
   },
   "icu:stickers--StickerManager--Uninstall": {
     "messageformat": "Dezinstalează"
@@ -2810,11 +2813,59 @@
   "icu:stickers--StickerManager--UninstallWarning": {
     "messageformat": "Este posibil să nu poți reinstala acest pachet de autocolante dacă nu mai ai mesajul original."
   },
+  "icu:stickers--StickerManagerHeader--All": {
+    "messageformat": "Toate"
+  },
+  "icu:stickers--StickerManagerHeader--MyStickers": {
+    "messageformat": "Abțibildurile mele"
+  },
+  "icu:stickers--StickerManagerPackContextMenu--Add": {
+    "messageformat": "Adaugă"
+  },
+  "icu:stickers--StickerManagerPackContextMenu--Remove": {
+    "messageformat": "Elimină"
+  },
+  "icu:stickers--StickerManagerPackDragHandle--Label": {
+    "messageformat": "Drag to reorder sticker pack"
+  },
+  "icu:stickers--StickerManagerBlessedPacksList--Label": {
+    "messageformat": "Signal Artist Series sticker packs"
+  },
+  "icu:stickers--StickerManagerReceivedPacksList--Label": {
+    "messageformat": "Received sticker packs"
+  },
+  "icu:stickers--StickerManagerInstalledPacksList--Label": {
+    "messageformat": "Installed sticker packs"
+  },
   "icu:stickers--StickerPreview--Title": {
     "messageformat": "Pachet autocolante"
   },
   "icu:stickers--StickerPreview--Error": {
     "messageformat": "Eroare la deschiderea pachetului cu autocolante. Verifică conexiunea la internet și încearcă din nou."
+  },
+  "icu:stickers--StickerPreview--Install": {
+    "messageformat": "Adaugă Abțibilduri"
+  },
+  "icu:stickers--StickerPreview--Remove": {
+    "messageformat": "Elimină"
+  },
+  "icu:stickers--StickerPreview--Link": {
+    "messageformat": "link"
+  },
+  "icu:stickers--StickerPreview--LinkCopied": {
+    "messageformat": "Link copiat"
+  },
+  "icu:stickers--StickerPreview--StickerCount": {
+    "messageformat": "{count, plural, one {{count,number} autocolant} few {{count,number} autocolante} other {{count,number} de autocolante}}"
+  },
+  "icu:stickers--StickerPreview--StickerNoEmojiAriaLabel": {
+    "messageformat": "Abțibild fără un emoji"
+  },
+  "icu:stickers--StickerPackLinkPreviewDescription": {
+    "messageformat": "Pachet de abțibilduri de {author}"
+  },
+  "icu:stickers--ViewPack": {
+    "messageformat": "Vezi pachetul"
   },
   "icu:FunPicker__Tab--Emojis": {
     "messageformat": "Emoji"
@@ -3028,6 +3079,18 @@
   },
   "icu:FunButton__Label--StickerPicker": {
     "messageformat": "Adaugă un autocolant"
+  },
+  "icu:FunPicker__Label--StickerReply": {
+    "messageformat": "Reply"
+  },
+  "icu:FunPicker__Label--SendStickerReply": {
+    "messageformat": "Send"
+  },
+  "icu:FunPicker__Label--CancelStickerReply": {
+    "messageformat": "Cancel"
+  },
+  "icu:FunPicker__Label--Sticker": {
+    "messageformat": "Sticker"
   },
   "icu:confirmation-dialog--Cancel": {
     "messageformat": "Anulează"
@@ -4482,7 +4545,7 @@
     "messageformat": "Află mai multe"
   },
   "icu:GroupV1--Migration--migrate": {
-    "messageformat": "Actualizează"
+    "messageformat": "Îmbunătățește"
   },
   "icu:GroupV1--Migration--info--title": {
     "messageformat": "Ce sunt Noile Grupuri?"
@@ -4699,9 +4762,6 @@
   },
   "icu:CompositionArea--expand": {
     "messageformat": "Extinde"
-  },
-  "icu:CompositionArea--attach-file": {
-    "messageformat": "Atașare fișier"
   },
   "icu:CompositionArea__AttachMenu__PhotosAndVideos": {
     "messageformat": "Fotografii și videoclipuri"
@@ -5153,26 +5213,17 @@
   "icu:SelectModeActions--forwardSelectedMessages": {
     "messageformat": "Redirecționează mesajele selectate"
   },
-  "icu:DeleteMessagesModal--title": {
-    "messageformat": "{count, plural, one {Ștergi {count,number} mesaj?} few {Ștergi {count,number} mesaje?} other {Ștergi {count,number} de mesaje?}}"
-  },
   "icu:DeleteMessagesModal--title-2": {
     "messageformat": "{count, plural, one {Ștergi mesajul selectat?} few {Ștergi cele {count,number} mesaje selectate?} other {Ștergi cele {count,number} de mesaje selectate?}}"
   },
   "icu:DeleteMessagesModal--description": {
     "messageformat": "{count, plural, one {Pentru cine vrei să ștergi acest mesaj?} few {Pentru cine vrei să ștergi aceste mesaje?} other {Pentru cine vrei să ștergi aceste mesaje?}}"
   },
-  "icu:DeleteMessagesModal--description--noteToSelf": {
-    "messageformat": "{count, plural, one {De pe ce dispozitive ai dori să ștergi acest mesaj?} few {De pe ce dispozitive ai dori să ștergi acest mesaje?} other {De pe ce dispozitive ai dori să ștergi aceste mesaje?}}"
-  },
   "icu:DeleteMessagesModal--description--noteToSelf--deleteSync": {
     "messageformat": "{count, plural, one {Acest mesaj va fi eliminat de pe toate dispozitivele tale.} few {Acest mesaje vor fi eliminate de pe toate dispozitivele tale.} other {Aceste mesaje vor fi eliminate de pe toate dispozitivele tale.}}"
   },
   "icu:DeleteMessagesModal--deleteForMe": {
     "messageformat": "Șterge doar pentru mine"
-  },
-  "icu:DeleteMessagesModal--deleteFromThisDevice": {
-    "messageformat": "Șterge de pe acest dispozitiv"
   },
   "icu:DeleteMessagesModal--deleteForEveryone": {
     "messageformat": "Șterge pentru toată lumea"
@@ -5186,9 +5237,6 @@
   },
   "icu:DeleteMessagesModal--adminDeleteConfirmation--description__rollout": {
     "messageformat": "{count, plural, one {Membrii grupurilor cu cele mai recente versiuni Signal vor vedea că ai eliminat acest mesaj.} few {Membrii grupurilor cu cele mai recente versiuni Signal vor vedea că ai eliminat aceste mesaje.} other {Membrii grupurilor cu cele mai recente versiuni Signal vor vedea că ai eliminat aceste mesaje.}}"
-  },
-  "icu:DeleteMessagesModal--deleteFromAllDevices": {
-    "messageformat": "Șterge de pe toate dispozitivele"
   },
   "icu:DeleteMessagesModal--noteToSelf--deleteSync": {
     "messageformat": "Șterge"
@@ -6329,7 +6377,7 @@
     "messageformat": "{mediaDayCount, plural, one {Text + {mediaDayCount,number} zi de backup al fișierelor media} few {Text + {mediaDayCount,number} zile de backup al fișierelor media} other {Text + {mediaDayCount,number} de zile de backup al fișierelor media}}"
   },
   "icu:Preferences--backup-messages-plan__cost-description": {
-    "messageformat": "Planul tău de back-up este gratuit"
+    "messageformat": "Planul tău de backup este gratuit"
   },
   "icu:Preferences--backup-plan__renewal-date": {
     "messageformat": "Se reînnoiește {date}"
@@ -6397,11 +6445,26 @@
   "icu:Preferences--local-backups-enter-backup-key": {
     "messageformat": "Introdu codul"
   },
-  "icu:Preferences--local-backups-record-recovery-key": {
-    "messageformat": "Înregistrează-ți codul de recuperare"
+  "icu:Preferences--local-backups-recovery-key--title": {
+    "messageformat": "Codul tău de recuperare"
   },
-  "icu:Preferences--local-backups-record-backup-key-description": {
-    "messageformat": "Codul e necesar ca să-ți recuperezi contul și datele. Păstrează codul într-un loc sigur. Dacă îl pierzi, nu îți vei putea recupera contul. <learnMoreLink>Află mai multe.</learnMoreLink>"
+  "icu:Preferences--local-backups-recovery-key--description": {
+    "messageformat": "Codul e necesar ca să-ți recuperezi contul și datele. Păstrează codul de recuperare undeva în siguranță și nu îl trimite nimănui. Signal nu îți va cere niciodată codul de recuperare printr-un mesaj. <learnMoreLink>Află mai multe.</learnMoreLink>"
+  },
+  "icu:Preferences__recovery-key__do-not-share-title": {
+    "messageformat": "Nu transmite codul tău de recuperare"
+  },
+  "icu:Preferences__recovery-key__do-not-share-confirm": {
+    "messageformat": "Am înțeles"
+  },
+  "icu:CompositionInput__recovery-key-paste__share-key": {
+    "messageformat": "Transmite codul"
+  },
+  "icu:CompositionInput__recovery-key-paste__do-not-share-key": {
+    "messageformat": "Nu transmite codul de recuperare"
+  },
+  "icu:CompositionInput__recovery-key-warning--description": {
+    "messageformat": "Nu transmite codul tău de recuperare nimănui. Altfel, vor putea să îți preia contul. <strong>Signal nu îți va cere niciodată codul de recuperare printr-un mesaj</strong>. Nu răspunde niciodată la o conversație în care persoana pretinde că e Signal. <learnMoreLink>Află mai multe.</learnMoreLink>"
   },
   "icu:Preferences--local-backups-confirm-recovery-key": {
     "messageformat": "Confirmă-ți codul de recuperare"
@@ -6428,7 +6491,7 @@
     "messageformat": "Niciodată"
   },
   "icu:Preferences__local-backups-backup-now": {
-    "messageformat": "Faceți un backup acum"
+    "messageformat": "Fă un backup acum"
   },
   "icu:Preferences__local-backups-folder": {
     "messageformat": "Director backup"
@@ -6465,6 +6528,9 @@
   },
   "icu:Preferences__local-backups-auth-error--unauthorized": {
     "messageformat": "Acțiunea nu a putut fi finalizată pentru că a eșuat autentificare în sistem. Încearcă din nou sau deschide aplicația Signal pe dispozitivul mobil și mergi la Setări ale backup-ului ca să-ți vezi codul de recuperare."
+  },
+  "icu:Preferences__local-backups-auth-error--unknown-error": {
+    "messageformat": "A apărut o eroare în timpul solicitării autentificării de sistem pentru această acțiune."
   },
   "icu:Preferences__view-key": {
     "messageformat": "Vezi codul de rezervă"
@@ -6631,6 +6697,12 @@
   "icu:DialogUpdate__downloaded": {
     "messageformat": "Actualizare Descărcată"
   },
+  "icu:DialogUpdate__upgrade-mas": {
+    "messageformat": "Dă clic și mergi la App Store"
+  },
+  "icu:DialogExpiredBuild__upgrade-mas": {
+    "messageformat": "Dă clic și mergi la App Store"
+  },
   "icu:CriticalIdlePrimaryDevice__title": {
     "messageformat": "Deschide Signal pe telefonul tău"
   },
@@ -6669,6 +6741,405 @@
   },
   "icu:InstallScreenUpdateDialog--cannot-update__body": {
     "messageformat": "Signal Desktop nu a reușit să se actualizeze, dar există o nouă versiune disponibilă. Mergi la {downloadUrl} și instalează noua versiune manual, apoi fie contactezi serviciul de asistență sau raportezi un bug despre această problemă."
+  },
+  "icu:StandaloneRegistration--signal-logo": {
+    "messageformat": "Logo Signal"
+  },
+  "icu:StandaloneRegistration--back": {
+    "messageformat": "Înapoi"
+  },
+  "icu:StandaloneRegistration--PhoneNumber--header": {
+    "messageformat": "Număr de telefon"
+  },
+  "icu:StandaloneRegistration--PhoneNumber--description--line-1": {
+    "messageformat": "Introdu numărul de telefon ca să-ți verifici contul."
+  },
+  "icu:StandaloneRegistration--PhoneNumber--description--line-2": {
+    "messageformat": "Se pot aplica tarife de operator."
+  },
+  "icu:StandaloneRegistration--PhoneNumber--waiting": {
+    "messageformat": "Încearcă din nou în {duration}"
+  },
+  "icu:StandaloneRegistration--PhoneNumber--placeholder": {
+    "messageformat": "Număr de telefon"
+  },
+  "icu:StandaloneRegistration--PhoneNumber--button": {
+    "messageformat": "Continuă"
+  },
+  "icu:StandaloneRegistration--PhoneNumber--Confirmation--description": {
+    "messageformat": "Este numărul tău de telefon de mai sus corect?"
+  },
+  "icu:StandaloneRegistration--PhoneNumber--Confirmation--cancel": {
+    "messageformat": "Editează număr"
+  },
+  "icu:StandaloneRegistration--PhoneNumber--Confirmation--confirm": {
+    "messageformat": "Da"
+  },
+  "icu:StandaloneRegistration--Captcha--header": {
+    "messageformat": "Verifică faptul că ești om ca să continui"
+  },
+  "icu:StandaloneRegistration--Captcha--description": {
+    "messageformat": "Pentru a ajuta la prevenirea spam-ului pe Signal, te rugăm să completezi verificarea. După verificare, poți continua cu înregistrarea."
+  },
+  "icu:StandaloneRegistration--Captcha--retry-button": {
+    "messageformat": "Reîncearcă verificarea"
+  },
+  "icu:StandaloneRegistration--Captcha--button": {
+    "messageformat": "Verifică în browser"
+  },
+  "icu:StandaloneRegistration--Captcha--button--wait": {
+    "messageformat": "Verifică în {duration}"
+  },
+  "icu:StandaloneRegistration--Captcha--NeedAnother--header": {
+    "messageformat": "Este necesară verificarea suplimentară"
+  },
+  "icu:StandaloneRegistration--Captcha--NeedAnother--description": {
+    "messageformat": "Mai rezolvă o captcha ca să continui înregistrarea."
+  },
+  "icu:StandaloneRegistration--Captcha--NeedAnother--cancel": {
+    "messageformat": "Anulează"
+  },
+  "icu:StandaloneRegistration--Captcha--NeedAnother--retry": {
+    "messageformat": "Reîncearcă verificarea"
+  },
+  "icu:StandaloneRegistration--Captcha--MustWait--aria-title": {
+    "messageformat": "Încearcă mai târziu"
+  },
+  "icu:StandaloneRegistration--Captcha--MustWait--line-1": {
+    "messageformat": "Nu se poate finaliza verificarea acum."
+  },
+  "icu:StandaloneRegistration--Captcha--MustWait--line-2": {
+    "messageformat": "Încearcă din nou în {duration}"
+  },
+  "icu:StandaloneRegistration--Captcha--MustWait--button": {
+    "messageformat": "OK"
+  },
+  "icu:StandaloneRegistration--Captcha--Error--header": {
+    "messageformat": "Eroare de verificare"
+  },
+  "icu:StandaloneRegistration--Captcha--Error--description": {
+    "messageformat": "Încearcă din nou verificarea, ca să continui înregistrarea."
+  },
+  "icu:StandaloneRegistration--Captcha--Error--try-again": {
+    "messageformat": "Încearcă din nou"
+  },
+  "icu:StandaloneRegistration--Captcha--Error--cancel": {
+    "messageformat": "Anulează"
+  },
+  "icu:StandaloneRegistration--VerificationCode--header": {
+    "messageformat": "Cod de verificare"
+  },
+  "icu:StandaloneRegistration--VerificationCode--description": {
+    "messageformat": "Introdu codul trimis la {phoneNumber}"
+  },
+  "icu:StandaloneRegistration--VerificationCode--button": {
+    "messageformat": "Continuă"
+  },
+  "icu:StandaloneRegistration--VerificationCode--send-sms": {
+    "messageformat": "Trimite din nou codul"
+  },
+  "icu:StandaloneRegistration--VerificationCode--send-sms--duration": {
+    "messageformat": "Retrimite cod în {duration}"
+  },
+  "icu:StandaloneRegistration--VerificationCode--call-me": {
+    "messageformat": "Sună-mă"
+  },
+  "icu:StandaloneRegistration--VerificationCode--call-me--duration": {
+    "messageformat": "Sună-mă în {duration}"
+  },
+  "icu:StandaloneRegistration--VerificationCode--wrong-number": {
+    "messageformat": "Număr greșit?"
+  },
+  "icu:StandaloneRegistration--VerificationCode--having-trouble": {
+    "messageformat": "Ai probleme la înregistrare?"
+  },
+  "icu:StandaloneRegistration--VerificationCode--IncorrectCode--aria-title": {
+    "messageformat": "Cod incorect"
+  },
+  "icu:StandaloneRegistration--VerificationCode--IncorrectCode--description": {
+    "messageformat": "Codul introdus este incorect. Revizuiește codul de 6 cifre și încearcă din nou."
+  },
+  "icu:StandaloneRegistration--VerificationCode--IncorrectCode--button": {
+    "messageformat": "OK"
+  },
+  "icu:StandaloneRegistration--VerificationCode--CodeInvalid--aria-title": {
+    "messageformat": "Cod invalid"
+  },
+  "icu:StandaloneRegistration--VerificationCode--CodeInvalid--description": {
+    "messageformat": "Codul introdus nu este valid. Retrimite codul și încearcă din nou."
+  },
+  "icu:StandaloneRegistration--VerificationCode--CodeInvalid--resend-button": {
+    "messageformat": "Trimite din nou codul"
+  },
+  "icu:StandaloneRegistration--VerificationCode--CodeInvalid--edit-number-button": {
+    "messageformat": "Editează număr"
+  },
+  "icu:StandaloneRegistration--VerificationCode--SMSFailed--aria-title": {
+    "messageformat": "Nu s-a putut trimite SMS-ul"
+  },
+  "icu:StandaloneRegistration--VerificationCode--SMSFailed--description": {
+    "messageformat": "Nu ți-am putut trimite un cod de verificare prin SMS. Încearcă să primești codul prin apel vocal."
+  },
+  "icu:StandaloneRegistration--VerificationCode--SMSFailed--confirm": {
+    "messageformat": "Apel vocal"
+  },
+  "icu:StandaloneRegistration--VerificationCode--SMSFailed--cancel": {
+    "messageformat": "Anulează"
+  },
+  "icu:StandaloneRegistration--VerificationCode--MustWait--aria-title": {
+    "messageformat": "Încearcă mai târziu"
+  },
+  "icu:StandaloneRegistration--VerificationCode--MustWait--description": {
+    "messageformat": "Ai făcut prea multe încercări pentru a introduce acest cod. Încearcă din nou în {duration}."
+  },
+  "icu:StandaloneRegistration--VerificationCode--MustWait--button": {
+    "messageformat": "OK"
+  },
+  "icu:StandaloneRegistration--VerificationCode--MaximumAttempts--aria-title": {
+    "messageformat": "Prea multe încercări"
+  },
+  "icu:StandaloneRegistration--VerificationCode--MaximumAttempts--description": {
+    "messageformat": "Ai făcut prea multe încercări pentru a introduce acest cod. Retrimite codul și încearcă din nou."
+  },
+  "icu:StandaloneRegistration--VerificationCode--MaximumAttempts--resend-button": {
+    "messageformat": "Trimite din nou codul"
+  },
+  "icu:StandaloneRegistration--VerificationCode--MaximumAttempts--edit-number-button": {
+    "messageformat": "Editează număr"
+  },
+  "icu:StandaloneRegistration--VerificationCode--FailedToCall--aria-title": {
+    "messageformat": "Nu se poate suna"
+  },
+  "icu:StandaloneRegistration--VerificationCode--FailedToCall--description": {
+    "messageformat": "Nu am putut suna la numărul de telefon introdus. Asigură-te că e corect și încearcă din nou."
+  },
+  "icu:StandaloneRegistration--VerificationCode--FailedToCall--ok-button": {
+    "messageformat": "OK"
+  },
+  "icu:StandaloneRegistration--VerificationCode--CannotSendCodePermanent--aria-title": {
+    "messageformat": "Nu se poate trimite codul"
+  },
+  "icu:StandaloneRegistration--VerificationCode--CannotSendCodePermanent--description": {
+    "messageformat": "Un cod de verificare nu poate fi trimis la numărul de telefon pe care l-ai introdus. Asigură-te că numărul introdus este corect sau încearcă un număr diferit."
+  },
+  "icu:StandaloneRegistration--VerificationCode--CannotSendCodePermanent--ok-button": {
+    "messageformat": "OK"
+  },
+  "icu:StandaloneRegistration--VerificationCode--CannotSendCodeTemporary--aria-title": {
+    "messageformat": "Încearcă mai târziu"
+  },
+  "icu:StandaloneRegistration--VerificationCode--CannotSendCodeTemporary--description": {
+    "messageformat": "A apărut o eroare și codul de verificare nu a putut fi trimis. Încearcă din nou în {duration}."
+  },
+  "icu:StandaloneRegistration--VerificationCode--CannotSendCodeTemporary--ok-button": {
+    "messageformat": "OK"
+  },
+  "icu:StandaloneRegistration--ProfileEntry--header": {
+    "messageformat": "Configurează-ți profilul"
+  },
+  "icu:StandaloneRegistration--ProfileEntry--description": {
+    "messageformat": "Profilurile sunt vizibile pentru contacte, grupuri și persoanele cărora le dai mesaj."
+  },
+  "icu:StandaloneRegistration--ProfileEntry--learn-more": {
+    "messageformat": "Află mai multe"
+  },
+  "icu:StandaloneRegistration--ProfileEntry--add-photo": {
+    "messageformat": "Adăugare poză"
+  },
+  "icu:StandaloneRegistration--ProfileEntry--first-name": {
+    "messageformat": "Prenume (obligatoriu)"
+  },
+  "icu:StandaloneRegistration--ProfileEntry--last-name": {
+    "messageformat": "Nume (opțional)"
+  },
+  "icu:StandaloneRegistration--ProfileEntry--discoverability": {
+    "messageformat": "Cine mă poate găsi după numărul de telefon"
+  },
+  "icu:StandaloneRegistration--ProfileEntry--discoverability--change-button": {
+    "messageformat": "Schimbă"
+  },
+  "icu:StandaloneRegistration--ProfileEntry--discoverability--done-button": {
+    "messageformat": "Gata"
+  },
+  "icu:StandaloneRegistration--ProfileEntry--continue": {
+    "messageformat": "Continuă"
+  },
+  "icu:StandaloneRegistration--ProfileEntry--AvatarModal--header": {
+    "messageformat": "Avatarul tău"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--header": {
+    "messageformat": "Introdu PIN-ul tău"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--description": {
+    "messageformat": "Introdu codul PIN pe care l-ai creat pentru contul tău. Acesta este diferit față de codul tău de verificare prin SMS. <needHelp>Ai nevoie de ajutor?</needHelp>"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--placeholder": {
+    "messageformat": "Introdu PIN-ul tău"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--incorrect-pin": {
+    "messageformat": "PIN incorect"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--incorrect-pin--with-count": {
+    "messageformat": "{triesRemaining, plural, one {PIN incorect. {triesRemaining,number} încercare rămasă.} few {PIN incorect. {triesRemaining,number} încercări rămase.} other {PIN incorect. {triesRemaining,number} de încercări rămase.}}"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--NeedHelp--header": {
+    "messageformat": "Ai nevoie de ajutor?"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--NeedHelp--description--no-reglock": {
+    "messageformat": "PIN-ul tău este un cod de 4+ pe care l-ai creat care poate fi numeric sau alfanumeric. Dacă nu poți reține PIN-ul, poți crea unul nou. Poți înregistra și folosi contul tău, dar îți vei pierde niște setări precum informațiile de la profil. <learnMore>Află mai multe</learnMore>."
+  },
+  "icu:StandaloneRegistration--VerifyPIN--NeedHelp--description--reglock": {
+    "messageformat": "PIN-ul tău este un cod de 4+ pe care l-ai creat care poate fi numeric sau alfanumeric. Dacă nu îți poți aminti codul PIN, va trebui să aștepți 7 zile pentru a reînregistra contul. <learnMore>Află mai multe</learnMore>."
+  },
+  "icu:StandaloneRegistration--VerifyPIN--NeedHelp--skip-button--no-reglock": {
+    "messageformat": "Omite și creează un PIN nou"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--NeedHelp--contact-support-button": {
+    "messageformat": "Contactează suportul"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--NeedHelp--cancel": {
+    "messageformat": "Anulează"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--FewRemainingTries--header": {
+    "messageformat": "PIN incorect"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--FewRemainingTries--description--no-reglock": {
+    "messageformat": "{triesRemaining, plural, one {Mai ai {triesRemaining,number} încercare rămasă. Dacă rămâi fără încercări, poți crea un PIN nou. Poți să te înregistrezi și să-ți utilizezi contul, dar vei pierde unele setări salvate, cum ar fi informațiile despre profil. <learnMore>Află mai multe</learnMore>.} few {Mai ai {triesRemaining,number} încercări rămase. Dacă rămâi fără încercări, poți crea un PIN nou. Poți să te înregistrezi și să-ți utilizezi contul, dar vei pierde unele setări salvate, cum ar fi informațiile despre profil. <learnMore>Află mai multe</learnMore>.} other {Mai ai {triesRemaining,number} de încercări rămasă. Dacă rămâi fără încercări, poți crea un PIN nou. Poți să te înregistrezi și să-ți utilizezi contul, dar vei pierde unele setări salvate, cum ar fi informațiile despre profil. <learnMore>Află mai multe</learnMore>.}}"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--FewRemainingTries--description--reglock": {
+    "messageformat": "{triesRemaining, plural, one {Mai ai {triesRemaining,number} încercare rămasă. Dacă rămâi fără încercări, contul tău va fi blocat timp de 7 zile. După 7 zile de inactivitate, te poți înregistra din nou fără PIN. Tot conținutul va fi șters. <learnMore>Află mai multe</learnMore>.} few {Mai ai {triesRemaining,number} încercări rămase. Dacă rămâi fără încercări, contul tău va fi blocat timp de 7 zile. După 7 zile de inactivitate, te poți înregistra din nou fără PIN. Tot conținutul va fi șters. <learnMore>Află mai multe</learnMore>.} other {Mai ai {triesRemaining,number} de încercări rămase. Dacă rămâi fără încercări, contul tău va fi blocat timp de 7 zile. După 7 zile de inactivitate, te poți înregistra din nou fără PIN. Tot conținutul va fi șters. <learnMore>Află mai multe</learnMore>.}}"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--FewRemainingTries--button": {
+    "messageformat": "OK"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--NoRemainingTries--header": {
+    "messageformat": "PIN incorect"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--NoRemainingTries--description": {
+    "messageformat": "Ai depășit limita de încercări ale PIN-ului, dar poți accesa contul tău Signal prin crearea unui nou PIN. Pentru confidențialitate și securitate, contul tău va fi restaurat fără informații sau setări de profil salvate."
+  },
+  "icu:StandaloneRegistration--VerifyPIN--NoRemainingTries--create-new-pin": {
+    "messageformat": "Creează un PIN nou"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--NoRemainingTries--learn-more": {
+    "messageformat": "Află mai multe despre PIN-uri"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--menu--skip-pin": {
+    "messageformat": "Sări peste PIN"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--SkipPIN--header": {
+    "messageformat": "Sari peste introducerea PIN-ului?"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--SkipPIN--description": {
+    "messageformat": "Dacă nu poți reține PIN-ul, poți crea unul nou. Poți înregistra și folosi contul tău, dar îți vei pierde niște setări precum informațiile de la profil. Află mai multe."
+  },
+  "icu:StandaloneRegistration--VerifyPIN--SkipPIN--skip-button": {
+    "messageformat": "Omite și creează un PIN nou"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--SkipPIN--cancel-button": {
+    "messageformat": "Anulează"
+  },
+  "icu:StandaloneRegistration--CreatePIN--header": {
+    "messageformat": "Creează-ți PIN-ul"
+  },
+  "icu:StandaloneRegistration--CreatePIN--description": {
+    "messageformat": "PIN-urile te pot ajuta să-ți restaurezi contul și să-ți păstrezi informațiile criptate la Signal. <learnMore>Află mai multe</learnMore>"
+  },
+  "icu:StandaloneRegistration--CreatePIN--placeholder": {
+    "messageformat": "Creează-ți PIN-ul"
+  },
+  "icu:StandaloneRegistration--CreatePIN--helper-text": {
+    "messageformat": "PIN-ul trebuie să aibă cel puțin 4 caractere."
+  },
+  "icu:StandaloneRegistration--CreatePIN--continue": {
+    "messageformat": "Continuă"
+  },
+  "icu:StandaloneRegistration--CreatePIN--open-menu": {
+    "messageformat": "Deschide meniul"
+  },
+  "icu:StandaloneRegistration--CreatePIN--menu--more-about": {
+    "messageformat": "Mai multe despre PIN-uri"
+  },
+  "icu:StandaloneRegistration--CreatePIN--menu--disable": {
+    "messageformat": "Dezactivare PIN"
+  },
+  "icu:StandaloneRegistration--CreatePIN--DisableWarning--header": {
+    "messageformat": "Avertizare"
+  },
+  "icu:StandaloneRegistration--CreatePIN--DisableWarning--description": {
+    "messageformat": "Dacă dezactivezi codul PIN, vei pierde toate datele atunci când te vei înregistra din nou la Signal, dacă nu le transferi de pe alt dispozitiv iOS. Nu poți activa Blocarea înregistrării în timp ce codul PIN este dezactivat."
+  },
+  "icu:StandaloneRegistration--CreatePIN--DisableWarning--disable-button": {
+    "messageformat": "Dezactivare PIN"
+  },
+  "icu:StandaloneRegistration--CreatePIN--DisableWarning--cancel": {
+    "messageformat": "Anulează"
+  },
+  "icu:StandaloneRegistration--CreatePIN--AboutPINs--header": {
+    "messageformat": "Despre PIN-uri Signal"
+  },
+  "icu:StandaloneRegistration--CreatePIN--AboutPINs--description": {
+    "messageformat": "PIN-urile îți păstrează informațiile stocate în Signal criptate ca doar tu să le poți accesa. Profilul, setările și contactele se vor restabili atunci când reinstalezi Signal."
+  },
+  "icu:StandaloneRegistration--CreatePIN--AboutPINs--learn-more-button": {
+    "messageformat": "Află mai multe"
+  },
+  "icu:StandaloneRegistration--CreatePIN--AboutPINs--ok-button": {
+    "messageformat": "OK"
+  },
+  "icu:StandaloneRegistration--CreatePIN--confirming--header": {
+    "messageformat": "Confirmă PIN-ul"
+  },
+  "icu:StandaloneRegistration--CreatePIN--confirming--description": {
+    "messageformat": "Re-introdu PIN-ul pe care tocmai l-ai creat."
+  },
+  "icu:StandaloneRegistration--CreatePIN--confirming--placeholder": {
+    "messageformat": "Introdu PIN-ul tău"
+  },
+  "icu:StandaloneRegistration--AccountLocked--header": {
+    "messageformat": "Cont blocat"
+  },
+  "icu:StandaloneRegistration--AccountLocked--description": {
+    "messageformat": "Contul tău a fost blocat, pentru a-ți proteja confidențialitatea și securitatea. După 7 zile de inactivitate în contul tău vei putea să reînregistrezi acest număr de telefon fără a avea nevoie de PIN-ul tău. Tot conținutul va fi șters."
+  },
+  "icu:StandaloneRegistration--AccountLocked--start-over-button": {
+    "messageformat": "Folosește un număr de telefon diferit"
+  },
+  "icu:StandaloneRegistration--AccountLocked--help-button": {
+    "messageformat": "Află mai multe despre conturi blocate"
+  },
+  "icu:StandaloneRegistration--UpdateRequired--header": {
+    "messageformat": "Actualizare Necesară"
+  },
+  "icu:StandaloneRegistration--UpdateRequired--description": {
+    "messageformat": "Ca să continui cu înregistrarea, actualizează la cea mai recentă versiune de Signal."
+  },
+  "icu:StandaloneRegistration--UpdateRequired--update": {
+    "messageformat": "Actualizează"
+  },
+  "icu:StandaloneRegistration--UpdateRequired--cancel": {
+    "messageformat": "Anulează"
+  },
+  "icu:StandaloneRegistration--ConnectionProblem--header": {
+    "messageformat": "Verifică-ți conexiunea"
+  },
+  "icu:StandaloneRegistration--ConnectionProblem--description": {
+    "messageformat": "Pentru a continua, verifică conexiunea la internet a telefonului și încearcă din nou."
+  },
+  "icu:StandaloneRegistration--ConnectionProblem--button": {
+    "messageformat": "OK"
+  },
+  "icu:StandaloneRegistration--UnexpectedError--header": {
+    "messageformat": "Nu se poate finaliza înregistrarea"
+  },
+  "icu:StandaloneRegistration--UnexpectedError--description": {
+    "messageformat": "A avut loc o eroare și nu se poate finaliza înregistrarea. Dacă persistă problema, contactează serviciul de asistență."
+  },
+  "icu:StandaloneRegistration--UnexpectedError--try-again-button": {
+    "messageformat": "Încearcă din nou"
+  },
+  "icu:StandaloneRegistration--UnexpectedError--contact-support-button": {
+    "messageformat": "Contactează Asistența"
   },
   "icu:NSIS__retry-dialog--first-line": {
     "messageformat": "Signal nu poate fi închis",
@@ -6809,10 +7280,10 @@
     "messageformat": "Mergi la setări"
   },
   "icu:MyStories__title": {
-    "messageformat": "Poveștile Mele"
+    "messageformat": "Poveștile mele"
   },
   "icu:MyStories__list_item": {
-    "messageformat": "Poveștile Mele"
+    "messageformat": "Poveștile mele"
   },
   "icu:MyStories__story": {
     "messageformat": "Povestea Ta"
@@ -6916,15 +7387,6 @@
   "icu:SignalConnectionsModal__footer": {
     "messageformat": "Conexiunile tale îți pot vedea numele și fotografia și pot vedea postările din „Povestea Mea” cu excepția cazului în care le ascunzi"
   },
-  "icu:LocalDeleteWarningModal__header": {
-    "messageformat": "Eliminarea este sincronizată pe toate dispozitivele tale"
-  },
-  "icu:LocalDeleteWarningModal__description": {
-    "messageformat": "Atunci când elimini mesaje sau conversații, acestea vor fi șterse de pe toate dispozitivele tale."
-  },
-  "icu:LocalDeleteWarningModal__confirm": {
-    "messageformat": "Am înțeles"
-  },
   "icu:Stories__title": {
     "messageformat": "Povești"
   },
@@ -6992,7 +7454,7 @@
     "messageformat": "Poveștile dispar automat după 24 de ore. Alege cine poate să-ți vadă povestea sau creează noi povești cu anumiți spectatori sau grupuri."
   },
   "icu:StoriesSettings__my_stories": {
-    "messageformat": "Poveștile Mele"
+    "messageformat": "Poveștile mele"
   },
   "icu:StoriesSettings__new-list": {
     "messageformat": "Poveste Nouă"
@@ -7478,9 +7940,6 @@
   "icu:DraftGifMessageSendModal__SendButtonLabel": {
     "messageformat": "Trimite"
   },
-  "icu:DraftGifMessageSendModal__CancelButtonLabel": {
-    "messageformat": "Anulează"
-  },
   "icu:EditHistoryMessagesModal__title": {
     "messageformat": "Editează istoricul"
   },
@@ -7566,7 +8025,7 @@
     "messageformat": "Nu există apeluri pierdute"
   },
   "icu:CallsList__CreateCallLink": {
-    "messageformat": "Creează un Link de Apel"
+    "messageformat": "Creează o legătură pentru apel"
   },
   "icu:CallsList__ItemCallInfo--Incoming": {
     "messageformat": "Primite"
@@ -7759,9 +8218,6 @@
   },
   "icu:PreferencesDonations__privacy-modal-title": {
     "messageformat": "Informațiile sunt private"
-  },
-  "icu:PreferencesDonations__privacy-modal-content": {
-    "messageformat": "<paragraph>Signal nu colectează sau stochează informațiile personale când faci o donație.</paragraph><paragraph>Folosim Stripe ca procesator de plăți ca să primim donațiile tale. Nu accesăm, stocăm sau salvăm niciuna dintre informațiile pe care le oferi către ei.</paragraph><paragraph>Signal nu conectează donația ta cu contul Signal și nici nu poate să o facă.</paragraph><paragraph>Îți mulțumim pentru sprijinul tău!</paragraph>"
   },
   "icu:PreferencesDonations__privacy-modal-intro": {
     "messageformat": "Ca organizație non-profit independentă, Signal se angajează să ofere mesaje și apeluri private. Fără reclame, fără sisteme de urmărire. Donează astăzi și susține Signal."
@@ -8205,10 +8661,16 @@
     "messageformat": "Mici ajustări, soluționări de bug-uri și îmbunătățiri ale performanței. Mersi că folosești Signal!",
     "ignoreUnused": true
   },
-  "icu:WhatsNew__8.12--0": {
-    "messageformat": "Pe de-o parte, poți să dai clic pe pictograma cu mâna ridicată în timpul apelurilor de grup. Pe de altă parte, acum poți folosi o nouă scurtătură de la taste (Shift-H)."
+  "icu:WhatsNew__8.18--0": {
+    "messageformat": "Sondajele pot fi acum create și în conversații individuale. Prezintă-i prietenului tău indecis o listă de opțiuni atent selecționate sau retrăiește magia momentului în care îi dădeai un bilet celui pe care îl plăceai, creând un sondaj de tipul „Mă placi? Da/Nu/Poate”."
   },
-  "icu:WhatsNew__8.13--0": {
-    "messageformat": "The new raised-hand indicators are now also displayed in the list of raised hands during group calls. It's a second-hand place to figure out who you should hand it over to when you're done speaking."
+  "icu:WhatsNew__8.19--0": {
+    "messageformat": "Administratorii grupurilor pot acum încheia discuțiile în mod natural, folosind noua opțiune „Încheie grupul” din setările grupului. Încheierea unui grup împiedică membrii acestuia să mai trimită mesaje sau să inițieze apeluri și, de asemenea, dezactivează invitațiile. Acum poți să te asiguri că toată lumea rămâne la zi, încheind grupul de croșetat de anul trecut, înainte de a forma unul nou."
+  },
+  "icu:WhatsNew__8.20--0": {
+    "messageformat": "Introducing disappearing call events: Missed, outgoing, and received calls that occur after you install this update will now automatically disappear in any chat where disappearing messages are enabled."
+  },
+  "icu:WhatsNew__8.20--1": {
+    "messageformat": "Now you can reorder installed sticker packs so your new favorites don’t get stuck in the back of the line."
   }
 }

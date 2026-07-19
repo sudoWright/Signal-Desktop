@@ -449,14 +449,16 @@ export namespace AxoDropdownMenu {
       >
         <AxoBaseMenu.ItemLeadingSlot>
           <AxoBaseMenu.ItemCheckPlaceholder>
-            <DropdownMenu.ItemIndicator>
+            <DropdownMenu.ItemIndicator
+              className={tw('inline-flex items-center')}
+            >
               <AxoBaseMenu.ItemCheck />
             </DropdownMenu.ItemIndicator>
           </AxoBaseMenu.ItemCheckPlaceholder>
         </AxoBaseMenu.ItemLeadingSlot>
         <AxoBaseMenu.ItemContentSlot>
           {props.symbol && (
-            <span className={tw('me-2')}>
+            <span className={tw('me-2 inline-flex items-center')}>
               <AxoBaseMenu.ItemSymbol symbol={props.symbol} />
             </span>
           )}
@@ -518,14 +520,16 @@ export namespace AxoDropdownMenu {
       >
         <AxoBaseMenu.ItemLeadingSlot>
           <AxoBaseMenu.ItemCheckPlaceholder>
-            <DropdownMenu.ItemIndicator>
+            <DropdownMenu.ItemIndicator
+              className={tw('inline-flex items-center')}
+            >
               <AxoBaseMenu.ItemCheck />
             </DropdownMenu.ItemIndicator>
           </AxoBaseMenu.ItemCheckPlaceholder>
         </AxoBaseMenu.ItemLeadingSlot>
         <AxoBaseMenu.ItemContentSlot>
           {props.symbol && (
-            <span className={tw('me-2')}>
+            <span className={tw('me-2 inline-flex items-center')}>
               <AxoBaseMenu.ItemSymbol symbol={props.symbol} />
             </span>
           )}
@@ -617,7 +621,7 @@ export namespace AxoDropdownMenu {
         )}
         <AxoBaseMenu.ItemContentSlot>
           <AxoBaseMenu.ItemText>{props.children}</AxoBaseMenu.ItemText>
-          <span className={tw('ms-auto')}>
+          <span className={tw('ms-auto inline-flex items-center')}>
             <AxoSymbol.Icon size={14} symbol="chevron-[end]" label={null} />
           </span>
         </AxoBaseMenu.ItemContentSlot>
@@ -641,17 +645,19 @@ export namespace AxoDropdownMenu {
   export const SubContent: FC<SubContentProps> = memo(props => {
     const { context, labelId, descriptionId } = useCreateAriaLabellingContext();
     return (
-      <AriaLabellingProvider value={context}>
-        <DropdownMenu.SubContent
-          alignOffset={-6}
-          collisionPadding={6}
-          className={AxoBaseMenu.menuSubContentStyles}
-          aria-labelledby={labelId}
-          aria-describedby={descriptionId}
-        >
-          {props.children}
-        </DropdownMenu.SubContent>
-      </AriaLabellingProvider>
+      <DropdownMenu.Portal>
+        <AriaLabellingProvider value={context}>
+          <DropdownMenu.SubContent
+            alignOffset={-6}
+            collisionPadding={6}
+            className={AxoBaseMenu.menuSubContentStyles}
+            aria-labelledby={labelId}
+            aria-describedby={descriptionId}
+          >
+            {props.children}
+          </DropdownMenu.SubContent>
+        </AriaLabellingProvider>
+      </DropdownMenu.Portal>
     );
   });
 

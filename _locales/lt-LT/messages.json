@@ -14,6 +14,9 @@
   "icu:AxoTextField.Clear": {
     "messageformat": "Išvalyti"
   },
+  "icu:AxoBadge.MaxOverflow": {
+    "messageformat": "{max,number}+"
+  },
   "icu:AddUserToAnotherGroupModal__title": {
     "messageformat": "Pridėti į grupę"
   },
@@ -85,6 +88,9 @@
   },
   "icu:unknownContact": {
     "messageformat": "Nežinomas adresatas"
+  },
+  "icu:deletedAccount": {
+    "messageformat": "Ištrinta paskyra"
   },
   "icu:unknownContactShort": {
     "messageformat": "Nežinoma"
@@ -314,6 +320,9 @@
   "icu:LeftPaneChatFolders__ItemUnreadBadge__MaxCount": {
     "messageformat": "{maxCount,number}+"
   },
+  "icu:LeftPaneChatFolders__ItemUnreadBadge__AccessibleLabel": {
+    "messageformat": "{count, plural, one {{count,number} Unread Message} other {{count,number} Unread Messages}}"
+  },
   "icu:LeftPaneChatFolders__Item__ContextMenu__MarkAllRead": {
     "messageformat": "Žymėti visus skaitytais"
   },
@@ -449,8 +458,8 @@
   "icu:unpinConversation": {
     "messageformat": "Nusegti pokalbį"
   },
-  "icu:pinnedConversationsFull": {
-    "messageformat": "Gali prisegti daugiausiai 4 pokalbius"
+  "icu:pinnedConversations--max": {
+    "messageformat": "{maxPinnedConversations, plural, one {Galite prisegti daugiausia {maxPinnedConversations,number} pokalbį} few {Galite prisegti daugiausia {maxPinnedConversations,number} pokalbius} many {Galite prisegti daugiausia {maxPinnedConversations,number} pokalbio} other {Galite prisegti daugiausia {maxPinnedConversations,number} pokalbių}}"
   },
   "icu:view": {
     "messageformat": "Žiūrėti"
@@ -2261,9 +2270,6 @@
   "icu:partiallySent": {
     "messageformat": "Dalinai išsiųsta, spustelėkite išsamesnei informacijai"
   },
-  "icu:partiallyDeleted": {
-    "messageformat": "Dalinai ištrinta, spustelėk, kad bandytum dar kartą"
-  },
   "icu:partiallyDeleted--clickForDetails": {
     "messageformat": "Iš dalies ištrinta, spustelėkite, jei norite sužinoti daugiau"
   },
@@ -2466,7 +2472,7 @@
     "messageformat": "Atsisiųsti nepavyko"
   },
   "icu:Toast--unable-download-from-backup-tier": {
-    "messageformat": "Attachment missing from backup CDN"
+    "messageformat": "Attachment missing from backup CDN, please share desktop & primary logs"
   },
   "icu:ToastManager__CannotAddMemberLabel": {
     "messageformat": "Šioje grupėje narių kategorijas gali pridėti tik administratoriai."
@@ -2687,9 +2693,6 @@
   "icu:message--getDescription--gif": {
     "messageformat": "GIF"
   },
-  "icu:message--deletedForEveryone": {
-    "messageformat": "Ši žinutė buvo ištrinta."
-  },
   "icu:message--deletedByAdmin": {
     "messageformat": "Administratorius {admin} ištrynė šią žinutę"
   },
@@ -2780,14 +2783,11 @@
   "icu:stickers--toast--InstallFailed": {
     "messageformat": "Nepavyko įdiegti lipdukų paketo"
   },
-  "icu:stickers--StickerManager--Available": {
-    "messageformat": "Galimas"
+  "icu:stickers--StickerManager--MyStickers--None": {
+    "messageformat": "Lipdukų paketų nėra. Pridėkite lipdukų siųsti draugams."
   },
-  "icu:stickers--StickerManager--InstalledPacks": {
-    "messageformat": "Įdiegtas"
-  },
-  "icu:stickers--StickerManager--InstalledPacks--Empty": {
-    "messageformat": "Nėra jokių įdiegtų lipdukų"
+  "icu:stickers--StickerManager--AddStickers": {
+    "messageformat": "Pridėti lipdukų"
   },
   "icu:stickers--StickerManager--BlessedPacks": {
     "messageformat": "Signal menininkų serija"
@@ -2795,14 +2795,17 @@
   "icu:stickers--StickerManager--BlessedPacks--Empty": {
     "messageformat": "Nėra prieinami jokie Signal menininkų lipdukai"
   },
-  "icu:stickers--StickerManager--ReceivedPacks": {
-    "messageformat": "Jūsų gauti lipdukai"
+  "icu:stickers--StickerManager--ReceivedPacks2": {
+    "messageformat": "Pasidalino su jumis"
   },
-  "icu:stickers--StickerManager--ReceivedPacks--Empty": {
-    "messageformat": "Čia bus rodomi lipdukai iš gaunamų žinučių"
+  "icu:stickers--StickerManager--ReceivedPacksDescription": {
+    "messageformat": "Iš kieno nors gavus lipduką, lipdukų paketas bus rodomas čia."
   },
   "icu:stickers--StickerManager--Install": {
     "messageformat": "Įdiegti"
+  },
+  "icu:stickers--StickerManager--Installed": {
+    "messageformat": "Įdiegtas"
   },
   "icu:stickers--StickerManager--Uninstall": {
     "messageformat": "Pašalinti"
@@ -2810,11 +2813,59 @@
   "icu:stickers--StickerManager--UninstallWarning": {
     "messageformat": "Jei neturite pradinės žinutės, gali būti, kad negalėsite iš naujo įdiegti šio lipdukų paketo."
   },
+  "icu:stickers--StickerManagerHeader--All": {
+    "messageformat": "Visi"
+  },
+  "icu:stickers--StickerManagerHeader--MyStickers": {
+    "messageformat": "Mano lipdukai"
+  },
+  "icu:stickers--StickerManagerPackContextMenu--Add": {
+    "messageformat": "Pridėti"
+  },
+  "icu:stickers--StickerManagerPackContextMenu--Remove": {
+    "messageformat": "Šalinti"
+  },
+  "icu:stickers--StickerManagerPackDragHandle--Label": {
+    "messageformat": "Drag to reorder sticker pack"
+  },
+  "icu:stickers--StickerManagerBlessedPacksList--Label": {
+    "messageformat": "Signal Artist Series sticker packs"
+  },
+  "icu:stickers--StickerManagerReceivedPacksList--Label": {
+    "messageformat": "Received sticker packs"
+  },
+  "icu:stickers--StickerManagerInstalledPacksList--Label": {
+    "messageformat": "Installed sticker packs"
+  },
   "icu:stickers--StickerPreview--Title": {
     "messageformat": "Lipdukų paketas"
   },
   "icu:stickers--StickerPreview--Error": {
     "messageformat": "Klaida atveriant lipdukų paketą. Patikrinkite savo interneto ryšį ir bandykite dar kartą."
+  },
+  "icu:stickers--StickerPreview--Install": {
+    "messageformat": "Pridėti lipdukų"
+  },
+  "icu:stickers--StickerPreview--Remove": {
+    "messageformat": "Šalinti"
+  },
+  "icu:stickers--StickerPreview--Link": {
+    "messageformat": "Nuoroda"
+  },
+  "icu:stickers--StickerPreview--LinkCopied": {
+    "messageformat": "Nuoroda nukopijuota"
+  },
+  "icu:stickers--StickerPreview--StickerCount": {
+    "messageformat": "{count, plural, one {{count,number} lipdukas} few {{count,number} lipdukai} many {{count,number} lipduko} other {{count,number} lipdukų}}"
+  },
+  "icu:stickers--StickerPreview--StickerNoEmojiAriaLabel": {
+    "messageformat": "Lipdukas be jaustuko"
+  },
+  "icu:stickers--StickerPackLinkPreviewDescription": {
+    "messageformat": "{author} lipdukų paketas"
+  },
+  "icu:stickers--ViewPack": {
+    "messageformat": "Peržiūrėti paketą"
   },
   "icu:FunPicker__Tab--Emojis": {
     "messageformat": "Šypsenėlės"
@@ -3028,6 +3079,18 @@
   },
   "icu:FunButton__Label--StickerPicker": {
     "messageformat": "Pridėti lipduką"
+  },
+  "icu:FunPicker__Label--StickerReply": {
+    "messageformat": "Reply"
+  },
+  "icu:FunPicker__Label--SendStickerReply": {
+    "messageformat": "Send"
+  },
+  "icu:FunPicker__Label--CancelStickerReply": {
+    "messageformat": "Cancel"
+  },
+  "icu:FunPicker__Label--Sticker": {
+    "messageformat": "Sticker"
   },
   "icu:confirmation-dialog--Cancel": {
     "messageformat": "Atšaukti"
@@ -4700,9 +4763,6 @@
   "icu:CompositionArea--expand": {
     "messageformat": "Išskleisti"
   },
-  "icu:CompositionArea--attach-file": {
-    "messageformat": "Pridėti failą"
-  },
   "icu:CompositionArea__AttachMenu__PhotosAndVideos": {
     "messageformat": "Nuotraukos ir vaizdo įrašai"
   },
@@ -5153,26 +5213,17 @@
   "icu:SelectModeActions--forwardSelectedMessages": {
     "messageformat": "Persiųsti pasirinktas žinutes"
   },
-  "icu:DeleteMessagesModal--title": {
-    "messageformat": "{count, plural, one {Ištrinti žinutę?} few {Ištrinti {count,number} žinutes?} many {Ištrinti {count,number} žinutės?} other {Ištrinti {count,number} žinučių?}}"
-  },
   "icu:DeleteMessagesModal--title-2": {
     "messageformat": "{count, plural, one {Ištrinti pažymėtą žinutę?} few {Ištrinti {count,number} pažymėtas žinutes?} many {Ištrinti {count,number} pažymėtos žinutės?} other {Ištrinti {count,number} pažymėtų žinučių?}}"
   },
   "icu:DeleteMessagesModal--description": {
     "messageformat": "{count, plural, one {Kokiam žmogui norėtum ištrinti šią žinutę?} few {Kokiam žmogui norėtum ištrinti šias žinutes?} many {Kokiam žmogui norėtum ištrinti šias žinutes?} other {Kokiam žmogui norėtum ištrinti šias žinutes?}}"
   },
-  "icu:DeleteMessagesModal--description--noteToSelf": {
-    "messageformat": "{count, plural, one {Iš kokių įrenginių norėtum ištrinti šią žinutę?} few {Iš kokių įrenginių norėtum ištrinti šias žinutes?} many {Iš kokių įrenginių norėtum ištrinti šias žinutes?} other {Iš kokių įrenginių norėtum ištrinti šias žinutes?}}"
-  },
   "icu:DeleteMessagesModal--description--noteToSelf--deleteSync": {
     "messageformat": "{count, plural, one {Ši žinutė bus ištrinta iš visų jūsų įrenginių.} few {Šios žinutės bus ištrintos iš visų jūsų įrenginių.} many {Šios žinutės bus ištrintos iš visų jūsų įrenginių.} other {Šios žinutės bus ištrintos iš visų jūsų įrenginių.}}"
   },
   "icu:DeleteMessagesModal--deleteForMe": {
     "messageformat": "Ištrinti man"
-  },
-  "icu:DeleteMessagesModal--deleteFromThisDevice": {
-    "messageformat": "Ištrinti iš šio įrenginio"
   },
   "icu:DeleteMessagesModal--deleteForEveryone": {
     "messageformat": "Ištrinti visiems"
@@ -5186,9 +5237,6 @@
   },
   "icu:DeleteMessagesModal--adminDeleteConfirmation--description__rollout": {
     "messageformat": "{count, plural, one {Naujausias „Signal“ versijas naudojantys grupės nariai matys, kad jūs ištrynėte šią žinutę.} few {Naujausias „Signal“ versijas naudojantys grupės nariai matys, kad jūs ištrynėte šias žinutes.} many {Naujausias „Signal“ versijas naudojantys grupės nariai matys, kad jūs ištrynėte šias žinutes.} other {Naujausias „Signal“ versijas naudojantys grupės nariai matys, kad jūs ištrynėte šias žinutes.}}"
-  },
-  "icu:DeleteMessagesModal--deleteFromAllDevices": {
-    "messageformat": "Ištrinti iš visų įrenginių"
   },
   "icu:DeleteMessagesModal--noteToSelf--deleteSync": {
     "messageformat": "Ištrinti"
@@ -6397,11 +6445,26 @@
   "icu:Preferences--local-backups-enter-backup-key": {
     "messageformat": "Įvesti raktą"
   },
-  "icu:Preferences--local-backups-record-recovery-key": {
-    "messageformat": "Užsirašykite savo atkūrimo raktą"
+  "icu:Preferences--local-backups-recovery-key--title": {
+    "messageformat": "Jūsų atkūrimo raktas"
   },
-  "icu:Preferences--local-backups-record-backup-key-description": {
-    "messageformat": "Šis raktas reikalingas norint atkurti paskyrą ir duomenis. Išsaugokite jį saugioje vietoje. Pamiršę raktą savo paskyros atkurti negalėsite. <learnMoreLink>Sužinoti daugiau.</learnMoreLink>"
+  "icu:Preferences--local-backups-recovery-key--description": {
+    "messageformat": "Šis raktas reikalingas norint atkurti paskyrą ir duomenis. Išsaugokite jį saugioje vietoje ir niekada nesidalykite juo su kitais. „Signal“ niekada neprašys jūsų pateikti atkūrimo raktą. <learnMoreLink>Sužinoti daugiau.</learnMoreLink>"
+  },
+  "icu:Preferences__recovery-key__do-not-share-title": {
+    "messageformat": "Nesidalinkite atkūrimo raktu"
+  },
+  "icu:Preferences__recovery-key__do-not-share-confirm": {
+    "messageformat": "Supratau"
+  },
+  "icu:CompositionInput__recovery-key-paste__share-key": {
+    "messageformat": "Dalintis raktu"
+  },
+  "icu:CompositionInput__recovery-key-paste__do-not-share-key": {
+    "messageformat": "Nesidalinkite raktu"
+  },
+  "icu:CompositionInput__recovery-key-warning--description": {
+    "messageformat": "Su niekuo nesidalinkite savo atkūrimo raktu. Antraip šie asmenys galės perimti jūsų paskyrą. <strong>„Signal“ niekada neprašys jūsų</strong> pateikti atkūrimo raktą. Niekada neatsakykite į pokalbius, kuriuose apsimetama „Signal“. <learnMoreLink>Sužinoti daugiau.</learnMoreLink>"
   },
   "icu:Preferences--local-backups-confirm-recovery-key": {
     "messageformat": "Patvirtinkite atkūrimo raktą"
@@ -6465,6 +6528,9 @@
   },
   "icu:Preferences__local-backups-auth-error--unauthorized": {
     "messageformat": "Šio veiksmo atlikti nepavyko, nes nepavyko sistemos autentifikavimas. Bandykite dar kartą arba atverkite „Signal“ programėlę mobiliajame įrenginyje ir norėdami peržiūrėti atkūrimo raktą eikite į „Atsarginės kopijos nustatymai“."
+  },
+  "icu:Preferences__local-backups-auth-error--unknown-error": {
+    "messageformat": "Prašant sistemos patvirtinti šį veiksmą įvyko klaida."
   },
   "icu:Preferences__view-key": {
     "messageformat": "Peržiūrėti raktą"
@@ -6631,6 +6697,12 @@
   "icu:DialogUpdate__downloaded": {
     "messageformat": "Naujinys atsisiųstas"
   },
+  "icu:DialogUpdate__upgrade-mas": {
+    "messageformat": "Spustelėkite eiti į „App Store“"
+  },
+  "icu:DialogExpiredBuild__upgrade-mas": {
+    "messageformat": "Spustelėkite eiti į „App Store“"
+  },
   "icu:CriticalIdlePrimaryDevice__title": {
     "messageformat": "Atverkite savo telefone Signal programėlę"
   },
@@ -6669,6 +6741,405 @@
   },
   "icu:InstallScreenUpdateDialog--cannot-update__body": {
     "messageformat": "Nepavyko atnaujinti „Signal Desktop“, bet gali atsisiųsti naują versiją. Eik į {downloadUrl} ir įdiek naują versiją rankiniu būdu, o tada kreipkis į aptarnavimo komandą arba pranešk apie šią problemą."
+  },
+  "icu:StandaloneRegistration--signal-logo": {
+    "messageformat": "„Signal“ logotipas"
+  },
+  "icu:StandaloneRegistration--back": {
+    "messageformat": "Atgal"
+  },
+  "icu:StandaloneRegistration--PhoneNumber--header": {
+    "messageformat": "Telefono numeris"
+  },
+  "icu:StandaloneRegistration--PhoneNumber--description--line-1": {
+    "messageformat": "Įveskite savo telefono numerį, kad patvirtintumėte paskyrą."
+  },
+  "icu:StandaloneRegistration--PhoneNumber--description--line-2": {
+    "messageformat": "Gali būti taikomi operatoriaus mokesčiai."
+  },
+  "icu:StandaloneRegistration--PhoneNumber--waiting": {
+    "messageformat": "Bandykite už {duration}"
+  },
+  "icu:StandaloneRegistration--PhoneNumber--placeholder": {
+    "messageformat": "Telefono numeris"
+  },
+  "icu:StandaloneRegistration--PhoneNumber--button": {
+    "messageformat": "Tęsti"
+  },
+  "icu:StandaloneRegistration--PhoneNumber--Confirmation--description": {
+    "messageformat": "Ar jūsų telefono numeris aukščiau yra teisingas?"
+  },
+  "icu:StandaloneRegistration--PhoneNumber--Confirmation--cancel": {
+    "messageformat": "Taisyti numerį"
+  },
+  "icu:StandaloneRegistration--PhoneNumber--Confirmation--confirm": {
+    "messageformat": "Taip"
+  },
+  "icu:StandaloneRegistration--Captcha--header": {
+    "messageformat": "Norėdami tęsti patvirtinkite, kad esate žmogus"
+  },
+  "icu:StandaloneRegistration--Captcha--description": {
+    "messageformat": "Siekdami neleisti brukalo „Signal“ programėlėje, prašome jūsų užbaigti patvirtinimą. Patvirtinę galėsite tęsti registraciją."
+  },
+  "icu:StandaloneRegistration--Captcha--retry-button": {
+    "messageformat": "Kartoti patvirtinimą"
+  },
+  "icu:StandaloneRegistration--Captcha--button": {
+    "messageformat": "Patvirtinti naršyklėje"
+  },
+  "icu:StandaloneRegistration--Captcha--button--wait": {
+    "messageformat": "Patvirtinkite už {duration}"
+  },
+  "icu:StandaloneRegistration--Captcha--NeedAnother--header": {
+    "messageformat": "Reikalingas tolesnis patvirtinimas"
+  },
+  "icu:StandaloneRegistration--Captcha--NeedAnother--description": {
+    "messageformat": "Norėdami tęsti registraciją užbaikite dar vieną CAPTCHA."
+  },
+  "icu:StandaloneRegistration--Captcha--NeedAnother--cancel": {
+    "messageformat": "Atšaukti"
+  },
+  "icu:StandaloneRegistration--Captcha--NeedAnother--retry": {
+    "messageformat": "Kartoti patvirtinimą"
+  },
+  "icu:StandaloneRegistration--Captcha--MustWait--aria-title": {
+    "messageformat": "Bandykite vėliau"
+  },
+  "icu:StandaloneRegistration--Captcha--MustWait--line-1": {
+    "messageformat": "Šiuo metu negalima užbaigti patvirtinimo."
+  },
+  "icu:StandaloneRegistration--Captcha--MustWait--line-2": {
+    "messageformat": "Bandykite dar kartą už {duration}."
+  },
+  "icu:StandaloneRegistration--Captcha--MustWait--button": {
+    "messageformat": "Gerai"
+  },
+  "icu:StandaloneRegistration--Captcha--Error--header": {
+    "messageformat": "Patvirtinimo klaida"
+  },
+  "icu:StandaloneRegistration--Captcha--Error--description": {
+    "messageformat": "Norėdami tęsti registraciją bandykite patvirtinti dar kartą."
+  },
+  "icu:StandaloneRegistration--Captcha--Error--try-again": {
+    "messageformat": "Bandykite dar kartą"
+  },
+  "icu:StandaloneRegistration--Captcha--Error--cancel": {
+    "messageformat": "Atšaukti"
+  },
+  "icu:StandaloneRegistration--VerificationCode--header": {
+    "messageformat": "Patvirtinimo kodas"
+  },
+  "icu:StandaloneRegistration--VerificationCode--description": {
+    "messageformat": "Įveskite kodą, kurį išsiuntėme į {phoneNumber}"
+  },
+  "icu:StandaloneRegistration--VerificationCode--button": {
+    "messageformat": "Tęsti"
+  },
+  "icu:StandaloneRegistration--VerificationCode--send-sms": {
+    "messageformat": "Siųsti kodą iš naujo"
+  },
+  "icu:StandaloneRegistration--VerificationCode--send-sms--duration": {
+    "messageformat": "Siųsti kodą iš naujo po {duration}"
+  },
+  "icu:StandaloneRegistration--VerificationCode--call-me": {
+    "messageformat": "Paskambinkite man"
+  },
+  "icu:StandaloneRegistration--VerificationCode--call-me--duration": {
+    "messageformat": "Paskambinkite man po {duration}"
+  },
+  "icu:StandaloneRegistration--VerificationCode--wrong-number": {
+    "messageformat": "Neteisingas numeris?"
+  },
+  "icu:StandaloneRegistration--VerificationCode--having-trouble": {
+    "messageformat": "Nepavyksta prisiregistruoti?"
+  },
+  "icu:StandaloneRegistration--VerificationCode--IncorrectCode--aria-title": {
+    "messageformat": "Neteisingas kodas"
+  },
+  "icu:StandaloneRegistration--VerificationCode--IncorrectCode--description": {
+    "messageformat": "Įvedėte neteisingą kodą. Peržiūrėkite 6 skaitmenų kodą ir bandykite vėl."
+  },
+  "icu:StandaloneRegistration--VerificationCode--IncorrectCode--button": {
+    "messageformat": "Gerai"
+  },
+  "icu:StandaloneRegistration--VerificationCode--CodeInvalid--aria-title": {
+    "messageformat": "Neteisingas kodas"
+  },
+  "icu:StandaloneRegistration--VerificationCode--CodeInvalid--description": {
+    "messageformat": "Įvedėte neteisingą kodą. Prašykite dar vieno kodo ir bandykite vėl."
+  },
+  "icu:StandaloneRegistration--VerificationCode--CodeInvalid--resend-button": {
+    "messageformat": "Siųsti kodą iš naujo"
+  },
+  "icu:StandaloneRegistration--VerificationCode--CodeInvalid--edit-number-button": {
+    "messageformat": "Taisyti numerį"
+  },
+  "icu:StandaloneRegistration--VerificationCode--SMSFailed--aria-title": {
+    "messageformat": "Nepavyko išsiųsti SMS"
+  },
+  "icu:StandaloneRegistration--VerificationCode--SMSFailed--description": {
+    "messageformat": "Mums nepavyko tau išsiųsti patvirtinimo kodo SMS žinute. Pabandyk gauti savo kodą balso skambučiu."
+  },
+  "icu:StandaloneRegistration--VerificationCode--SMSFailed--confirm": {
+    "messageformat": "Balso skambutis"
+  },
+  "icu:StandaloneRegistration--VerificationCode--SMSFailed--cancel": {
+    "messageformat": "Atšaukti"
+  },
+  "icu:StandaloneRegistration--VerificationCode--MustWait--aria-title": {
+    "messageformat": "Bandykite vėliau"
+  },
+  "icu:StandaloneRegistration--VerificationCode--MustWait--description": {
+    "messageformat": "Atlikote per daug bandymų įvesti kodą. Bandykite dar kartą už {duration}."
+  },
+  "icu:StandaloneRegistration--VerificationCode--MustWait--button": {
+    "messageformat": "Gerai"
+  },
+  "icu:StandaloneRegistration--VerificationCode--MaximumAttempts--aria-title": {
+    "messageformat": "Per daug bandymų"
+  },
+  "icu:StandaloneRegistration--VerificationCode--MaximumAttempts--description": {
+    "messageformat": "Atlikote per daug bandymų įvesti kodą. Prašykite dar vieno kodo ir bandykite vėl."
+  },
+  "icu:StandaloneRegistration--VerificationCode--MaximumAttempts--resend-button": {
+    "messageformat": "Siųsti kodą iš naujo"
+  },
+  "icu:StandaloneRegistration--VerificationCode--MaximumAttempts--edit-number-button": {
+    "messageformat": "Taisyti numerį"
+  },
+  "icu:StandaloneRegistration--VerificationCode--FailedToCall--aria-title": {
+    "messageformat": "Nepavyko paskambinti"
+  },
+  "icu:StandaloneRegistration--VerificationCode--FailedToCall--description": {
+    "messageformat": "Nepavyko paskambinti jūsų įvestu telefono numeriu. Įsitikinkite, kad telefono numeris yra teisingas, ir bandykite vėl."
+  },
+  "icu:StandaloneRegistration--VerificationCode--FailedToCall--ok-button": {
+    "messageformat": "Gerai"
+  },
+  "icu:StandaloneRegistration--VerificationCode--CannotSendCodePermanent--aria-title": {
+    "messageformat": "Negalima išsiųsti kodo"
+  },
+  "icu:StandaloneRegistration--VerificationCode--CannotSendCodePermanent--description": {
+    "messageformat": "Jūsų įvestu telefono numeriu patvirtinimo kodo išsiųsti negalima. Įsitikinkite, kad įvedėte teisingą numerį, arba bandykite įvesti kitą."
+  },
+  "icu:StandaloneRegistration--VerificationCode--CannotSendCodePermanent--ok-button": {
+    "messageformat": "Gerai"
+  },
+  "icu:StandaloneRegistration--VerificationCode--CannotSendCodeTemporary--aria-title": {
+    "messageformat": "Bandykite vėliau"
+  },
+  "icu:StandaloneRegistration--VerificationCode--CannotSendCodeTemporary--description": {
+    "messageformat": "Įvyko klaida ir nepavyko išsiųsti patvirtinimo kodo. Bandykite dar kartą už {duration}."
+  },
+  "icu:StandaloneRegistration--VerificationCode--CannotSendCodeTemporary--ok-button": {
+    "messageformat": "Gerai"
+  },
+  "icu:StandaloneRegistration--ProfileEntry--header": {
+    "messageformat": "Nusistatykite savo profilį"
+  },
+  "icu:StandaloneRegistration--ProfileEntry--description": {
+    "messageformat": "Profiliai matomi adresatams, grupėms ir tiems, kam siunti žinutes."
+  },
+  "icu:StandaloneRegistration--ProfileEntry--learn-more": {
+    "messageformat": "Sužinoti daugiau"
+  },
+  "icu:StandaloneRegistration--ProfileEntry--add-photo": {
+    "messageformat": "Pridėti nuotrauką"
+  },
+  "icu:StandaloneRegistration--ProfileEntry--first-name": {
+    "messageformat": "Vardas (būtinas)"
+  },
+  "icu:StandaloneRegistration--ProfileEntry--last-name": {
+    "messageformat": "Pavardė (nebūtina)"
+  },
+  "icu:StandaloneRegistration--ProfileEntry--discoverability": {
+    "messageformat": "Kas gali mane rasti pagal telefono numerį"
+  },
+  "icu:StandaloneRegistration--ProfileEntry--discoverability--change-button": {
+    "messageformat": "Keisti"
+  },
+  "icu:StandaloneRegistration--ProfileEntry--discoverability--done-button": {
+    "messageformat": "Atlikta"
+  },
+  "icu:StandaloneRegistration--ProfileEntry--continue": {
+    "messageformat": "Tęsti"
+  },
+  "icu:StandaloneRegistration--ProfileEntry--AvatarModal--header": {
+    "messageformat": "Jūsų avataras"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--header": {
+    "messageformat": "Įveskite savo PIN kodą"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--description": {
+    "messageformat": "Įveskite savo paskyrai sukurtą PIN kodą. Tai yra kas kita, nei jūsų SMS patvirtinimo kodas. <needHelp>Reikia pagalbos?</needHelp>"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--placeholder": {
+    "messageformat": "Įveskite savo PIN kodą"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--incorrect-pin": {
+    "messageformat": "Neteisingas PIN"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--incorrect-pin--with-count": {
+    "messageformat": "{triesRemaining, plural, one {Neteisingas PIN kodas. Liko {triesRemaining,number} bandymas.} few {Neteisingas PIN kodas. Liko {triesRemaining,number} bandymai.} many {Neteisingas PIN kodas. Liko {triesRemaining,number} bandymų.} other {Neteisingas PIN kodas. Liko {triesRemaining,number} bandymas.}}"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--NeedHelp--header": {
+    "messageformat": "Reikia pagalbos?"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--NeedHelp--description--no-reglock": {
+    "messageformat": "Jūsų PIN yra 4+ skaitmenų kodas, kurį susikūrėte iš skaitmenų arba iš skaitmenų ir raidžių. Jei neprisimenate savo PIN kodo, galite susikurti naują. Galėsite registruotis ir naudotis savo paskyra, bet prarasite kai kuriuos įrašytus nustatymus, kaip pavyzdžiui, profilio informaciją. <learnMore>Sužinoti daugiau</learnMore>."
+  },
+  "icu:StandaloneRegistration--VerifyPIN--NeedHelp--description--reglock": {
+    "messageformat": "Jūsų PIN yra 4+ skaitmenų kodas, kurį susikūrėte iš skaitmenų arba iš skaitmenų ir raidžių. Jei neprisimenate savo PIN kodo, turėsite palaukti 7 dienas, kol galėsite iš naujo registruotis. <learnMore>Sužinoti daugiau</learnMore>."
+  },
+  "icu:StandaloneRegistration--VerifyPIN--NeedHelp--skip-button--no-reglock": {
+    "messageformat": "Praleisti ir sukurti naują PIN kodą"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--NeedHelp--contact-support-button": {
+    "messageformat": "Susisiekti su palaikymu"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--NeedHelp--cancel": {
+    "messageformat": "Atšaukti"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--FewRemainingTries--header": {
+    "messageformat": "Neteisingas PIN"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--FewRemainingTries--description--no-reglock": {
+    "messageformat": "{triesRemaining, plural, one {Jums liko {triesRemaining,number} bandymas. Jei išnaudosite visus bandymus, galėsite susikurti naują PIN kodą. Galėsite registruotis ir naudotis savo paskyra, bet prarasite kai kuriuos įrašytus nustatymus, kaip pavyzdžiui, profilio informaciją. <learnMore>Sužinoti daugiau</learnMore>.} few {Jums liko {triesRemaining,number} bandymai. Jei išnaudosite visus bandymus, galėsite susikurti naują PIN kodą. Galėsite registruotis ir naudotis savo paskyra, bet prarasite kai kuriuos įrašytus nustatymus, kaip pavyzdžiui, profilio informaciją. <learnMore>Sužinoti daugiau</learnMore>.} many {Jums liko {triesRemaining,number} bandymų. Jei išnaudosite visus bandymus, galėsite susikurti naują PIN kodą. Galėsite registruotis ir naudotis savo paskyra, bet prarasite kai kuriuos įrašytus nustatymus, kaip pavyzdžiui, profilio informaciją. <learnMore>Sužinoti daugiau</learnMore>.} other {Jums liko {triesRemaining,number} bandymų. Jei išnaudosite visus bandymus, galėsite susikurti naują PIN kodą. Galėsite registruotis ir naudotis savo paskyra, bet prarasite kai kuriuos įrašytus nustatymus, kaip pavyzdžiui, profilio informaciją. <learnMore>Sužinoti daugiau</learnMore>.}}"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--FewRemainingTries--description--reglock": {
+    "messageformat": "{triesRemaining, plural, one {Jums liko {triesRemaining,number} bandymas. Jei išnaudosite visus bandymus, jūsų paskyra bus užrakinta 7 dienoms. Po 7 dienų neveiklumo galėsite iš naujo registruotis be savo PIN kodo. Visas turinys bus ištrintas. <learnMore>Sužinoti daugiau</learnMore>.} few {Jums liko {triesRemaining,number} bandymai. Jei išnaudosite visus bandymus, jūsų paskyra bus užrakinta 7 dienoms. Po 7 dienų neveiklumo galėsite iš naujo registruotis be savo PIN kodo. Visas turinys bus ištrintas. <learnMore>Sužinoti daugiau</learnMore>.} many {Jums liko {triesRemaining,number} bandymų. Jei išnaudosite visus bandymus, jūsų paskyra bus užrakinta 7 dienoms. Po 7 dienų neveiklumo galėsite iš naujo registruotis be savo PIN kodo. Visas turinys bus ištrintas. <learnMore>Sužinoti daugiau</learnMore>.} other {Jums liko {triesRemaining,number} bandymų. Jei išnaudosite visus bandymus, jūsų paskyra bus užrakinta 7 dienoms. Po 7 dienų neveiklumo galėsite iš naujo registruotis be savo PIN kodo. Visas turinys bus ištrintas. <learnMore>Sužinoti daugiau</learnMore>.}}"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--FewRemainingTries--button": {
+    "messageformat": "Gerai"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--NoRemainingTries--header": {
+    "messageformat": "Neteisingas PIN"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--NoRemainingTries--description": {
+    "messageformat": "Jums nebeliko PIN kodo spėjimų, bet vis dar galite gauti prieigą prie savo „Signal“ paskyros susikurdami naują PIN kodą. Siekiant apsaugoti jūsų privatumą, saugumo sumetimais jūsų paskyra bus atkurta be įrašytos profilio informacijos ir įrašytų nustatymų."
+  },
+  "icu:StandaloneRegistration--VerifyPIN--NoRemainingTries--create-new-pin": {
+    "messageformat": "Sukurti naują PIN kodą"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--NoRemainingTries--learn-more": {
+    "messageformat": "Sužinokite daugiau apie PIN kodus"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--menu--skip-pin": {
+    "messageformat": "Praleisti PIN"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--SkipPIN--header": {
+    "messageformat": "Praleisti PIN kodo įrašą?"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--SkipPIN--description": {
+    "messageformat": "Jei neprisimenate savo PIN kodo, galite susikurti naują. Galėsite registruotis ir naudotis savo paskyra, bet prarasite kai kuriuos įrašytus nustatymus, kaip pavyzdžiui, profilio informaciją. Sužinokite daugiau."
+  },
+  "icu:StandaloneRegistration--VerifyPIN--SkipPIN--skip-button": {
+    "messageformat": "Praleisti ir sukurti naują PIN kodą"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--SkipPIN--cancel-button": {
+    "messageformat": "Atšaukti"
+  },
+  "icu:StandaloneRegistration--CreatePIN--header": {
+    "messageformat": "Susikurti PIN kodą"
+  },
+  "icu:StandaloneRegistration--CreatePIN--description": {
+    "messageformat": "PIN kodai gali padėti atkurti tavo paskyrą ir išsaugoti užšifruotą informaciją programėlėje „Signal“. <learnMore>Sužinoti daugiau</learnMore>"
+  },
+  "icu:StandaloneRegistration--CreatePIN--placeholder": {
+    "messageformat": "Susikurti PIN kodą"
+  },
+  "icu:StandaloneRegistration--CreatePIN--helper-text": {
+    "messageformat": "PIN kodą privalo sudaryti bent 4 simboliai"
+  },
+  "icu:StandaloneRegistration--CreatePIN--continue": {
+    "messageformat": "Tęsti"
+  },
+  "icu:StandaloneRegistration--CreatePIN--open-menu": {
+    "messageformat": "Atidaryti meniu"
+  },
+  "icu:StandaloneRegistration--CreatePIN--menu--more-about": {
+    "messageformat": "Daugiau apie PIN"
+  },
+  "icu:StandaloneRegistration--CreatePIN--menu--disable": {
+    "messageformat": "Išjungti PIN kodą"
+  },
+  "icu:StandaloneRegistration--CreatePIN--DisableWarning--header": {
+    "messageformat": "Įspėjimas"
+  },
+  "icu:StandaloneRegistration--CreatePIN--DisableWarning--description": {
+    "messageformat": "Jei išjungsite PIN kodą, tuomet registruodamiesi iš naujo „Signal“ programėlėje prarasite visus duomenis, nebent perkelsite juos iš kito „iOS“ įrenginio. Tol, kol PIN kodas yra išjungtas, negalėsite įjungti Registracijos užrakto."
+  },
+  "icu:StandaloneRegistration--CreatePIN--DisableWarning--disable-button": {
+    "messageformat": "Išjungti PIN kodą"
+  },
+  "icu:StandaloneRegistration--CreatePIN--DisableWarning--cancel": {
+    "messageformat": "Atšaukti"
+  },
+  "icu:StandaloneRegistration--CreatePIN--AboutPINs--header": {
+    "messageformat": "Apie „Signal“ PIN"
+  },
+  "icu:StandaloneRegistration--CreatePIN--AboutPINs--description": {
+    "messageformat": "PIN kodai šifruotu pavidalu saugo informaciją, kuri yra laikoma „Signal“, todėl tik jūs galite gauti prieigą prie jos. Jums įdiegus iš naujo, jūsų profilis, nustatymai ir adresatai bus atkurti."
+  },
+  "icu:StandaloneRegistration--CreatePIN--AboutPINs--learn-more-button": {
+    "messageformat": "Sužinoti daugiau"
+  },
+  "icu:StandaloneRegistration--CreatePIN--AboutPINs--ok-button": {
+    "messageformat": "Gerai"
+  },
+  "icu:StandaloneRegistration--CreatePIN--confirming--header": {
+    "messageformat": "Patvirtinkite savo PIN kodą"
+  },
+  "icu:StandaloneRegistration--CreatePIN--confirming--description": {
+    "messageformat": "Dar kartą įvesk savo sukurtą PIN kodą."
+  },
+  "icu:StandaloneRegistration--CreatePIN--confirming--placeholder": {
+    "messageformat": "Įveskite savo PIN kodą"
+  },
+  "icu:StandaloneRegistration--AccountLocked--header": {
+    "messageformat": "Paskyra užrakinta"
+  },
+  "icu:StandaloneRegistration--AccountLocked--description": {
+    "messageformat": "Siekiant apsaugoti jūsų privatumą ir saugumą, jūsų paskyra buvo užrakinta. Po 7 dienų neveiklumo galėsite iš naujo registruoti šį telefono numerį be būtinybės įvesti PIN kodą. Visas turinys bus ištrintas."
+  },
+  "icu:StandaloneRegistration--AccountLocked--start-over-button": {
+    "messageformat": "Naudoti kitą numerį"
+  },
+  "icu:StandaloneRegistration--AccountLocked--help-button": {
+    "messageformat": "Sužinoti apie užrakintas paskyras"
+  },
+  "icu:StandaloneRegistration--UpdateRequired--header": {
+    "messageformat": "Reikia atnaujinimo"
+  },
+  "icu:StandaloneRegistration--UpdateRequired--description": {
+    "messageformat": "Norėdami tęsti registraciją, atnaujinkite „Signal“ į naujausią versiją."
+  },
+  "icu:StandaloneRegistration--UpdateRequired--update": {
+    "messageformat": "Atnaujinti"
+  },
+  "icu:StandaloneRegistration--UpdateRequired--cancel": {
+    "messageformat": "Atšaukti"
+  },
+  "icu:StandaloneRegistration--ConnectionProblem--header": {
+    "messageformat": "Patikrinkite ryšį"
+  },
+  "icu:StandaloneRegistration--ConnectionProblem--description": {
+    "messageformat": "Norėdami tęsti, patikrinkite kompiuterio interneto ryšį ir bandykite dar kartą."
+  },
+  "icu:StandaloneRegistration--ConnectionProblem--button": {
+    "messageformat": "Gerai"
+  },
+  "icu:StandaloneRegistration--UnexpectedError--header": {
+    "messageformat": "Registracijos užbaigti nepavyko"
+  },
+  "icu:StandaloneRegistration--UnexpectedError--description": {
+    "messageformat": "Įvyko klaida ir nepavyko užbaigti registracijos. Jei problema išlieka, kreipkitės į palaikymo komandą."
+  },
+  "icu:StandaloneRegistration--UnexpectedError--try-again-button": {
+    "messageformat": "Bandykite dar kartą"
+  },
+  "icu:StandaloneRegistration--UnexpectedError--contact-support-button": {
+    "messageformat": "Susisiekti su aptarnavimo komanda"
   },
   "icu:NSIS__retry-dialog--first-line": {
     "messageformat": "Nepavyksta užverti Signal.",
@@ -6915,15 +7386,6 @@
   },
   "icu:SignalConnectionsModal__footer": {
     "messageformat": "Tavo kontaktai mato tavo vardą ir nuotrauką, ir gali matyti „Mano istorijos“ įrašus, nebent nuo jų paslėpsi"
-  },
-  "icu:LocalDeleteWarningModal__header": {
-    "messageformat": "Ištrynimas sinchronizuojamas visuose jūsų įrenginiuose"
-  },
-  "icu:LocalDeleteWarningModal__description": {
-    "messageformat": "Jei ištrinate žinutes ar pokalbius, jie bus ištrinti iš visų jūsų įrenginių."
-  },
-  "icu:LocalDeleteWarningModal__confirm": {
-    "messageformat": "Supratau"
   },
   "icu:Stories__title": {
     "messageformat": "Istorijos"
@@ -7478,9 +7940,6 @@
   "icu:DraftGifMessageSendModal__SendButtonLabel": {
     "messageformat": "Siųsti"
   },
-  "icu:DraftGifMessageSendModal__CancelButtonLabel": {
-    "messageformat": "Atšaukti"
-  },
   "icu:EditHistoryMessagesModal__title": {
     "messageformat": "Redagavimo istorija"
   },
@@ -7759,9 +8218,6 @@
   },
   "icu:PreferencesDonations__privacy-modal-title": {
     "messageformat": "Tavo informacija yra privati"
-  },
-  "icu:PreferencesDonations__privacy-modal-content": {
-    "messageformat": "<paragraph>„Signal“ nerenka ir nesaugo jokios jūsų asmeninės informacijos, kai skiriate paramą.</paragraph><paragraph>Jūsų paramai gauti kaip mokėjimų tvarkytoją naudojame „Stripe“. Mes nepasiekiame, nelaikome ir neišsaugome jokios jūsų jiems pateiktos informacijos.</paragraph><paragraph>„Signal“ nesusieja ir negali susieti jūsų paramos su jūsų „Signal“ paskyra.</paragraph><paragraph>Dėkojame už jūsų paramą!</paragraph>"
   },
   "icu:PreferencesDonations__privacy-modal-intro": {
     "messageformat": "Kaip nepriklausoma ne pelno organizacija „Signal“ yra įsipareigojusi užtikrinti žinučių ir skambučių privatumą. Nebrukame reklamų, nesekame ir nestebime. Skirkite paramą šiandien ir palaikykite „Signal“."
@@ -8205,10 +8661,16 @@
     "messageformat": "Smulkūs patobulinimai, klaidų pataisymai ir veikimo pagerinimas. Ačiū, kad naudoji „Signal“!",
     "ignoreUnused": true
   },
-  "icu:WhatsNew__8.12--0": {
-    "messageformat": "Pridėjome naują spartųjį klavišą pakelti ranką grupės skambučiuose (Shift-H)."
+  "icu:WhatsNew__8.18--0": {
+    "messageformat": "Dabar apklausas galima kurti ir individualiuose pokalbiuose."
   },
-  "icu:WhatsNew__8.13--0": {
-    "messageformat": "The new raised-hand indicators are now also displayed in the list of raised hands during group calls. It's a second-hand place to figure out who you should hand it over to when you're done speaking."
+  "icu:WhatsNew__8.19--0": {
+    "messageformat": "Nuo šiol grupės administratoriai gali užbaigti pokalbius su naująja parinktimi „Uždaryti grupę“ grupės nustatymuose. Uždarius grupę jos nariai nebegalės siųsti žinučių ir skambinti, be to, bus išjungti ir pakvietimai jungtis prie grupės."
+  },
+  "icu:WhatsNew__8.20--0": {
+    "messageformat": "Introducing disappearing call events: Missed, outgoing, and received calls that occur after you install this update will now automatically disappear in any chat where disappearing messages are enabled."
+  },
+  "icu:WhatsNew__8.20--1": {
+    "messageformat": "Now you can reorder installed sticker packs so your new favorites don’t get stuck in the back of the line."
   }
 }

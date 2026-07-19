@@ -28,6 +28,7 @@ node_modules/**
 packages/*/node_modules/**
 packages/lame/wrapper.mjs
 packages/lame/lame-*/
+packages/windows-ucv/dist/**
 danger/node_modules/**
 sticker-creator/node_modules/**
 components/**
@@ -46,9 +47,6 @@ scripts/emoji-datasource/emoji-datasource.json
 # Managed by package manager (`bower` and `yarn`/`npm`):
 /bower.json
 /package.json
-
-# Symlink into third-party `components`:
-stylesheets/_intlTelInput.scss
 
 preload.bundle.*
 preload.wrapper.js

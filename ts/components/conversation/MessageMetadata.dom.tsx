@@ -38,6 +38,7 @@ type PropsType = {
   isOutlineOnlyBubble?: boolean;
   isShowingImage: boolean;
   isSticker?: boolean;
+  isStickerReply?: boolean;
   onWidthMeasured?: (width: number) => unknown;
   pushPanelForConversation: PushPanelForConversationActionType;
   retryDeleteForEveryone: (messageId: string) => unknown;
@@ -71,6 +72,7 @@ export const MessageMetadata = forwardRef<HTMLDivElement, Readonly<PropsType>>(
       isInline,
       isShowingImage,
       isSticker,
+      isStickerReply,
       onWidthMeasured,
       pushPanelForConversation,
       retryDeleteForEveryone,
@@ -191,7 +193,7 @@ export const MessageMetadata = forwardRef<HTMLDivElement, Readonly<PropsType>>(
         >
           <AxoConfirmDialog.Cancel />
           <AxoConfirmDialog.Action
-            variant="destructive"
+            variant="strong-destructive"
             onClick={() => {
               retryMessageSend(id);
               setConfirmationType(undefined);
@@ -219,7 +221,7 @@ export const MessageMetadata = forwardRef<HTMLDivElement, Readonly<PropsType>>(
             <AxoAlertDialog.Footer>
               <AxoAlertDialog.Cancel />
               <AxoAlertDialog.Action
-                variant="primary"
+                variant="strong-primary"
                 onClick={() => {
                   retryDeleteForEveryone(id);
                   setConfirmationType(undefined);
@@ -241,7 +243,7 @@ export const MessageMetadata = forwardRef<HTMLDivElement, Readonly<PropsType>>(
       isInline && 'module-message__metadata--inline',
       withImageNoCaption && 'module-message__metadata--with-image-no-caption',
       isOutlineOnlyBubble && 'module-message__metadata--outline-only-bubble',
-      isSticker && 'module-message__metadata--sticker'
+      isSticker && !isStickerReply && 'module-message__metadata--sticker'
     );
     const children = (
       <>
@@ -309,7 +311,11 @@ export const MessageMetadata = forwardRef<HTMLDivElement, Readonly<PropsType>>(
       return (
         <SizeObserver onSizeChange={onResize}>
           {measureRef => (
-            <div className={className} ref={refMerger(measureRef, ref)}>
+            <div
+              className={className}
+              ref={refMerger(measureRef, ref)}
+              aria-live="off"
+            >
               {children}
             </div>
           )}
@@ -318,7 +324,7 @@ export const MessageMetadata = forwardRef<HTMLDivElement, Readonly<PropsType>>(
     }
 
     return (
-      <div className={className} ref={ref}>
+      <div className={className} ref={ref} aria-live="off">
         {children}
       </div>
     );

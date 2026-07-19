@@ -365,6 +365,12 @@ export async function handlePollVote(
     log.warn('handlePollVote: Invalid option indexes found, dropping');
     return;
   }
+  const hasDupeIndexes =
+    new Set(vote.optionIndexes).size !== vote.optionIndexes.length;
+  if (hasDupeIndexes) {
+    log.warn('handlePollVote: Duplicate optionIndexes detected, dropping');
+    return;
+  }
 
   // Check multiple choice constraint
   if (!poll.allowMultiple && vote.optionIndexes.length > 1) {
@@ -484,6 +490,7 @@ export async function handlePollVote(
   if (shouldMarkAsUnread) {
     drop(
       maybeNotify({
+        kind: 'pollVote',
         pollVote: vote,
         targetMessage: message.attributes,
         conversation: conversationContainingThisPoll,
@@ -576,6 +583,7 @@ export async function handlePollTerminate(
   await conversation.addPollTerminateNotification({
     pollQuestion: poll.question,
     pollTimestamp: message.attributes.timestamp,
+    pollSource: terminate.source,
     terminatorId: terminate.fromConversationId,
     timestamp: terminate.timestamp,
     isMeTerminating: isMe(author.attributes),

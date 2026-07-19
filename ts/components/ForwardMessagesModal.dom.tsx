@@ -262,7 +262,7 @@ export function ForwardMessagesModal({
         {isEditingMessage || !isLonelyDraftEditable ? (
           <AxoIconButton.Root
             size="md"
-            variant="primary"
+            variant="strong-primary"
             symbol="send-fill"
             label={i18n('icu:ForwardMessageModal--continue')}
             disabled={!canForwardMessages}
@@ -271,7 +271,7 @@ export function ForwardMessagesModal({
         ) : (
           <AxoIconButton.Root
             size="md"
-            variant="primary"
+            variant="strong-primary"
             symbol="arrow-[end]"
             label={i18n('icu:forwardMessage')}
             disabled={!hasContactsSelected}
@@ -395,6 +395,7 @@ export function ForwardMessagesModal({
                       }}
                       rowCount={rowCount}
                       shouldRecomputeRowHeights={false}
+                      resetShouldRecomputeRowHeights={shouldNeverBeCalled}
                       showChooseGroupMembers={shouldNeverBeCalled}
                       showFindByUsername={shouldNeverBeCalled}
                       showFindByPhoneNumber={shouldNeverBeCalled}

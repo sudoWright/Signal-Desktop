@@ -135,6 +135,7 @@ export type StorageAccessType = {
   linkPreviews: boolean;
   universalExpireTimer: number;
   retryPlaceholders: ReadonlyArray<RetryItemType>;
+  donationPermits: string;
   donationWorkflow: string;
   chromiumRegistrationDoneEver: '';
   chromiumRegistrationDone: '';
@@ -215,6 +216,7 @@ export type StorageAccessType = {
   notificationProfileSyncDisabled: boolean;
   observedCapabilities: {
     attachmentBackfill?: true;
+    usernameChangeSyncMessage?: true;
 
     // Note: Upon capability deprecation - change the value type to `never` and
     // remove it in `ts/background.ts`
@@ -252,8 +254,10 @@ export type StorageAccessType = {
   // The `firstAppVersion` present on an BackupInfo from an imported backup.
   restoredBackupFirstAppVersion: string;
 
-  // Stored solely for pesistance during import/export sequence
+  // When Desktop is standalone, we use these. Otherwise, only used for backup.
   svrPin: string;
+
+  // Stored solely for persistence during import/export sequence
   optimizeOnDeviceStorage: boolean;
   pinReminders: boolean | undefined;
   screenLockTimeoutMinutes: number | undefined;
@@ -468,6 +472,7 @@ const STORAGE_KEYS_TO_REMOVE_AFTER_UNLINK = [
   'useRingrtcAdm',
   'linkPreviews',
   'retryPlaceholders',
+  'donationPermits',
   'donationWorkflow',
   'chromiumRegistrationDone',
   'typingIndicators',

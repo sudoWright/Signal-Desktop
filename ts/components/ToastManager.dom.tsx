@@ -321,7 +321,11 @@ function renderToast({
   if (toastType === ToastType.CopiedBackupKey) {
     return (
       <Toast onClose={hideToast} timeout={3 * SECOND}>
-        {i18n('icu:Preferences__local-backups-copied-recovery-key')}
+        <div className={tw('flex items-center')}>
+          <AxoSymbol.InlineGlyph symbol="copy" label={null} />
+          &nbsp;&nbsp;
+          {i18n('icu:Preferences__local-backups-copied-recovery-key')}
+        </div>
       </Toast>
     );
   }
@@ -330,6 +334,14 @@ function renderToast({
     return (
       <Toast onClose={hideToast} timeout={3 * SECOND}>
         {i18n('icu:calling__call-link-copied')}
+      </Toast>
+    );
+  }
+
+  if (toastType === ToastType.CopiedStickerPackLink) {
+    return (
+      <Toast onClose={hideToast} timeout={3 * SECOND}>
+        {i18n('icu:stickers--StickerPreview--LinkCopied')}
       </Toast>
     );
   }
@@ -775,7 +787,13 @@ function renderToast({
 
   if (toastType === ToastType.PinnedConversationsFull) {
     return (
-      <Toast onClose={hideToast}>{i18n('icu:pinnedConversationsFull')}</Toast>
+      <Toast onClose={hideToast}>
+        <I18n
+          i18n={i18n}
+          id="icu:pinnedConversations--max"
+          components={{ maxPinnedConversations: toast.maxPinnedConversations }}
+        />
+      </Toast>
     );
   }
 
@@ -814,7 +832,7 @@ function renderToast({
       >
         <div>
           <strong>
-            <span className={tw('text-color-fill-warning')}>
+            <span className={tw('text-warning')}>
               <AxoSymbol.InlineGlyph symbol="error-triangle" label="Change" />
             </span>
             &nbsp;Remote Config changed:

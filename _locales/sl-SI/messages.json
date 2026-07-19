@@ -14,6 +14,9 @@
   "icu:AxoTextField.Clear": {
     "messageformat": "Izbriši"
   },
+  "icu:AxoBadge.MaxOverflow": {
+    "messageformat": "{max,number}+"
+  },
   "icu:AddUserToAnotherGroupModal__title": {
     "messageformat": "Dodaj v skupino"
   },
@@ -85,6 +88,9 @@
   },
   "icu:unknownContact": {
     "messageformat": "Neznan stik"
+  },
+  "icu:deletedAccount": {
+    "messageformat": "Izbrisan račun"
   },
   "icu:unknownContactShort": {
     "messageformat": "Neznano"
@@ -314,6 +320,9 @@
   "icu:LeftPaneChatFolders__ItemUnreadBadge__MaxCount": {
     "messageformat": "{maxCount,number}+"
   },
+  "icu:LeftPaneChatFolders__ItemUnreadBadge__AccessibleLabel": {
+    "messageformat": "{count, plural, one {{count,number} Unread Message} other {{count,number} Unread Messages}}"
+  },
   "icu:LeftPaneChatFolders__Item__ContextMenu__MarkAllRead": {
     "messageformat": "Označi vse kot prebrano"
   },
@@ -449,8 +458,8 @@
   "icu:unpinConversation": {
     "messageformat": "Odpni klepet"
   },
-  "icu:pinnedConversationsFull": {
-    "messageformat": "Pripnete lahko največ 4 klepete"
+  "icu:pinnedConversations--max": {
+    "messageformat": "{maxPinnedConversations, plural, one {Pripnete lahko do {maxPinnedConversations,number} klepet} two {Pripnete lahko do {maxPinnedConversations,number} klepeta} few {Pripnete lahko do {maxPinnedConversations,number} klepete} other {Pripnete lahko do {maxPinnedConversations,number} klepetov}}"
   },
   "icu:view": {
     "messageformat": "Prikaz"
@@ -2261,9 +2270,6 @@
   "icu:partiallySent": {
     "messageformat": "Delno poslano. Kliknite za več informacij."
   },
-  "icu:partiallyDeleted": {
-    "messageformat": "Delno izbrisano, kliknite za nov poskus"
-  },
   "icu:partiallyDeleted--clickForDetails": {
     "messageformat": "Delno izbrisano, kliknite za podrobnosti"
   },
@@ -2466,7 +2472,7 @@
     "messageformat": "Prenos ni uspel"
   },
   "icu:Toast--unable-download-from-backup-tier": {
-    "messageformat": "Attachment missing from backup CDN"
+    "messageformat": "Attachment missing from backup CDN, please share desktop & primary logs"
   },
   "icu:ToastManager__CannotAddMemberLabel": {
     "messageformat": "Vloge članov v tej skupini lahko dodajo samo skrbniki."
@@ -2687,9 +2693,6 @@
   "icu:message--getDescription--gif": {
     "messageformat": "GIF"
   },
-  "icu:message--deletedForEveryone": {
-    "messageformat": "Sporočilo je bilo izbrisano."
-  },
   "icu:message--deletedByAdmin": {
     "messageformat": "Administrator_ka {admin} je izbrisal_a to sporočilo"
   },
@@ -2780,14 +2783,11 @@
   "icu:stickers--toast--InstallFailed": {
     "messageformat": "Paket nalepk ni mogel biti nameščen"
   },
-  "icu:stickers--StickerManager--Available": {
-    "messageformat": "Na voljo"
+  "icu:stickers--StickerManager--MyStickers--None": {
+    "messageformat": "Ni paketov nalepk. Dodajte nalepke, da jih lahko pošiljate prijateljem."
   },
-  "icu:stickers--StickerManager--InstalledPacks": {
-    "messageformat": "Nameščeno"
-  },
-  "icu:stickers--StickerManager--InstalledPacks--Empty": {
-    "messageformat": "Brez nameščenih nalepk"
+  "icu:stickers--StickerManager--AddStickers": {
+    "messageformat": "Dodaj nalepke"
   },
   "icu:stickers--StickerManager--BlessedPacks": {
     "messageformat": "Serija Signalovi umetniki"
@@ -2795,14 +2795,17 @@
   "icu:stickers--StickerManager--BlessedPacks--Empty": {
     "messageformat": "Nobenih nalepk iz serije Signalovi umetniki ni na voljo"
   },
-  "icu:stickers--StickerManager--ReceivedPacks": {
-    "messageformat": "Prejete nalepke"
+  "icu:stickers--StickerManager--ReceivedPacks2": {
+    "messageformat": "Deljeno z vami"
   },
-  "icu:stickers--StickerManager--ReceivedPacks--Empty": {
-    "messageformat": "Tu bodo prikazane nalepke iz dohodnih sporočil."
+  "icu:stickers--StickerManager--ReceivedPacksDescription": {
+    "messageformat": "Ko od nekoga prejmete nalepko, se bo paket nalepk prikazal tukaj."
   },
   "icu:stickers--StickerManager--Install": {
     "messageformat": "Namesti"
+  },
+  "icu:stickers--StickerManager--Installed": {
+    "messageformat": "Nameščeno"
   },
   "icu:stickers--StickerManager--Uninstall": {
     "messageformat": "Odstrani"
@@ -2810,11 +2813,59 @@
   "icu:stickers--StickerManager--UninstallWarning": {
     "messageformat": "Če nimate shranjenega izvornega sporočila, morda ne boste mogli ponovno namestiti tega paketa nalepk."
   },
+  "icu:stickers--StickerManagerHeader--All": {
+    "messageformat": "Vse"
+  },
+  "icu:stickers--StickerManagerHeader--MyStickers": {
+    "messageformat": "Moje nalepke"
+  },
+  "icu:stickers--StickerManagerPackContextMenu--Add": {
+    "messageformat": "Dodaj"
+  },
+  "icu:stickers--StickerManagerPackContextMenu--Remove": {
+    "messageformat": "Odstrani"
+  },
+  "icu:stickers--StickerManagerPackDragHandle--Label": {
+    "messageformat": "Drag to reorder sticker pack"
+  },
+  "icu:stickers--StickerManagerBlessedPacksList--Label": {
+    "messageformat": "Signal Artist Series sticker packs"
+  },
+  "icu:stickers--StickerManagerReceivedPacksList--Label": {
+    "messageformat": "Received sticker packs"
+  },
+  "icu:stickers--StickerManagerInstalledPacksList--Label": {
+    "messageformat": "Installed sticker packs"
+  },
   "icu:stickers--StickerPreview--Title": {
     "messageformat": "Paket nalepk"
   },
   "icu:stickers--StickerPreview--Error": {
     "messageformat": "Paketa nalepk ni bilo mogoče odpreti. Preverite internetno povezavo in poskusite znova."
+  },
+  "icu:stickers--StickerPreview--Install": {
+    "messageformat": "Dodaj nalepke"
+  },
+  "icu:stickers--StickerPreview--Remove": {
+    "messageformat": "Odstrani"
+  },
+  "icu:stickers--StickerPreview--Link": {
+    "messageformat": "Povezava"
+  },
+  "icu:stickers--StickerPreview--LinkCopied": {
+    "messageformat": "Povezava je prekopirana"
+  },
+  "icu:stickers--StickerPreview--StickerCount": {
+    "messageformat": "{count, plural, one {{count,number} nalepka} two {{count,number} nalepki} few {{count,number} nalepke} other {{count,number} nalepk}}"
+  },
+  "icu:stickers--StickerPreview--StickerNoEmojiAriaLabel": {
+    "messageformat": "Nalepka brez emojija"
+  },
+  "icu:stickers--StickerPackLinkPreviewDescription": {
+    "messageformat": "Paket nalepk avtorja/-ice {author}"
+  },
+  "icu:stickers--ViewPack": {
+    "messageformat": "Ogled paketa"
   },
   "icu:FunPicker__Tab--Emojis": {
     "messageformat": "Emoji"
@@ -3028,6 +3079,18 @@
   },
   "icu:FunButton__Label--StickerPicker": {
     "messageformat": "Dodaj nalepko"
+  },
+  "icu:FunPicker__Label--StickerReply": {
+    "messageformat": "Reply"
+  },
+  "icu:FunPicker__Label--SendStickerReply": {
+    "messageformat": "Send"
+  },
+  "icu:FunPicker__Label--CancelStickerReply": {
+    "messageformat": "Cancel"
+  },
+  "icu:FunPicker__Label--Sticker": {
+    "messageformat": "Sticker"
   },
   "icu:confirmation-dialog--Cancel": {
     "messageformat": "Prekliči"
@@ -4700,9 +4763,6 @@
   "icu:CompositionArea--expand": {
     "messageformat": "Razširi"
   },
-  "icu:CompositionArea--attach-file": {
-    "messageformat": "Dodajanje datoteke"
-  },
   "icu:CompositionArea__AttachMenu__PhotosAndVideos": {
     "messageformat": "Fotografije in videoposnetki"
   },
@@ -5153,26 +5213,17 @@
   "icu:SelectModeActions--forwardSelectedMessages": {
     "messageformat": "Posreduj izbrana sporočila"
   },
-  "icu:DeleteMessagesModal--title": {
-    "messageformat": "{count, plural, one {Izbrišem sporočilo?} two {Izbrišem {count,number} sporočili?} few {Izbrišem {count,number} sporočila?} other {Izbrišem {count,number} sporočil?}}"
-  },
   "icu:DeleteMessagesModal--title-2": {
     "messageformat": "{count, plural, one {Želite izbrisati izbrano sporočilo?} two {Želite izbrisati {count,number} izbrani sporočili?} few {Želite izbrisati {count,number} izbrana sporočila?} other {Želite izbrisati {count,number} izbranih sporočil?}}"
   },
   "icu:DeleteMessagesModal--description": {
     "messageformat": "{count, plural, one {Za koga želite izbrisati to sporočilo?} two {Za koga želite izbrisati ti sporočili?} few {Za koga želite izbrisati ta sporočila?} other {Za koga želite izbrisati ta sporočila?}}"
   },
-  "icu:DeleteMessagesModal--description--noteToSelf": {
-    "messageformat": "{count, plural, one {Iz katerih naprav želite izbrisati to sporočilo?} two {Iz katerih naprav želite izbrisati ti sporočili?} few {Iz katerih naprav želite izbrisati ta sporočila?} other {Iz katerih naprav želite izbrisati ta sporočila?}}"
-  },
   "icu:DeleteMessagesModal--description--noteToSelf--deleteSync": {
     "messageformat": "{count, plural, one {To sporočilo bo izbrisano iz vseh vaših naprav.} two {Ti sporočili bosta izbrisani iz vseh vaših naprav.} few {Ta sporočila bodo izbrisana iz vseh vaših naprav.} other {Ta sporočila bodo izbrisana iz vseh vaših naprav.}}"
   },
   "icu:DeleteMessagesModal--deleteForMe": {
     "messageformat": "Izbriši zame"
-  },
-  "icu:DeleteMessagesModal--deleteFromThisDevice": {
-    "messageformat": "Izbriši iz te naprave"
   },
   "icu:DeleteMessagesModal--deleteForEveryone": {
     "messageformat": "Izbriši za vse"
@@ -5186,9 +5237,6 @@
   },
   "icu:DeleteMessagesModal--adminDeleteConfirmation--description__rollout": {
     "messageformat": "{count, plural, one {Člani skupine, ki uporabljajo zadnjo različico Signala, bodo videli, da ste izbrisali to sporočilo.} two {Člani skupine, ki uporabljajo zadnjo različico Signala, bodo videli, da ste izbrisali ti dve sporočili.} few {Člani skupine, ki uporabljajo zadnjo različico Signala, bodo videli, da ste izbrisali ta sporočila.} other {Člani skupine, ki uporabljajo zadnjo različico Signala, bodo videli, da ste izbrisali ta sporočila.}}"
-  },
-  "icu:DeleteMessagesModal--deleteFromAllDevices": {
-    "messageformat": "Izbriši iz vseh naprav"
   },
   "icu:DeleteMessagesModal--noteToSelf--deleteSync": {
     "messageformat": "Izbriši"
@@ -6397,11 +6445,26 @@
   "icu:Preferences--local-backups-enter-backup-key": {
     "messageformat": "Tipka Enter"
   },
-  "icu:Preferences--local-backups-record-recovery-key": {
-    "messageformat": "Zapišite svoj obnovitveni ključ"
+  "icu:Preferences--local-backups-recovery-key--title": {
+    "messageformat": "Vaš obnovitveni ključ"
   },
-  "icu:Preferences--local-backups-record-backup-key-description": {
-    "messageformat": "Ta ključ je potreben za obnovitev računa in podatkov. Ta ključ shranite na varnem mestu. Če ga izgubite, računa ne boste mogli obnoviti. <learnMoreLink>Preberite več.</learnMoreLink>"
+  "icu:Preferences--local-backups-recovery-key--description": {
+    "messageformat": "Ta ključ je potreben za obnovitev računa in podatkov. Shranite ga na varno mesto in ga nikoli ne delite z nikomer. Signal vas ne bo nikoli kontaktiral za vaš obnovitveni ključ. <learnMoreLink>Več o tem.</learnMoreLink>"
+  },
+  "icu:Preferences__recovery-key__do-not-share-title": {
+    "messageformat": "Ne delite obnovitvenega ključa"
+  },
+  "icu:Preferences__recovery-key__do-not-share-confirm": {
+    "messageformat": "Razumem"
+  },
+  "icu:CompositionInput__recovery-key-paste__share-key": {
+    "messageformat": "Deli kjluč"
+  },
+  "icu:CompositionInput__recovery-key-paste__do-not-share-key": {
+    "messageformat": "Ne deli ključa"
+  },
+  "icu:CompositionInput__recovery-key-warning--description": {
+    "messageformat": "Ne delite svojega obnovitvenega ključa z nikomer. Tako bi lahko prevzeli vaš račun. <strong>Signal vas ne bo nikoli kontaktiral</strong> za vaš obnovitveni ključ. Nikoli ne odgovarjajte na sporočilo, ki se pretvarja, da je Signal. <learnMoreLink>Več o tem.</learnMoreLink>"
   },
   "icu:Preferences--local-backups-confirm-recovery-key": {
     "messageformat": "Potrdite svoj obnovitveni ključ"
@@ -6465,6 +6528,9 @@
   },
   "icu:Preferences__local-backups-auth-error--unauthorized": {
     "messageformat": "Tega dejanja ni bilo mogoče dokončati, ker sistemsko preverjanje pristnosti ni uspelo. Poskusite znova ali odprite aplikacijo Signal v svoji mobilni napravi in pojdite v Nastavitve varnostnih kopij, kjer si lahko ogledate svoj obnovitveni ključ."
+  },
+  "icu:Preferences__local-backups-auth-error--unknown-error": {
+    "messageformat": "Pri preverjanju sistemske pristnosti za to dejanje je prišlo do napake."
   },
   "icu:Preferences__view-key": {
     "messageformat": "Prikaži ključ"
@@ -6631,6 +6697,12 @@
   "icu:DialogUpdate__downloaded": {
     "messageformat": "Posodobitev prenesena"
   },
+  "icu:DialogUpdate__upgrade-mas": {
+    "messageformat": "Kliknite, da odprete App Store"
+  },
+  "icu:DialogExpiredBuild__upgrade-mas": {
+    "messageformat": "Kliknite, da odprete App Store"
+  },
   "icu:CriticalIdlePrimaryDevice__title": {
     "messageformat": "Odprite Signal v svoji napravi"
   },
@@ -6669,6 +6741,405 @@
   },
   "icu:InstallScreenUpdateDialog--cannot-update__body": {
     "messageformat": "Posodabljanje Signal Desktopa ni uspelo, vendar je na voljo nova različica. Pojdite na {downloadUrl} in ročno namestite novo različico, nato pa se obrnite na podporo ali prijavite napako o tej težavi."
+  },
+  "icu:StandaloneRegistration--signal-logo": {
+    "messageformat": "Signalov logotip"
+  },
+  "icu:StandaloneRegistration--back": {
+    "messageformat": "Nazaj"
+  },
+  "icu:StandaloneRegistration--PhoneNumber--header": {
+    "messageformat": "Telefonska številka"
+  },
+  "icu:StandaloneRegistration--PhoneNumber--description--line-1": {
+    "messageformat": "Za potrditev računa vpišite telefonsko številko."
+  },
+  "icu:StandaloneRegistration--PhoneNumber--description--line-2": {
+    "messageformat": "Pošiljanje je lahko zaračunano po tarifi operaterja."
+  },
+  "icu:StandaloneRegistration--PhoneNumber--waiting": {
+    "messageformat": "Prosimo, poskusite znova čez {duration}"
+  },
+  "icu:StandaloneRegistration--PhoneNumber--placeholder": {
+    "messageformat": "Telefonska številka"
+  },
+  "icu:StandaloneRegistration--PhoneNumber--button": {
+    "messageformat": "Nadaljuj"
+  },
+  "icu:StandaloneRegistration--PhoneNumber--Confirmation--description": {
+    "messageformat": "Je gornja telefonska številka prava?"
+  },
+  "icu:StandaloneRegistration--PhoneNumber--Confirmation--cancel": {
+    "messageformat": "Uredi številko"
+  },
+  "icu:StandaloneRegistration--PhoneNumber--Confirmation--confirm": {
+    "messageformat": "Da"
+  },
+  "icu:StandaloneRegistration--Captcha--header": {
+    "messageformat": "Če želite nadaljevati, potrdite, da ste človek"
+  },
+  "icu:StandaloneRegistration--Captcha--description": {
+    "messageformat": "Da bi preprečili nezaželeno pošto, dokončajte postopek potrditve. Po preverjanju lahko nadaljujete brez registracije."
+  },
+  "icu:StandaloneRegistration--Captcha--retry-button": {
+    "messageformat": "Ponovi preverjanje"
+  },
+  "icu:StandaloneRegistration--Captcha--button": {
+    "messageformat": "Potrdi v brskalniku"
+  },
+  "icu:StandaloneRegistration--Captcha--button--wait": {
+    "messageformat": "Preveri čez {duration}"
+  },
+  "icu:StandaloneRegistration--Captcha--NeedAnother--header": {
+    "messageformat": "Potrebno je nadaljnje preverjanje"
+  },
+  "icu:StandaloneRegistration--Captcha--NeedAnother--description": {
+    "messageformat": "Za nadaljevanje registracije opravite še eno preverjanje captcha."
+  },
+  "icu:StandaloneRegistration--Captcha--NeedAnother--cancel": {
+    "messageformat": "Prekliči"
+  },
+  "icu:StandaloneRegistration--Captcha--NeedAnother--retry": {
+    "messageformat": "Ponovi preverjanje"
+  },
+  "icu:StandaloneRegistration--Captcha--MustWait--aria-title": {
+    "messageformat": "Poskusite znova kasneje"
+  },
+  "icu:StandaloneRegistration--Captcha--MustWait--line-1": {
+    "messageformat": "Verifikacije trenutno ni možno zaključiti."
+  },
+  "icu:StandaloneRegistration--Captcha--MustWait--line-2": {
+    "messageformat": "Poskusite znova čez {duration}"
+  },
+  "icu:StandaloneRegistration--Captcha--MustWait--button": {
+    "messageformat": "OK"
+  },
+  "icu:StandaloneRegistration--Captcha--Error--header": {
+    "messageformat": "Napaka pri preverjanju"
+  },
+  "icu:StandaloneRegistration--Captcha--Error--description": {
+    "messageformat": "Za nadaljevanje registracije poskusite ponovno potrditi."
+  },
+  "icu:StandaloneRegistration--Captcha--Error--try-again": {
+    "messageformat": "Poskusi znova"
+  },
+  "icu:StandaloneRegistration--Captcha--Error--cancel": {
+    "messageformat": "Prekliči"
+  },
+  "icu:StandaloneRegistration--VerificationCode--header": {
+    "messageformat": "Verifikacijska koda"
+  },
+  "icu:StandaloneRegistration--VerificationCode--description": {
+    "messageformat": "Vpišite kodo, poslano na {phoneNumber}"
+  },
+  "icu:StandaloneRegistration--VerificationCode--button": {
+    "messageformat": "Nadaljuj"
+  },
+  "icu:StandaloneRegistration--VerificationCode--send-sms": {
+    "messageformat": "Ponovno mi pošlji kodo"
+  },
+  "icu:StandaloneRegistration--VerificationCode--send-sms--duration": {
+    "messageformat": "Ponovno pošlji kodo čez {duration}"
+  },
+  "icu:StandaloneRegistration--VerificationCode--call-me": {
+    "messageformat": "Pokliči me"
+  },
+  "icu:StandaloneRegistration--VerificationCode--call-me--duration": {
+    "messageformat": "Pokliči me čez {duration}"
+  },
+  "icu:StandaloneRegistration--VerificationCode--wrong-number": {
+    "messageformat": "Napačna številka?"
+  },
+  "icu:StandaloneRegistration--VerificationCode--having-trouble": {
+    "messageformat": "Imate težave z registracijo?"
+  },
+  "icu:StandaloneRegistration--VerificationCode--IncorrectCode--aria-title": {
+    "messageformat": "Napačna koda"
+  },
+  "icu:StandaloneRegistration--VerificationCode--IncorrectCode--description": {
+    "messageformat": "Vnešena koda ni pravilna. Preverite 6-mestno kodo in poskusite znova."
+  },
+  "icu:StandaloneRegistration--VerificationCode--IncorrectCode--button": {
+    "messageformat": "OK"
+  },
+  "icu:StandaloneRegistration--VerificationCode--CodeInvalid--aria-title": {
+    "messageformat": "Napačna koda"
+  },
+  "icu:StandaloneRegistration--VerificationCode--CodeInvalid--description": {
+    "messageformat": "Vnešena koda ni veljavna. Ponovno pošljite kodo in poskusite znova."
+  },
+  "icu:StandaloneRegistration--VerificationCode--CodeInvalid--resend-button": {
+    "messageformat": "Ponovno mi pošlji kodo"
+  },
+  "icu:StandaloneRegistration--VerificationCode--CodeInvalid--edit-number-button": {
+    "messageformat": "Uredi številko"
+  },
+  "icu:StandaloneRegistration--VerificationCode--SMSFailed--aria-title": {
+    "messageformat": "Ni mogoče poslati SMS sporočila"
+  },
+  "icu:StandaloneRegistration--VerificationCode--SMSFailed--description": {
+    "messageformat": "Nismo vam mogli poslati potrditvene kode prek SMS-a. Namesto tega poskusite prejeti kodo prek zvočnega klica."
+  },
+  "icu:StandaloneRegistration--VerificationCode--SMSFailed--confirm": {
+    "messageformat": "Zvočni klic"
+  },
+  "icu:StandaloneRegistration--VerificationCode--SMSFailed--cancel": {
+    "messageformat": "Prekliči"
+  },
+  "icu:StandaloneRegistration--VerificationCode--MustWait--aria-title": {
+    "messageformat": "Poskusite znova kasneje"
+  },
+  "icu:StandaloneRegistration--VerificationCode--MustWait--description": {
+    "messageformat": "Preveč neuspešnih poskusov vnosa kode. Poskusite znova čez {duration}."
+  },
+  "icu:StandaloneRegistration--VerificationCode--MustWait--button": {
+    "messageformat": "OK"
+  },
+  "icu:StandaloneRegistration--VerificationCode--MaximumAttempts--aria-title": {
+    "messageformat": "Preveč poskusov"
+  },
+  "icu:StandaloneRegistration--VerificationCode--MaximumAttempts--description": {
+    "messageformat": "Preveč neuspešnih poskusov vnosa kode. Ponovno pošlji kodo in poskusi znova."
+  },
+  "icu:StandaloneRegistration--VerificationCode--MaximumAttempts--resend-button": {
+    "messageformat": "Ponovno mi pošlji kodo"
+  },
+  "icu:StandaloneRegistration--VerificationCode--MaximumAttempts--edit-number-button": {
+    "messageformat": "Uredi številko"
+  },
+  "icu:StandaloneRegistration--VerificationCode--FailedToCall--aria-title": {
+    "messageformat": "Klicanje ni mogoče"
+  },
+  "icu:StandaloneRegistration--VerificationCode--FailedToCall--description": {
+    "messageformat": "Telefonske številke, ki ste jo vnesli, ni bilo mogoče poklicati. Preverite, ali je telefonska številka pravilna, in poskusite znova."
+  },
+  "icu:StandaloneRegistration--VerificationCode--FailedToCall--ok-button": {
+    "messageformat": "OK"
+  },
+  "icu:StandaloneRegistration--VerificationCode--CannotSendCodePermanent--aria-title": {
+    "messageformat": "Kode ni mogoče poslati"
+  },
+  "icu:StandaloneRegistration--VerificationCode--CannotSendCodePermanent--description": {
+    "messageformat": "Na telefonsko številko, ki ste jo vnesli, ni mogoče poslati potrditvene kode. Preverite, ali je vnesena telefonska številka pravilna, ali poskusite z drugo številko."
+  },
+  "icu:StandaloneRegistration--VerificationCode--CannotSendCodePermanent--ok-button": {
+    "messageformat": "OK"
+  },
+  "icu:StandaloneRegistration--VerificationCode--CannotSendCodeTemporary--aria-title": {
+    "messageformat": "Poskusite znova kasneje"
+  },
+  "icu:StandaloneRegistration--VerificationCode--CannotSendCodeTemporary--description": {
+    "messageformat": "Prišlo je do napake in potrditvene kode ni bilo mogoče poslati. Poskusite znova čez {duration}."
+  },
+  "icu:StandaloneRegistration--VerificationCode--CannotSendCodeTemporary--ok-button": {
+    "messageformat": "OK"
+  },
+  "icu:StandaloneRegistration--ProfileEntry--header": {
+    "messageformat": "Nastavite svoj profil"
+  },
+  "icu:StandaloneRegistration--ProfileEntry--description": {
+    "messageformat": "Profili so vidni osebam, ki jim pošiljate sporočila, stikom in skupinam."
+  },
+  "icu:StandaloneRegistration--ProfileEntry--learn-more": {
+    "messageformat": "Več o tem"
+  },
+  "icu:StandaloneRegistration--ProfileEntry--add-photo": {
+    "messageformat": "Dodaj fotografijo"
+  },
+  "icu:StandaloneRegistration--ProfileEntry--first-name": {
+    "messageformat": "Ime (obvezno)"
+  },
+  "icu:StandaloneRegistration--ProfileEntry--last-name": {
+    "messageformat": "Priimek (neobvezno)"
+  },
+  "icu:StandaloneRegistration--ProfileEntry--discoverability": {
+    "messageformat": "Kdo me lahko najde preko telefonske številke"
+  },
+  "icu:StandaloneRegistration--ProfileEntry--discoverability--change-button": {
+    "messageformat": "Spremeni"
+  },
+  "icu:StandaloneRegistration--ProfileEntry--discoverability--done-button": {
+    "messageformat": "V redu"
+  },
+  "icu:StandaloneRegistration--ProfileEntry--continue": {
+    "messageformat": "Nadaljuj"
+  },
+  "icu:StandaloneRegistration--ProfileEntry--AvatarModal--header": {
+    "messageformat": "Vaš avatar"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--header": {
+    "messageformat": "Vnesite svoj PIN"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--description": {
+    "messageformat": "Vnesite PIN, ki ste ga ustvarili za svoj račun. Tu ne gre za SMS potrditveno kodo. <needHelp>Potrebujete pomoč?</needHelp>"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--placeholder": {
+    "messageformat": "Vnesite svoj PIN"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--incorrect-pin": {
+    "messageformat": "Napačen PIN"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--incorrect-pin--with-count": {
+    "messageformat": "{triesRemaining, plural, one {Napačen PIN. Še {triesRemaining,number} poskus.} two {Napačen PIN. Še {triesRemaining,number} poskusa.} few {Napačen PIN. Še {triesRemaining,number} poskusi.} other {Napačen PIN. Še {triesRemaining,number} poskusov.}}"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--NeedHelp--header": {
+    "messageformat": "Potrebujete pomoč?"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--NeedHelp--description--no-reglock": {
+    "messageformat": "Vaš PIN je koda iz 4+ znakov, ki je lahko sestavljena zgolj iz številk ali iz kombinacije črk in številk. Če ste pozabili svoj PIN, lahko zdaj ustvarite novega. Z njim se lahko ponovno registrirate in uporabljate svoj račun Signal, izgubili pa boste nekatere nastavitve, kot so npr. podatki iz vašega profila. <learnMore>Preberite več.</learnMore>"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--NeedHelp--description--reglock": {
+    "messageformat": "Vaš PIN je koda iz 4+ znakov, ki je lahko sestavljena zgolj iz številk ali iz kombinacije črk in številk. Če se ne spomnite svoje PIN kode, boste morali za ponovno registracijo računa počakati 7 dni. <learnMore>Preberite več.</learnMore>"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--NeedHelp--skip-button--no-reglock": {
+    "messageformat": "Preskoči in ustvari nov PIN"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--NeedHelp--contact-support-button": {
+    "messageformat": "Kontaktiraj center za podporo"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--NeedHelp--cancel": {
+    "messageformat": "Prekliči"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--FewRemainingTries--header": {
+    "messageformat": "Napačen PIN"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--FewRemainingTries--description--no-reglock": {
+    "messageformat": "{triesRemaining, plural, one {Preostaja vam še {triesRemaining,number} poskus. Če porabite vse poskuse, lahko ustvarite novi PIN. Z njim se lahko ponovno registrirate in uporabljate svoj račun, izgubili pa boste nekatere nastavitve, shranjene v vašem profilu. <learnMore>Več o tem</learnMore>.} two {Preostajata vam še {triesRemaining,number} poskusa. Če porabite vse poskuse, lahko ustvarite novi PIN. Z njim se lahko ponovno registrirate in uporabljate svoj račun, izgubili pa boste nekatere nastavitve, shranjene v vašem profilu. <learnMore>Več o tem</learnMore>.} few {Preostajajo vam še {triesRemaining,number} poskusi. Če porabite vse poskuse, lahko ustvarite novi PIN. Z njim se lahko ponovno registrirate in uporabljate svoj račun, izgubili pa boste nekatere nastavitve, shranjene v vašem profilu. <learnMore>Več o tem</learnMore>.} other {Preostaja vam še {triesRemaining,number} poskusov. Če porabite vse poskuse, lahko ustvarite novi PIN. Z njim se lahko ponovno registrirate in uporabljate svoj račun, izgubili pa boste nekatere nastavitve, shranjene v vašem profilu. <learnMore>Več o tem</learnMore>.}}"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--FewRemainingTries--description--reglock": {
+    "messageformat": "{triesRemaining, plural, one {Preostaja vam še {triesRemaining,number} poskus. Če porabite vse poskuse, bo vaš račun zaklenjen za 7 dni. Po 7 dneh neaktivnosti se boste lahko znova registrirali brez PIN kode. Vsa vsebina bo izbrisana. <learnMore>Več o tem</learnMore>.} two {Preostajata vam še {triesRemaining,number} poskusa. Če porabite vse poskuse, bo vaš račun zaklenjen za 7 dni. Po 7 dneh neaktivnosti se boste lahko znova registrirali brez PIN kode. Vsa vsebina bo izbrisana. <learnMore>Več o tem</learnMore>.} few {Preostajajo vam še {triesRemaining,number} poskusi. Če porabite vse poskuse, bo vaš račun zaklenjen za 7 dni. Po 7 dneh neaktivnosti se boste lahko znova registrirali brez PIN kode. Vsa vsebina bo izbrisana. <learnMore>Več o tem</learnMore>.} other {Preostaja vam še {triesRemaining,number} poskusov. Če porabite vse poskuse, bo vaš račun zaklenjen za 7 dni. Po 7 dneh neaktivnosti se boste lahko znova registrirali brez PIN kode. Vsa vsebina bo izbrisana. <learnMore>Več o tem</learnMore>.}}"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--FewRemainingTries--button": {
+    "messageformat": "OK"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--NoRemainingTries--header": {
+    "messageformat": "Napačen PIN"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--NoRemainingTries--description": {
+    "messageformat": "Zmanjkalo vam je ugibanj PIN kode, vendar lahko še vedno dostopate do svojega računa Signal, tako da ustvarite novo PIN kodo. Zaradi varnosti in zasebnosti bo vaš račun obnovljen brez podatkov, shranjenih v vašem profilu."
+  },
+  "icu:StandaloneRegistration--VerifyPIN--NoRemainingTries--create-new-pin": {
+    "messageformat": "Ustvari nov PIN"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--NoRemainingTries--learn-more": {
+    "messageformat": "Več o kodi PIN."
+  },
+  "icu:StandaloneRegistration--VerifyPIN--menu--skip-pin": {
+    "messageformat": "Preskoči PIN"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--SkipPIN--header": {
+    "messageformat": "Želite preskočiti vnos PIN-a?"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--SkipPIN--description": {
+    "messageformat": "Če ste pozabili PIN, lahko zdaj ustvarite novega. Z njim se lahko ponovno registrirate in uporabljate račun Signal, izgubili pa boste nekatere nastavitve, kot so npr. podatki iz vašega profila. Več o tem."
+  },
+  "icu:StandaloneRegistration--VerifyPIN--SkipPIN--skip-button": {
+    "messageformat": "Preskoči in ustvari nov PIN"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--SkipPIN--cancel-button": {
+    "messageformat": "Prekliči"
+  },
+  "icu:StandaloneRegistration--CreatePIN--header": {
+    "messageformat": "Ustvarite svoj PIN"
+  },
+  "icu:StandaloneRegistration--CreatePIN--description": {
+    "messageformat": "PIN koda vam lahko pomaga obnoviti račun in ohraniti podatke v Signalu šifrirane. <learnMore>Več o tem</learnMore>"
+  },
+  "icu:StandaloneRegistration--CreatePIN--placeholder": {
+    "messageformat": "Ustvarite svoj PIN"
+  },
+  "icu:StandaloneRegistration--CreatePIN--helper-text": {
+    "messageformat": "PIN mora vsebovati vsaj 4 znake"
+  },
+  "icu:StandaloneRegistration--CreatePIN--continue": {
+    "messageformat": "Nadaljuj"
+  },
+  "icu:StandaloneRegistration--CreatePIN--open-menu": {
+    "messageformat": "Odpri meni"
+  },
+  "icu:StandaloneRegistration--CreatePIN--menu--more-about": {
+    "messageformat": "Več o PIN kodi"
+  },
+  "icu:StandaloneRegistration--CreatePIN--menu--disable": {
+    "messageformat": "Izklopi PIN"
+  },
+  "icu:StandaloneRegistration--CreatePIN--DisableWarning--header": {
+    "messageformat": "Opozorilo"
+  },
+  "icu:StandaloneRegistration--CreatePIN--DisableWarning--description": {
+    "messageformat": "Če izklopite PIN kodo, boste ob ponovni registraciji Signala izgubili vse podatke, razen če jih pred tem prenesete z druge naprave iOS. Brez PIN kode tudi ne morete vklopiti zaklepa registracije."
+  },
+  "icu:StandaloneRegistration--CreatePIN--DisableWarning--disable-button": {
+    "messageformat": "Izklopi PIN"
+  },
+  "icu:StandaloneRegistration--CreatePIN--DisableWarning--cancel": {
+    "messageformat": "Prekliči"
+  },
+  "icu:StandaloneRegistration--CreatePIN--AboutPINs--header": {
+    "messageformat": "O Signalovi PIN kodi"
+  },
+  "icu:StandaloneRegistration--CreatePIN--AboutPINs--description": {
+    "messageformat": "S PIN kodo zavarujete svoje podatke, shranjene na računu Signal s šifriranjem, tako da so dostopni le vam. Vaš profil, nastavitve in stiki bodo obnovljeni ob ponovni namestitvi."
+  },
+  "icu:StandaloneRegistration--CreatePIN--AboutPINs--learn-more-button": {
+    "messageformat": "Več o tem"
+  },
+  "icu:StandaloneRegistration--CreatePIN--AboutPINs--ok-button": {
+    "messageformat": "OK"
+  },
+  "icu:StandaloneRegistration--CreatePIN--confirming--header": {
+    "messageformat": "Potrdite svoj PIN"
+  },
+  "icu:StandaloneRegistration--CreatePIN--confirming--description": {
+    "messageformat": "Ponovno vnesite PIN, ki ste ga pravkar določili."
+  },
+  "icu:StandaloneRegistration--CreatePIN--confirming--placeholder": {
+    "messageformat": "Vnesite svoj PIN"
+  },
+  "icu:StandaloneRegistration--AccountLocked--header": {
+    "messageformat": "Račun je zaklenjen"
+  },
+  "icu:StandaloneRegistration--AccountLocked--description": {
+    "messageformat": "Zaradi zaščite vaše varnosti in zasebnosti je bil vaš račun zaklenjen. Po 7 dneh neaktivnosti računa se boste lahko spet prijavili s to telefonsko številko brez vnosa PIN-a. Vsa vsebina bo izbrisana."
+  },
+  "icu:StandaloneRegistration--AccountLocked--start-over-button": {
+    "messageformat": "Uporabite drugo številko"
+  },
+  "icu:StandaloneRegistration--AccountLocked--help-button": {
+    "messageformat": "Več o zaklenjenih računih"
+  },
+  "icu:StandaloneRegistration--UpdateRequired--header": {
+    "messageformat": "Potrebna je posodobitev"
+  },
+  "icu:StandaloneRegistration--UpdateRequired--description": {
+    "messageformat": "Če želite nadaljevati registracijo, posodobite Signal na najnovejšo različico."
+  },
+  "icu:StandaloneRegistration--UpdateRequired--update": {
+    "messageformat": "Posodobitev"
+  },
+  "icu:StandaloneRegistration--UpdateRequired--cancel": {
+    "messageformat": "Prekliči"
+  },
+  "icu:StandaloneRegistration--ConnectionProblem--header": {
+    "messageformat": "Preverite povezavo"
+  },
+  "icu:StandaloneRegistration--ConnectionProblem--description": {
+    "messageformat": "Za nadaljevanje preverite internetno povezavo svojega računalnika in poskusite znova."
+  },
+  "icu:StandaloneRegistration--ConnectionProblem--button": {
+    "messageformat": "OK"
+  },
+  "icu:StandaloneRegistration--UnexpectedError--header": {
+    "messageformat": "Registracije ni mogoče zaključiti"
+  },
+  "icu:StandaloneRegistration--UnexpectedError--description": {
+    "messageformat": "Zgodila se je napaka in registracije ni bilo mogoče dokončati. Če se ta težava nadaljuje, se obrnite na podporo."
+  },
+  "icu:StandaloneRegistration--UnexpectedError--try-again-button": {
+    "messageformat": "Poskusi znova"
+  },
+  "icu:StandaloneRegistration--UnexpectedError--contact-support-button": {
+    "messageformat": "Obrnite se na službo za podporo"
   },
   "icu:NSIS__retry-dialog--first-line": {
     "messageformat": "Signal se ne more zapreti.",
@@ -6915,15 +7386,6 @@
   },
   "icu:SignalConnectionsModal__footer": {
     "messageformat": "Vaše povezave lahko vidijo vaše ime in fotografijo ter vaše objave pod \"Moja zgodba\", razen če jih skrijete pred njimi"
-  },
-  "icu:LocalDeleteWarningModal__header": {
-    "messageformat": "Brisanje je sinhronizirano v vseh napravah"
-  },
-  "icu:LocalDeleteWarningModal__description": {
-    "messageformat": "Ko izbrišete sporočila ali klepete, se izbrišejo iz vseh vaših naprav."
-  },
-  "icu:LocalDeleteWarningModal__confirm": {
-    "messageformat": "Razumem"
   },
   "icu:Stories__title": {
     "messageformat": "Zgodbe"
@@ -7478,9 +7940,6 @@
   "icu:DraftGifMessageSendModal__SendButtonLabel": {
     "messageformat": "Pošlji"
   },
-  "icu:DraftGifMessageSendModal__CancelButtonLabel": {
-    "messageformat": "Prekliči"
-  },
   "icu:EditHistoryMessagesModal__title": {
     "messageformat": "Zgodovina popravkov"
   },
@@ -7759,9 +8218,6 @@
   },
   "icu:PreferencesDonations__privacy-modal-title": {
     "messageformat": "Vaši podatki so zasebni"
-  },
-  "icu:PreferencesDonations__privacy-modal-content": {
-    "messageformat": "<paragraph>Signal ne zbira ali shranjuje nobenih vaših osebnih podatkov, ko naredite donacijo.</paragraph><paragraph>Za prejemanje vaših donacij uporabljamo plačilni sistem Stripe. Ne dostopamo do nobenih podatkov, ki jih posredujete temu sistemu, niti jih ne shranjujemo ali hranimo.</paragraph><paragraph>Signal ne povezuje in ne more povezati vaše donacije z vašim Signal računom.</paragraph><paragraph>Hvala za vašo podporo!</paragraph>"
   },
   "icu:PreferencesDonations__privacy-modal-intro": {
     "messageformat": "Kot neodvisna neprofitna organizacija je Signal zavezan zasebnim sporočilom in klicem. Brez oglasov, brez sledilnikov, brez nadzora. Donirajte in podprite Signal."
@@ -8205,10 +8661,16 @@
     "messageformat": "Majhne prilagoditve, popravki napak in izboljšave zmogljivosti. Hvala, da uporabljate Signal!",
     "ignoreUnused": true
   },
-  "icu:WhatsNew__8.12--0": {
-    "messageformat": "Po eni strani lahko med skupinskimi klici kliknete ikono za dvig roke. Po drugi strani pa lahko zdaj uporabite tudi novo bližnjico na tipkovnici (Shift-H)."
+  "icu:WhatsNew__8.18--0": {
+    "messageformat": "Ankete lahko zdaj ustvarite tudi v posameznih klepetih. Pripravite skrbno izbran seznam možnosti za svojega neodločnega prijatelja ali pa obudite čar listkov iz šolskih dni z anketo »Ali sem ti všeč? Da/Ne/Mogoče«."
   },
-  "icu:WhatsNew__8.13--0": {
-    "messageformat": "The new raised-hand indicators are now also displayed in the list of raised hands during group calls. It's a second-hand place to figure out who you should hand it over to when you're done speaking."
+  "icu:WhatsNew__8.19--0": {
+    "messageformat": "Administratorji skupin lahko zdaj pogovore zaključijo na naraven način z novo možnostjo »Zaključi skupino« v nastavitvah skupine. Končanje skupine članom prepreči pošiljanje sporočil ali začetek klicev ter onemogoči povabila."
+  },
+  "icu:WhatsNew__8.20--0": {
+    "messageformat": "Introducing disappearing call events: Missed, outgoing, and received calls that occur after you install this update will now automatically disappear in any chat where disappearing messages are enabled."
+  },
+  "icu:WhatsNew__8.20--1": {
+    "messageformat": "Now you can reorder installed sticker packs so your new favorites don’t get stuck in the back of the line."
   }
 }

@@ -14,6 +14,9 @@
   "icu:AxoTextField.Clear": {
     "messageformat": "Spastroje"
   },
+  "icu:AxoBadge.MaxOverflow": {
+    "messageformat": "{max,number}+"
+  },
   "icu:AddUserToAnotherGroupModal__title": {
     "messageformat": "Shtoje në grup"
   },
@@ -85,6 +88,9 @@
   },
   "icu:unknownContact": {
     "messageformat": "Kontakt i panjohur"
+  },
+  "icu:deletedAccount": {
+    "messageformat": "Fshij llogarinë"
   },
   "icu:unknownContactShort": {
     "messageformat": "I panjohur"
@@ -314,6 +320,9 @@
   "icu:LeftPaneChatFolders__ItemUnreadBadge__MaxCount": {
     "messageformat": "{maxCount,number}+"
   },
+  "icu:LeftPaneChatFolders__ItemUnreadBadge__AccessibleLabel": {
+    "messageformat": "{count, plural, one {{count,number} Unread Message} other {{count,number} Unread Messages}}"
+  },
   "icu:LeftPaneChatFolders__Item__ContextMenu__MarkAllRead": {
     "messageformat": "Shënoji krejt si të lexuar"
   },
@@ -449,8 +458,8 @@
   "icu:unpinConversation": {
     "messageformat": "Hiqe bisedën e fiksuar"
   },
-  "icu:pinnedConversationsFull": {
-    "messageformat": "Mund të fiksoni deri në 4 biseda"
+  "icu:pinnedConversations--max": {
+    "messageformat": "{maxPinnedConversations, plural, one {Mund të fiksosh maksimumi{maxPinnedConversations,number} bisedë} other {Mund të fiksosh maksimum{maxPinnedConversations,number} biseda}}"
   },
   "icu:view": {
     "messageformat": "Shih"
@@ -2261,9 +2270,6 @@
   "icu:partiallySent": {
     "messageformat": "Dërguar pjesërisht, prekeni për hollësi"
   },
-  "icu:partiallyDeleted": {
-    "messageformat": "Fshirë pjesërisht, kliko për ta provuar sërish"
-  },
   "icu:partiallyDeleted--clickForDetails": {
     "messageformat": "Është fshirë pjesërisht, kliko për detaje"
   },
@@ -2466,7 +2472,7 @@
     "messageformat": "Shkarkimi dështoi"
   },
   "icu:Toast--unable-download-from-backup-tier": {
-    "messageformat": "Attachment missing from backup CDN"
+    "messageformat": "Attachment missing from backup CDN, please share desktop & primary logs"
   },
   "icu:ToastManager__CannotAddMemberLabel": {
     "messageformat": "Vetëm administratorët mund të caktojnë emërtimet e anëtarëve në këtë grup."
@@ -2687,9 +2693,6 @@
   "icu:message--getDescription--gif": {
     "messageformat": "GIF"
   },
-  "icu:message--deletedForEveryone": {
-    "messageformat": "Ky mesazh u fshi."
-  },
   "icu:message--deletedByAdmin": {
     "messageformat": "Administratori {admin} e fshiu këtë mesazh"
   },
@@ -2780,14 +2783,11 @@
   "icu:stickers--toast--InstallFailed": {
     "messageformat": "Paketa e ngjitësve s’u instalua dot"
   },
-  "icu:stickers--StickerManager--Available": {
-    "messageformat": "Në dispozicion"
+  "icu:stickers--StickerManager--MyStickers--None": {
+    "messageformat": "Nuk ka paketa ngjitësesh. Shto ngjitëse që t’ua dërgosh miqve."
   },
-  "icu:stickers--StickerManager--InstalledPacks": {
-    "messageformat": "Instaluar"
-  },
-  "icu:stickers--StickerManager--InstalledPacks--Empty": {
-    "messageformat": "S’ka ngjitës të instaluar"
+  "icu:stickers--StickerManager--AddStickers": {
+    "messageformat": "Shto ngjitës"
   },
   "icu:stickers--StickerManager--BlessedPacks": {
     "messageformat": "Seritë Artis Signal-i"
@@ -2795,14 +2795,17 @@
   "icu:stickers--StickerManager--BlessedPacks--Empty": {
     "messageformat": "S’ka ngjitës Signal Artist"
   },
-  "icu:stickers--StickerManager--ReceivedPacks": {
-    "messageformat": "Ngjitës Që Keni Marrë"
+  "icu:stickers--StickerManager--ReceivedPacks2": {
+    "messageformat": "Ndarë me ty"
   },
-  "icu:stickers--StickerManager--ReceivedPacks--Empty": {
-    "messageformat": "Këtu do të shfaqen ngjitësit prej mesazhesh të marrë"
+  "icu:stickers--StickerManager--ReceivedPacksDescription": {
+    "messageformat": "Kur merr një ngjitëse nga dikush, paketa e ngjitëseve do të shfaqet këtu."
   },
   "icu:stickers--StickerManager--Install": {
     "messageformat": "Instaloje"
+  },
+  "icu:stickers--StickerManager--Installed": {
+    "messageformat": "Instaluar"
   },
   "icu:stickers--StickerManager--Uninstall": {
     "messageformat": "Çinstaloje"
@@ -2810,11 +2813,59 @@
   "icu:stickers--StickerManager--UninstallWarning": {
     "messageformat": "Nëse s’e keni më mesazhin burim, mund të mos jeni në gjendje të riinstaloni këtë paketë ngjitësish."
   },
+  "icu:stickers--StickerManagerHeader--All": {
+    "messageformat": "Të gjitha"
+  },
+  "icu:stickers--StickerManagerHeader--MyStickers": {
+    "messageformat": "Ngjitëset e mia"
+  },
+  "icu:stickers--StickerManagerPackContextMenu--Add": {
+    "messageformat": "Shtoje"
+  },
+  "icu:stickers--StickerManagerPackContextMenu--Remove": {
+    "messageformat": "Fshije"
+  },
+  "icu:stickers--StickerManagerPackDragHandle--Label": {
+    "messageformat": "Drag to reorder sticker pack"
+  },
+  "icu:stickers--StickerManagerBlessedPacksList--Label": {
+    "messageformat": "Signal Artist Series sticker packs"
+  },
+  "icu:stickers--StickerManagerReceivedPacksList--Label": {
+    "messageformat": "Received sticker packs"
+  },
+  "icu:stickers--StickerManagerInstalledPacksList--Label": {
+    "messageformat": "Installed sticker packs"
+  },
   "icu:stickers--StickerPreview--Title": {
     "messageformat": "Paketë Ngjitësish"
   },
   "icu:stickers--StickerPreview--Error": {
     "messageformat": "Gabim gjatë hapjes së paketës së ngjitësve. Kontrolloni lidhjen tuaj në internet dhe riprovoni."
+  },
+  "icu:stickers--StickerPreview--Install": {
+    "messageformat": "Shto ngjitës"
+  },
+  "icu:stickers--StickerPreview--Remove": {
+    "messageformat": "Fshije"
+  },
+  "icu:stickers--StickerPreview--Link": {
+    "messageformat": "Lidhja"
+  },
+  "icu:stickers--StickerPreview--LinkCopied": {
+    "messageformat": "Lidhja u kopjua"
+  },
+  "icu:stickers--StickerPreview--StickerCount": {
+    "messageformat": "{count, plural, one {{count,number} ngjitës} other {{count,number} ngjitëse}}"
+  },
+  "icu:stickers--StickerPreview--StickerNoEmojiAriaLabel": {
+    "messageformat": "Ngjitës pa figurë emoxhi"
+  },
+  "icu:stickers--StickerPackLinkPreviewDescription": {
+    "messageformat": "Paketa ngjitësesh nga {author}"
+  },
+  "icu:stickers--ViewPack": {
+    "messageformat": "Shiko paketën"
   },
   "icu:FunPicker__Tab--Emojis": {
     "messageformat": "Emoji"
@@ -3028,6 +3079,18 @@
   },
   "icu:FunButton__Label--StickerPicker": {
     "messageformat": "Shtoni një ngjitës"
+  },
+  "icu:FunPicker__Label--StickerReply": {
+    "messageformat": "Reply"
+  },
+  "icu:FunPicker__Label--SendStickerReply": {
+    "messageformat": "Send"
+  },
+  "icu:FunPicker__Label--CancelStickerReply": {
+    "messageformat": "Cancel"
+  },
+  "icu:FunPicker__Label--Sticker": {
+    "messageformat": "Sticker"
   },
   "icu:confirmation-dialog--Cancel": {
     "messageformat": "Anulo"
@@ -4700,9 +4763,6 @@
   "icu:CompositionArea--expand": {
     "messageformat": "Zgjeroje"
   },
-  "icu:CompositionArea--attach-file": {
-    "messageformat": "Bashkëngjitni kartelë"
-  },
   "icu:CompositionArea__AttachMenu__PhotosAndVideos": {
     "messageformat": "Foto dhe video"
   },
@@ -5153,26 +5213,17 @@
   "icu:SelectModeActions--forwardSelectedMessages": {
     "messageformat": "Përcill mesazhet e përzgjedhura"
   },
-  "icu:DeleteMessagesModal--title": {
-    "messageformat": "{count, plural, one {Dëshiron të fshish mesazhin?} other {Dëshiron të fshish {count,number} mesazhe?}}"
-  },
   "icu:DeleteMessagesModal--title-2": {
     "messageformat": "{count, plural, one {Të fshihet mesazhi i përzgjedhur?} other {Të fshihen {count,number} mesazhet e përzgjedhura?}}"
   },
   "icu:DeleteMessagesModal--description": {
     "messageformat": "{count, plural, one {Për kë do të donit të fshihet ky mesazh?} other {Për kë do të donit të fshihen këto mesazhe?}}"
   },
-  "icu:DeleteMessagesModal--description--noteToSelf": {
-    "messageformat": "{count, plural, one {Nga cilat pajisje do të donit ta fshini këtë mesazh?} other {Nga cilat pajisje do të donit t'i fshini këto mesazhe?}}"
-  },
   "icu:DeleteMessagesModal--description--noteToSelf--deleteSync": {
     "messageformat": "{count, plural, one {Ky mesazh do të fshihet nga të gjitha pajisjet.} other {Këto mesazhe do të fshihen nga të gjitha pajisjet.}}"
   },
   "icu:DeleteMessagesModal--deleteForMe": {
     "messageformat": "Fshije për mua"
-  },
-  "icu:DeleteMessagesModal--deleteFromThisDevice": {
-    "messageformat": "Fshije nga kjo pajisje"
   },
   "icu:DeleteMessagesModal--deleteForEveryone": {
     "messageformat": "Fshije për të gjithë"
@@ -5186,9 +5237,6 @@
   },
   "icu:DeleteMessagesModal--adminDeleteConfirmation--description__rollout": {
     "messageformat": "{count, plural, one {Në versionet më të fundit të Signal, anëtarët e grupit do të shohin që e ke fshirë këtë mesazh.} other {Në versionet më të fundit të Signal, anëtarët e grupit do të shohin që i ke fshirë këto mesazhe.}}"
-  },
-  "icu:DeleteMessagesModal--deleteFromAllDevices": {
-    "messageformat": "Fshi nga të gjitha pajisjet"
   },
   "icu:DeleteMessagesModal--noteToSelf--deleteSync": {
     "messageformat": "Fshije"
@@ -6397,11 +6445,26 @@
   "icu:Preferences--local-backups-enter-backup-key": {
     "messageformat": "Shkruaj kodin"
   },
-  "icu:Preferences--local-backups-record-recovery-key": {
-    "messageformat": "Regjistro kodin e rikthimit"
+  "icu:Preferences--local-backups-recovery-key--title": {
+    "messageformat": "Kodi i rikthimit"
   },
-  "icu:Preferences--local-backups-record-backup-key-description": {
-    "messageformat": "Ky kod kërkohet për të rikuperuar llogarinë dhe të dhënat e tua. Ruaje kodin në një vend të sigurt. Nëse e humb, nuk do të mund të rikuperosh llogarinë. <learnMoreLink>Mëso më shumë.</learnMoreLink>"
+  "icu:Preferences--local-backups-recovery-key--description": {
+    "messageformat": "Kodi kërkohet për të rikthyer llogarinë dhe të dhënat. Ruaje në një vend të sigurt dhe mos e ndaj kurrë me askënd. Signal nuk do të dërgojë kurrë mesazh për kodin e rikthimit. <learnMoreLink>Mëso më shumë.</learnMoreLink>"
+  },
+  "icu:Preferences__recovery-key__do-not-share-title": {
+    "messageformat": "Mos e ndaj kodin e rikthimit"
+  },
+  "icu:Preferences__recovery-key__do-not-share-confirm": {
+    "messageformat": "E kuptova"
+  },
+  "icu:CompositionInput__recovery-key-paste__share-key": {
+    "messageformat": "Ndaj kodin"
+  },
+  "icu:CompositionInput__recovery-key-paste__do-not-share-key": {
+    "messageformat": "Mos e ndaj kodin"
+  },
+  "icu:CompositionInput__recovery-key-warning--description": {
+    "messageformat": "Mos e ndaj kodin e rikthimit me asnjë. Kjo do t'u lejojë atyre të marrin kontrollin e llogarisë. <strong>Signal nuk do të dërgojë kurrë mesazh</strong> për kodin e rikthimit. Mos iu përgjigj asnjëherë një bisede që hiqet si Signal. <learnMoreLink>Mëso më shumë.</learnMoreLink>"
   },
   "icu:Preferences--local-backups-confirm-recovery-key": {
     "messageformat": "Konfirmo kodin e rikthimit"
@@ -6465,6 +6528,9 @@
   },
   "icu:Preferences__local-backups-auth-error--unauthorized": {
     "messageformat": "Ky veprim nuk arriti të përfundohej pasi autentikimi i sistemit dështoi. Të lutem, provo përsëri ose hap aplikacionin Signal në pajisjen celulare dhe shko te parametrat e kopjeruajtjes për të parë kodin e rikthimit."
+  },
+  "icu:Preferences__local-backups-auth-error--unknown-error": {
+    "messageformat": "Ndodhi një gabim gjatë kërkesës për autentifikimin e sistemit për këtë veprim."
   },
   "icu:Preferences__view-key": {
     "messageformat": "Shiko kodin e kopjeruajtjes"
@@ -6631,6 +6697,12 @@
   "icu:DialogUpdate__downloaded": {
     "messageformat": "Përditësimi u shkarkua"
   },
+  "icu:DialogUpdate__upgrade-mas": {
+    "messageformat": "Kliko për të shkuar tek App Store"
+  },
+  "icu:DialogExpiredBuild__upgrade-mas": {
+    "messageformat": "Kliko për të shkuar tek App Store"
+  },
   "icu:CriticalIdlePrimaryDevice__title": {
     "messageformat": "Hap Signal në telefonin tënd"
   },
@@ -6669,6 +6741,405 @@
   },
   "icu:InstallScreenUpdateDialog--cannot-update__body": {
     "messageformat": "Signal Desktop dështoi të përditësohej, por është i mundshëm një version i ri. Shko te {downloadUrl} dhe instalo manualisht versionin e ri, më pas ose kontakto me asistencën ose paraqit një ankesë në lidhje me këtë problem."
+  },
+  "icu:StandaloneRegistration--signal-logo": {
+    "messageformat": "Logoja e Signal"
+  },
+  "icu:StandaloneRegistration--back": {
+    "messageformat": "Mbrapsht"
+  },
+  "icu:StandaloneRegistration--PhoneNumber--header": {
+    "messageformat": "Numër telefoni"
+  },
+  "icu:StandaloneRegistration--PhoneNumber--description--line-1": {
+    "messageformat": "Shkruaj numrin e telefonit për të verifikuar llogarinë."
+  },
+  "icu:StandaloneRegistration--PhoneNumber--description--line-2": {
+    "messageformat": "Mund të zbatohen tarifat e operatorit celular."
+  },
+  "icu:StandaloneRegistration--PhoneNumber--waiting": {
+    "messageformat": "Të lutem, provo përsëri për {duration}"
+  },
+  "icu:StandaloneRegistration--PhoneNumber--placeholder": {
+    "messageformat": "Numër telefoni"
+  },
+  "icu:StandaloneRegistration--PhoneNumber--button": {
+    "messageformat": "Vazhdo"
+  },
+  "icu:StandaloneRegistration--PhoneNumber--Confirmation--description": {
+    "messageformat": "A është i saktë numri juaj i telefonit më sipër?"
+  },
+  "icu:StandaloneRegistration--PhoneNumber--Confirmation--cancel": {
+    "messageformat": "Modifiko numrin"
+  },
+  "icu:StandaloneRegistration--PhoneNumber--Confirmation--confirm": {
+    "messageformat": "Po"
+  },
+  "icu:StandaloneRegistration--Captcha--header": {
+    "messageformat": "Verifiko që je njeri për të vazhduar"
+  },
+  "icu:StandaloneRegistration--Captcha--description": {
+    "messageformat": "Për të ndihmuar në parandalimin e mesazheve të padëshiruara në Signal, të lutem përfundo verifikimin. Pas verifikimit, mund të vazhdosh me regjistrimin."
+  },
+  "icu:StandaloneRegistration--Captcha--retry-button": {
+    "messageformat": "Provo përsëri verifikimin"
+  },
+  "icu:StandaloneRegistration--Captcha--button": {
+    "messageformat": "Verifiko në shfletues"
+  },
+  "icu:StandaloneRegistration--Captcha--button--wait": {
+    "messageformat": "Verifko për {duration}"
+  },
+  "icu:StandaloneRegistration--Captcha--NeedAnother--header": {
+    "messageformat": "Kërkohet verifikim shtesë"
+  },
+  "icu:StandaloneRegistration--Captcha--NeedAnother--description": {
+    "messageformat": "Të lutem, plotëso një tjetër verifikim captcha për të vazhduar regjistrimin."
+  },
+  "icu:StandaloneRegistration--Captcha--NeedAnother--cancel": {
+    "messageformat": "Anulo"
+  },
+  "icu:StandaloneRegistration--Captcha--NeedAnother--retry": {
+    "messageformat": "Provo përsëri verifikimin"
+  },
+  "icu:StandaloneRegistration--Captcha--MustWait--aria-title": {
+    "messageformat": "Provo sërish më vonë"
+  },
+  "icu:StandaloneRegistration--Captcha--MustWait--line-1": {
+    "messageformat": "Nuk mund ta përfundosh verifikimin tani."
+  },
+  "icu:StandaloneRegistration--Captcha--MustWait--line-2": {
+    "messageformat": "Provo përsëri për {duration}"
+  },
+  "icu:StandaloneRegistration--Captcha--MustWait--button": {
+    "messageformat": "OK"
+  },
+  "icu:StandaloneRegistration--Captcha--Error--header": {
+    "messageformat": "Gabim gjatë verifikimit"
+  },
+  "icu:StandaloneRegistration--Captcha--Error--description": {
+    "messageformat": "Provo ta verifikosh përsëri për të vazhduar regjistrimin."
+  },
+  "icu:StandaloneRegistration--Captcha--Error--try-again": {
+    "messageformat": "Riprovo"
+  },
+  "icu:StandaloneRegistration--Captcha--Error--cancel": {
+    "messageformat": "Anulo"
+  },
+  "icu:StandaloneRegistration--VerificationCode--header": {
+    "messageformat": "Kod verifikimi"
+  },
+  "icu:StandaloneRegistration--VerificationCode--description": {
+    "messageformat": "Fut kodin që dërguam te {phoneNumber}"
+  },
+  "icu:StandaloneRegistration--VerificationCode--button": {
+    "messageformat": "Vazhdo"
+  },
+  "icu:StandaloneRegistration--VerificationCode--send-sms": {
+    "messageformat": "Ridërgo kodin"
+  },
+  "icu:StandaloneRegistration--VerificationCode--send-sms--duration": {
+    "messageformat": "Ridërgo kodin pas {duration}"
+  },
+  "icu:StandaloneRegistration--VerificationCode--call-me": {
+    "messageformat": "Më telefono"
+  },
+  "icu:StandaloneRegistration--VerificationCode--call-me--duration": {
+    "messageformat": "Më telefono pas {duration}"
+  },
+  "icu:StandaloneRegistration--VerificationCode--wrong-number": {
+    "messageformat": "Numër i gabuar?"
+  },
+  "icu:StandaloneRegistration--VerificationCode--having-trouble": {
+    "messageformat": "Ke probleme me regjistrimin?"
+  },
+  "icu:StandaloneRegistration--VerificationCode--IncorrectCode--aria-title": {
+    "messageformat": "Kod i gabuar"
+  },
+  "icu:StandaloneRegistration--VerificationCode--IncorrectCode--description": {
+    "messageformat": "Kodi që ke vendosur është i pasaktë. Të lutem, kontrollo kodin 6-shifror dhe provo përsëri."
+  },
+  "icu:StandaloneRegistration--VerificationCode--IncorrectCode--button": {
+    "messageformat": "OK"
+  },
+  "icu:StandaloneRegistration--VerificationCode--CodeInvalid--aria-title": {
+    "messageformat": "Kod i pavlefshëm"
+  },
+  "icu:StandaloneRegistration--VerificationCode--CodeInvalid--description": {
+    "messageformat": "Kodi që ke vendosur nuk është i vlefshëm. Të lutem, ridërgo kodin dhe provo përsëri."
+  },
+  "icu:StandaloneRegistration--VerificationCode--CodeInvalid--resend-button": {
+    "messageformat": "Ridërgo kodin"
+  },
+  "icu:StandaloneRegistration--VerificationCode--CodeInvalid--edit-number-button": {
+    "messageformat": "Modifiko numrin"
+  },
+  "icu:StandaloneRegistration--VerificationCode--SMSFailed--aria-title": {
+    "messageformat": "SMS-ja nuk u dërgua"
+  },
+  "icu:StandaloneRegistration--VerificationCode--SMSFailed--description": {
+    "messageformat": "Nuk mundëm të të dërgonim një kod verifikimi me SMS. Në vend të kësaj, provo të marrësh kodin nëpërmjet thirrjes zanore."
+  },
+  "icu:StandaloneRegistration--VerificationCode--SMSFailed--confirm": {
+    "messageformat": "Thirrje zanore"
+  },
+  "icu:StandaloneRegistration--VerificationCode--SMSFailed--cancel": {
+    "messageformat": "Anulo"
+  },
+  "icu:StandaloneRegistration--VerificationCode--MustWait--aria-title": {
+    "messageformat": "Provo sërish më vonë"
+  },
+  "icu:StandaloneRegistration--VerificationCode--MustWait--description": {
+    "messageformat": "Ke bërë shumë përpjekje për të vendosur kodin. Provo përsëri për {duration}."
+  },
+  "icu:StandaloneRegistration--VerificationCode--MustWait--button": {
+    "messageformat": "OK"
+  },
+  "icu:StandaloneRegistration--VerificationCode--MaximumAttempts--aria-title": {
+    "messageformat": "Shumë përpjekje"
+  },
+  "icu:StandaloneRegistration--VerificationCode--MaximumAttempts--description": {
+    "messageformat": "Ke bërë shumë përpjekje për të vendosur kodin. Të lutem, ridërgo kodin dhe provo përsëri."
+  },
+  "icu:StandaloneRegistration--VerificationCode--MaximumAttempts--resend-button": {
+    "messageformat": "Ridërgo kodin"
+  },
+  "icu:StandaloneRegistration--VerificationCode--MaximumAttempts--edit-number-button": {
+    "messageformat": "Modifiko numrin"
+  },
+  "icu:StandaloneRegistration--VerificationCode--FailedToCall--aria-title": {
+    "messageformat": "Thirrja nuk mund të kryhet"
+  },
+  "icu:StandaloneRegistration--VerificationCode--FailedToCall--description": {
+    "messageformat": "Nuk mund të kryhej telefonata në numrin e telefonit që ke vendosur. Sigurohu që numri i telefonit është i saktë dhe provo përsëri."
+  },
+  "icu:StandaloneRegistration--VerificationCode--FailedToCall--ok-button": {
+    "messageformat": "OK"
+  },
+  "icu:StandaloneRegistration--VerificationCode--CannotSendCodePermanent--aria-title": {
+    "messageformat": "Kodi nuk mund të dërgohet"
+  },
+  "icu:StandaloneRegistration--VerificationCode--CannotSendCodePermanent--description": {
+    "messageformat": "Nuk mund të dërgohet kodi i verifikimit në numrin e telefonit që ke vendosur. Sigurohu që numri që ke vendosur është i saktë ose provo një numër tjetër."
+  },
+  "icu:StandaloneRegistration--VerificationCode--CannotSendCodePermanent--ok-button": {
+    "messageformat": "OK"
+  },
+  "icu:StandaloneRegistration--VerificationCode--CannotSendCodeTemporary--aria-title": {
+    "messageformat": "Provo sërish më vonë"
+  },
+  "icu:StandaloneRegistration--VerificationCode--CannotSendCodeTemporary--description": {
+    "messageformat": "Ndodhi një gabim dhe kodi i verifikimit nuk mund të dërgohej. Provo përsëri për {duration}."
+  },
+  "icu:StandaloneRegistration--VerificationCode--CannotSendCodeTemporary--ok-button": {
+    "messageformat": "OK"
+  },
+  "icu:StandaloneRegistration--ProfileEntry--header": {
+    "messageformat": "Ujdisni profilin tuaj"
+  },
+  "icu:StandaloneRegistration--ProfileEntry--description": {
+    "messageformat": "Profilet shihen nga personat, të cilëve u shkruan, nga kontaktet dhe grupet."
+  },
+  "icu:StandaloneRegistration--ProfileEntry--learn-more": {
+    "messageformat": "Mëso më shumë"
+  },
+  "icu:StandaloneRegistration--ProfileEntry--add-photo": {
+    "messageformat": "Shtoni foto"
+  },
+  "icu:StandaloneRegistration--ProfileEntry--first-name": {
+    "messageformat": "Emër (i domosdoshëm)"
+  },
+  "icu:StandaloneRegistration--ProfileEntry--last-name": {
+    "messageformat": "Mbiemër (i domosdoshëm)"
+  },
+  "icu:StandaloneRegistration--ProfileEntry--discoverability": {
+    "messageformat": "Kush mund të më gjejë përmes numrit të telefonit"
+  },
+  "icu:StandaloneRegistration--ProfileEntry--discoverability--change-button": {
+    "messageformat": "Ndrysho"
+  },
+  "icu:StandaloneRegistration--ProfileEntry--discoverability--done-button": {
+    "messageformat": "U bë"
+  },
+  "icu:StandaloneRegistration--ProfileEntry--continue": {
+    "messageformat": "Vazhdo"
+  },
+  "icu:StandaloneRegistration--ProfileEntry--AvatarModal--header": {
+    "messageformat": "Avatari Juaj"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--header": {
+    "messageformat": "Jepni PIN-in tuaj"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--description": {
+    "messageformat": "Vendos kodin PIN që krijove për llogarinë tënde. Ky kod është i ndryshëm nga kodi i verifikimit me SMS. <needHelp>Të duhet ndihmë?</needHelp>"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--placeholder": {
+    "messageformat": "Jepni PIN-in tuaj"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--incorrect-pin": {
+    "messageformat": "PIN i pasaktë"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--incorrect-pin--with-count": {
+    "messageformat": "{triesRemaining, plural, one {PIN i pasaktë. Edhe {triesRemaining,number} provë.} other {PIN i pasaktë. Edhe {triesRemaining,number} prova.}}"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--NeedHelp--header": {
+    "messageformat": "Ju duhet ndihmë?"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--NeedHelp--description--no-reglock": {
+    "messageformat": "Kodi PIN është një kod katërshifror që ke krijuar që mund të jetë numerik ose alfanumerik. Nëse nuk e mban mend kodin PIN, mund të krijosh një të ri. Mund ta regjistrosh dhe ta përdorësh llogarinë, por do të humbasësh disa parametra të ruajtura, si p.sh. informacionet e profilit. <learnMore>Mëso më shumë</learnMore>."
+  },
+  "icu:StandaloneRegistration--VerifyPIN--NeedHelp--description--reglock": {
+    "messageformat": "Kodi PIN është një kod katërshifror që ke krijuar që mund të jetë numerik ose alfanumerik. Nëse nuk e mban mend kodin PIN, do të duhet të presësh 7 ditë për të regjistruar përsëri llogarinë. <learnMore>Mëso më shumë</learnMore>."
+  },
+  "icu:StandaloneRegistration--VerifyPIN--NeedHelp--skip-button--no-reglock": {
+    "messageformat": "Kapërce dhe krijo PIN të ri"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--NeedHelp--contact-support-button": {
+    "messageformat": "Lidhuni Me Asistencën"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--NeedHelp--cancel": {
+    "messageformat": "Anulo"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--FewRemainingTries--header": {
+    "messageformat": "PIN i pasaktë"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--FewRemainingTries--description--no-reglock": {
+    "messageformat": "{triesRemaining, plural, one {Ke edhe {triesRemaining,number} përpjekje të mbetur. Nëse të mbarojnë përpjekjet, mund të krijosh një PIN të ri. Mund të regjistrohesh dhe të përdorësh llogarinë por do të humbasësh disa parametra të ruajtura, si informacionin e profilit. <learnMore>Mëso më shumë</learnMore>} other {Ke edhe {triesRemaining,number} përpjekje të mbetura. Nëse të mbarojnë përpjekjet, mund të krijosh PIN të ri. Mund të regjistrohesh dhe të përdorësh llogarinë, por do të humbasësh disa parametra të ruajtura, si informacionin e profilit. <learnMore>Mëso më shumë</learnMore>}}"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--FewRemainingTries--description--reglock": {
+    "messageformat": "{triesRemaining, plural, one {Ke edhe {triesRemaining,number} përpjekje të mbetur. Nëse të mbarojnë përpjekjet, llogaria do të bllokohet për 7 ditë. Pas 7 ditësh pasiviteti, mund të regjistrohesh përsëri pa PIN. E gjithë përmbajtja do të fshihet. <learnMore>Mëso më shumë</learnMore>.} other {Ke edhe {triesRemaining,number} përpjekje të mbetura. Nëse të mbarojnë përpjekjet, llogaria do të bllokohet për 7 ditë. Pas 7 ditësh pasiviteti, mund të regjistrohesh përsëri pa PIN. E gjithë përmbajtja do të fshihet. <learnMore>Mëso më shumë</learnMore>.}}"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--FewRemainingTries--button": {
+    "messageformat": "OK"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--NoRemainingTries--header": {
+    "messageformat": "PIN i pasaktë"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--NoRemainingTries--description": {
+    "messageformat": "Të kanë mbaruar opsionet e kodit PIN, por mund të hysh ende në llogarinë e Signal duke krijuar PIN të ri. Për privatësinë dhe sigurinë tënde, llogaria do të rikthehet pa asnjë informacion të ruajtur të profilit dhe pa parametra."
+  },
+  "icu:StandaloneRegistration--VerifyPIN--NoRemainingTries--create-new-pin": {
+    "messageformat": "Krijoni PIN të ri"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--NoRemainingTries--learn-more": {
+    "messageformat": "Mësoni më tepër rreth PIN-ësh"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--menu--skip-pin": {
+    "messageformat": "Kapërce PIN"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--SkipPIN--header": {
+    "messageformat": "Të anashkalohet dhënie PIN-i?"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--SkipPIN--description": {
+    "messageformat": "Nëse nuk e mban mend kodin PIN, mund të krijosh një të ri. Mund ta regjistrosh dhe ta përdorësh llogarinë, por do të humbasësh disa parametra të ruajtura, si p.sh. informacionet e profilit. Mëso më shumë."
+  },
+  "icu:StandaloneRegistration--VerifyPIN--SkipPIN--skip-button": {
+    "messageformat": "Kapërce dhe krijo PIN të ri"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--SkipPIN--cancel-button": {
+    "messageformat": "Anulo"
+  },
+  "icu:StandaloneRegistration--CreatePIN--header": {
+    "messageformat": "Krijoni PIN-in tuaj"
+  },
+  "icu:StandaloneRegistration--CreatePIN--description": {
+    "messageformat": "Kodet PIN mund të ndihmojnë të rimarrësh llogarinë dhe t'i mbash informacionet të koduara me Signal. <learnMore>Mëso më shumë</learnMore>"
+  },
+  "icu:StandaloneRegistration--CreatePIN--placeholder": {
+    "messageformat": "Krijoni PIN-in tuaj"
+  },
+  "icu:StandaloneRegistration--CreatePIN--helper-text": {
+    "messageformat": "PIN-i duhet të jetë të paktën 4 karaktere"
+  },
+  "icu:StandaloneRegistration--CreatePIN--continue": {
+    "messageformat": "Vazhdo"
+  },
+  "icu:StandaloneRegistration--CreatePIN--open-menu": {
+    "messageformat": "Hap menunë"
+  },
+  "icu:StandaloneRegistration--CreatePIN--menu--more-about": {
+    "messageformat": "Më shumë rreth kodeve PIN"
+  },
+  "icu:StandaloneRegistration--CreatePIN--menu--disable": {
+    "messageformat": "Çaktivizoje PIN-in"
+  },
+  "icu:StandaloneRegistration--CreatePIN--DisableWarning--header": {
+    "messageformat": "Paralajmërim"
+  },
+  "icu:StandaloneRegistration--CreatePIN--DisableWarning--description": {
+    "messageformat": "Nëse e çaktivizon PIN, do të humbasësh të gjitha të dhënat kur të regjistrohesh përsëri në Signal, përveç rastit kur i transferon ato nga një pajisje tjetër iOS. Nuk mund ta aktivizosh \"Kyçjen e regjistrimit\" kur PIN-i është i çaktivizuar."
+  },
+  "icu:StandaloneRegistration--CreatePIN--DisableWarning--disable-button": {
+    "messageformat": "Çaktivizoje PIN-in"
+  },
+  "icu:StandaloneRegistration--CreatePIN--DisableWarning--cancel": {
+    "messageformat": "Anulo"
+  },
+  "icu:StandaloneRegistration--CreatePIN--AboutPINs--header": {
+    "messageformat": "Rreth kodeve PIN të Signal"
+  },
+  "icu:StandaloneRegistration--CreatePIN--AboutPINs--description": {
+    "messageformat": "Kodet PIN e mbrojnë informacionin e ruajtur në Signal duke e koduar, në mënyrë që vetëm ti të kesh qasje në të. Profili, parametrat dhe kontaktet do të rikthehen kur ta riinstalosh aplikacionin."
+  },
+  "icu:StandaloneRegistration--CreatePIN--AboutPINs--learn-more-button": {
+    "messageformat": "Mëso më shumë"
+  },
+  "icu:StandaloneRegistration--CreatePIN--AboutPINs--ok-button": {
+    "messageformat": "OK"
+  },
+  "icu:StandaloneRegistration--CreatePIN--confirming--header": {
+    "messageformat": "Konfirmo PIN-in"
+  },
+  "icu:StandaloneRegistration--CreatePIN--confirming--description": {
+    "messageformat": "Rivendos kodin PIN që sapo krijover."
+  },
+  "icu:StandaloneRegistration--CreatePIN--confirming--placeholder": {
+    "messageformat": "Jepni PIN-in tuaj"
+  },
+  "icu:StandaloneRegistration--AccountLocked--header": {
+    "messageformat": "LLogari e kyçur"
+  },
+  "icu:StandaloneRegistration--AccountLocked--description": {
+    "messageformat": "Llogaria është bllokuar për të mbrojtur privatësinë dhe sigurinë. Pas 7 ditësh pasiviteti në llogari, do të mund ta regjistrosh përsëri këtë numër telefoni pa pasur nevojë për PIN. E gjithë përmbajtja do të fshihet."
+  },
+  "icu:StandaloneRegistration--AccountLocked--start-over-button": {
+    "messageformat": "Përdor një numër tjetër"
+  },
+  "icu:StandaloneRegistration--AccountLocked--help-button": {
+    "messageformat": "Mëso më shumë rreth llogarive të bllokuara"
+  },
+  "icu:StandaloneRegistration--UpdateRequired--header": {
+    "messageformat": "Kërkohet përditësim"
+  },
+  "icu:StandaloneRegistration--UpdateRequired--description": {
+    "messageformat": "Për të vazhduar me regjistrimin, të lutem përditëso Signal në versionin më të fundit."
+  },
+  "icu:StandaloneRegistration--UpdateRequired--update": {
+    "messageformat": "Përditësoje"
+  },
+  "icu:StandaloneRegistration--UpdateRequired--cancel": {
+    "messageformat": "Anulo"
+  },
+  "icu:StandaloneRegistration--ConnectionProblem--header": {
+    "messageformat": "Kontrollo lidhjen me internetin"
+  },
+  "icu:StandaloneRegistration--ConnectionProblem--description": {
+    "messageformat": "Për të vazhduar, kontrollo lidhjen e internetit të kompjuterit dhe provo përsëri."
+  },
+  "icu:StandaloneRegistration--ConnectionProblem--button": {
+    "messageformat": "OK"
+  },
+  "icu:StandaloneRegistration--UnexpectedError--header": {
+    "messageformat": "Nuk mund të përfundohet regjistrimi"
+  },
+  "icu:StandaloneRegistration--UnexpectedError--description": {
+    "messageformat": "Ndodhi një gabim dhe regjistrimi nuk mund të përfundojë. Nëse ky problem vazhdon, të lutem kontakto ndihmën."
+  },
+  "icu:StandaloneRegistration--UnexpectedError--try-again-button": {
+    "messageformat": "Riprovo"
+  },
+  "icu:StandaloneRegistration--UnexpectedError--contact-support-button": {
+    "messageformat": "Kontakto ndihmën"
   },
   "icu:NSIS__retry-dialog--first-line": {
     "messageformat": "Signal-i s’mund të mbyllet.",
@@ -6915,15 +7386,6 @@
   },
   "icu:SignalConnectionsModal__footer": {
     "messageformat": "Kontaktet mund të shohin emrin e fotografinë tënde, si dhe postimet e përkohshme, nëse nuk ua fsheh"
-  },
-  "icu:LocalDeleteWarningModal__header": {
-    "messageformat": "Fshirja është sinkronizuar në të gjitha pajisjet"
-  },
-  "icu:LocalDeleteWarningModal__description": {
-    "messageformat": "Kur fshin mesazhet apo bisedat, ato do të fshihen nga të gjitha pajisjet e tua."
-  },
-  "icu:LocalDeleteWarningModal__confirm": {
-    "messageformat": "E kuptova"
   },
   "icu:Stories__title": {
     "messageformat": "Postimet e përkohshme"
@@ -7478,9 +7940,6 @@
   "icu:DraftGifMessageSendModal__SendButtonLabel": {
     "messageformat": "Dërgo"
   },
-  "icu:DraftGifMessageSendModal__CancelButtonLabel": {
-    "messageformat": "Anulo"
-  },
   "icu:EditHistoryMessagesModal__title": {
     "messageformat": "Historiku i përpunimeve"
   },
@@ -7759,9 +8218,6 @@
   },
   "icu:PreferencesDonations__privacy-modal-title": {
     "messageformat": "Informacioni yt është privat"
-  },
-  "icu:PreferencesDonations__privacy-modal-content": {
-    "messageformat": "<paragraph>Signal nuk mbledh apo ruan asnjë nga të dhënat e tua personale kur bën një dhurim.</paragraph><paragraph>Ne përdorim Stripe si përpunues të pagesave për të marrë dhurimet. Nuk kemi qasje, nuk mbledhim apo ruajmë asnjë nga informacionet që ti u jep atyre.</paragraph><paragraph>Signal nuk e lidh dhe nuk mund ta lidhë dhurimin tënd me llogarinë Signal.</paragraph><paragraph>Faleminderit për mbështetjen!</paragraph>"
   },
   "icu:PreferencesDonations__privacy-modal-intro": {
     "messageformat": "Si një ent jofitimprurës i pavarur, Signal është i përkushtuar ndaj mesazheve dhe thirrjeve private. Pa reklama, pa gjurmues, pa mbikëqyrje. Dhuro sot për të mbështetur Signal."
@@ -8205,10 +8661,16 @@
     "messageformat": "Rregullme të vogla, riparime të gabimeve dhe përmirësime të mbarëvajtjes.  Faleminderit që përdorni Signal!",
     "ignoreUnused": true
   },
-  "icu:WhatsNew__8.12--0": {
-    "messageformat": "Kemi shtuar shkurtoren e re në tastierë për të ngritur dorën gjatë thirrjeve në grup (Shift-H)."
+  "icu:WhatsNew__8.18--0": {
+    "messageformat": "Tani mund të krijosh sondazhe edhe në bisedat individuale."
   },
-  "icu:WhatsNew__8.13--0": {
-    "messageformat": "The new raised-hand indicators are now also displayed in the list of raised hands during group calls. It's a second-hand place to figure out who you should hand it over to when you're done speaking."
+  "icu:WhatsNew__8.19--0": {
+    "messageformat": "Administratorët e grupeve tani mund t'u japin fund bisedave me opsionin e ri \"Mbyll grupin\" në parametrat e grupit. Përfundimi i një grupi i pengon anëtarët e grupit të dërgojnë mesazhe ose të nisin thirrje, si dhe çaktivizon ftesat."
+  },
+  "icu:WhatsNew__8.20--0": {
+    "messageformat": "Introducing disappearing call events: Missed, outgoing, and received calls that occur after you install this update will now automatically disappear in any chat where disappearing messages are enabled."
+  },
+  "icu:WhatsNew__8.20--1": {
+    "messageformat": "Now you can reorder installed sticker packs so your new favorites don’t get stuck in the back of the line."
   }
 }

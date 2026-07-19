@@ -14,6 +14,9 @@
   "icu:AxoTextField.Clear": {
     "messageformat": "Təmizlə"
   },
+  "icu:AxoBadge.MaxOverflow": {
+    "messageformat": "{max,number}+"
+  },
   "icu:AddUserToAnotherGroupModal__title": {
     "messageformat": "Bir qrupa əlavə et"
   },
@@ -85,6 +88,9 @@
   },
   "icu:unknownContact": {
     "messageformat": "Bilinməyən əlaqə"
+  },
+  "icu:deletedAccount": {
+    "messageformat": "Silinmiş hesab"
   },
   "icu:unknownContactShort": {
     "messageformat": "Bilinmir"
@@ -314,6 +320,9 @@
   "icu:LeftPaneChatFolders__ItemUnreadBadge__MaxCount": {
     "messageformat": "{maxCount,number}+"
   },
+  "icu:LeftPaneChatFolders__ItemUnreadBadge__AccessibleLabel": {
+    "messageformat": "{count, plural, one {{count,number} Unread Message} other {{count,number} Unread Messages}}"
+  },
   "icu:LeftPaneChatFolders__Item__ContextMenu__MarkAllRead": {
     "messageformat": "Hamısını oxundu olaraq işarələ"
   },
@@ -449,8 +458,8 @@
   "icu:unpinConversation": {
     "messageformat": "Çatdan sancağı götür"
   },
-  "icu:pinnedConversationsFull": {
-    "messageformat": "Yalnız 4 söhbətə qədər sancaqlaya bilərsiniz"
+  "icu:pinnedConversations--max": {
+    "messageformat": "{maxPinnedConversations, plural, one {Maksimum {maxPinnedConversations,number} çata qədər sancaqlaya bilərsiniz} other {Maksimum {maxPinnedConversations,number} çata qədər sabitləyə bilərsiniz}}"
   },
   "icu:view": {
     "messageformat": "Baxış"
@@ -2261,9 +2270,6 @@
   "icu:partiallySent": {
     "messageformat": "Qismən göndərildi, təfsilatlar üçün klikləyin"
   },
-  "icu:partiallyDeleted": {
-    "messageformat": "Qismən silindi, yenidən sınamaq üçün klikləyin"
-  },
   "icu:partiallyDeleted--clickForDetails": {
     "messageformat": "Qismən silindi, təfərrüatlar üçün klikləyin"
   },
@@ -2466,7 +2472,7 @@
     "messageformat": "Endirmə baş tutmadı"
   },
   "icu:Toast--unable-download-from-backup-tier": {
-    "messageformat": "Attachment missing from backup CDN"
+    "messageformat": "Attachment missing from backup CDN, please share desktop & primary logs"
   },
   "icu:ToastManager__CannotAddMemberLabel": {
     "messageformat": "Bu qrupa üzv etiketlərini yalnız adminlər əlavə edə bilər."
@@ -2687,9 +2693,6 @@
   "icu:message--getDescription--gif": {
     "messageformat": "GIF"
   },
-  "icu:message--deletedForEveryone": {
-    "messageformat": "Mesaj silindi."
-  },
   "icu:message--deletedByAdmin": {
     "messageformat": "Admin {admin} bu mesajı sildi"
   },
@@ -2780,14 +2783,11 @@
   "icu:stickers--toast--InstallFailed": {
     "messageformat": "Stiker paketi quraşdırıla bilmədi"
   },
-  "icu:stickers--StickerManager--Available": {
-    "messageformat": "Aktivdir"
+  "icu:stickers--StickerManager--MyStickers--None": {
+    "messageformat": "Stiker paketi yoxdur, dostlarınıza göndərmək üçün stikerlər əlavə edin."
   },
-  "icu:stickers--StickerManager--InstalledPacks": {
-    "messageformat": "Quraşdırılıb"
-  },
-  "icu:stickers--StickerManager--InstalledPacks--Empty": {
-    "messageformat": "Heç bir stiker quraşdırılmayıb"
+  "icu:stickers--StickerManager--AddStickers": {
+    "messageformat": "Stikerlər əlavə edin"
   },
   "icu:stickers--StickerManager--BlessedPacks": {
     "messageformat": "Signal Sənətkar Seriyaları"
@@ -2795,14 +2795,17 @@
   "icu:stickers--StickerManager--BlessedPacks--Empty": {
     "messageformat": "Signal stikerləri mövcud deyil"
   },
-  "icu:stickers--StickerManager--ReceivedPacks": {
-    "messageformat": "Aldığınız stikerlər"
+  "icu:stickers--StickerManager--ReceivedPacks2": {
+    "messageformat": "Sizinlə paylaşılanlar"
   },
-  "icu:stickers--StickerManager--ReceivedPacks--Empty": {
-    "messageformat": "Gələn mesajlardakı stikerlər burada görünəcək"
+  "icu:stickers--StickerManager--ReceivedPacksDescription": {
+    "messageformat": "Kimsə sizə stiker göndərdikdə, stiker paketi burada görünür."
   },
   "icu:stickers--StickerManager--Install": {
     "messageformat": "Quraşdır"
+  },
+  "icu:stickers--StickerManager--Installed": {
+    "messageformat": "Quraşdırılıb"
   },
   "icu:stickers--StickerManager--Uninstall": {
     "messageformat": "Sil"
@@ -2810,11 +2813,59 @@
   "icu:stickers--StickerManager--UninstallWarning": {
     "messageformat": "Artıq mənbə mesajınız yoxdursa, bu stiker paketini təkrar quraşdıra bilməzsiniz."
   },
+  "icu:stickers--StickerManagerHeader--All": {
+    "messageformat": "Hamısı"
+  },
+  "icu:stickers--StickerManagerHeader--MyStickers": {
+    "messageformat": "Stikerlərim"
+  },
+  "icu:stickers--StickerManagerPackContextMenu--Add": {
+    "messageformat": "Əlavə et"
+  },
+  "icu:stickers--StickerManagerPackContextMenu--Remove": {
+    "messageformat": "Çıxart"
+  },
+  "icu:stickers--StickerManagerPackDragHandle--Label": {
+    "messageformat": "Drag to reorder sticker pack"
+  },
+  "icu:stickers--StickerManagerBlessedPacksList--Label": {
+    "messageformat": "Signal Artist Series sticker packs"
+  },
+  "icu:stickers--StickerManagerReceivedPacksList--Label": {
+    "messageformat": "Received sticker packs"
+  },
+  "icu:stickers--StickerManagerInstalledPacksList--Label": {
+    "messageformat": "Installed sticker packs"
+  },
   "icu:stickers--StickerPreview--Title": {
     "messageformat": "Stiker paketi"
   },
   "icu:stickers--StickerPreview--Error": {
     "messageformat": "Stiker paketini açma xətası. İnternet bağlantınızı yoxlayıb yenidən sınayın."
+  },
+  "icu:stickers--StickerPreview--Install": {
+    "messageformat": "Stikerlər əlavə edin"
+  },
+  "icu:stickers--StickerPreview--Remove": {
+    "messageformat": "Çıxart"
+  },
+  "icu:stickers--StickerPreview--Link": {
+    "messageformat": "Keçid"
+  },
+  "icu:stickers--StickerPreview--LinkCopied": {
+    "messageformat": "Bağlantı kopyalandı"
+  },
+  "icu:stickers--StickerPreview--StickerCount": {
+    "messageformat": "{count, plural, one {{count,number} stiker} other {{count,number} stiker}}"
+  },
+  "icu:stickers--StickerPreview--StickerNoEmojiAriaLabel": {
+    "messageformat": "Emojisiz stiker"
+  },
+  "icu:stickers--StickerPackLinkPreviewDescription": {
+    "messageformat": "{author} tərəfindən göndərilmiş Stiker Paketi"
+  },
+  "icu:stickers--ViewPack": {
+    "messageformat": "Paketə bax"
   },
   "icu:FunPicker__Tab--Emojis": {
     "messageformat": "İfadə"
@@ -3028,6 +3079,18 @@
   },
   "icu:FunButton__Label--StickerPicker": {
     "messageformat": "Stiker əlavə et"
+  },
+  "icu:FunPicker__Label--StickerReply": {
+    "messageformat": "Reply"
+  },
+  "icu:FunPicker__Label--SendStickerReply": {
+    "messageformat": "Send"
+  },
+  "icu:FunPicker__Label--CancelStickerReply": {
+    "messageformat": "Cancel"
+  },
+  "icu:FunPicker__Label--Sticker": {
+    "messageformat": "Sticker"
   },
   "icu:confirmation-dialog--Cancel": {
     "messageformat": "Ləğv et"
@@ -4700,9 +4763,6 @@
   "icu:CompositionArea--expand": {
     "messageformat": "Genişləndir"
   },
-  "icu:CompositionArea--attach-file": {
-    "messageformat": "Fayl əlavə et"
-  },
   "icu:CompositionArea__AttachMenu__PhotosAndVideos": {
     "messageformat": "Fotolar və videolar"
   },
@@ -5153,26 +5213,17 @@
   "icu:SelectModeActions--forwardSelectedMessages": {
     "messageformat": "Seçilən mesajları yönləndir"
   },
-  "icu:DeleteMessagesModal--title": {
-    "messageformat": "{count, plural, one {{count,number} mesaj silinsin?} other {{count,number} mesaj silinsin?}}"
-  },
   "icu:DeleteMessagesModal--title-2": {
     "messageformat": "{count, plural, one {Seçilmiş mesaj silinsin?} other {Seçilmiş {count,number} mesaj silinsin?}}"
   },
   "icu:DeleteMessagesModal--description": {
     "messageformat": "{count, plural, one {Bu mesajı kimdən silmək istəyirsiniz?} other {Bu mesajları kimdən silmək istəyirsiniz?}}"
   },
-  "icu:DeleteMessagesModal--description--noteToSelf": {
-    "messageformat": "{count, plural, one {Bu mesajı hansı cihazlardan silmək istəyirsiniz?} other {Bu mesajları hansı cihazlardan silmək istəyirsiniz?}}"
-  },
   "icu:DeleteMessagesModal--description--noteToSelf--deleteSync": {
     "messageformat": "{count, plural, one {Bu mesaj bütün cihazlarınızdan silinəcək.} other {Bu mesajlar bütün cihazlarınızdan silinəcək.}}"
   },
   "icu:DeleteMessagesModal--deleteForMe": {
     "messageformat": "Məndən sil"
-  },
-  "icu:DeleteMessagesModal--deleteFromThisDevice": {
-    "messageformat": "Bu cihazdan sil"
   },
   "icu:DeleteMessagesModal--deleteForEveryone": {
     "messageformat": "Hər kəsdən sil"
@@ -5186,9 +5237,6 @@
   },
   "icu:DeleteMessagesModal--adminDeleteConfirmation--description__rollout": {
     "messageformat": "{count, plural, one {Signal-ın ən son versiyalarından istifadə edən qrup üzvləri bu mesajı sildiyinizi görəcək.} other {Signal-ın ən son versiyalarından istifadə edən qrup üzvləri bu mesajları sildiyinizi görəcək.}}"
-  },
-  "icu:DeleteMessagesModal--deleteFromAllDevices": {
-    "messageformat": "Bütün cihazlardan sil"
   },
   "icu:DeleteMessagesModal--noteToSelf--deleteSync": {
     "messageformat": "Sil"
@@ -6397,11 +6445,26 @@
   "icu:Preferences--local-backups-enter-backup-key": {
     "messageformat": "Şifrəni daxil et"
   },
-  "icu:Preferences--local-backups-record-recovery-key": {
-    "messageformat": "Bərpa şifrənizi qeyd edin"
+  "icu:Preferences--local-backups-recovery-key--title": {
+    "messageformat": "Bərpa şifrəniz"
   },
-  "icu:Preferences--local-backups-record-backup-key-description": {
-    "messageformat": "Bu şifrə hesabınızı və verilənlərinizi bərpa etmək üçün tələb olunur. Bu şifrəni etibarlı bir yerdə saxlayın. Onu itirsəniz, hesabınızı bərpa edə bilməyəcəksiniz. <learnMoreLink>Daha ətraflı.</learnMoreLink>"
+  "icu:Preferences--local-backups-recovery-key--description": {
+    "messageformat": "Bu şifrə hesabınızı və verilənlərinizi bərpa etmək üçün tələb olunur. Onu etibarlı yerdə saxlayın və əsla heç kimlə paylaşmayın. Signal bərpa şifrənizi tələb etmək üçün sizə əsla mesaj göndərmir. <learnMoreLink>Daha ətraflı.</learnMoreLink>"
+  },
+  "icu:Preferences__recovery-key__do-not-share-title": {
+    "messageformat": "Bərpa şifrəsini paylaşmayın"
+  },
+  "icu:Preferences__recovery-key__do-not-share-confirm": {
+    "messageformat": "Anladım"
+  },
+  "icu:CompositionInput__recovery-key-paste__share-key": {
+    "messageformat": "Şifrəni paylaş"
+  },
+  "icu:CompositionInput__recovery-key-paste__do-not-share-key": {
+    "messageformat": "Şifrəni paylaşma"
+  },
+  "icu:CompositionInput__recovery-key-warning--description": {
+    "messageformat": "Bərpa şifrəsini heç kimlə paylaşmayın. Bu, hesabınızın başqalarının əlinə keçməsinə səbəb ola bilər. Bərpa şifrənizi tələb etmək üçün <strong>Signal sizə əsla mesaj göndərmir</strong>. Özünü Signal kimi göstərən çat mesajına əsla cavab verməyin. <learnMoreLink>Daha ətraflı.</learnMoreLink>"
   },
   "icu:Preferences--local-backups-confirm-recovery-key": {
     "messageformat": "Bərpa şifrənizi təsdiqləyin"
@@ -6465,6 +6528,9 @@
   },
   "icu:Preferences__local-backups-auth-error--unauthorized": {
     "messageformat": "Sistem autentifikasiyası baş tutmadığı üçün bu əməliyyatı tamamlamaq mümkün olmadı. Yenidən cəhd edin, yaxud da bərpa şifrəsinə baxmaq üçün mobil cihazınızda Signal tətbiqini açaraq Ehtiyat nüsxə parametrlərinə keçin."
+  },
+  "icu:Preferences__local-backups-auth-error--unknown-error": {
+    "messageformat": "Bu əməliyyat üçün sistem autentifikasiyası tələb edilərkən xəta baş verdi."
   },
   "icu:Preferences__view-key": {
     "messageformat": "Şifrəyə bax"
@@ -6631,6 +6697,12 @@
   "icu:DialogUpdate__downloaded": {
     "messageformat": "Yeniləmə yükləndi"
   },
+  "icu:DialogUpdate__upgrade-mas": {
+    "messageformat": "App Store-a keçmək üçün klikləyin"
+  },
+  "icu:DialogExpiredBuild__upgrade-mas": {
+    "messageformat": "App Store-a keçmək üçün klikləyin"
+  },
   "icu:CriticalIdlePrimaryDevice__title": {
     "messageformat": "Signal-ı telefonunuzda açın"
   },
@@ -6669,6 +6741,405 @@
   },
   "icu:InstallScreenUpdateDialog--cannot-update__body": {
     "messageformat": "\"Signal Desktop\"u yeniləmək mümkün olmadı, lakin yeni versiya mövcuddur. {downloadUrl} ünvanına keçin və yeni versiyanı əl ilə quraşdırın, sonra dəstək şöbəsi ilə əlaqə saxlayın və ya bu problem haqqında bildirin."
+  },
+  "icu:StandaloneRegistration--signal-logo": {
+    "messageformat": "Signal loqosu"
+  },
+  "icu:StandaloneRegistration--back": {
+    "messageformat": "Geri"
+  },
+  "icu:StandaloneRegistration--PhoneNumber--header": {
+    "messageformat": "Telefon nömrəsi"
+  },
+  "icu:StandaloneRegistration--PhoneNumber--description--line-1": {
+    "messageformat": "Hesabınızı təsdiqləmək üçün telefon nömrənizi daxil edin."
+  },
+  "icu:StandaloneRegistration--PhoneNumber--description--line-2": {
+    "messageformat": "Operator tarifləri tətbiq oluna bilər."
+  },
+  "icu:StandaloneRegistration--PhoneNumber--waiting": {
+    "messageformat": "{duration} ərzində yenidən cəhd edin"
+  },
+  "icu:StandaloneRegistration--PhoneNumber--placeholder": {
+    "messageformat": "Telefon nömrəsi"
+  },
+  "icu:StandaloneRegistration--PhoneNumber--button": {
+    "messageformat": "Davam et"
+  },
+  "icu:StandaloneRegistration--PhoneNumber--Confirmation--description": {
+    "messageformat": "Yuxarıdakı telefon nömrəsi doğrudur?"
+  },
+  "icu:StandaloneRegistration--PhoneNumber--Confirmation--cancel": {
+    "messageformat": "Nömrəyə düzəliş et"
+  },
+  "icu:StandaloneRegistration--PhoneNumber--Confirmation--confirm": {
+    "messageformat": "Bəli"
+  },
+  "icu:StandaloneRegistration--Captcha--header": {
+    "messageformat": "Davam etmək üçün insan olduğunuzu təsdiqləyin"
+  },
+  "icu:StandaloneRegistration--Captcha--description": {
+    "messageformat": "Signal-da spam mesajların qarşısını almağa kömək etmək üçün təsdiqləməni tamamlayın. Təsdiqləmə sonrası qeydiyyata davam edə bilərsiniz."
+  },
+  "icu:StandaloneRegistration--Captcha--retry-button": {
+    "messageformat": "Təsdiqləməyə təkrar cəhd et"
+  },
+  "icu:StandaloneRegistration--Captcha--button": {
+    "messageformat": "Brauzerdə təsdiqləyin"
+  },
+  "icu:StandaloneRegistration--Captcha--button--wait": {
+    "messageformat": "{duration} ərzində təsdiqləyin"
+  },
+  "icu:StandaloneRegistration--Captcha--NeedAnother--header": {
+    "messageformat": "Əlavə yoxlama tələb olunur"
+  },
+  "icu:StandaloneRegistration--Captcha--NeedAnother--description": {
+    "messageformat": "Qeydiyyata davam etmək üçün digər captcha-nı tamamlayın."
+  },
+  "icu:StandaloneRegistration--Captcha--NeedAnother--cancel": {
+    "messageformat": "Ləğv et"
+  },
+  "icu:StandaloneRegistration--Captcha--NeedAnother--retry": {
+    "messageformat": "Təsdiqləməyə təkrar cəhd et"
+  },
+  "icu:StandaloneRegistration--Captcha--MustWait--aria-title": {
+    "messageformat": "Daha sonra yenidən cəhd edin"
+  },
+  "icu:StandaloneRegistration--Captcha--MustWait--line-1": {
+    "messageformat": "Hazırda yoxlama tamamlana bilmir."
+  },
+  "icu:StandaloneRegistration--Captcha--MustWait--line-2": {
+    "messageformat": "{duration} ərzində yenidən cəhd edin"
+  },
+  "icu:StandaloneRegistration--Captcha--MustWait--button": {
+    "messageformat": "Oldu"
+  },
+  "icu:StandaloneRegistration--Captcha--Error--header": {
+    "messageformat": "Yoxlama xətası"
+  },
+  "icu:StandaloneRegistration--Captcha--Error--description": {
+    "messageformat": "Qeydiyyata davam etmək üçün yenidən yoxlamağa çalışın."
+  },
+  "icu:StandaloneRegistration--Captcha--Error--try-again": {
+    "messageformat": "Yenidən sına"
+  },
+  "icu:StandaloneRegistration--Captcha--Error--cancel": {
+    "messageformat": "Ləğv et"
+  },
+  "icu:StandaloneRegistration--VerificationCode--header": {
+    "messageformat": "Təsdiqləmə kodu"
+  },
+  "icu:StandaloneRegistration--VerificationCode--description": {
+    "messageformat": "{phoneNumber} nömrəsinə göndərdiyimiz kodu daxil edin"
+  },
+  "icu:StandaloneRegistration--VerificationCode--button": {
+    "messageformat": "Davam et"
+  },
+  "icu:StandaloneRegistration--VerificationCode--send-sms": {
+    "messageformat": "Kodu yenidən göndər"
+  },
+  "icu:StandaloneRegistration--VerificationCode--send-sms--duration": {
+    "messageformat": "{duration} ərzində kodu təkrar göndər"
+  },
+  "icu:StandaloneRegistration--VerificationCode--call-me": {
+    "messageformat": "Mənə zəng et"
+  },
+  "icu:StandaloneRegistration--VerificationCode--call-me--duration": {
+    "messageformat": "{duration} ərzində mənə zəng et"
+  },
+  "icu:StandaloneRegistration--VerificationCode--wrong-number": {
+    "messageformat": "Şifrə səhvdir?"
+  },
+  "icu:StandaloneRegistration--VerificationCode--having-trouble": {
+    "messageformat": "Qeydiyyatdan keçməkdə çətinlik çəkirsiniz?"
+  },
+  "icu:StandaloneRegistration--VerificationCode--IncorrectCode--aria-title": {
+    "messageformat": "Yanlış kod"
+  },
+  "icu:StandaloneRegistration--VerificationCode--IncorrectCode--description": {
+    "messageformat": "Daxil etdiyiniz kod səhvdir. 6 rəqəmli kodu nəzərdən keçirib yenidən cəhd edin."
+  },
+  "icu:StandaloneRegistration--VerificationCode--IncorrectCode--button": {
+    "messageformat": "Oldu"
+  },
+  "icu:StandaloneRegistration--VerificationCode--CodeInvalid--aria-title": {
+    "messageformat": "Kod səhvdir"
+  },
+  "icu:StandaloneRegistration--VerificationCode--CodeInvalid--description": {
+    "messageformat": "Daxil etdiyiniz kod etibarlı deyil. Kodu təkrar göndərib, yenidən cəhd edin."
+  },
+  "icu:StandaloneRegistration--VerificationCode--CodeInvalid--resend-button": {
+    "messageformat": "Kodu yenidən göndər"
+  },
+  "icu:StandaloneRegistration--VerificationCode--CodeInvalid--edit-number-button": {
+    "messageformat": "Nömrəyə düzəliş et"
+  },
+  "icu:StandaloneRegistration--VerificationCode--SMSFailed--aria-title": {
+    "messageformat": "SMS göndərmək mümkün olmadı"
+  },
+  "icu:StandaloneRegistration--VerificationCode--SMSFailed--description": {
+    "messageformat": "Təsdiq kodunu sizə SMS vasitəsilə göndərə bilmirik. Bunun əvəzinə kodunuzu audio zənglə almağa çalışın."
+  },
+  "icu:StandaloneRegistration--VerificationCode--SMSFailed--confirm": {
+    "messageformat": "Audio zəng"
+  },
+  "icu:StandaloneRegistration--VerificationCode--SMSFailed--cancel": {
+    "messageformat": "Ləğv et"
+  },
+  "icu:StandaloneRegistration--VerificationCode--MustWait--aria-title": {
+    "messageformat": "Daha sonra yenidən cəhd edin"
+  },
+  "icu:StandaloneRegistration--VerificationCode--MustWait--description": {
+    "messageformat": "Kodu daxil etmək üçün həddindən çox cəhd etdiniz. {duration} ərzində yenidən cəhd edin."
+  },
+  "icu:StandaloneRegistration--VerificationCode--MustWait--button": {
+    "messageformat": "Oldu"
+  },
+  "icu:StandaloneRegistration--VerificationCode--MaximumAttempts--aria-title": {
+    "messageformat": "Həddən çox cəhd edildi"
+  },
+  "icu:StandaloneRegistration--VerificationCode--MaximumAttempts--description": {
+    "messageformat": "Kodu daxil etmək üçün həddindən çox cəhd etdiniz. Kodu təkrar göndərib, yenidən cəhd edin."
+  },
+  "icu:StandaloneRegistration--VerificationCode--MaximumAttempts--resend-button": {
+    "messageformat": "Kodu yenidən göndər"
+  },
+  "icu:StandaloneRegistration--VerificationCode--MaximumAttempts--edit-number-button": {
+    "messageformat": "Nömrəyə düzəliş et"
+  },
+  "icu:StandaloneRegistration--VerificationCode--FailedToCall--aria-title": {
+    "messageformat": "Zəng etmək mümkün olmadı"
+  },
+  "icu:StandaloneRegistration--VerificationCode--FailedToCall--description": {
+    "messageformat": "Daxil etdiyiniz telefon nömrəsinə zəng edə bilmədik. Telefon nömrəsinin doğru olduğundan əmin olub, yenidən cəhd edin."
+  },
+  "icu:StandaloneRegistration--VerificationCode--FailedToCall--ok-button": {
+    "messageformat": "Oldu"
+  },
+  "icu:StandaloneRegistration--VerificationCode--CannotSendCodePermanent--aria-title": {
+    "messageformat": "Kod göndərilmədi"
+  },
+  "icu:StandaloneRegistration--VerificationCode--CannotSendCodePermanent--description": {
+    "messageformat": "Təsdiq kodu daxil etdiyiniz telefon nömrəsinə göndərilə bilmədi. Daxil etdiyiniz nömrənin doğru olduğundan əmin olun və ya başqa bir nömrə ilə cəhd edin."
+  },
+  "icu:StandaloneRegistration--VerificationCode--CannotSendCodePermanent--ok-button": {
+    "messageformat": "Oldu"
+  },
+  "icu:StandaloneRegistration--VerificationCode--CannotSendCodeTemporary--aria-title": {
+    "messageformat": "Daha sonra yenidən cəhd edin"
+  },
+  "icu:StandaloneRegistration--VerificationCode--CannotSendCodeTemporary--description": {
+    "messageformat": "Bir xəta baş verdi və təsdiq kodunu göndərmək mümkün olmadı. {duration} ərzində yenidən cəhd edin."
+  },
+  "icu:StandaloneRegistration--VerificationCode--CannotSendCodeTemporary--ok-button": {
+    "messageformat": "Oldu"
+  },
+  "icu:StandaloneRegistration--ProfileEntry--header": {
+    "messageformat": "Profilinizi quraşdırın"
+  },
+  "icu:StandaloneRegistration--ProfileEntry--description": {
+    "messageformat": "Mesajlaşdığınız şəxslər, kontaktlarınız və qruplarınız profilinizi görə bilər."
+  },
+  "icu:StandaloneRegistration--ProfileEntry--learn-more": {
+    "messageformat": "Daha ətraflı"
+  },
+  "icu:StandaloneRegistration--ProfileEntry--add-photo": {
+    "messageformat": "Foto əlavə et"
+  },
+  "icu:StandaloneRegistration--ProfileEntry--first-name": {
+    "messageformat": "Ad (tələb olunur)"
+  },
+  "icu:StandaloneRegistration--ProfileEntry--last-name": {
+    "messageformat": "Soyad (ixtiyari)"
+  },
+  "icu:StandaloneRegistration--ProfileEntry--discoverability": {
+    "messageformat": "Telefon nömrəsi ilə məni kim tapa bilər"
+  },
+  "icu:StandaloneRegistration--ProfileEntry--discoverability--change-button": {
+    "messageformat": "Dəyiş"
+  },
+  "icu:StandaloneRegistration--ProfileEntry--discoverability--done-button": {
+    "messageformat": "Hazırdır"
+  },
+  "icu:StandaloneRegistration--ProfileEntry--continue": {
+    "messageformat": "Davam et"
+  },
+  "icu:StandaloneRegistration--ProfileEntry--AvatarModal--header": {
+    "messageformat": "Avatarınız"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--header": {
+    "messageformat": "PIN-inizi daxil edin"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--description": {
+    "messageformat": "Hesabınız üçün yaratdığınız PIN kodu daxil edin. Bu sizin SMS təsdiq kodundan fərqlidir. <needHelp>Kömək lazımdır?</needHelp>"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--placeholder": {
+    "messageformat": "PIN-inizi daxil edin"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--incorrect-pin": {
+    "messageformat": "Yanlış PIN"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--incorrect-pin--with-count": {
+    "messageformat": "{triesRemaining, plural, one {Səhv PIN. {triesRemaining,number} cəhd qaldı.} other {Yanlış PIN. {triesRemaining,number} cəhd qaldı.}}"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--NeedHelp--header": {
+    "messageformat": "Kömək lazımdır?"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--NeedHelp--description--no-reglock": {
+    "messageformat": "PIN kod yaratdığınız 4+ rəqəmli ədəd və ya hərflərdən ibarət koddur. PIN kodunuzu xatırlamırsınızsa, yenisini yarada bilərsiniz. Qeydiyyatdan keçə və hesabınızı istifadə edə bilərsiniz, ancaq profil məlumatlarınız kimi bəzi yadda saxlanılmış parametrləri itirəcəksiniz. <learnMore>Daha ətraflı</learnMore>."
+  },
+  "icu:StandaloneRegistration--VerifyPIN--NeedHelp--description--reglock": {
+    "messageformat": "PIN kod yaratdığınız 4+ rəqəmli ədəd və ya hərflərdən ibarət koddur. PIN kodu xatırlamırsınızsa, hesabınızı təkrar qeydiyyatdan keçirmək üçün 7 gün gözləməlisiniz. <learnMore>Daha ətraflı</learnMore>."
+  },
+  "icu:StandaloneRegistration--VerifyPIN--NeedHelp--skip-button--no-reglock": {
+    "messageformat": "Ötür və yeni PIN kod yarat"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--NeedHelp--contact-support-button": {
+    "messageformat": "Dəstək ilə əlaqə"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--NeedHelp--cancel": {
+    "messageformat": "Ləğv et"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--FewRemainingTries--header": {
+    "messageformat": "Yanlış PIN"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--FewRemainingTries--description--no-reglock": {
+    "messageformat": "{triesRemaining, plural, one {{triesRemaining,number} cəhdiniz qaldı. Cəhdlərin sayını keçsəniz, yeni PIN kod yarada bilərsiniz. Hesabınızı qeydiyyatdan keçirib istifadə edə bilərsiniz, lakin profil məlumatlarınız kimi yadda saxlanılan bəzi parametrləri itirəcəksiniz. <learnMore>Daha ətraflı</learnMore>.} other {{triesRemaining,number} cəhdiniz qaldı. Cəhdlərin sayını keçsəniz, yeni PIN kod yarada bilərsiniz. Hesabınızı qeydiyyatdan keçirib istifadə edə bilərsiniz, lakin profil məlumatlarınız kimi yadda saxlanılan bəzi parametrləri itirəcəksiniz.<learnMore>Daha ətraflı</learnMore>.}}"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--FewRemainingTries--description--reglock": {
+    "messageformat": "{triesRemaining, plural, one {{triesRemaining,number} cəhdiniz qaldı. Cəhdlərin sayını keçsəniz hesabınız 7 günlük kilidlənəcək. 7 günlük fəaliyyətsizlikdən sonra PIN kod olmadan təkrar qeydiyyatdan keçə bilərsiniz. Bütün məzmun silinəcək. <learnMore>Daha ətraflı</learnMore>.} other {{triesRemaining,number} cəhdiniz qaldı. Cəhdlərin sayını keçsəniz hesabınız 7 günlük kilidlənəcək. 7 günlük fəaliyyətsizlikdən sonra PIN kod olmadan təkrar qeydiyyatdan keçə bilərsiniz. Bütün məzmun silinəcək. <learnMore>Daha ətraflı</learnMore>.}}"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--FewRemainingTries--button": {
+    "messageformat": "Oldu"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--NoRemainingTries--header": {
+    "messageformat": "Yanlış PIN"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--NoRemainingTries--description": {
+    "messageformat": "PIN kod təxminləriniz tükəndi, lakin siz hələ də yeni PIN kod yaradaraq Signal hesabınıza daxil ola bilərsiniz. Məxfiliyinizi və təhlükəsizliyinizi qorumaq üçün hesabınız istənilən yadda saxlanmış profil məlumatı və ya parametrləri olmadan bərpa ediləcək."
+  },
+  "icu:StandaloneRegistration--VerifyPIN--NoRemainingTries--create-new-pin": {
+    "messageformat": "Yeni PIN yarat"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--NoRemainingTries--learn-more": {
+    "messageformat": "PIN-lər haqqında daha ətraflı"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--menu--skip-pin": {
+    "messageformat": "PIN kodu ötür"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--SkipPIN--header": {
+    "messageformat": "PIN girişi ötürülsün?"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--SkipPIN--description": {
+    "messageformat": "PIN kodunuzu xatırlamırsınızsa, yenisini yarada bilərsiniz. Qeydiyyatdan keçə və hesabınızı istifadə edə bilərsiniz, ancaq profil məlumatlarınız kimi bəzi yadda saxlanılmış parametrləri itirəcəksiniz. Daha ətraflı."
+  },
+  "icu:StandaloneRegistration--VerifyPIN--SkipPIN--skip-button": {
+    "messageformat": "Ötür və yeni PIN kod yarat"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--SkipPIN--cancel-button": {
+    "messageformat": "Ləğv et"
+  },
+  "icu:StandaloneRegistration--CreatePIN--header": {
+    "messageformat": "PIN yaradın"
+  },
+  "icu:StandaloneRegistration--CreatePIN--description": {
+    "messageformat": "PIN kodlar hesabınızı bərpa etməyə və məlumatlarınızı Signal-da şifrələməyə kömək edə bilər. <learnMore>Daha ətraflı</learnMore>"
+  },
+  "icu:StandaloneRegistration--CreatePIN--placeholder": {
+    "messageformat": "PIN yaradın"
+  },
+  "icu:StandaloneRegistration--CreatePIN--helper-text": {
+    "messageformat": "PIN ən azı 4 simvoldan ibarət olmalıdır"
+  },
+  "icu:StandaloneRegistration--CreatePIN--continue": {
+    "messageformat": "Davam et"
+  },
+  "icu:StandaloneRegistration--CreatePIN--open-menu": {
+    "messageformat": "Menyunu aç"
+  },
+  "icu:StandaloneRegistration--CreatePIN--menu--more-about": {
+    "messageformat": "PIN kodlar haqqında daha ətraflı"
+  },
+  "icu:StandaloneRegistration--CreatePIN--menu--disable": {
+    "messageformat": "PIN-i sıradan çıxart"
+  },
+  "icu:StandaloneRegistration--CreatePIN--DisableWarning--header": {
+    "messageformat": "Xəbərdarlıq"
+  },
+  "icu:StandaloneRegistration--CreatePIN--DisableWarning--description": {
+    "messageformat": "PIN kodu qeyri-aktiv etsəniz, Signal-da təkrar qeydiyyatdan keçərkən, digər bir iOS cihazından köçürmədiyiniz təqdirdə bütün məlumatları itirəcəksiniz. PIN kod qeyri-aktiv edildikdə qeydiyyat kilidini yandıra bilməzsiniz."
+  },
+  "icu:StandaloneRegistration--CreatePIN--DisableWarning--disable-button": {
+    "messageformat": "PIN-i sıradan çıxart"
+  },
+  "icu:StandaloneRegistration--CreatePIN--DisableWarning--cancel": {
+    "messageformat": "Ləğv et"
+  },
+  "icu:StandaloneRegistration--CreatePIN--AboutPINs--header": {
+    "messageformat": "Signal PIN kodları haqqında"
+  },
+  "icu:StandaloneRegistration--CreatePIN--AboutPINs--description": {
+    "messageformat": "PIN kodlar, Signal yaddaşındakı məlumatlarınızı şifrələnmiş şəkildə saxlayır və onlara yalnız siz daxil ola bilirsiniz. Profiliniz, parametrlər və kontaktlar yenidən quraşdırma zamanı bərpa olunur."
+  },
+  "icu:StandaloneRegistration--CreatePIN--AboutPINs--learn-more-button": {
+    "messageformat": "Daha ətraflı"
+  },
+  "icu:StandaloneRegistration--CreatePIN--AboutPINs--ok-button": {
+    "messageformat": "Oldu"
+  },
+  "icu:StandaloneRegistration--CreatePIN--confirming--header": {
+    "messageformat": "PIN-inizi təsdiqləyin"
+  },
+  "icu:StandaloneRegistration--CreatePIN--confirming--description": {
+    "messageformat": "İndicə yaratdığınız PIN kodu yenidən daxil edin."
+  },
+  "icu:StandaloneRegistration--CreatePIN--confirming--placeholder": {
+    "messageformat": "PIN-inizi daxil edin"
+  },
+  "icu:StandaloneRegistration--AccountLocked--header": {
+    "messageformat": "Hesab kilidləndi"
+  },
+  "icu:StandaloneRegistration--AccountLocked--description": {
+    "messageformat": "Hesabınız məxfilik və təhlükəsizliyinizi qorumaq üçün kilidlənib. Hesabınızda 7 günlük fəaliyyətsizlikdən sonra bu telefon nömrəsi ilə PIN koda ehtiyac olmadan yenidən qeydiyyatdan keçə biləcəksiniz. Bütün məzmunlar silinəcək."
+  },
+  "icu:StandaloneRegistration--AccountLocked--start-over-button": {
+    "messageformat": "Fərqli nömrədən istifadə edin"
+  },
+  "icu:StandaloneRegistration--AccountLocked--help-button": {
+    "messageformat": "Kilidlənən hesablar haqqında öyrənin"
+  },
+  "icu:StandaloneRegistration--UpdateRequired--header": {
+    "messageformat": "Yeniləmə tələb olunur"
+  },
+  "icu:StandaloneRegistration--UpdateRequired--description": {
+    "messageformat": "Qeydiyyata davam etmək üçün Signal-ın son versiyasını yeniləyin."
+  },
+  "icu:StandaloneRegistration--UpdateRequired--update": {
+    "messageformat": "Yenilə"
+  },
+  "icu:StandaloneRegistration--UpdateRequired--cancel": {
+    "messageformat": "Ləğv et"
+  },
+  "icu:StandaloneRegistration--ConnectionProblem--header": {
+    "messageformat": "Bağlantınızı yoxlayın"
+  },
+  "icu:StandaloneRegistration--ConnectionProblem--description": {
+    "messageformat": "Davam etmək üçün kompüterin internet bağlantısını yoxlayıb, yenidən cəhd edin."
+  },
+  "icu:StandaloneRegistration--ConnectionProblem--button": {
+    "messageformat": "Oldu"
+  },
+  "icu:StandaloneRegistration--UnexpectedError--header": {
+    "messageformat": "Qeydiyyat tamamlana bilmədi"
+  },
+  "icu:StandaloneRegistration--UnexpectedError--description": {
+    "messageformat": "Xəta baş verdi və qeydiyyat tamamlana bilmədi. Bu problem davam edərsə, dəstək xidməti ilə əlaqə saxlayın."
+  },
+  "icu:StandaloneRegistration--UnexpectedError--try-again-button": {
+    "messageformat": "Yenidən sına"
+  },
+  "icu:StandaloneRegistration--UnexpectedError--contact-support-button": {
+    "messageformat": "Dəstək xidməti ilə əlaqə saxlayın"
   },
   "icu:NSIS__retry-dialog--first-line": {
     "messageformat": "Signal, bağlanıla bilmir.",
@@ -6915,15 +7386,6 @@
   },
   "icu:SignalConnectionsModal__footer": {
     "messageformat": "Kontaktlarınız adınızı və fotoşəklinizi, o cümlədən onlardan gizlətməmisinizsə, \"Hekayəm\" səhifəsindəki yazılarınızı görə bilər."
-  },
-  "icu:LocalDeleteWarningModal__header": {
-    "messageformat": "Silmə əməliyyatı cihazlarınızda sinxronlaşdırılıb"
-  },
-  "icu:LocalDeleteWarningModal__description": {
-    "messageformat": "Mesajları və çatları sildiyiniz zaman onlar bütün cihazlarınızdan silinəcək."
-  },
-  "icu:LocalDeleteWarningModal__confirm": {
-    "messageformat": "Anladım"
   },
   "icu:Stories__title": {
     "messageformat": "Hekayələr"
@@ -7478,9 +7940,6 @@
   "icu:DraftGifMessageSendModal__SendButtonLabel": {
     "messageformat": "Göndər"
   },
-  "icu:DraftGifMessageSendModal__CancelButtonLabel": {
-    "messageformat": "Ləğv et"
-  },
   "icu:EditHistoryMessagesModal__title": {
     "messageformat": "Redaktə tarixçəsi"
   },
@@ -7759,9 +8218,6 @@
   },
   "icu:PreferencesDonations__privacy-modal-title": {
     "messageformat": "Məlumatınız məxfidir"
-  },
-  "icu:PreferencesDonations__privacy-modal-content": {
-    "messageformat": "<paragraph>İanə etdiyiniz zaman Signal şəxsi məlumatlarınızı toplamır və saxlamır.</paragraph><paragraph>Biz ianələrinizi qəbul etmək üçün ödəniş prosessorumuz kimi Stripe-dan istifadə edirik. Ona göndərdiyiniz hər hansı məlumatı əldə etmir, saxlamır və ya yaddaşa vermirik.</paragraph><paragraph>Signal etdiyiniz ianəni Signal hesabınızla əlaqələndirmir və bunu edə bilməz.</paragraph><paragraph>Dəstəyiniz üçün təşəkkür edirik!</paragraph>"
   },
   "icu:PreferencesDonations__privacy-modal-intro": {
     "messageformat": "Müstəqil qeyri-kommersiya təşkilatı kimi Signal mesajlaşma və zənglərin məxfiliyini qoruyur. Reklamsız, təqibsiz və nəzarətsiz. Signal-ı dəstəkləmək üçün bu gün ianə verin."
@@ -8205,10 +8661,16 @@
     "messageformat": "Kiçik spesifik tənzimləmələr, xəta düzəlişləri və məhsuldarlığın artırılması. Signal istifadə etdiyiniz üçün təşəkkürlər!",
     "ignoreUnused": true
   },
-  "icu:WhatsNew__8.12--0": {
-    "messageformat": "Bir tərəfdən qrup zənglərində \"əl qaldırma\" piktoqramına klikləyə bilərsiniz. Digər tərəfdən isə artıq klaviaturaya yeni tətbiq etdiyimiz (Shift-H) qısayoldan istifadə edə bilərsiniz."
+  "icu:WhatsNew__8.18--0": {
+    "messageformat": "Səsvermə artıq fərdi çatlarda da yaradıla bilər. Tərəddüd edən dostunuza xüsusi seçimlər siyahısı təqdim edin və ya \"Məni bəyənirsən? B/X/Bəlkə\" sorğusu ilə bir səsvermə yaradaraq sevdiyiniz insana qısa mesaj ötürmə xatirəsini yenidən yad edin."
   },
-  "icu:WhatsNew__8.13--0": {
-    "messageformat": "The new raised-hand indicators are now also displayed in the list of raised hands during group calls. It's a second-hand place to figure out who you should hand it over to when you're done speaking."
+  "icu:WhatsNew__8.19--0": {
+    "messageformat": "Artıq qrup adminləri qrup parametrlərində \"Qrupu sonlandır\" seçimi ilə çatları təbii şəkildə yekunlaşdıra bilər. Qrupu sonlandırdıqda qrup üzvləri mesajlaşa və ya zəng edə bilmir, dəvətlər qeyri-aktiv edilir. Artıq yeni qrupu birgə yaratmazdan əvvəl keçən ilki köhnə qrupu sonlandıra və hər kəsi doğru yolda saxlaya bilərsiniz."
+  },
+  "icu:WhatsNew__8.20--0": {
+    "messageformat": "Introducing disappearing call events: Missed, outgoing, and received calls that occur after you install this update will now automatically disappear in any chat where disappearing messages are enabled."
+  },
+  "icu:WhatsNew__8.20--1": {
+    "messageformat": "Now you can reorder installed sticker packs so your new favorites don’t get stuck in the back of the line."
   }
 }

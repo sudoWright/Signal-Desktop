@@ -14,6 +14,9 @@
   "icu:AxoTextField.Clear": {
     "messageformat": "Eemalda"
   },
+  "icu:AxoBadge.MaxOverflow": {
+    "messageformat": "{max,number}+"
+  },
   "icu:AddUserToAnotherGroupModal__title": {
     "messageformat": "Lisa gruppi"
   },
@@ -85,6 +88,9 @@
   },
   "icu:unknownContact": {
     "messageformat": "Tundmatu kontakt"
+  },
+  "icu:deletedAccount": {
+    "messageformat": "Kustutatud konto"
   },
   "icu:unknownContactShort": {
     "messageformat": "Tundmatu"
@@ -314,6 +320,9 @@
   "icu:LeftPaneChatFolders__ItemUnreadBadge__MaxCount": {
     "messageformat": "{maxCount,number}+"
   },
+  "icu:LeftPaneChatFolders__ItemUnreadBadge__AccessibleLabel": {
+    "messageformat": "{count, plural, one {{count,number} Unread Message} other {{count,number} Unread Messages}}"
+  },
   "icu:LeftPaneChatFolders__Item__ContextMenu__MarkAllRead": {
     "messageformat": "Märgi kõik loetuks"
   },
@@ -449,8 +458,8 @@
   "icu:unpinConversation": {
     "messageformat": "Eemalda vestluse kinnitus"
   },
-  "icu:pinnedConversationsFull": {
-    "messageformat": "Saad kinnitada kuni 4 vestlust"
+  "icu:pinnedConversations--max": {
+    "messageformat": "{maxPinnedConversations, plural, one {Sa saad kinnitada vaid kuni {maxPinnedConversations,number} vestluse} other {Sa saad kinnitada vaid kuni {maxPinnedConversations,number} vestlust}}"
   },
   "icu:view": {
     "messageformat": "Vaata"
@@ -2261,9 +2270,6 @@
   "icu:partiallySent": {
     "messageformat": "Osaliselt saadetud, üksikasjade nägemiseks klõpsa"
   },
-  "icu:partiallyDeleted": {
-    "messageformat": "Osaliselt kustutatud, klõpsa uuesti proovimiseks"
-  },
   "icu:partiallyDeleted--clickForDetails": {
     "messageformat": "Osaliselt kustutatud, üksikasjade nägemiseks klõpsa"
   },
@@ -2466,7 +2472,7 @@
     "messageformat": "Allalaadimine nurjus"
   },
   "icu:Toast--unable-download-from-backup-tier": {
-    "messageformat": "Attachment missing from backup CDN"
+    "messageformat": "Attachment missing from backup CDN, please share desktop & primary logs"
   },
   "icu:ToastManager__CannotAddMemberLabel": {
     "messageformat": "Ainult administraatorid saavad selles grupis liikmesilte lisada."
@@ -2687,9 +2693,6 @@
   "icu:message--getDescription--gif": {
     "messageformat": "GIF"
   },
-  "icu:message--deletedForEveryone": {
-    "messageformat": "See sõnum kustutati."
-  },
   "icu:message--deletedByAdmin": {
     "messageformat": "Administraator {admin} kustutas selle sõnumi"
   },
@@ -2780,14 +2783,11 @@
   "icu:stickers--toast--InstallFailed": {
     "messageformat": "Kleebisepaki paigaldamine ei õnnestunud"
   },
-  "icu:stickers--StickerManager--Available": {
-    "messageformat": "Saadaval"
+  "icu:stickers--StickerManager--MyStickers--None": {
+    "messageformat": "Kleebiste komplekte ei ole, lisa sõpradele saatmiseks kleebiseid."
   },
-  "icu:stickers--StickerManager--InstalledPacks": {
-    "messageformat": "Paigaldatud"
-  },
-  "icu:stickers--StickerManager--InstalledPacks--Empty": {
-    "messageformat": "Kleebiseid pole paigaldatud"
+  "icu:stickers--StickerManager--AddStickers": {
+    "messageformat": "Lisa kleebiseid"
   },
   "icu:stickers--StickerManager--BlessedPacks": {
     "messageformat": "Signali artisti seeria"
@@ -2795,14 +2795,17 @@
   "icu:stickers--StickerManager--BlessedPacks--Empty": {
     "messageformat": "Signal Artist kleebiseid pole saadaval"
   },
-  "icu:stickers--StickerManager--ReceivedPacks": {
-    "messageformat": "Vastuvõetud kleebised"
+  "icu:stickers--StickerManager--ReceivedPacks2": {
+    "messageformat": "Sinuga jagatud"
   },
-  "icu:stickers--StickerManager--ReceivedPacks--Empty": {
-    "messageformat": "Siia ilmuvad saabuvate sõnumite kleebised"
+  "icu:stickers--StickerManager--ReceivedPacksDescription": {
+    "messageformat": "Kui kelleltki kleebise saad, kuvatakse kleebiste komplekt siin."
   },
   "icu:stickers--StickerManager--Install": {
     "messageformat": "Paigalda"
+  },
+  "icu:stickers--StickerManager--Installed": {
+    "messageformat": "Paigaldatud"
   },
   "icu:stickers--StickerManager--Uninstall": {
     "messageformat": "Eemalda"
@@ -2810,11 +2813,59 @@
   "icu:stickers--StickerManager--UninstallWarning": {
     "messageformat": "Sa ei saa seda kleebisepakki uuesti paigaldada, kui sul pole enam algsõnumit."
   },
+  "icu:stickers--StickerManagerHeader--All": {
+    "messageformat": "Kõik"
+  },
+  "icu:stickers--StickerManagerHeader--MyStickers": {
+    "messageformat": "Minu kleebised"
+  },
+  "icu:stickers--StickerManagerPackContextMenu--Add": {
+    "messageformat": "Lisa"
+  },
+  "icu:stickers--StickerManagerPackContextMenu--Remove": {
+    "messageformat": "Eemalda"
+  },
+  "icu:stickers--StickerManagerPackDragHandle--Label": {
+    "messageformat": "Drag to reorder sticker pack"
+  },
+  "icu:stickers--StickerManagerBlessedPacksList--Label": {
+    "messageformat": "Signal Artist Series sticker packs"
+  },
+  "icu:stickers--StickerManagerReceivedPacksList--Label": {
+    "messageformat": "Received sticker packs"
+  },
+  "icu:stickers--StickerManagerInstalledPacksList--Label": {
+    "messageformat": "Installed sticker packs"
+  },
   "icu:stickers--StickerPreview--Title": {
     "messageformat": "Kleebisepakk"
   },
   "icu:stickers--StickerPreview--Error": {
     "messageformat": "Kleebisepaki avamisel tekkis tõrge. Kontrolli internetiühendust ja proovi uuesti."
+  },
+  "icu:stickers--StickerPreview--Install": {
+    "messageformat": "Lisa kleebiseid"
+  },
+  "icu:stickers--StickerPreview--Remove": {
+    "messageformat": "Eemalda"
+  },
+  "icu:stickers--StickerPreview--Link": {
+    "messageformat": "Link"
+  },
+  "icu:stickers--StickerPreview--LinkCopied": {
+    "messageformat": "Link kopeeritud"
+  },
+  "icu:stickers--StickerPreview--StickerCount": {
+    "messageformat": "{count, plural, one {{count,number} kleebis} other {{count,number} kleebist}}"
+  },
+  "icu:stickers--StickerPreview--StickerNoEmojiAriaLabel": {
+    "messageformat": "Kleebis ilma emojita"
+  },
+  "icu:stickers--StickerPackLinkPreviewDescription": {
+    "messageformat": "Kleebiste komplekt kasutajalt {author}"
+  },
+  "icu:stickers--ViewPack": {
+    "messageformat": "Vaata komplekti"
   },
   "icu:FunPicker__Tab--Emojis": {
     "messageformat": "Emoji"
@@ -3028,6 +3079,18 @@
   },
   "icu:FunButton__Label--StickerPicker": {
     "messageformat": "Lisa kleebis"
+  },
+  "icu:FunPicker__Label--StickerReply": {
+    "messageformat": "Reply"
+  },
+  "icu:FunPicker__Label--SendStickerReply": {
+    "messageformat": "Send"
+  },
+  "icu:FunPicker__Label--CancelStickerReply": {
+    "messageformat": "Cancel"
+  },
+  "icu:FunPicker__Label--Sticker": {
+    "messageformat": "Sticker"
   },
   "icu:confirmation-dialog--Cancel": {
     "messageformat": "Loobu"
@@ -4700,9 +4763,6 @@
   "icu:CompositionArea--expand": {
     "messageformat": "Laienda"
   },
-  "icu:CompositionArea--attach-file": {
-    "messageformat": "Lisa fail"
-  },
   "icu:CompositionArea__AttachMenu__PhotosAndVideos": {
     "messageformat": "Fotod ja videod"
   },
@@ -5153,26 +5213,17 @@
   "icu:SelectModeActions--forwardSelectedMessages": {
     "messageformat": "Edasta valitud sõnumid"
   },
-  "icu:DeleteMessagesModal--title": {
-    "messageformat": "{count, plural, one {Kas kustutada sõnum?} other {Kas kustutada {count,number} sõnumit?}}"
-  },
   "icu:DeleteMessagesModal--title-2": {
     "messageformat": "{count, plural, one {Kas kustutada valitud sõnum?} other {Kas kustutada valitud {count,number} sõnumit?}}"
   },
   "icu:DeleteMessagesModal--description": {
     "messageformat": "{count, plural, one {Kelle jaoks soovid seda sõnumit kustutada?} other {Kelle jaoks soovid neid sõnumeid kustutada?}}"
   },
-  "icu:DeleteMessagesModal--description--noteToSelf": {
-    "messageformat": "{count, plural, one {Millistest seadmetest soovid seda sõnumit kustutada?} other {Millistest seadmetest soovid neid sõnumeid kustutada?}}"
-  },
   "icu:DeleteMessagesModal--description--noteToSelf--deleteSync": {
     "messageformat": "{count, plural, one {See sõnum kustutatakse kõigist sinu seadmetest.} other {Need sõnumid kustutatakse kõigist sinu seadmetest.}}"
   },
   "icu:DeleteMessagesModal--deleteForMe": {
     "messageformat": "Kustuta minu jaoks"
-  },
-  "icu:DeleteMessagesModal--deleteFromThisDevice": {
-    "messageformat": "Kustuta sellest seadmest"
   },
   "icu:DeleteMessagesModal--deleteForEveryone": {
     "messageformat": "Kustuta kõigi jaoks"
@@ -5186,9 +5237,6 @@
   },
   "icu:DeleteMessagesModal--adminDeleteConfirmation--description__rollout": {
     "messageformat": "{count, plural, one {Signali uuemates versioonides näevad grupiliikmed, et sa kustutasid selle sõnumi.} other {Signali uuemates versioonides näevad grupiliikmed, et sa kustutasid need sõnumid.}}"
-  },
-  "icu:DeleteMessagesModal--deleteFromAllDevices": {
-    "messageformat": "Kustuta kõigist seadmetest"
   },
   "icu:DeleteMessagesModal--noteToSelf--deleteSync": {
     "messageformat": "Kustuta"
@@ -6397,11 +6445,26 @@
   "icu:Preferences--local-backups-enter-backup-key": {
     "messageformat": "Sisesta võti"
   },
-  "icu:Preferences--local-backups-record-recovery-key": {
-    "messageformat": "Pane oma varukoopia võti kirja"
+  "icu:Preferences--local-backups-recovery-key--title": {
+    "messageformat": "Sinu varukoopia võti"
   },
-  "icu:Preferences--local-backups-record-backup-key-description": {
-    "messageformat": "Seda võtit on vaja sinu andmete ja konto taastamiseks. Hoia seda turvalises kohas. Kui selle kaotad, ei ole sul võimalik oma kontot taastada. <learnMoreLink>Rohkem teavet.</learnMoreLink>"
+  "icu:Preferences--local-backups-recovery-key--description": {
+    "messageformat": "Seda võtit on vaja sinu andmete ja konto taastamiseks. Hoia seda turvalises kohas ning ära jaga seda kunagi teistega. Signal ei palu sinult kunagi sõnumi teel taastevõtit. <learnMoreLink>Rohkem teavet.</learnMoreLink>"
+  },
+  "icu:Preferences__recovery-key__do-not-share-title": {
+    "messageformat": "Ära jaga taastevõtit"
+  },
+  "icu:Preferences__recovery-key__do-not-share-confirm": {
+    "messageformat": "Sain aru"
+  },
+  "icu:CompositionInput__recovery-key-paste__share-key": {
+    "messageformat": "Jaga võtit"
+  },
+  "icu:CompositionInput__recovery-key-paste__do-not-share-key": {
+    "messageformat": "Ära jaga võtit"
+  },
+  "icu:CompositionInput__recovery-key-warning--description": {
+    "messageformat": "Ära jaga oma taastevõtit mitte kellegagi. Selle abil on teistel isikutel võimalik su konto üle võtta. <strong>Signal ei palu sinult kunagi sõnumi teel</strong> taastevõtit. Ära vasta kunagi sõnumitele, milles väidetakse, et need on Signalilt. <learnMoreLink>Rohkem teavet.</learnMoreLink>"
   },
   "icu:Preferences--local-backups-confirm-recovery-key": {
     "messageformat": "Kinnita oma varukoopia võti"
@@ -6465,6 +6528,9 @@
   },
   "icu:Preferences__local-backups-auth-error--unauthorized": {
     "messageformat": "Seda tegevust ei saanud lõpule viia, sest süsteemi autentimine ebaõnnestus. Palun proovi uuesti või ava Signali äpp oma mobiiliseadmes ja mine varukoopia sätete alla, et oma varukoopia võtit vaadata."
+  },
+  "icu:Preferences__local-backups-auth-error--unknown-error": {
+    "messageformat": "Selle tegevuse jaoks süsteemi autentimise taotlemisel tekkis viga."
   },
   "icu:Preferences__view-key": {
     "messageformat": "Vaata võtit"
@@ -6631,6 +6697,12 @@
   "icu:DialogUpdate__downloaded": {
     "messageformat": "Uuendus alla laaditud"
   },
+  "icu:DialogUpdate__upgrade-mas": {
+    "messageformat": "Klõpsa App Store'i sisenemiseks"
+  },
+  "icu:DialogExpiredBuild__upgrade-mas": {
+    "messageformat": "Klõpsa App Store'i sisenemiseks"
+  },
   "icu:CriticalIdlePrimaryDevice__title": {
     "messageformat": "Ava Signal enda telefonis"
   },
@@ -6669,6 +6741,405 @@
   },
   "icu:InstallScreenUpdateDialog--cannot-update__body": {
     "messageformat": "Signal Desktopi uuendamine nurjus, kuid uus versioon on saadaval. Ava {downloadUrl} ja paigalda uus versioon käsitsi ning teavita probleemist kasutajatuge või saada veateade."
+  },
+  "icu:StandaloneRegistration--signal-logo": {
+    "messageformat": "Signali logo"
+  },
+  "icu:StandaloneRegistration--back": {
+    "messageformat": "Tagasi"
+  },
+  "icu:StandaloneRegistration--PhoneNumber--header": {
+    "messageformat": "Telefoninumber"
+  },
+  "icu:StandaloneRegistration--PhoneNumber--description--line-1": {
+    "messageformat": "Konto kinnitamiseks sisesta oma telefoninumber."
+  },
+  "icu:StandaloneRegistration--PhoneNumber--description--line-2": {
+    "messageformat": "Rakenduda võib teenusepakkuja tasu."
+  },
+  "icu:StandaloneRegistration--PhoneNumber--waiting": {
+    "messageformat": "Palun proovi uuesti {duration} pärast"
+  },
+  "icu:StandaloneRegistration--PhoneNumber--placeholder": {
+    "messageformat": "Telefoninumber"
+  },
+  "icu:StandaloneRegistration--PhoneNumber--button": {
+    "messageformat": "Jätka"
+  },
+  "icu:StandaloneRegistration--PhoneNumber--Confirmation--description": {
+    "messageformat": "Kas sinu telefoninumber ülevalpool on korrektne?"
+  },
+  "icu:StandaloneRegistration--PhoneNumber--Confirmation--cancel": {
+    "messageformat": "Muuda numbrit"
+  },
+  "icu:StandaloneRegistration--PhoneNumber--Confirmation--confirm": {
+    "messageformat": "Jah"
+  },
+  "icu:StandaloneRegistration--Captcha--header": {
+    "messageformat": "Jätkamiseks kinnita, et oled inimene"
+  },
+  "icu:StandaloneRegistration--Captcha--description": {
+    "messageformat": "Rämpspostituste vältimiseks Signalis kinnita oma konto. Pärast kinnitamist saad registreerimisega jätkata."
+  },
+  "icu:StandaloneRegistration--Captcha--retry-button": {
+    "messageformat": "Proovi uuesti kinnitada"
+  },
+  "icu:StandaloneRegistration--Captcha--button": {
+    "messageformat": "Kinnita brauseris"
+  },
+  "icu:StandaloneRegistration--Captcha--button--wait": {
+    "messageformat": "Kinnita {duration} pärat"
+  },
+  "icu:StandaloneRegistration--Captcha--NeedAnother--header": {
+    "messageformat": "Vajalik on täiendav kinnitus"
+  },
+  "icu:StandaloneRegistration--Captcha--NeedAnother--description": {
+    "messageformat": "Registreerimise jätkamiseks tuleb läbida veel üks captcha."
+  },
+  "icu:StandaloneRegistration--Captcha--NeedAnother--cancel": {
+    "messageformat": "Loobu"
+  },
+  "icu:StandaloneRegistration--Captcha--NeedAnother--retry": {
+    "messageformat": "Proovi uuesti kinnitada"
+  },
+  "icu:StandaloneRegistration--Captcha--MustWait--aria-title": {
+    "messageformat": "Proovi hiljem uuesti"
+  },
+  "icu:StandaloneRegistration--Captcha--MustWait--line-1": {
+    "messageformat": "Kontrolli ei saa praegu lõpule viia."
+  },
+  "icu:StandaloneRegistration--Captcha--MustWait--line-2": {
+    "messageformat": "Proovi uuesti {duration} pärast"
+  },
+  "icu:StandaloneRegistration--Captcha--MustWait--button": {
+    "messageformat": "Sobib"
+  },
+  "icu:StandaloneRegistration--Captcha--Error--header": {
+    "messageformat": "Kinnitusviga"
+  },
+  "icu:StandaloneRegistration--Captcha--Error--description": {
+    "messageformat": "Registreerimise jätkamiseks proovi uuesti kinnitada."
+  },
+  "icu:StandaloneRegistration--Captcha--Error--try-again": {
+    "messageformat": "Proovi uuesti"
+  },
+  "icu:StandaloneRegistration--Captcha--Error--cancel": {
+    "messageformat": "Loobu"
+  },
+  "icu:StandaloneRegistration--VerificationCode--header": {
+    "messageformat": "Kinnituskood"
+  },
+  "icu:StandaloneRegistration--VerificationCode--description": {
+    "messageformat": "Sisesta kood, mille saatsime numbrile {phoneNumber}"
+  },
+  "icu:StandaloneRegistration--VerificationCode--button": {
+    "messageformat": "Jätka"
+  },
+  "icu:StandaloneRegistration--VerificationCode--send-sms": {
+    "messageformat": "Saada kood uuesti"
+  },
+  "icu:StandaloneRegistration--VerificationCode--send-sms--duration": {
+    "messageformat": "Saada kood uuesti {duration} pärast"
+  },
+  "icu:StandaloneRegistration--VerificationCode--call-me": {
+    "messageformat": "Helista mulle"
+  },
+  "icu:StandaloneRegistration--VerificationCode--call-me--duration": {
+    "messageformat": "Helista mulle {duration} pärast"
+  },
+  "icu:StandaloneRegistration--VerificationCode--wrong-number": {
+    "messageformat": "Vale number?"
+  },
+  "icu:StandaloneRegistration--VerificationCode--having-trouble": {
+    "messageformat": "Probleemid registreerimisega?"
+  },
+  "icu:StandaloneRegistration--VerificationCode--IncorrectCode--aria-title": {
+    "messageformat": "Sobimatu kood"
+  },
+  "icu:StandaloneRegistration--VerificationCode--IncorrectCode--description": {
+    "messageformat": "Sinu sisestatud kood on vale. Palun kontrolli kuuekohalist koodi ja proovi uuesti."
+  },
+  "icu:StandaloneRegistration--VerificationCode--IncorrectCode--button": {
+    "messageformat": "Sobib"
+  },
+  "icu:StandaloneRegistration--VerificationCode--CodeInvalid--aria-title": {
+    "messageformat": "Kehtetu kood"
+  },
+  "icu:StandaloneRegistration--VerificationCode--CodeInvalid--description": {
+    "messageformat": "Sinu sisestatud kood on kehtetu. Palun saada kood uuesti ja proovi uuesti."
+  },
+  "icu:StandaloneRegistration--VerificationCode--CodeInvalid--resend-button": {
+    "messageformat": "Saada kood uuesti"
+  },
+  "icu:StandaloneRegistration--VerificationCode--CodeInvalid--edit-number-button": {
+    "messageformat": "Muuda numbrit"
+  },
+  "icu:StandaloneRegistration--VerificationCode--SMSFailed--aria-title": {
+    "messageformat": "SMS-i ei saa saata"
+  },
+  "icu:StandaloneRegistration--VerificationCode--SMSFailed--description": {
+    "messageformat": "Me ei saanud sulle SMS-i kaudu kinnituskoodi saata. Proovi koodi saamiseks parem häälkõnet kasutada."
+  },
+  "icu:StandaloneRegistration--VerificationCode--SMSFailed--confirm": {
+    "messageformat": "Häälkõne"
+  },
+  "icu:StandaloneRegistration--VerificationCode--SMSFailed--cancel": {
+    "messageformat": "Loobu"
+  },
+  "icu:StandaloneRegistration--VerificationCode--MustWait--aria-title": {
+    "messageformat": "Proovi hiljem uuesti"
+  },
+  "icu:StandaloneRegistration--VerificationCode--MustWait--description": {
+    "messageformat": "Oled proovinud seda koodi liiga mitu korda sisestada. Proovi uuesti {duration} pärast."
+  },
+  "icu:StandaloneRegistration--VerificationCode--MustWait--button": {
+    "messageformat": "Sobib"
+  },
+  "icu:StandaloneRegistration--VerificationCode--MaximumAttempts--aria-title": {
+    "messageformat": "Liiga palju katseid"
+  },
+  "icu:StandaloneRegistration--VerificationCode--MaximumAttempts--description": {
+    "messageformat": "Oled proovinud seda koodi liiga mitu korda sisestada. Palun saada kood uuesti ja proovi uuesti."
+  },
+  "icu:StandaloneRegistration--VerificationCode--MaximumAttempts--resend-button": {
+    "messageformat": "Saada kood uuesti"
+  },
+  "icu:StandaloneRegistration--VerificationCode--MaximumAttempts--edit-number-button": {
+    "messageformat": "Muuda numbrit"
+  },
+  "icu:StandaloneRegistration--VerificationCode--FailedToCall--aria-title": {
+    "messageformat": "Kõne ebaõnnestus"
+  },
+  "icu:StandaloneRegistration--VerificationCode--FailedToCall--description": {
+    "messageformat": "Me ei saanud sinu sisestatud telefoninumbrile helistada. Veendu, et telefonumber oleks õige ning proovi uuesti."
+  },
+  "icu:StandaloneRegistration--VerificationCode--FailedToCall--ok-button": {
+    "messageformat": "Sobib"
+  },
+  "icu:StandaloneRegistration--VerificationCode--CannotSendCodePermanent--aria-title": {
+    "messageformat": "Koodi ei saa saata"
+  },
+  "icu:StandaloneRegistration--VerificationCode--CannotSendCodePermanent--description": {
+    "messageformat": "Kinnituskoodi ei saa sinu sisestatud telefoninumbrile saata. Veendu, et sisestatud number on õige või proovi teist numbrit."
+  },
+  "icu:StandaloneRegistration--VerificationCode--CannotSendCodePermanent--ok-button": {
+    "messageformat": "Sobib"
+  },
+  "icu:StandaloneRegistration--VerificationCode--CannotSendCodeTemporary--aria-title": {
+    "messageformat": "Proovi hiljem uuesti"
+  },
+  "icu:StandaloneRegistration--VerificationCode--CannotSendCodeTemporary--description": {
+    "messageformat": "Tekkis tõrge ning kinnituskoodi ei saanud saata. Proovi uuesti {duration} pärast."
+  },
+  "icu:StandaloneRegistration--VerificationCode--CannotSendCodeTemporary--ok-button": {
+    "messageformat": "Sobib"
+  },
+  "icu:StandaloneRegistration--ProfileEntry--header": {
+    "messageformat": "Seadista oma profiil"
+  },
+  "icu:StandaloneRegistration--ProfileEntry--description": {
+    "messageformat": "Profiil on nähtav inimestele, kellega sõnumeid oled vahetanud, kontaktidele ja gruppidele."
+  },
+  "icu:StandaloneRegistration--ProfileEntry--learn-more": {
+    "messageformat": "Rohkem infot"
+  },
+  "icu:StandaloneRegistration--ProfileEntry--add-photo": {
+    "messageformat": "Lisa foto"
+  },
+  "icu:StandaloneRegistration--ProfileEntry--first-name": {
+    "messageformat": "Eesnimi (kohustuslik)"
+  },
+  "icu:StandaloneRegistration--ProfileEntry--last-name": {
+    "messageformat": "Perekonnanimi (valikuline)"
+  },
+  "icu:StandaloneRegistration--ProfileEntry--discoverability": {
+    "messageformat": "Kes mind telefoninumbri alusel leida võivad"
+  },
+  "icu:StandaloneRegistration--ProfileEntry--discoverability--change-button": {
+    "messageformat": "Muuda"
+  },
+  "icu:StandaloneRegistration--ProfileEntry--discoverability--done-button": {
+    "messageformat": "Valmis"
+  },
+  "icu:StandaloneRegistration--ProfileEntry--continue": {
+    "messageformat": "Jätka"
+  },
+  "icu:StandaloneRegistration--ProfileEntry--AvatarModal--header": {
+    "messageformat": "Sinu pilt"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--header": {
+    "messageformat": "Sisesta enda PIN-kood"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--description": {
+    "messageformat": "Sisesta PIN-kood, mille oled oma konto jaoks loonud. See on erinev sinu SMS-kinnituskoodist. <needHelp>Kas vajad abi?</needHelp>"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--placeholder": {
+    "messageformat": "Sisesta enda PIN-kood"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--incorrect-pin": {
+    "messageformat": "Sobimatu PIN-kood"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--incorrect-pin--with-count": {
+    "messageformat": "{triesRemaining, plural, one {Vale PIN-kood. {triesRemaining,number} katse jäänud.} other {Vale PIN-kood. {triesRemaining,number} katset jäänud.}}"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--NeedHelp--header": {
+    "messageformat": "Kas vajad abi?"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--NeedHelp--description--no-reglock": {
+    "messageformat": "Sinu PIN-kood on sinu loodud 4+ märgist koosnev kood, mis võib sisaldada ainult numbreid või tähti ja numbreid. Kui sa ei mäleta oma PIN-koodi, saad luua uue. Saad oma kontot registreerida ja kasutada, kuid kaotad mõned salvestatud sätted, näiteks oma profiiliteabe. <learnMore>Rohkem teavet</learnMore>."
+  },
+  "icu:StandaloneRegistration--VerifyPIN--NeedHelp--description--reglock": {
+    "messageformat": "Sinu PIN-kood on sinu loodud 4+ märgist koosnev kood, mis võib sisaldada ainult numbreid või tähti ja numbreid. Kui sa ei mäleta oma PIN-koodi, pead ootama 7 päeva, et oma konto uuesti registreerida. <learnMore>Rohkem teavet</learnMore>."
+  },
+  "icu:StandaloneRegistration--VerifyPIN--NeedHelp--skip-button--no-reglock": {
+    "messageformat": "Jäta vahele ja loo uus PIN-kood"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--NeedHelp--contact-support-button": {
+    "messageformat": "Võta ühendust kasutajatoega"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--NeedHelp--cancel": {
+    "messageformat": "Loobu"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--FewRemainingTries--header": {
+    "messageformat": "Sobimatu PIN-kood"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--FewRemainingTries--description--no-reglock": {
+    "messageformat": "{triesRemaining, plural, one {Sul on jäänud veel {triesRemaining,number} katse. Kui sul saavad katsed otsa, saad luua uue PIN-koodi. Saad oma kontot registreerida ja kasutada, kuid kaotad mõned salvestatud sätted, näiteks oma profiiliteabe. <learnMore>Loe lähemalt</learnMore>.} other {Sul on jäänud veel {triesRemaining,number} katset. Kui sul saavad katsed otsa, saad luua uue PIN-koodi. Saad oma kontot registreerida ja kasutada, kuid kaotad mõned salvestatud sätted, näiteks oma profiiliteabe. <learnMore>Loe lähemalt</learnMore>.}}"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--FewRemainingTries--description--reglock": {
+    "messageformat": "{triesRemaining, plural, one {Sul on jäänud veel {triesRemaining,number} katse. Kui sul saavad katsed otsa, siis lukustatakse su konto 7 päevaks. Pärast 7 päeva konto mitteaktiivsust on sul võimalik konto uuesti registreerida ilma PIN-koodita. Kogu sisu kustutatakse. <learnMore>Loe lähemalt</learnMore>.} other {Sul on jäänud veel {triesRemaining,number} katset. Kui sul saavad katsed otsa, siis lukustatakse su konto 7 päevaks. Pärast 7 päeva konto mitteaktiivsust on sul võimalik konto uuesti registreerida ilma PIN-koodita. Kogu sisu kustutatakse. <learnMore>Loe lähemalt</learnMore>.}}"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--FewRemainingTries--button": {
+    "messageformat": "Sobib"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--NoRemainingTries--header": {
+    "messageformat": "Sobimatu PIN-kood"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--NoRemainingTries--description": {
+    "messageformat": "Sinu PIN-koodi sisestamiste arv on täis, kuid kui uue PIN-koodi lood, pääsed endiselt oma Signali kontole ligi. Privaatsuse ja turvalisuse huvides taastatakse sinu konto ilma salvestatud profiiliteabe või säteteta."
+  },
+  "icu:StandaloneRegistration--VerifyPIN--NoRemainingTries--create-new-pin": {
+    "messageformat": "Loo uus PIN-kood"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--NoRemainingTries--learn-more": {
+    "messageformat": "Uuri lähemalt PIN-koodide kohta"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--menu--skip-pin": {
+    "messageformat": "Jäta PIN-kood vahele"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--SkipPIN--header": {
+    "messageformat": "Kas jätta PIN-koodi sisestamine vahele?"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--SkipPIN--description": {
+    "messageformat": "Kui sa ei mäleta oma PIN-koodi, saad luua uue. Saad oma kontot registreerida ja kasutada, kuid kaotad mõned salvestatud sätted, näiteks oma profiiliteabe. Rohkem infot."
+  },
+  "icu:StandaloneRegistration--VerifyPIN--SkipPIN--skip-button": {
+    "messageformat": "Jäta vahele ja loo uus PIN-kood"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--SkipPIN--cancel-button": {
+    "messageformat": "Loobu"
+  },
+  "icu:StandaloneRegistration--CreatePIN--header": {
+    "messageformat": "Loo enda PIN-kood"
+  },
+  "icu:StandaloneRegistration--CreatePIN--description": {
+    "messageformat": "PIN-kood võimaldab sul vajadusel konto taastada ja hoiab sinu andmeid Signalis krüptituna. <learnMore>Uuri lähemalt</learnMore>"
+  },
+  "icu:StandaloneRegistration--CreatePIN--placeholder": {
+    "messageformat": "Loo enda PIN-kood"
+  },
+  "icu:StandaloneRegistration--CreatePIN--helper-text": {
+    "messageformat": "PIN-kood peab olema vähemalt 4 tähemärki pikk"
+  },
+  "icu:StandaloneRegistration--CreatePIN--continue": {
+    "messageformat": "Jätka"
+  },
+  "icu:StandaloneRegistration--CreatePIN--open-menu": {
+    "messageformat": "Ava menüü"
+  },
+  "icu:StandaloneRegistration--CreatePIN--menu--more-about": {
+    "messageformat": "Rohkem teavet PIN-koodide kohta"
+  },
+  "icu:StandaloneRegistration--CreatePIN--menu--disable": {
+    "messageformat": "Keela PIN"
+  },
+  "icu:StandaloneRegistration--CreatePIN--DisableWarning--header": {
+    "messageformat": "Hoiatus"
+  },
+  "icu:StandaloneRegistration--CreatePIN--DisableWarning--description": {
+    "messageformat": "Kui keelad PIN-koodi, siis kaotad kõik andmed, kui Signali uuesti registreerid, välja arvatud juhul kui oled selle teisest iOS-seadmest üle kandnud. Registreerimislukku pole võimalik sisse lülitada, kui PIN-kood on keelatud."
+  },
+  "icu:StandaloneRegistration--CreatePIN--DisableWarning--disable-button": {
+    "messageformat": "Keela PIN"
+  },
+  "icu:StandaloneRegistration--CreatePIN--DisableWarning--cancel": {
+    "messageformat": "Loobu"
+  },
+  "icu:StandaloneRegistration--CreatePIN--AboutPINs--header": {
+    "messageformat": "Signali PIN-koodidest"
+  },
+  "icu:StandaloneRegistration--CreatePIN--AboutPINs--description": {
+    "messageformat": "PIN-koodid hoiavad Signalis salvestatud teabe krüptituna ning ainult sinul on sellele juurdepääs. Kui paigaldad Signali uuesti, siis sinu profiil, sätted ja kontaktid taastatakse."
+  },
+  "icu:StandaloneRegistration--CreatePIN--AboutPINs--learn-more-button": {
+    "messageformat": "Rohkem infot"
+  },
+  "icu:StandaloneRegistration--CreatePIN--AboutPINs--ok-button": {
+    "messageformat": "Sobib"
+  },
+  "icu:StandaloneRegistration--CreatePIN--confirming--header": {
+    "messageformat": "Kinnita enda PIN-kood"
+  },
+  "icu:StandaloneRegistration--CreatePIN--confirming--description": {
+    "messageformat": "Sisesta just loodud PIN-kood uuesti."
+  },
+  "icu:StandaloneRegistration--CreatePIN--confirming--placeholder": {
+    "messageformat": "Sisesta enda PIN-kood"
+  },
+  "icu:StandaloneRegistration--AccountLocked--header": {
+    "messageformat": "Konto lukustatud"
+  },
+  "icu:StandaloneRegistration--AccountLocked--description": {
+    "messageformat": "Sinu konto on sinu privaatsuse ja turvalisuse kaitsmiseks lukustatud. Pärast 7 päeva mitteaktiivsust sinu kontol on sul võimalik see telefoninumber ilma PIN-koodi vajamata uuesti registreerida. Kogu sisu kustutatakse."
+  },
+  "icu:StandaloneRegistration--AccountLocked--start-over-button": {
+    "messageformat": "Kasuta teist numbrit"
+  },
+  "icu:StandaloneRegistration--AccountLocked--help-button": {
+    "messageformat": "Loe lukustatud kontode kohta lähemalt"
+  },
+  "icu:StandaloneRegistration--UpdateRequired--header": {
+    "messageformat": "Vajalik uuendus"
+  },
+  "icu:StandaloneRegistration--UpdateRequired--description": {
+    "messageformat": "Registreerimisega jätkamiseks uuenda Signali uusimale versioonile."
+  },
+  "icu:StandaloneRegistration--UpdateRequired--update": {
+    "messageformat": "Uuenda"
+  },
+  "icu:StandaloneRegistration--UpdateRequired--cancel": {
+    "messageformat": "Loobu"
+  },
+  "icu:StandaloneRegistration--ConnectionProblem--header": {
+    "messageformat": "Kontrolli oma ühendust"
+  },
+  "icu:StandaloneRegistration--ConnectionProblem--description": {
+    "messageformat": "Jätkamiseks kontrolli oma arvuti võrguühendust ja proovi uuesti."
+  },
+  "icu:StandaloneRegistration--ConnectionProblem--button": {
+    "messageformat": "Sobib"
+  },
+  "icu:StandaloneRegistration--UnexpectedError--header": {
+    "messageformat": "Registreerimist ei saa lõpule viia"
+  },
+  "icu:StandaloneRegistration--UnexpectedError--description": {
+    "messageformat": "Ilmnes viga ja registreerimist ei saanud lõpule viia. Kui probleem püsib, võta ühendust kasutajatoega."
+  },
+  "icu:StandaloneRegistration--UnexpectedError--try-again-button": {
+    "messageformat": "Proovi uuesti"
+  },
+  "icu:StandaloneRegistration--UnexpectedError--contact-support-button": {
+    "messageformat": "Võta ühendust kasutajatoega"
   },
   "icu:NSIS__retry-dialog--first-line": {
     "messageformat": "Signalit ei saa sulgeda.",
@@ -6915,15 +7386,6 @@
   },
   "icu:SignalConnectionsModal__footer": {
     "messageformat": "Sinu kontaktid näevad sinu nime ja fotot ning postitusi „Minu loosse“, kui sa seda infot nende eest ei peida"
-  },
-  "icu:LocalDeleteWarningModal__header": {
-    "messageformat": "Kustutamine on su seadmete üleselt sünkroniseeritud"
-  },
-  "icu:LocalDeleteWarningModal__description": {
-    "messageformat": "Kui kustutad sõnumid või vestlused, kustutatakse need kõigist sinu seadmetest."
-  },
-  "icu:LocalDeleteWarningModal__confirm": {
-    "messageformat": "Sain aru"
   },
   "icu:Stories__title": {
     "messageformat": "Lood"
@@ -7478,9 +7940,6 @@
   "icu:DraftGifMessageSendModal__SendButtonLabel": {
     "messageformat": "Saada"
   },
-  "icu:DraftGifMessageSendModal__CancelButtonLabel": {
-    "messageformat": "Loobu"
-  },
   "icu:EditHistoryMessagesModal__title": {
     "messageformat": "Muutmiste ajalugu"
   },
@@ -7759,9 +8218,6 @@
   },
   "icu:PreferencesDonations__privacy-modal-title": {
     "messageformat": "Sinu andmed on privaatsed"
-  },
-  "icu:PreferencesDonations__privacy-modal-content": {
-    "messageformat": "<paragraph>Signal ei kogu ega salvesta annetuse tegemisel sinu isikuandmeid.</paragraph><paragraph>Kasutame sinu annetuse vastuvõtmisel makse töötlemiseks Stripe'i. Meil ei ole ligipääsu andmetele, mida sa nendega jagad; me ei kogu ega salvesta neid andmeid.</paragraph><paragraph>Signal ei saa ega soovi seostada sinu annetust sinu Signali kontoga.</paragraph><paragraph>Täname sind toetuse eest!</paragraph>"
   },
   "icu:PreferencesDonations__privacy-modal-intro": {
     "messageformat": "Sõltumatu mittetulundusühinguna  on Signal pühendunud privaatsõnumitele ja kõnedele. Ei mingeid reklaame, jälgijaid ega järelevalvet. Anneta nüüd, et Signalit toetada."
@@ -8205,10 +8661,16 @@
     "messageformat": "Väikesed muudatused, vigade parandused ja jõudluse täiustused. Aitäh, et kasutad Signalit!",
     "ignoreUnused": true
   },
-  "icu:WhatsNew__8.12--0": {
-    "messageformat": "Lisasime uue klaviatuuri otsetee käe tõstmiseks grupikõne ajal (Shift-H)."
+  "icu:WhatsNew__8.18--0": {
+    "messageformat": "Nüüd saab ka üks-ühele vestlustes küsitlusi luua."
   },
-  "icu:WhatsNew__8.13--0": {
-    "messageformat": "The new raised-hand indicators are now also displayed in the list of raised hands during group calls. It's a second-hand place to figure out who you should hand it over to when you're done speaking."
+  "icu:WhatsNew__8.19--0": {
+    "messageformat": "Grupi administraatorid saavad nüüd vestlusi lõpetada, valides grupi sätete alt „Lõpeta grupp“. Grupi lõpetamisel ei saa grupiliikmed enam sõnumeid saata, kõnesid alustada ega kutseid saata."
+  },
+  "icu:WhatsNew__8.20--0": {
+    "messageformat": "Introducing disappearing call events: Missed, outgoing, and received calls that occur after you install this update will now automatically disappear in any chat where disappearing messages are enabled."
+  },
+  "icu:WhatsNew__8.20--1": {
+    "messageformat": "Now you can reorder installed sticker packs so your new favorites don’t get stuck in the back of the line."
   }
 }

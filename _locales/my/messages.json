@@ -14,6 +14,9 @@
   "icu:AxoTextField.Clear": {
     "messageformat": "ဖယ်ရှားမည်"
   },
+  "icu:AxoBadge.MaxOverflow": {
+    "messageformat": "{max,number}+"
+  },
   "icu:AddUserToAnotherGroupModal__title": {
     "messageformat": "အဖွဲ့တစ်ဖွဲ့ထဲသို့ ထည့်သွင်းရန်"
   },
@@ -85,6 +88,9 @@
   },
   "icu:unknownContact": {
     "messageformat": "မသိသော အဆက်အသွယ်"
+  },
+  "icu:deletedAccount": {
+    "messageformat": "ဖျက်ထားသော အကောင့်"
   },
   "icu:unknownContactShort": {
     "messageformat": "မသိရှိ"
@@ -314,6 +320,9 @@
   "icu:LeftPaneChatFolders__ItemUnreadBadge__MaxCount": {
     "messageformat": "{maxCount,number}+"
   },
+  "icu:LeftPaneChatFolders__ItemUnreadBadge__AccessibleLabel": {
+    "messageformat": "{count, plural, one {{count,number} Unread Message} other {{count,number} Unread Messages}}"
+  },
   "icu:LeftPaneChatFolders__Item__ContextMenu__MarkAllRead": {
     "messageformat": "အားလုံးကို ဖတ်ပြီးသားအဖြစ် မှတ်ပါ"
   },
@@ -449,8 +458,8 @@
   "icu:unpinConversation": {
     "messageformat": "ချက်(တ်)ကို ပင်ဖြုတ်ရန်"
   },
-  "icu:pinnedConversationsFull": {
-    "messageformat": "ချက်(တ်) 4 ခုအထိသာ ပင်တွဲနိုင်ပါသည်"
+  "icu:pinnedConversations--max": {
+    "messageformat": "{maxPinnedConversations, plural, other {အများဆုံး ချက်(တ်) {maxPinnedConversations,number} ခုကို ပင်တွဲနိုင်သည်}}"
   },
   "icu:view": {
     "messageformat": "ကြည့်ရန်"
@@ -2261,9 +2270,6 @@
   "icu:partiallySent": {
     "messageformat": "တစ်စိတ်တစ်ပိုင်း ပို့ပြီး၊ အသေးစိတ်အတွက် နှိပ်ပါ"
   },
-  "icu:partiallyDeleted": {
-    "messageformat": "တစ်စိတ်တစ်ပိုင်း ဖျက်ပြီး၊ ပြန်ကြိုးစားရန် နှိပ်ပါ"
-  },
   "icu:partiallyDeleted--clickForDetails": {
     "messageformat": "တစ်စိတ်တစ်ပိုင်း ဖျက်ထားသည်၊ အသေးစိတ်သိရှိရန် နှိပ်ပါ"
   },
@@ -2466,7 +2472,7 @@
     "messageformat": "ဒေါင်းလုဒ် မအောင်မြင်ပါ"
   },
   "icu:Toast--unable-download-from-backup-tier": {
-    "messageformat": "Attachment missing from backup CDN"
+    "messageformat": "Attachment missing from backup CDN, please share desktop & primary logs"
   },
   "icu:ToastManager__CannotAddMemberLabel": {
     "messageformat": "ဤအဖွဲ့တွင် အက်ဒ်မင်များသာ အဖွဲ့ဝင်အမှတ်တံဆိပ် သတ်မှတ်နိုင်သည်။"
@@ -2687,9 +2693,6 @@
   "icu:message--getDescription--gif": {
     "messageformat": "GIF"
   },
-  "icu:message--deletedForEveryone": {
-    "messageformat": "ဤမက်ဆေ့အား ဖျက်ပြီးပါပြီ။"
-  },
   "icu:message--deletedByAdmin": {
     "messageformat": "အက်ဒ်မင် {admin} မှ ဤမက်ဆေ့ချ်ကို ဖျက်လိုက်ပါသည်"
   },
@@ -2780,14 +2783,11 @@
   "icu:stickers--toast--InstallFailed": {
     "messageformat": "စတစ်ကာတွဲကို ထည့်သွင်းမရပါ"
   },
-  "icu:stickers--StickerManager--Available": {
-    "messageformat": "ရရှိနိုင်ပါပြီ"
+  "icu:stickers--StickerManager--MyStickers--None": {
+    "messageformat": "စတစ်ကာတွဲများ မရှိပါ၊ သင့်သူငယ်ချင်းများထံ ပို့ရန် စတစ်ကာများ ထည့်သွင်းပါ။"
   },
-  "icu:stickers--StickerManager--InstalledPacks": {
-    "messageformat": "ထည့်သွင်းပြီး"
-  },
-  "icu:stickers--StickerManager--InstalledPacks--Empty": {
-    "messageformat": "မည်သည့် စတစ်ကာများကို ထည့်သွင်းခြင်းမရှိပါ"
+  "icu:stickers--StickerManager--AddStickers": {
+    "messageformat": "စတစ်ကာ ထည့်သွင်းရန်"
   },
   "icu:stickers--StickerManager--BlessedPacks": {
     "messageformat": "Signal အနုပညာရှင် စီးရီး"
@@ -2795,14 +2795,17 @@
   "icu:stickers--StickerManager--BlessedPacks--Empty": {
     "messageformat": "Signal Artist စတစ်ကာများ မရရှိနိုင်ပါ"
   },
-  "icu:stickers--StickerManager--ReceivedPacks": {
-    "messageformat": "သင် လက်ခံရရှိထားသော စတစ်ကာများ"
+  "icu:stickers--StickerManager--ReceivedPacks2": {
+    "messageformat": "သင်နှင့် မျှဝေထားသောအရာများ"
   },
-  "icu:stickers--StickerManager--ReceivedPacks--Empty": {
-    "messageformat": "အဝင်မက်ဆေ့ချ်များမှ စတစ်ကာများသည် ၎င်းနေရာတွင် ပေါ်ပါမည်"
+  "icu:stickers--StickerManager--ReceivedPacksDescription": {
+    "messageformat": "တစ်စုံတစ်ယောက်ထံမှ စတစ်ကာတစ်ခုကို လက်ခံရရှိသောအခါ ထိုစတစ်ကာတွဲသည် ဤနေရာတွင် ပေါ်လာပါမည်။"
   },
   "icu:stickers--StickerManager--Install": {
     "messageformat": "ထည့်သွင်းပါ"
+  },
+  "icu:stickers--StickerManager--Installed": {
+    "messageformat": "ထည့်သွင်းပြီး"
   },
   "icu:stickers--StickerManager--Uninstall": {
     "messageformat": "တပ်ဆင်ခြင်းမှ ဖယ်ရှားမယ်"
@@ -2810,11 +2813,59 @@
   "icu:stickers--StickerManager--UninstallWarning": {
     "messageformat": "သင့်တွင် မူရင်းမက်ဆေ့ချ် မရှိတော့ပါက ဤစတစ်ကာတွဲကို ပြန်ထည့်သွင်းနိုင်မည် မဟုတ်ပါ။"
   },
+  "icu:stickers--StickerManagerHeader--All": {
+    "messageformat": "အားလုံး"
+  },
+  "icu:stickers--StickerManagerHeader--MyStickers": {
+    "messageformat": "ကျွန်ုပ်၏ စတစ်ကာ"
+  },
+  "icu:stickers--StickerManagerPackContextMenu--Add": {
+    "messageformat": "ထည့်သွင်းမည်"
+  },
+  "icu:stickers--StickerManagerPackContextMenu--Remove": {
+    "messageformat": "ဖယ်ရှားရန်"
+  },
+  "icu:stickers--StickerManagerPackDragHandle--Label": {
+    "messageformat": "Drag to reorder sticker pack"
+  },
+  "icu:stickers--StickerManagerBlessedPacksList--Label": {
+    "messageformat": "Signal Artist Series sticker packs"
+  },
+  "icu:stickers--StickerManagerReceivedPacksList--Label": {
+    "messageformat": "Received sticker packs"
+  },
+  "icu:stickers--StickerManagerInstalledPacksList--Label": {
+    "messageformat": "Installed sticker packs"
+  },
   "icu:stickers--StickerPreview--Title": {
     "messageformat": "စတစ်ကာတွဲ"
   },
   "icu:stickers--StickerPreview--Error": {
     "messageformat": "စတစ်ကာတွဲ ဖွင့်ရာတွင် ချို့ယွင်းချက်။ သင့်အင်တာနက် ချိတ်ဆက်မှုကို စစ်ဆေးပြီး ထပ်ကြိုးစားပါ။"
+  },
+  "icu:stickers--StickerPreview--Install": {
+    "messageformat": "စတစ်ကာ ထည့်သွင်းရန်"
+  },
+  "icu:stickers--StickerPreview--Remove": {
+    "messageformat": "ဖယ်ရှားရန်"
+  },
+  "icu:stickers--StickerPreview--Link": {
+    "messageformat": "လင့်ခ်"
+  },
+  "icu:stickers--StickerPreview--LinkCopied": {
+    "messageformat": "လင့်ခ် ကူးပြီး"
+  },
+  "icu:stickers--StickerPreview--StickerCount": {
+    "messageformat": "{count, plural, other {စတစ်ကာ {count,number} ခု}}"
+  },
+  "icu:stickers--StickerPreview--StickerNoEmojiAriaLabel": {
+    "messageformat": "အီမိုဂျီမပါသော စတစ်ကာ"
+  },
+  "icu:stickers--StickerPackLinkPreviewDescription": {
+    "messageformat": "{author} ၏ စတစ်ကာတွဲ"
+  },
+  "icu:stickers--ViewPack": {
+    "messageformat": "စတစ်ကာတွဲကို ကြည့်ရှုရန်"
   },
   "icu:FunPicker__Tab--Emojis": {
     "messageformat": "အီမိုဂျီ"
@@ -3028,6 +3079,18 @@
   },
   "icu:FunButton__Label--StickerPicker": {
     "messageformat": "စတစ်ကာ ပေါင်းထည့်ရန်"
+  },
+  "icu:FunPicker__Label--StickerReply": {
+    "messageformat": "Reply"
+  },
+  "icu:FunPicker__Label--SendStickerReply": {
+    "messageformat": "Send"
+  },
+  "icu:FunPicker__Label--CancelStickerReply": {
+    "messageformat": "Cancel"
+  },
+  "icu:FunPicker__Label--Sticker": {
+    "messageformat": "Sticker"
   },
   "icu:confirmation-dialog--Cancel": {
     "messageformat": "မလုပ်တော့ပါ"
@@ -4700,9 +4763,6 @@
   "icu:CompositionArea--expand": {
     "messageformat": "ဖြန့်ရန်"
   },
-  "icu:CompositionArea--attach-file": {
-    "messageformat": "ဖိုင် တွဲရန်"
-  },
   "icu:CompositionArea__AttachMenu__PhotosAndVideos": {
     "messageformat": "ဓာတ်ပုံနှင့် ဗီဒီယိုများ"
   },
@@ -5153,26 +5213,17 @@
   "icu:SelectModeActions--forwardSelectedMessages": {
     "messageformat": "ရွေးထားသော မက်ဆေ့ချ်များကို ထပ်ဆင့်ပို့ရန်"
   },
-  "icu:DeleteMessagesModal--title": {
-    "messageformat": "{count, plural, other {မက်ဆေ့ချ် {count,number} စောင်ကို ဖျက်မည်လား။}}"
-  },
   "icu:DeleteMessagesModal--title-2": {
     "messageformat": "{count, plural, other {ရွေးချယ်ထားသော မက်ဆေ့ချ် {count,number} ကိုဖျက်မည်လား။}}"
   },
   "icu:DeleteMessagesModal--description": {
     "messageformat": "{count, plural, other {ထိုမက်ဆေ့ချ်များကို မည်သူ့အတွက် ဖျက်ချင်သနည်း။}}"
   },
-  "icu:DeleteMessagesModal--description--noteToSelf": {
-    "messageformat": "{count, plural, other {ထိုမက်ဆေ့ချ်များကို မည်သည့်စက်များမှ ဖျက်ချင်သနည်း။}}"
-  },
   "icu:DeleteMessagesModal--description--noteToSelf--deleteSync": {
     "messageformat": "{count, plural, other {ဤမက်ဆေ့ချ်များကို သင့်စက်အားလုံးမှ ဖျက်လိုက်ပါမည်။}}"
   },
   "icu:DeleteMessagesModal--deleteForMe": {
     "messageformat": "ကျွန်ုပ်အတွက် ဖျက်ရန်"
-  },
-  "icu:DeleteMessagesModal--deleteFromThisDevice": {
-    "messageformat": "ဤစက်မှ ဖျက်ရန်"
   },
   "icu:DeleteMessagesModal--deleteForEveryone": {
     "messageformat": "လူတိုင်းအတွက် ဖျက်ရန်"
@@ -5186,9 +5237,6 @@
   },
   "icu:DeleteMessagesModal--adminDeleteConfirmation--description__rollout": {
     "messageformat": "{count, plural, other {Signal ၏ နောက်ဆုံးထွက်ဗားရှင်း အသုံးပြုသော အဖွဲ့ဝင်များသည် ဤမက်ဆေ့ချ်အား သင်ဖျက်လိုက်သည်ဆိုသည်ကို မြင်တွေ့ရပါမည်။}}"
-  },
-  "icu:DeleteMessagesModal--deleteFromAllDevices": {
-    "messageformat": "စက်အားလုံးမှ ဖျက်ရန်"
   },
   "icu:DeleteMessagesModal--noteToSelf--deleteSync": {
     "messageformat": "ဖျက်ရန်"
@@ -6397,11 +6445,26 @@
   "icu:Preferences--local-backups-enter-backup-key": {
     "messageformat": "ကီးထည့်ရန်"
   },
-  "icu:Preferences--local-backups-record-recovery-key": {
-    "messageformat": "ပြန်လည်ရယူရေးကီးကို မှတ်တမ်းတင်ပါ"
+  "icu:Preferences--local-backups-recovery-key--title": {
+    "messageformat": "သင့် ပြန်လည်ရယူရေးကီး"
   },
-  "icu:Preferences--local-backups-record-backup-key-description": {
-    "messageformat": "သင့်အကောင့်နှင့် ဒေတာကို ပြန်လည်ရယူရန် ဤကီးလိုအပ်ပါသည်။ ဤကီးကို လုံခြုံသောနေရာတွင် သိမ်းဆည်းပါ။ ၎င်းကိုဆုံးရှုံးသွားပါက သင့်အကောင့်ကို ပြန်လည်ရယူနိုင်မည်မဟုတ်ပါ။ <learnMoreLink>ပိုမိုလေ့လာပါ။</learnMoreLink>"
+  "icu:Preferences--local-backups-recovery-key--description": {
+    "messageformat": "သင့်အကောင့်နှင့် ဒေတာကို ပြန်လည်ရယူရန် ဤကီးလိုအပ်ပါသည်။ ၎င်းကို ဘေးကင်းလုံခြုံသောနေရာတွင် သိမ်းဆည်းထားပြီး မည်သူနှင့်မျှ မျှဝေခြင်းမပြုပါနှင့်။ သင့် ပြန်လည်ရယူရေးကီးအတွက် Signal သည် မည််သည့်အခါမျှ မက်ဆေ့ချ်မပို့ပါ။ <learnMoreLink>ပိုမိုလေ့လာရန်။</learnMoreLink>"
+  },
+  "icu:Preferences__recovery-key__do-not-share-title": {
+    "messageformat": "ပြန်လည်ရယူရေးကီးကို မျှဝေခြင်းမပြုပါနှင့်"
+  },
+  "icu:Preferences__recovery-key__do-not-share-confirm": {
+    "messageformat": "ရပြီ"
+  },
+  "icu:CompositionInput__recovery-key-paste__share-key": {
+    "messageformat": "ကီးကို မျှဝေပါ"
+  },
+  "icu:CompositionInput__recovery-key-paste__do-not-share-key": {
+    "messageformat": "ကီးကို မျှဝေခြင်းမပြုပါနှင့်"
+  },
+  "icu:CompositionInput__recovery-key-warning--description": {
+    "messageformat": "သင့် ပြန်လည်ရယူရေးကီးကို မည်သူနှင့်မျှ မျှဝေခြင်းမပြုပါနှင့်။ မျှဝေခြင်းသည် ၎င်းတို့အား သင့်အကောင့်ကို ရယူသွားစေနိုင်ပါလိမ့်မည်။ သင့် ပြန်လည်ရယူရေးကီးအတွက် <strong>Signal သည် မည််သည့်အခါမျှ မက်ဆေ့ချ်မပို့ပါ။</strong> Signal ဟန်ဆောင်ထားသည့် ချက်(တ်)ကို စာမပြန်ပါနှင့်။ <learnMoreLink>ပိုမိုလေ့လာရန်။</learnMoreLink>"
   },
   "icu:Preferences--local-backups-confirm-recovery-key": {
     "messageformat": "ပြန်လည်ရယူရေးကီးကို အတည်ပြုပါ"
@@ -6465,6 +6528,9 @@
   },
   "icu:Preferences__local-backups-auth-error--unauthorized": {
     "messageformat": "စစ်မှန်ကြောင်းအတည်ပြုခြင်း မအောင်မြင်သောကြောင့် ဤလုပ်ဆောင်ချက်ကို ပြီးမြောက်အောင် မလုပ်ဆောင်နိုင်ခဲ့ပါ။ ထပ်ကြိုးစားကြည့်ပါ သို့မဟုတ် သင့်မိုဘိုင်းစက်ရှိ Signal အက်ပ်ကိုဖွင့်ပြီး ဘက်ခ်အပ်ဆက်တင်သို့သွား၍ ပြန်လည်ရယူရေးကီးကို ကြည့်ရှုပါ။"
+  },
+  "icu:Preferences__local-backups-auth-error--unknown-error": {
+    "messageformat": "ဤလုပ်ဆောင်ချက်အတွက် စနစ်အထောက်အထားစိစစ်ခြင်းကို တောင်းဆိုနေစဉ် အမှားအယွင်းတစ်ခု ဖြစ်ပွားခဲ့သည်။"
   },
   "icu:Preferences__view-key": {
     "messageformat": "ကီးကိုကြည့်ရန်"
@@ -6631,6 +6697,12 @@
   "icu:DialogUpdate__downloaded": {
     "messageformat": "အပ်ဒိတ် ဒေါင်းလုဒ်လုပ်ပြီး"
   },
+  "icu:DialogUpdate__upgrade-mas": {
+    "messageformat": "App Store သို့သွားရန် နှိပ်ပါ"
+  },
+  "icu:DialogExpiredBuild__upgrade-mas": {
+    "messageformat": "App Store သို့သွားရန် နှိပ်ပါ"
+  },
   "icu:CriticalIdlePrimaryDevice__title": {
     "messageformat": "သင့်ဖုန်းတွင် Signal ကို ဖွင့်ရန်"
   },
@@ -6669,6 +6741,405 @@
   },
   "icu:InstallScreenUpdateDialog--cannot-update__body": {
     "messageformat": "Signal Desktop ကို အပ်ဒိတ်လုပ်ခြင်း မအောင်မြင်သော်လည်း ဗားရှင်းအသစ်တစ်ခု ရရှိနိုင်ပါသည်။ {downloadUrl} သို့ သွားပြီး ဗားရှင်းအသစ်ကို ကိုယ်တိုင်ထည့်သွင်းပါ၊ ထို့နောက် ပံ့ပိုးကူညီရေးသို့ ဆက်သွယ်ပါ သို့မဟုတ် ဤပြဿနာနှင့်ပတ်သက်၍ ချို့ယွင်းချက်တစ်ခု တင်သွင်းပါ။"
+  },
+  "icu:StandaloneRegistration--signal-logo": {
+    "messageformat": "Signal လိုဂို"
+  },
+  "icu:StandaloneRegistration--back": {
+    "messageformat": "နောက်သို့"
+  },
+  "icu:StandaloneRegistration--PhoneNumber--header": {
+    "messageformat": "ဖုန်းနံပါတ်"
+  },
+  "icu:StandaloneRegistration--PhoneNumber--description--line-1": {
+    "messageformat": "သင့်အကောင့်ကို အတည်ပြုရန် ဖုန်းနံပါတ်ကို ထည့်သွင်းပါ။"
+  },
+  "icu:StandaloneRegistration--PhoneNumber--description--line-2": {
+    "messageformat": "ဆက်သွယ်ရေးကယ်ရီယာနှုန်းထားများ ကျသင့်နိုင်ပါသည်။"
+  },
+  "icu:StandaloneRegistration--PhoneNumber--waiting": {
+    "messageformat": "{duration} အကြာတွင် ထပ်မံကြိုးစားပါ"
+  },
+  "icu:StandaloneRegistration--PhoneNumber--placeholder": {
+    "messageformat": "ဖုန်းနံပါတ်"
+  },
+  "icu:StandaloneRegistration--PhoneNumber--button": {
+    "messageformat": "ဆက်လုပ်ရန်"
+  },
+  "icu:StandaloneRegistration--PhoneNumber--Confirmation--description": {
+    "messageformat": "သင်၏ အထက်ပါဖုန်းနံပါတ် မှန်ကန်ပါသလား?"
+  },
+  "icu:StandaloneRegistration--PhoneNumber--Confirmation--cancel": {
+    "messageformat": "နံပါတ် ပြင်ဆင်မည်"
+  },
+  "icu:StandaloneRegistration--PhoneNumber--Confirmation--confirm": {
+    "messageformat": "ဟုတ်ကဲ့"
+  },
+  "icu:StandaloneRegistration--Captcha--header": {
+    "messageformat": "ဆက်လက်လုပ်ဆောင်ရန် သင်သည် လူသားဖြစ်ကြောင်း အတည်ပြုပါ"
+  },
+  "icu:StandaloneRegistration--Captcha--description": {
+    "messageformat": "Signal တွင် စပမ်းများကို တားဆီးရာ၌ ကူညီရန် အတည်ပြုမှုကို ပြီးအောင်လုပ်ပေးပါ။ အတည်ပြုပြီးနောက် မှတ်ပုံတင်ခြင်းကို ဆက်လက်လုပ်ဆောင်နိုင်ပါသည်။"
+  },
+  "icu:StandaloneRegistration--Captcha--retry-button": {
+    "messageformat": "အတည်ပြုခြင်းကို ထပ်မံကြိုးစားပါ"
+  },
+  "icu:StandaloneRegistration--Captcha--button": {
+    "messageformat": "ဘရောက်ဆာတွင် အတည်ပြုပါ"
+  },
+  "icu:StandaloneRegistration--Captcha--button--wait": {
+    "messageformat": "{duration} တွင် အတည်ပြုပါ"
+  },
+  "icu:StandaloneRegistration--Captcha--NeedAnother--header": {
+    "messageformat": "ထပ်မံအတည်ပြုရန် လိုအပ်ပါသည်"
+  },
+  "icu:StandaloneRegistration--Captcha--NeedAnother--description": {
+    "messageformat": "မှတ်ပုံတင်ခြင်းကို ဆက်လက်လုပ်ဆောင်ရန် အခြား စက်ရုပ်မဟုတ်ကြောင်း အတည်ပြုချက်ကို ပြီးစီးအောင်လုပ်ပါ။"
+  },
+  "icu:StandaloneRegistration--Captcha--NeedAnother--cancel": {
+    "messageformat": "မလုပ်တော့ပါ"
+  },
+  "icu:StandaloneRegistration--Captcha--NeedAnother--retry": {
+    "messageformat": "အတည်ပြုခြင်းကို ထပ်မံကြိုးစားပါ"
+  },
+  "icu:StandaloneRegistration--Captcha--MustWait--aria-title": {
+    "messageformat": "နောက်မှ ထပ်ကြိုးစားကြည့်ပါ"
+  },
+  "icu:StandaloneRegistration--Captcha--MustWait--line-1": {
+    "messageformat": "လက်ရှိအချိန်တွင် အတည်ပြုခြင်းကို အပြီးသတ်၍ မရပါ။"
+  },
+  "icu:StandaloneRegistration--Captcha--MustWait--line-2": {
+    "messageformat": "{duration} အကြာတွင် ထပ်မံကြိုးစားပါ"
+  },
+  "icu:StandaloneRegistration--Captcha--MustWait--button": {
+    "messageformat": "အိုကေ"
+  },
+  "icu:StandaloneRegistration--Captcha--Error--header": {
+    "messageformat": "အတည်ပြု၍ မရပါ"
+  },
+  "icu:StandaloneRegistration--Captcha--Error--description": {
+    "messageformat": "မှတ်ပုံတင်ခြင်းကို ဆက်လက်လုပ်ဆောင်ရန် အတည်ပြုခြင်းကို ထပ်မံကြိုးစားပါ။"
+  },
+  "icu:StandaloneRegistration--Captcha--Error--try-again": {
+    "messageformat": "ထပ်မံကြိုးစားမည်"
+  },
+  "icu:StandaloneRegistration--Captcha--Error--cancel": {
+    "messageformat": "မလုပ်တော့ပါ"
+  },
+  "icu:StandaloneRegistration--VerificationCode--header": {
+    "messageformat": "အတည်ပြုကုဒ်"
+  },
+  "icu:StandaloneRegistration--VerificationCode--description": {
+    "messageformat": "{phoneNumber} ကို ပို့လိုက်သည့် အတည်ပြုကုဒ်ကို ထည့်ပါ။"
+  },
+  "icu:StandaloneRegistration--VerificationCode--button": {
+    "messageformat": "ဆက်လုပ်ရန်"
+  },
+  "icu:StandaloneRegistration--VerificationCode--send-sms": {
+    "messageformat": "ကုဒ် ပြန်ပို့ရန်"
+  },
+  "icu:StandaloneRegistration--VerificationCode--send-sms--duration": {
+    "messageformat": "{duration} အကြာတွင် ကုဒ်ကို ပြန်လည်ပို့ပေးပါ"
+  },
+  "icu:StandaloneRegistration--VerificationCode--call-me": {
+    "messageformat": "ကျွန်ုပ်ကို ဖုန်းခေါ်ပါ"
+  },
+  "icu:StandaloneRegistration--VerificationCode--call-me--duration": {
+    "messageformat": "{duration} အကြာတွင် ဖုန်းခေါ်ပါ"
+  },
+  "icu:StandaloneRegistration--VerificationCode--wrong-number": {
+    "messageformat": "နံပါတ် မှားနေပါသလား။"
+  },
+  "icu:StandaloneRegistration--VerificationCode--having-trouble": {
+    "messageformat": "စာရင်းသွင်းမှုနှင့်စပ်လျဉ်း၍ အခက်အခဲရှိပါသလား။"
+  },
+  "icu:StandaloneRegistration--VerificationCode--IncorrectCode--aria-title": {
+    "messageformat": "ကုဒ် မှားနေပါသည်"
+  },
+  "icu:StandaloneRegistration--VerificationCode--IncorrectCode--description": {
+    "messageformat": "သင်ထည့်သွင်းထားသော ကုဒ်မှာ မှားယွင်းနေပါသည်။ ဂဏန်း ၆ လုံးပါ ကုဒ်ကို ပြန်လည်စစ်ဆေးပြီး ထပ်မံကြိုးစားပါ။"
+  },
+  "icu:StandaloneRegistration--VerificationCode--IncorrectCode--button": {
+    "messageformat": "အိုကေ"
+  },
+  "icu:StandaloneRegistration--VerificationCode--CodeInvalid--aria-title": {
+    "messageformat": "ကုဒ် မမှန်ကန်ပါ"
+  },
+  "icu:StandaloneRegistration--VerificationCode--CodeInvalid--description": {
+    "messageformat": "သင်ထည့်သွင်းထားသော ကုဒ်သည် မှန်ကန်မှုမရှိပါ။ ကုဒ်ကို ထပ်မံပို့ပေးရန် တောင်းဆိုပြီး ထပ်မံကြိုးစားပါ။"
+  },
+  "icu:StandaloneRegistration--VerificationCode--CodeInvalid--resend-button": {
+    "messageformat": "ကုဒ် ပြန်ပို့ရန်"
+  },
+  "icu:StandaloneRegistration--VerificationCode--CodeInvalid--edit-number-button": {
+    "messageformat": "နံပါတ် ပြင်ဆင်မည်"
+  },
+  "icu:StandaloneRegistration--VerificationCode--SMSFailed--aria-title": {
+    "messageformat": "SMS ပို့၍ မရပါ"
+  },
+  "icu:StandaloneRegistration--VerificationCode--SMSFailed--description": {
+    "messageformat": "SMS မှတစ်ဆင့် သင့်ထံ အတည်ပြုကုဒ် ပို့၍ မရနိုင်ခဲ့ပါ။ ၎င်းအစား အော်ဒီယိုကောလ်မှတစ်ဆင့် သင့်ကုဒ်ကို လက်ခံကြည့်ပါ။"
+  },
+  "icu:StandaloneRegistration--VerificationCode--SMSFailed--confirm": {
+    "messageformat": "အော်ဒီယိုကောလ်"
+  },
+  "icu:StandaloneRegistration--VerificationCode--SMSFailed--cancel": {
+    "messageformat": "မလုပ်တော့ပါ"
+  },
+  "icu:StandaloneRegistration--VerificationCode--MustWait--aria-title": {
+    "messageformat": "နောက်မှ ထပ်ကြိုးစားကြည့်ပါ"
+  },
+  "icu:StandaloneRegistration--VerificationCode--MustWait--description": {
+    "messageformat": "ကုဒ်ကို ထည့်သွင်းရန် ကြိုးပမ်းမှု အကြိမ်ရေ များလွန်းနေပါသည်။ {duration} အကြာတွင် ထပ်မံကြိုးစားပါ။"
+  },
+  "icu:StandaloneRegistration--VerificationCode--MustWait--button": {
+    "messageformat": "အိုကေ"
+  },
+  "icu:StandaloneRegistration--VerificationCode--MaximumAttempts--aria-title": {
+    "messageformat": "ကြိုးစားမှုအကြိမ်ရေ အလွန်များနေပါသည်"
+  },
+  "icu:StandaloneRegistration--VerificationCode--MaximumAttempts--description": {
+    "messageformat": "ကုဒ်ကို ထည့်သွင်းရန် ကြိုးပမ်းမှု အကြိမ်ရေ များလွန်းနေပါသည်။ ကုဒ်ကို ထပ်မံပို့ပေးရန် တောင်းဆိုပြီး ထပ်မံကြိုးစားပါ။"
+  },
+  "icu:StandaloneRegistration--VerificationCode--MaximumAttempts--resend-button": {
+    "messageformat": "ကုဒ် ပြန်ပို့ရန်"
+  },
+  "icu:StandaloneRegistration--VerificationCode--MaximumAttempts--edit-number-button": {
+    "messageformat": "နံပါတ် ပြင်ဆင်မည်"
+  },
+  "icu:StandaloneRegistration--VerificationCode--FailedToCall--aria-title": {
+    "messageformat": "ဖုန်းခေါ်၍ မရပါ"
+  },
+  "icu:StandaloneRegistration--VerificationCode--FailedToCall--description": {
+    "messageformat": "သင်ထည့်သွင်းထားသော ဖုန်းနံပါတ်ကို ဖုန်းခေါ်၍ မရပါ။ ဖုန်းနံပါတ် မှန်ကန်ကြောင်း သေချာစစ်ဆေးပြီး ထပ်မံကြိုးစားပါ။"
+  },
+  "icu:StandaloneRegistration--VerificationCode--FailedToCall--ok-button": {
+    "messageformat": "အိုကေ"
+  },
+  "icu:StandaloneRegistration--VerificationCode--CannotSendCodePermanent--aria-title": {
+    "messageformat": "ကုဒ် ပို့၍ မရပါ"
+  },
+  "icu:StandaloneRegistration--VerificationCode--CannotSendCodePermanent--description": {
+    "messageformat": "သင်ထည့်သွင်းထားသော ဖုန်းနံပါတ်သို့ အတည်ပြုကုဒ် ပို့၍ မရပါ။ သင်ထည့်သွင်းထားသော နံပါတ် မှန်ကန်ကြောင်း သေချာစစ်ဆေးပါ၊ သို့မဟုတ် အခြားနံပါတ်တစ်ခုကို အသုံးပြု၍ ကြိုးစားပါ။"
+  },
+  "icu:StandaloneRegistration--VerificationCode--CannotSendCodePermanent--ok-button": {
+    "messageformat": "အိုကေ"
+  },
+  "icu:StandaloneRegistration--VerificationCode--CannotSendCodeTemporary--aria-title": {
+    "messageformat": "နောက်မှ ထပ်ကြိုးစားကြည့်ပါ"
+  },
+  "icu:StandaloneRegistration--VerificationCode--CannotSendCodeTemporary--description": {
+    "messageformat": "ချို့ယွင်းချက်တစ်ခု ဖြစ်ပေါ်ခဲ့သဖြင့် အတည်ပြုကုဒ်ကို ပို့၍ မရပါ။ {duration} အကြာတွင် ထပ်မံကြိုးစားပါ။"
+  },
+  "icu:StandaloneRegistration--VerificationCode--CannotSendCodeTemporary--ok-button": {
+    "messageformat": "အိုကေ"
+  },
+  "icu:StandaloneRegistration--ProfileEntry--header": {
+    "messageformat": "သင့် ပရိုဖိုင်ကိုပြင်ဆင်ပါ"
+  },
+  "icu:StandaloneRegistration--ProfileEntry--description": {
+    "messageformat": "ပရိုဖိုင်များကို သင်မက်ဆေ့ချ်ပို့ထားသူများ၊ အဆက်အသွယ်များနှင့် အဖွဲ့များက မြင်ရပါမည်။"
+  },
+  "icu:StandaloneRegistration--ProfileEntry--learn-more": {
+    "messageformat": "ပိုမိုသိရှိရန်"
+  },
+  "icu:StandaloneRegistration--ProfileEntry--add-photo": {
+    "messageformat": "ဓာတ်ပုံ ပေါင်းထည့်ရန်"
+  },
+  "icu:StandaloneRegistration--ProfileEntry--first-name": {
+    "messageformat": "အမည်အစ (လိုအပ်သည်)"
+  },
+  "icu:StandaloneRegistration--ProfileEntry--last-name": {
+    "messageformat": "အမည်အဆုံး (ရွေးချယ်နိုင်သည်)"
+  },
+  "icu:StandaloneRegistration--ProfileEntry--discoverability": {
+    "messageformat": "ဖုန်းနံပါတ်ဖြင့် ကျွန်ုပ်ကို ရှာဖွေနိုင်သူများ"
+  },
+  "icu:StandaloneRegistration--ProfileEntry--discoverability--change-button": {
+    "messageformat": "ပြောင်းရန်"
+  },
+  "icu:StandaloneRegistration--ProfileEntry--discoverability--done-button": {
+    "messageformat": "ပြီးပါပြီ"
+  },
+  "icu:StandaloneRegistration--ProfileEntry--continue": {
+    "messageformat": "ဆက်လုပ်ရန်"
+  },
+  "icu:StandaloneRegistration--ProfileEntry--AvatarModal--header": {
+    "messageformat": "သင်၏ ရုပ်ပုံ"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--header": {
+    "messageformat": "သင်၏ PIN ကို ထည့်ပါ"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--description": {
+    "messageformat": "သင့်အကောင့်အတွက် သင်ဖန်တီးထားသော PIN ကို ရိုက်ထည့်ပါ။ ၎င်းသည် သင်၏ SMS အတည်ပြုကုဒ်နှင့် မတူပါ။ <needHelp>အကူအညီ လိုအပ်ပါသလား။</needHelp>"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--placeholder": {
+    "messageformat": "သင်၏ PIN ကို ထည့်ပါ"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--incorrect-pin": {
+    "messageformat": "PIN မှားနေသည်"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--incorrect-pin--with-count": {
+    "messageformat": "{triesRemaining, plural, other {PIN မမှန်ကန်ပါ။ ကြိုးစားရန် {triesRemaining,number} ကြိမ် ကျန်ရှိပါသည်။}}"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--NeedHelp--header": {
+    "messageformat": "အကူအညီ လိုအပ်ပါသလား?"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--NeedHelp--description--no-reglock": {
+    "messageformat": "သင်ဖန်တီးထားသော သင်၏ PIN သည် ဂဏန်း 4 လုံးအထက် ပါသော ကုဒ်ဖြစ်ပြီး နံပါတ် သို့မဟုတ် အက္ခရာ ဖြစ်နိုင်ပါသည်။ သင်၏ PIN ကို မမှတ်မိပါက အသစ်တစ်ခု ဖန်တီးနိုင်ပါသည်။ သင့်အကောင့်ကို မှတ်ပုံတင်၍ အသုံးပြုနိုင်သော်လည်း ပရိုဖိုင်အချက်အလက်များကဲ့သို့ သိမ်းဆည်းထားသော ဆက်တင်အချို့ကို ဆုံးရှုံးသွားနိုင်ပါသည်။ <learnMore>ပိုမိုလေ့လာရန်။</learnMore>"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--NeedHelp--description--reglock": {
+    "messageformat": "သင်ဖန်တီးထားသော သင်၏ PIN သည် ဂဏန်း 4 လုံးအထက် ပါသော ကုဒ်ဖြစ်ပြီး နံပါတ် သို့မဟုတ် အက္ခရာ ဖြစ်နိုင်ပါသည်။ သင့် PIN ကို မမှတ်မိပါက သင့်အကောင့်ကို ပြန်လည်မှတ်ပုံတင်ရန် 7 ရက် စောင့်ရမည်ဖြစ်ပါသည်။ <learnMore>ပိုမိုလေ့လာရန်</learnMore>။"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--NeedHelp--skip-button--no-reglock": {
+    "messageformat": "ကျော်ပြီး PIN အသစ် ဖန်တီးပါ"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--NeedHelp--contact-support-button": {
+    "messageformat": "ပံ့ပိုးမှုစင်တာသို့ ဆက်သွယ်ပါ"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--NeedHelp--cancel": {
+    "messageformat": "မလုပ်တော့ပါ"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--FewRemainingTries--header": {
+    "messageformat": "PIN မှားနေသည်"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--FewRemainingTries--description--no-reglock": {
+    "messageformat": "{triesRemaining, plural, other {သင့်တွင် ကြိုးပမ်းရန် အကြိမ်ရေ {triesRemaining,number} ကြိမ် ကျန်ရှိပါသည်။ ကြိုးပမ်းခွင့်များ ကုန်ဆုံးသွားပါက PIN အသစ်တစ်ခု ဖန်တီးနိုင်ပါသည်။ သင့်အကောင့်ကို မှတ်ပုံတင်ပြီး အသုံးပြုနိုင်သော်လည်း ပရိုဖိုင်အချက်အလက်များကဲ့သို့ သိမ်းဆည်းထားသော ဆက်တင်အချို့ကို ဆုံးရှုံးမည်ဖြစ်ပါသည်။ <learnMore>ပိုမိုလေ့လာရန်</learnMore>။}}"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--FewRemainingTries--description--reglock": {
+    "messageformat": "{triesRemaining, plural, other {သင့်တွင် ကြိုးပမ်းရန် အကြိမ်ရေ {triesRemaining,number} ကြိမ် ကျန်ရှိပါသည်။ ကြိုးပမ်းခွင့်များ ကုန်ဆုံးသွားပါက သင့်အကောင့်ကို 7 ရက်ကြာ လော့ခ်ချထားမည်ဖြစ်ပါသည်။ 7 ရက်ကြာ သက်ဝင်လုပ်ဆောင်မှု မရှိသည့်ကာလ ကုန်ဆုံးပြီးနောက် PIN မပါဘဲ ပြန်လည်မှတ်ပုံတင်နိုင်ပါသည်။ အကြောင်းအရာအားလုံးကို ဖျက်ပစ်မည်ဖြစ်ပါသည်။ <learnMore>ပိုမိုလေ့လာရန်</learnMore>။}}"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--FewRemainingTries--button": {
+    "messageformat": "အိုကေ"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--NoRemainingTries--header": {
+    "messageformat": "PIN မှားနေသည်"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--NoRemainingTries--description": {
+    "messageformat": "PIN ခန့်မှန်းထည့်သွင်းမှုများ မရှိတော့ပါ၊ သို့သော် PIN အသစ်တစ်ခု ဖန်တီးခြင်းဖြင့် သင့် Signal အကောင့်ကို ဝင်ရောက်သုံးစွဲနိုင်ပါသေးသည်။ သင့်ကိုယ်ပိုင်အချက်အလက်နှင့် လုံခြုံရေးအတွက် သင့်အကောင့်ကို သိမ်းဆည်းထားသော ပရိုဖိုင်အချက်အလက်များ သို့မဟုတ် ဆက်တင်များမပါဘဲ ပြန်လည်ရယူနိုင်မည်ဖြစ်ပါသည်။"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--NoRemainingTries--create-new-pin": {
+    "messageformat": "PIN အသစ်ဖန်တီးပါ"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--NoRemainingTries--learn-more": {
+    "messageformat": "PIN များအကြောင်း ပိုမိုလေ့လာပါ"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--menu--skip-pin": {
+    "messageformat": "PIN ရိုက်ခြင်းကို ကျော်မည်"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--SkipPIN--header": {
+    "messageformat": "PIN ရိုက်ခြင်းကို ကျော်မည်လား။"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--SkipPIN--description": {
+    "messageformat": "သင်၏ PIN ကို မမှတ်မိပါက အသစ်တစ်ခု ဖန်တီးနိုင်ပါသည်။ သင့်အကောင့်ကို မှတ်ပုံတင်၍ အသုံးပြုနိုင်သော်လည်း ပရိုဖိုင်အချက်အလက်များကဲ့သို့ သိမ်းဆည်းထားသော ဆက်တင်အချို့ကို ဆုံးရှုံးသွားနိုင်ပါသည်။ ပိုမိုလေ့လာရန်။"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--SkipPIN--skip-button": {
+    "messageformat": "ကျော်ပြီး PIN အသစ် ဖန်တီးပါ"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--SkipPIN--cancel-button": {
+    "messageformat": "မလုပ်တော့ပါ"
+  },
+  "icu:StandaloneRegistration--CreatePIN--header": {
+    "messageformat": "သင်၏ PIN ကို ဖန်တီးပါ"
+  },
+  "icu:StandaloneRegistration--CreatePIN--description": {
+    "messageformat": "သင့်အကောင့်ကို ပြန်လည်ရယူရာတွင် PIN များက သင့်အား ကူညီပေးပြီး သင့်အချက်အလက်ကို Signal နှင့်အတူ ကုဒ်ပြောင်းဝှက်ထားပါသည်။ <learnMore>ပိုမိုလေ့လာရန်</learnMore>"
+  },
+  "icu:StandaloneRegistration--CreatePIN--placeholder": {
+    "messageformat": "သင်၏ PIN ကို ဖန်တီးပါ"
+  },
+  "icu:StandaloneRegistration--CreatePIN--helper-text": {
+    "messageformat": "PIN သည် အနည်းဆုံး အက္ခရာ ၄ လုံးရှိရပါမည်"
+  },
+  "icu:StandaloneRegistration--CreatePIN--continue": {
+    "messageformat": "ဆက်လုပ်ရန်"
+  },
+  "icu:StandaloneRegistration--CreatePIN--open-menu": {
+    "messageformat": "မီနူးကို ဖွင့်ရန်"
+  },
+  "icu:StandaloneRegistration--CreatePIN--menu--more-about": {
+    "messageformat": "PIN များအကြောင်း ပိုမိုလေ့လာရန်"
+  },
+  "icu:StandaloneRegistration--CreatePIN--menu--disable": {
+    "messageformat": "PIN ပိတ်ပါ"
+  },
+  "icu:StandaloneRegistration--CreatePIN--DisableWarning--header": {
+    "messageformat": "သတိပေးချက်"
+  },
+  "icu:StandaloneRegistration--CreatePIN--DisableWarning--description": {
+    "messageformat": "PIN ကို ပိတ်လိုက်ပါက အခြား iOS စက်မှ လွှဲပြောင်းခြင်းမပြုလျှင် Signal ကို ပြန်လည်မှတ်ပုံတင်သည့်အခါ ဒေတာအားလုံး ဆုံးရှုံးမည်ဖြစ်ပါသည်။ PIN ကို ပိတ်ထားပါက မှတ်ပုံတင်ခြင်း လော့ခ်ကို ဖွင့်၍ မရပါ။"
+  },
+  "icu:StandaloneRegistration--CreatePIN--DisableWarning--disable-button": {
+    "messageformat": "PIN ပိတ်ပါ"
+  },
+  "icu:StandaloneRegistration--CreatePIN--DisableWarning--cancel": {
+    "messageformat": "မလုပ်တော့ပါ"
+  },
+  "icu:StandaloneRegistration--CreatePIN--AboutPINs--header": {
+    "messageformat": "Signal PIN များအကြောင်း"
+  },
+  "icu:StandaloneRegistration--CreatePIN--AboutPINs--description": {
+    "messageformat": "PIN များသည် Signal တွင် သိမ်းဆည်းထားသော သင့်အချက်အလက်များကို ကုဒ်ပြောင်းဝှက်ပေးပြီး သင်တစ်ဦးတည်းသာ ဝင်ရောက်အသုံးပြုနိုင်စေပါသည်။ ပြန်လည်ထည့်သွင်းသည့်အခါ သင့်ပရိုဖိုင်၊ ဆက်တင်နှင့် အဆက်အသွယ်များကို ပြန်လည်ရယူပါမည်။"
+  },
+  "icu:StandaloneRegistration--CreatePIN--AboutPINs--learn-more-button": {
+    "messageformat": "ပိုမိုသိရှိရန်"
+  },
+  "icu:StandaloneRegistration--CreatePIN--AboutPINs--ok-button": {
+    "messageformat": "အိုကေ"
+  },
+  "icu:StandaloneRegistration--CreatePIN--confirming--header": {
+    "messageformat": "သင့် PIN ကို အတည်ပြုရန်"
+  },
+  "icu:StandaloneRegistration--CreatePIN--confirming--description": {
+    "messageformat": "သင်ဖန်တီးထားသော PIN ကို ပြန်ရိုက်ထည့်ပါ။"
+  },
+  "icu:StandaloneRegistration--CreatePIN--confirming--placeholder": {
+    "messageformat": "သင်၏ PIN ကို ထည့်ပါ"
+  },
+  "icu:StandaloneRegistration--AccountLocked--header": {
+    "messageformat": "အကောင့် လော့ခ်ချထားပါတယ်"
+  },
+  "icu:StandaloneRegistration--AccountLocked--description": {
+    "messageformat": "သင့်ကိုယ်ပိုင်အချက်အလက် လုံခြုံရေးအတွက် သင့်အကောင့်ကို လော့ခ်ချလိုက်ပါပြီ။ 7 ရက်ကြာ သက်ဝင်လုပ်ဆောင်မှုမရှိသည့်ကာလ ကုန်ဆုံးပြီးနောက် PIN မလိုဘဲ ယခုဖုန်းနံပါတ်ဖြင့် ပြန်လည် မှတ်ပုံတင်နိုင်ပါမည်။ အကြောင်းအရာများအားလုံး ဖျက်သိမ်းသွားပါမည်။"
+  },
+  "icu:StandaloneRegistration--AccountLocked--start-over-button": {
+    "messageformat": "အခြားနံပါတ်တစ်ခုကို အသုံးပြုပါ"
+  },
+  "icu:StandaloneRegistration--AccountLocked--help-button": {
+    "messageformat": "လော့ခ်ကျနေသော အကောင့်များအကြောင်း လေ့လာရန်"
+  },
+  "icu:StandaloneRegistration--UpdateRequired--header": {
+    "messageformat": "အပ်ဒိတ် လိုအပ်ပါသည်"
+  },
+  "icu:StandaloneRegistration--UpdateRequired--description": {
+    "messageformat": "မှတ်ပုံတင်ခြင်းကို ဆက်လက်လုပ်ဆောင်ရန် Signal ၏ နောက်ဆုံးဗားရှင်းသို့ အပ်ဒိတ်လုပ်ပါ။"
+  },
+  "icu:StandaloneRegistration--UpdateRequired--update": {
+    "messageformat": "အပ်ဒိတ်လုပ်မည်"
+  },
+  "icu:StandaloneRegistration--UpdateRequired--cancel": {
+    "messageformat": "မလုပ်တော့ပါ"
+  },
+  "icu:StandaloneRegistration--ConnectionProblem--header": {
+    "messageformat": "သင့်ချိတ်ဆက်မှုကို စစ်ဆေးပါ"
+  },
+  "icu:StandaloneRegistration--ConnectionProblem--description": {
+    "messageformat": "ဆက်လက်လုပ်ဆောင်ရန် သင့်ကွန်ပျူတာ၏ အင်တာနက်ချိတ်ဆက်မှုကို စစ်ဆေးပြီး ထပ်မံကြိုးစားပါ။"
+  },
+  "icu:StandaloneRegistration--ConnectionProblem--button": {
+    "messageformat": "အိုကေ"
+  },
+  "icu:StandaloneRegistration--UnexpectedError--header": {
+    "messageformat": "မှတ်ပုံတင်ခြင်းကို အပြီးသတ်၍ မရပါ"
+  },
+  "icu:StandaloneRegistration--UnexpectedError--description": {
+    "messageformat": "ချို့ယွင်းချက်တစ်ခု ဖြစ်ပေါ်ခဲ့သဖြင့် မှတ်ပုံတင်ခြင်းကို အပြီးသတ်၍ မရပါ။ ဤပြဿနာ ဆက်လက်ဖြစ်ပေါ်နေပါက ပံ့ပိုးရေးသို့ ဆက်သွယ်ပါ။"
+  },
+  "icu:StandaloneRegistration--UnexpectedError--try-again-button": {
+    "messageformat": "ထပ်မံကြိုးစားမည်"
+  },
+  "icu:StandaloneRegistration--UnexpectedError--contact-support-button": {
+    "messageformat": "ပံ့ပိုးရေးသို့ ဆက်သွယ်ရန်"
   },
   "icu:NSIS__retry-dialog--first-line": {
     "messageformat": "Signal ကို ပိတ်၍ မရနိုင်ပါ။",
@@ -6915,15 +7386,6 @@
   },
   "icu:SignalConnectionsModal__footer": {
     "messageformat": "သင့်အဆက်အသွယ်များက သင့်အမည်နှင့် ဓာတ်ပုံကို မြင်နိုင်ပြီး ၎င်းတို့အတွက် မဝှက်ထားပါက \"ကျွန်ုပ်၏ စတိုရီ\" ရှိ ပို့စ်များကို မြင်နိုင်ပါသည်"
-  },
-  "icu:LocalDeleteWarningModal__header": {
-    "messageformat": "သင့်စက်များအားလုံးတွင် ချိန်ကိုက်ပြီး ဖျက်လိုက်ပါမည်"
-  },
-  "icu:LocalDeleteWarningModal__description": {
-    "messageformat": "မက်ဆေ့ချ်များ သို့မဟုတ် ချက်(တ်)များကို ဖျက်လိုက်သောအခါ ၎င်းတို့ကို သင့်ဖုန်းနှင့် အခြားချိတ်ထားသော စက်များအားလုံးမှ ဖျက်လိုက်ပါမည်။"
-  },
-  "icu:LocalDeleteWarningModal__confirm": {
-    "messageformat": "ရပြီ"
   },
   "icu:Stories__title": {
     "messageformat": "စတိုရီများ"
@@ -7478,9 +7940,6 @@
   "icu:DraftGifMessageSendModal__SendButtonLabel": {
     "messageformat": "ပေးပို့ရန်"
   },
-  "icu:DraftGifMessageSendModal__CancelButtonLabel": {
-    "messageformat": "မလုပ်တော့ပါ"
-  },
   "icu:EditHistoryMessagesModal__title": {
     "messageformat": "တည်းဖြတ်မှု မှတ်တမ်း"
   },
@@ -7759,9 +8218,6 @@
   },
   "icu:PreferencesDonations__privacy-modal-title": {
     "messageformat": "သင့်အချက်အလက်ကို လျှို့ဝှက်ထားပါသည်"
-  },
-  "icu:PreferencesDonations__privacy-modal-content": {
-    "messageformat": "<paragraph>Signal သည် သင်လှူဒါန်းသည့်အခါတွင် သင့်ကိုယ်ရေးကိုယ်တာအချက်အလက်များကို စုဆောင်းခြင်း သို့မဟုတ် သိမ်းဆည်းထားခြင်းမရှိပါ။</paragraph><paragraph>သင်၏လှူဒါန်းမှုများကို လက်ခံရရှိရန် ကျွန်ုပ်တို့၏ ငွေပေးချေမှု စီမံဆောင်ရွက်သူအဖြစ် Stripe ကို အသုံးပြုပါသည်။ ကျွန်ုပ်တို့သည် ၎င်းတို့အား သင်ပေးထားသော အချက်အလက်များကို အသုံးပြုခြင်း၊ ထားသိုခြင်း သို့မဟုတ် သိမ်းဆည်းခြင်းမပြုပါ။</paragraph><paragraph>Signal သည် သင်၏လှူဒါန်းမှုကို သင်၏ Signal အကောင့်နှင့် ချိတ်ဆက်၍မရပါ။</paragraph><paragraph>သင်၏ပံ့ပိုးမှုအတွက် ကျေးဇူးတင်ပါသည်။</paragraph>"
   },
   "icu:PreferencesDonations__privacy-modal-intro": {
     "messageformat": "မှီခိုမှုကင်းသည့် အကျိုးအမြတ်မယူသော အဖွဲ့အစည်းတစ်ခုအနေဖြင့်  Signal သည် သီးသန့်မက်ဆေ့ချ်ပေးပို့ခြင်းနှင့် ဖုန်းခေါ်ဆိုမှုများကို အလေးအနက်ထားပါသည်။ ကြော်ငြာများ မရှိ၊ ခြေရာခံခြင်း မရှိ၊ စောင့်ကြည့်ခြင်း မရှိ။ Signal ကို ပံ့ပိုးရန် ယနေ့ပင် လှူဒါန်းလိုက်ပါ။"
@@ -8205,10 +8661,16 @@
     "messageformat": "အနေအထား ပြုပြင်မှုလေးများ၊ ချို့ယွင်းချက် ပြင်ဆင်မှုများနှင့် စွမ်းဆောင်ရည် မြှင့်တင်မှုများ။ Signal ကို သုံးသည့်အတွက် ကျေးဇူးတင်ပါသည်။",
     "ignoreUnused": true
   },
-  "icu:WhatsNew__8.12--0": {
-    "messageformat": "အဖွဲ့လိုက်ခေါ်ဆိုမှုများအတွင်း လက်မြှောက်ရန်အတွက် ကီးဘုတ်ရှော့တ်ကတ် အသစ်တစ်ခုကို ထည့်သွင်းထားသည် (Shift-H)။"
+  "icu:WhatsNew__8.18--0": {
+    "messageformat": "ယခုအခါ တစ်ဦးချင်းချက်(တ်)များတွင်လည်း စစ်တမ်းများကို ဖန်တီးနိုင်ပါပြီ။"
   },
-  "icu:WhatsNew__8.13--0": {
-    "messageformat": "The new raised-hand indicators are now also displayed in the list of raised hands during group calls. It's a second-hand place to figure out who you should hand it over to when you're done speaking."
+  "icu:WhatsNew__8.19--0": {
+    "messageformat": "အဖွဲ့ အက်ဒ်မင်များသည် အဖွဲ့ဆက်တင်များရှိ “အဖွဲ့ကို အဆုံးသတ်ရန်” ရွေးချယ်မှုအသစ်မှတစ်ဆင့် အဖွဲ့ချက်(တ်)ကို အဆုံးသတ်နိုင်ပါသည်။ အဖွဲ့ကို အဆုံးသတ်ပြီးပါက အဖွဲ့ဝင်များသည် မက်ဆေ့ချ်ပို့ခြင်း၊ ခေါ်ဆိုမှုစတင်ခြင်းနှင့် ဖိတ်ကြားမှုများ ပြုလုပ်ခြင်းတို့ကို လုပ်ဆောင်နိုင်တော့မည်မဟုတ်ပါ။"
+  },
+  "icu:WhatsNew__8.20--0": {
+    "messageformat": "Introducing disappearing call events: Missed, outgoing, and received calls that occur after you install this update will now automatically disappear in any chat where disappearing messages are enabled."
+  },
+  "icu:WhatsNew__8.20--1": {
+    "messageformat": "Now you can reorder installed sticker packs so your new favorites don’t get stuck in the back of the line."
   }
 }

@@ -123,6 +123,7 @@ import type {
   SentEventData,
   StickerPackEvent,
   TypingEvent,
+  UsernameChangeSyncEvent,
   ViewEvent,
   ViewOnceOpenSyncEvent,
   ViewSyncEvent,
@@ -237,7 +238,7 @@ import {
   getCallIdFromEra,
   updateLocalGroupCallHistoryTimestamp,
 } from './util/callDisposition.preload.ts';
-import { deriveStorageServiceKey, deriveMasterKey } from './Crypto.node.ts';
+import { deriveMasterKey } from './Crypto.node.ts';
 import { AttachmentDownloadManager } from './jobs/AttachmentDownloadManager.preload.ts';
 import { onCallLinkUpdateSync } from './util/onCallLinkUpdateSync.preload.ts';
 import { CallMode } from './types/CallDisposition.std.ts';
@@ -505,7 +506,7 @@ async function startApp(): Promise<void> {
           await new Promise<void>((resolve, reject) => {
             showConfirmationDialog({
               cancelText: i18n('icu:quit'),
-              confirmStyle: 'destructive',
+              confirmStyle: 'strong-destructive',
               title: i18n('icu:deleteOldIndexedDBData'),
               // @ts-expect-error ConfirmationDialog migration: Needs description
               description: null,
@@ -743,6 +744,10 @@ async function startApp(): Promise<void> {
     messageReceiver.addEventListener(
       'deviceNameChangeSync',
       queuedEventListener(onDeviceNameChangeSync)
+    );
+    messageReceiver.addEventListener(
+      'usernameChangeSync',
+      queuedEventListener(onUsernameChangeSync)
     );
 
     if (!itemStorage.get('defaultConversationColor')) {
@@ -1955,6 +1960,7 @@ async function startApp(): Promise<void> {
       await doRegisterCapabilities({
         attachmentBackfill: true,
         spqr: true,
+        usernameChangeSyncMessage: true,
       });
     } catch (error) {
       log.error(
@@ -2355,6 +2361,8 @@ async function startApp(): Promise<void> {
             actionSource: 'syncMessage',
           });
         } else {
+          // Sync message from other desktops or primary to download packs. Note,
+          // sticker sync messages do not contain position but storage records do.
           void Stickers.downloadStickerPack(id, key, {
             finalStatus: 'installed',
             actionSource: 'syncMessage',
@@ -3012,6 +3020,7 @@ async function startApp(): Promise<void> {
         masterKey: message.groupV2.masterKey,
         secretParams: message.groupV2.secretParams,
         publicParams: message.groupV2.publicParams,
+        needsGroupUpdate: true,
       });
 
       return {
@@ -3618,33 +3627,8 @@ async function startApp(): Promise<void> {
       await itemStorage.put('backupMediaRootKey', mediaRootBackupKey);
     }
 
-    if (derivedMasterKey != null) {
-      const storageServiceKey = deriveStorageServiceKey(derivedMasterKey);
-      const storageServiceKeyBase64 = Bytes.toBase64(storageServiceKey);
-      if (itemStorage.get('storageKey') === storageServiceKeyBase64) {
-        log.info(
-          "onKeysSync: storage service key didn't change, " +
-            'fetching manifest anyway'
-        );
-      } else {
-        log.info(
-          'onKeysSync: updated storage service key, erasing state and fetching'
-        );
-        try {
-          await itemStorage.put('storageKey', storageServiceKeyBase64);
-          await StorageService.eraseAllStorageServiceState({
-            keepUnknownFields: true,
-          });
-        } catch (error) {
-          log.info(
-            'onKeysSync: Failed to erase storage service data, starting sync job anyway',
-            Errors.toLogFormat(error)
-          );
-        }
-      }
+    await StorageService.updateWithNewKey('onKeysSync');
 
-      StorageService.runStorageServiceSyncJob({ reason: 'onKeysSync' });
-    }
     ev.confirm();
   }
 
@@ -4042,6 +4026,10 @@ async function startApp(): Promise<void> {
     const { confirm } = ev;
     await AttachmentDownloadManager.handleBackfillResponse(ev);
     confirm();
+  }
+  async function onUsernameChangeSync(ev: UsernameChangeSyncEvent) {
+    await keyTransparency.onKnownIdentifierChange('username');
+    ev.confirm();
   }
 }
 

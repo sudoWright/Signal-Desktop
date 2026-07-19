@@ -14,6 +14,9 @@
   "icu:AxoTextField.Clear": {
     "messageformat": "清除"
   },
+  "icu:AxoBadge.MaxOverflow": {
+    "messageformat": "{max,number}+"
+  },
   "icu:AddUserToAnotherGroupModal__title": {
     "messageformat": "新增至群組"
   },
@@ -85,6 +88,9 @@
   },
   "icu:unknownContact": {
     "messageformat": "未知聯絡人"
+  },
+  "icu:deletedAccount": {
+    "messageformat": "刪除帳戶"
   },
   "icu:unknownContactShort": {
     "messageformat": "未知"
@@ -314,6 +320,9 @@
   "icu:LeftPaneChatFolders__ItemUnreadBadge__MaxCount": {
     "messageformat": "{maxCount,number}+"
   },
+  "icu:LeftPaneChatFolders__ItemUnreadBadge__AccessibleLabel": {
+    "messageformat": "{count, plural, one {{count,number} Unread Message} other {{count,number} Unread Messages}}"
+  },
   "icu:LeftPaneChatFolders__Item__ContextMenu__MarkAllRead": {
     "messageformat": "全部標示為已讀"
   },
@@ -449,8 +458,8 @@
   "icu:unpinConversation": {
     "messageformat": "取消釘選聊天"
   },
-  "icu:pinnedConversationsFull": {
-    "messageformat": "你最多只能釘選4個聊天"
+  "icu:pinnedConversations--max": {
+    "messageformat": "{maxPinnedConversations, plural, other {你僅可釘選最多 {maxPinnedConversations,number} 個聊天}}"
   },
   "icu:view": {
     "messageformat": "檢視"
@@ -2261,9 +2270,6 @@
   "icu:partiallySent": {
     "messageformat": "部分傳送，點擊以獲得詳細資訊"
   },
-  "icu:partiallyDeleted": {
-    "messageformat": "部分已刪除，點擊以重試"
-  },
   "icu:partiallyDeleted--clickForDetails": {
     "messageformat": "已部分刪除，點擊以獲得詳細資訊"
   },
@@ -2466,7 +2472,7 @@
     "messageformat": "下載失敗"
   },
   "icu:Toast--unable-download-from-backup-tier": {
-    "messageformat": "Attachment missing from backup CDN"
+    "messageformat": "Attachment missing from backup CDN, please share desktop & primary logs"
   },
   "icu:ToastManager__CannotAddMemberLabel": {
     "messageformat": "只有管理員可以在此群組新增成員標籤。"
@@ -2687,9 +2693,6 @@
   "icu:message--getDescription--gif": {
     "messageformat": "動態圖檔"
   },
-  "icu:message--deletedForEveryone": {
-    "messageformat": "這則訊息已被刪除"
-  },
   "icu:message--deletedByAdmin": {
     "messageformat": "管理員{admin}已刪除此訊息"
   },
@@ -2780,14 +2783,11 @@
   "icu:stickers--toast--InstallFailed": {
     "messageformat": "貼圖包無法安裝"
   },
-  "icu:stickers--StickerManager--Available": {
-    "messageformat": "可使用"
+  "icu:stickers--StickerManager--MyStickers--None": {
+    "messageformat": "沒有貼圖包，請新增貼圖以傳送給朋友。"
   },
-  "icu:stickers--StickerManager--InstalledPacks": {
-    "messageformat": "已安裝"
-  },
-  "icu:stickers--StickerManager--InstalledPacks--Empty": {
-    "messageformat": "未安裝任何貼圖"
+  "icu:stickers--StickerManager--AddStickers": {
+    "messageformat": "新增貼圖"
   },
   "icu:stickers--StickerManager--BlessedPacks": {
     "messageformat": "Signal 藝術家系列"
@@ -2795,14 +2795,17 @@
   "icu:stickers--StickerManager--BlessedPacks--Empty": {
     "messageformat": "沒有可用的 Signal 藝術家系列貼圖"
   },
-  "icu:stickers--StickerManager--ReceivedPacks": {
-    "messageformat": "你收到的貼圖"
+  "icu:stickers--StickerManager--ReceivedPacks2": {
+    "messageformat": "分享給你"
   },
-  "icu:stickers--StickerManager--ReceivedPacks--Empty": {
-    "messageformat": "你收到的貼圖訊息將顯示在這裡"
+  "icu:stickers--StickerManager--ReceivedPacksDescription": {
+    "messageformat": "當你收到他人送的貼圖時，該貼圖包會顯示在此處。"
   },
   "icu:stickers--StickerManager--Install": {
     "messageformat": "安裝"
+  },
+  "icu:stickers--StickerManager--Installed": {
+    "messageformat": "已安裝"
   },
   "icu:stickers--StickerManager--Uninstall": {
     "messageformat": "解除安裝"
@@ -2810,11 +2813,59 @@
   "icu:stickers--StickerManager--UninstallWarning": {
     "messageformat": "如果你不再擁有原始訊息，你將無法重新安裝這套貼圖。"
   },
+  "icu:stickers--StickerManagerHeader--All": {
+    "messageformat": "全部"
+  },
+  "icu:stickers--StickerManagerHeader--MyStickers": {
+    "messageformat": "我的貼圖"
+  },
+  "icu:stickers--StickerManagerPackContextMenu--Add": {
+    "messageformat": "新增"
+  },
+  "icu:stickers--StickerManagerPackContextMenu--Remove": {
+    "messageformat": "移除"
+  },
+  "icu:stickers--StickerManagerPackDragHandle--Label": {
+    "messageformat": "Drag to reorder sticker pack"
+  },
+  "icu:stickers--StickerManagerBlessedPacksList--Label": {
+    "messageformat": "Signal Artist Series sticker packs"
+  },
+  "icu:stickers--StickerManagerReceivedPacksList--Label": {
+    "messageformat": "Received sticker packs"
+  },
+  "icu:stickers--StickerManagerInstalledPacksList--Label": {
+    "messageformat": "Installed sticker packs"
+  },
   "icu:stickers--StickerPreview--Title": {
     "messageformat": "貼圖包"
   },
   "icu:stickers--StickerPreview--Error": {
     "messageformat": "開啟貼圖包錯誤，請檢查你的網路連接並再試一次。"
+  },
+  "icu:stickers--StickerPreview--Install": {
+    "messageformat": "新增貼圖"
+  },
+  "icu:stickers--StickerPreview--Remove": {
+    "messageformat": "移除"
+  },
+  "icu:stickers--StickerPreview--Link": {
+    "messageformat": "連結"
+  },
+  "icu:stickers--StickerPreview--LinkCopied": {
+    "messageformat": "已複製貼圖包連結"
+  },
+  "icu:stickers--StickerPreview--StickerCount": {
+    "messageformat": "{count, plural, other {{count,number} 個貼圖}}"
+  },
+  "icu:stickers--StickerPreview--StickerNoEmojiAriaLabel": {
+    "messageformat": "沒有表情符號的貼圖"
+  },
+  "icu:stickers--StickerPackLinkPreviewDescription": {
+    "messageformat": "由{author}創作的貼圖包"
+  },
+  "icu:stickers--ViewPack": {
+    "messageformat": "檢視貼圖包"
   },
   "icu:FunPicker__Tab--Emojis": {
     "messageformat": "表情"
@@ -3028,6 +3079,18 @@
   },
   "icu:FunButton__Label--StickerPicker": {
     "messageformat": "新增貼圖"
+  },
+  "icu:FunPicker__Label--StickerReply": {
+    "messageformat": "Reply"
+  },
+  "icu:FunPicker__Label--SendStickerReply": {
+    "messageformat": "Send"
+  },
+  "icu:FunPicker__Label--CancelStickerReply": {
+    "messageformat": "Cancel"
+  },
+  "icu:FunPicker__Label--Sticker": {
+    "messageformat": "Sticker"
   },
   "icu:confirmation-dialog--Cancel": {
     "messageformat": "取消"
@@ -4700,9 +4763,6 @@
   "icu:CompositionArea--expand": {
     "messageformat": "擴充"
   },
-  "icu:CompositionArea--attach-file": {
-    "messageformat": "附上檔案"
-  },
   "icu:CompositionArea__AttachMenu__PhotosAndVideos": {
     "messageformat": "相片和影片"
   },
@@ -5153,26 +5213,17 @@
   "icu:SelectModeActions--forwardSelectedMessages": {
     "messageformat": "轉寄已選擇的訊息"
   },
-  "icu:DeleteMessagesModal--title": {
-    "messageformat": "{count, plural, other {刪除 {count,number} 則訊息嗎？}}"
-  },
   "icu:DeleteMessagesModal--title-2": {
     "messageformat": "{count, plural, other {要刪除選取的 {count,number} 則訊息嗎？}}"
   },
   "icu:DeleteMessagesModal--description": {
     "messageformat": "{count, plural, other {你想對誰刪除這些訊息？}}"
   },
-  "icu:DeleteMessagesModal--description--noteToSelf": {
-    "messageformat": "{count, plural, other {你想從哪些裝置刪除這些訊息？}}"
-  },
   "icu:DeleteMessagesModal--description--noteToSelf--deleteSync": {
     "messageformat": "{count, plural, other {這些訊息將會從你所有裝置中永久刪除。}}"
   },
   "icu:DeleteMessagesModal--deleteForMe": {
     "messageformat": "為我刪除"
-  },
-  "icu:DeleteMessagesModal--deleteFromThisDevice": {
-    "messageformat": "從此裝置刪除"
   },
   "icu:DeleteMessagesModal--deleteForEveryone": {
     "messageformat": "為大家刪除"
@@ -5186,9 +5237,6 @@
   },
   "icu:DeleteMessagesModal--adminDeleteConfirmation--description__rollout": {
     "messageformat": "{count, plural, other {使用 Signal 最新版本的群組成員將會看到你已刪除這些訊息。}}"
-  },
-  "icu:DeleteMessagesModal--deleteFromAllDevices": {
-    "messageformat": "從所有裝置中刪除"
   },
   "icu:DeleteMessagesModal--noteToSelf--deleteSync": {
     "messageformat": "刪除"
@@ -6397,11 +6445,26 @@
   "icu:Preferences--local-backups-enter-backup-key": {
     "messageformat": "輸入金鑰"
   },
-  "icu:Preferences--local-backups-record-recovery-key": {
-    "messageformat": "記錄你的恢復金鑰"
+  "icu:Preferences--local-backups-recovery-key--title": {
+    "messageformat": "你的恢復金鑰"
   },
-  "icu:Preferences--local-backups-record-backup-key-description": {
-    "messageformat": "需要此金鑰才能恢復你的帳戶和資料。將此金鑰存放在安全的地方。如果你將其遺失，你將會無法恢復帳戶。 <learnMoreLink>了解更多。</learnMoreLink>"
+  "icu:Preferences--local-backups-recovery-key--description": {
+    "messageformat": "需要此金鑰才能恢復你的帳戶和資料。將它存放在安全可靠的地方，並且不要與任何人分享。Signal 絕不會透過訊息向你索取恢復金鑰。<learnMoreLink>了解更多。</learnMoreLink>"
+  },
+  "icu:Preferences__recovery-key__do-not-share-title": {
+    "messageformat": "切勿分享恢復金鑰"
+  },
+  "icu:Preferences__recovery-key__do-not-share-confirm": {
+    "messageformat": "收到"
+  },
+  "icu:CompositionInput__recovery-key-paste__share-key": {
+    "messageformat": "分享金鑰"
+  },
+  "icu:CompositionInput__recovery-key-paste__do-not-share-key": {
+    "messageformat": "切勿分享金鑰"
+  },
+  "icu:CompositionInput__recovery-key-warning--description": {
+    "messageformat": "請勿與任何人分享你的恢復金鑰。這樣會讓他們盜用你的帳戶。<strong>Signal 絕不會透過訊息</strong>向你索取恢復金鑰。切勿回覆任何假冒 Signal 的聊天訊息。<learnMoreLink>了解更多。</learnMoreLink>"
   },
   "icu:Preferences--local-backups-confirm-recovery-key": {
     "messageformat": "確認你的恢復金鑰"
@@ -6465,6 +6528,9 @@
   },
   "icu:Preferences__local-backups-auth-error--unauthorized": {
     "messageformat": "此操作無法完成，因為系統驗證失敗。請再試一次或在你的行動裝置上開啟 Signal 應用程式，然後前往「備份設定」去檢視你的恢復金鑰。"
+  },
+  "icu:Preferences__local-backups-auth-error--unknown-error": {
+    "messageformat": "在為此操作請求系統驗證時發生錯誤。"
   },
   "icu:Preferences__view-key": {
     "messageformat": "檢視金鑰"
@@ -6631,6 +6697,12 @@
   "icu:DialogUpdate__downloaded": {
     "messageformat": "更新已下載"
   },
+  "icu:DialogUpdate__upgrade-mas": {
+    "messageformat": "點擊前往 App Store"
+  },
+  "icu:DialogExpiredBuild__upgrade-mas": {
+    "messageformat": "點擊前往 App Store"
+  },
   "icu:CriticalIdlePrimaryDevice__title": {
     "messageformat": "在手機上開啟 Signal"
   },
@@ -6669,6 +6741,405 @@
   },
   "icu:InstallScreenUpdateDialog--cannot-update__body": {
     "messageformat": "Signal 桌面無法更新，但有一個新版本可供使用。前往 {downloadUrl} 並手動安裝新版本，然後聯絡支援或提交有關此問題的程式錯誤。"
+  },
+  "icu:StandaloneRegistration--signal-logo": {
+    "messageformat": "Signal 標誌"
+  },
+  "icu:StandaloneRegistration--back": {
+    "messageformat": "返回"
+  },
+  "icu:StandaloneRegistration--PhoneNumber--header": {
+    "messageformat": "電話號碼"
+  },
+  "icu:StandaloneRegistration--PhoneNumber--description--line-1": {
+    "messageformat": "輸入你的電話號碼以驗證你的帳戶。"
+  },
+  "icu:StandaloneRegistration--PhoneNumber--description--line-2": {
+    "messageformat": "電訊商可能收取費用。"
+  },
+  "icu:StandaloneRegistration--PhoneNumber--waiting": {
+    "messageformat": "請在 {duration}後再試"
+  },
+  "icu:StandaloneRegistration--PhoneNumber--placeholder": {
+    "messageformat": "電話號碼"
+  },
+  "icu:StandaloneRegistration--PhoneNumber--button": {
+    "messageformat": "繼續"
+  },
+  "icu:StandaloneRegistration--PhoneNumber--Confirmation--description": {
+    "messageformat": "上述電話號碼是否正確？"
+  },
+  "icu:StandaloneRegistration--PhoneNumber--Confirmation--cancel": {
+    "messageformat": "輸入號碼"
+  },
+  "icu:StandaloneRegistration--PhoneNumber--Confirmation--confirm": {
+    "messageformat": "是"
+  },
+  "icu:StandaloneRegistration--Captcha--header": {
+    "messageformat": "請驗證你是真人以繼續"
+  },
+  "icu:StandaloneRegistration--Captcha--description": {
+    "messageformat": "為了協助防止 Signal 上的垃圾訊息，請完成驗證。驗證後，你可以繼續註冊。"
+  },
+  "icu:StandaloneRegistration--Captcha--retry-button": {
+    "messageformat": "重試驗證"
+  },
+  "icu:StandaloneRegistration--Captcha--button": {
+    "messageformat": "在瀏覽器驗證"
+  },
+  "icu:StandaloneRegistration--Captcha--button--wait": {
+    "messageformat": "{duration}後驗證"
+  },
+  "icu:StandaloneRegistration--Captcha--NeedAnother--header": {
+    "messageformat": "需要進一步驗證"
+  },
+  "icu:StandaloneRegistration--Captcha--NeedAnother--description": {
+    "messageformat": "請再完成一個「我不是機械人」驗證以繼續註冊。"
+  },
+  "icu:StandaloneRegistration--Captcha--NeedAnother--cancel": {
+    "messageformat": "取消"
+  },
+  "icu:StandaloneRegistration--Captcha--NeedAnother--retry": {
+    "messageformat": "重試驗證"
+  },
+  "icu:StandaloneRegistration--Captcha--MustWait--aria-title": {
+    "messageformat": "請稍後再試"
+  },
+  "icu:StandaloneRegistration--Captcha--MustWait--line-1": {
+    "messageformat": "目前無法完成驗證。"
+  },
+  "icu:StandaloneRegistration--Captcha--MustWait--line-2": {
+    "messageformat": "請在 {duration} 後再試"
+  },
+  "icu:StandaloneRegistration--Captcha--MustWait--button": {
+    "messageformat": "好"
+  },
+  "icu:StandaloneRegistration--Captcha--Error--header": {
+    "messageformat": "驗證錯誤"
+  },
+  "icu:StandaloneRegistration--Captcha--Error--description": {
+    "messageformat": "請嘗試再次驗證，以繼續註冊。"
+  },
+  "icu:StandaloneRegistration--Captcha--Error--try-again": {
+    "messageformat": "再試一次"
+  },
+  "icu:StandaloneRegistration--Captcha--Error--cancel": {
+    "messageformat": "取消"
+  },
+  "icu:StandaloneRegistration--VerificationCode--header": {
+    "messageformat": "驗證碼"
+  },
+  "icu:StandaloneRegistration--VerificationCode--description": {
+    "messageformat": "輸入我們傳送給 {phoneNumber} 的驗證碼"
+  },
+  "icu:StandaloneRegistration--VerificationCode--button": {
+    "messageformat": "繼續"
+  },
+  "icu:StandaloneRegistration--VerificationCode--send-sms": {
+    "messageformat": "重新傳送認證碼"
+  },
+  "icu:StandaloneRegistration--VerificationCode--send-sms--duration": {
+    "messageformat": "在{duration}之後重新傳送代碼"
+  },
+  "icu:StandaloneRegistration--VerificationCode--call-me": {
+    "messageformat": "打電話給我"
+  },
+  "icu:StandaloneRegistration--VerificationCode--call-me--duration": {
+    "messageformat": "在{duration} 後打電話給我"
+  },
+  "icu:StandaloneRegistration--VerificationCode--wrong-number": {
+    "messageformat": "錯誤的號碼？"
+  },
+  "icu:StandaloneRegistration--VerificationCode--having-trouble": {
+    "messageformat": "註冊時遇到困難？"
+  },
+  "icu:StandaloneRegistration--VerificationCode--IncorrectCode--aria-title": {
+    "messageformat": "錯誤編號"
+  },
+  "icu:StandaloneRegistration--VerificationCode--IncorrectCode--description": {
+    "messageformat": "你輸入的驗證碼不正確。請檢查 6 位數的驗證碼，然後再試一次。"
+  },
+  "icu:StandaloneRegistration--VerificationCode--IncorrectCode--button": {
+    "messageformat": "好"
+  },
+  "icu:StandaloneRegistration--VerificationCode--CodeInvalid--aria-title": {
+    "messageformat": "代碼無效"
+  },
+  "icu:StandaloneRegistration--VerificationCode--CodeInvalid--description": {
+    "messageformat": "你輸入的驗證碼無效。請重新傳送驗證碼，然後再試一次。"
+  },
+  "icu:StandaloneRegistration--VerificationCode--CodeInvalid--resend-button": {
+    "messageformat": "重新傳送認證碼"
+  },
+  "icu:StandaloneRegistration--VerificationCode--CodeInvalid--edit-number-button": {
+    "messageformat": "輸入號碼"
+  },
+  "icu:StandaloneRegistration--VerificationCode--SMSFailed--aria-title": {
+    "messageformat": "無法傳送 SMS 短訊"
+  },
+  "icu:StandaloneRegistration--VerificationCode--SMSFailed--description": {
+    "messageformat": "我們無法透過 SMS 短訊傳送驗證碼給你。請嘗試透過語音通話接收驗證碼。"
+  },
+  "icu:StandaloneRegistration--VerificationCode--SMSFailed--confirm": {
+    "messageformat": "語音通話"
+  },
+  "icu:StandaloneRegistration--VerificationCode--SMSFailed--cancel": {
+    "messageformat": "取消"
+  },
+  "icu:StandaloneRegistration--VerificationCode--MustWait--aria-title": {
+    "messageformat": "請稍後再試"
+  },
+  "icu:StandaloneRegistration--VerificationCode--MustWait--description": {
+    "messageformat": "你已多次嘗試輸入驗證碼，請在 {duration} 後再試。"
+  },
+  "icu:StandaloneRegistration--VerificationCode--MustWait--button": {
+    "messageformat": "好"
+  },
+  "icu:StandaloneRegistration--VerificationCode--MaximumAttempts--aria-title": {
+    "messageformat": "您已重複嘗試太多次"
+  },
+  "icu:StandaloneRegistration--VerificationCode--MaximumAttempts--description": {
+    "messageformat": "你已多次嘗試輸入驗證碼，請重新傳送驗證碼，然後再試一次。"
+  },
+  "icu:StandaloneRegistration--VerificationCode--MaximumAttempts--resend-button": {
+    "messageformat": "重新傳送認證碼"
+  },
+  "icu:StandaloneRegistration--VerificationCode--MaximumAttempts--edit-number-button": {
+    "messageformat": "輸入號碼"
+  },
+  "icu:StandaloneRegistration--VerificationCode--FailedToCall--aria-title": {
+    "messageformat": "無法致電"
+  },
+  "icu:StandaloneRegistration--VerificationCode--FailedToCall--description": {
+    "messageformat": "我們無法打通你輸入的電話號碼。請確認電話號碼正確，然後再試。"
+  },
+  "icu:StandaloneRegistration--VerificationCode--FailedToCall--ok-button": {
+    "messageformat": "好"
+  },
+  "icu:StandaloneRegistration--VerificationCode--CannotSendCodePermanent--aria-title": {
+    "messageformat": "無法發送驗證碼"
+  },
+  "icu:StandaloneRegistration--VerificationCode--CannotSendCodePermanent--description": {
+    "messageformat": "無法將驗證碼發送至你輸入的電話號碼。請確認你輸入的號碼正確，或嘗試輸入其他號碼。"
+  },
+  "icu:StandaloneRegistration--VerificationCode--CannotSendCodePermanent--ok-button": {
+    "messageformat": "好"
+  },
+  "icu:StandaloneRegistration--VerificationCode--CannotSendCodeTemporary--aria-title": {
+    "messageformat": "請稍後再試"
+  },
+  "icu:StandaloneRegistration--VerificationCode--CannotSendCodeTemporary--description": {
+    "messageformat": "發生錯誤，無法發送驗證碼。請在 {duration} 後再試。"
+  },
+  "icu:StandaloneRegistration--VerificationCode--CannotSendCodeTemporary--ok-button": {
+    "messageformat": "好"
+  },
+  "icu:StandaloneRegistration--ProfileEntry--header": {
+    "messageformat": "設定你的資訊"
+  },
+  "icu:StandaloneRegistration--ProfileEntry--description": {
+    "messageformat": "與你收發訊息的使用者、聯絡人和群組將會看到你的個人檔案。"
+  },
+  "icu:StandaloneRegistration--ProfileEntry--learn-more": {
+    "messageformat": "了解更多"
+  },
+  "icu:StandaloneRegistration--ProfileEntry--add-photo": {
+    "messageformat": "新增照片"
+  },
+  "icu:StandaloneRegistration--ProfileEntry--first-name": {
+    "messageformat": "名字 (必填)"
+  },
+  "icu:StandaloneRegistration--ProfileEntry--last-name": {
+    "messageformat": "姓氏 (選用)"
+  },
+  "icu:StandaloneRegistration--ProfileEntry--discoverability": {
+    "messageformat": "誰可以透過電話號碼找到我"
+  },
+  "icu:StandaloneRegistration--ProfileEntry--discoverability--change-button": {
+    "messageformat": "更改"
+  },
+  "icu:StandaloneRegistration--ProfileEntry--discoverability--done-button": {
+    "messageformat": "完成"
+  },
+  "icu:StandaloneRegistration--ProfileEntry--continue": {
+    "messageformat": "繼續"
+  },
+  "icu:StandaloneRegistration--ProfileEntry--AvatarModal--header": {
+    "messageformat": "你的頭像"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--header": {
+    "messageformat": "輸入你的 PIN 碼"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--description": {
+    "messageformat": "輸入你為帳戶建立的 PIN 碼。這與你的 SMS 驗證碼不同。<needHelp>需要幫助嗎？</needHelp>"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--placeholder": {
+    "messageformat": "輸入你的 PIN 碼"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--incorrect-pin": {
+    "messageformat": "PIN 碼不正確"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--incorrect-pin--with-count": {
+    "messageformat": "{triesRemaining, plural, other {PIN碼錯誤。剩下{triesRemaining,number}次嘗試次數。}}"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--NeedHelp--header": {
+    "messageformat": "需要幫助嗎？"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--NeedHelp--description--no-reglock": {
+    "messageformat": "PIN 碼是由你建立的 4 位數以上密碼，可以是數字或字母數字混合。如果你忘記 PIN 碼，可以建立一個新的 PIN 碼。你可註冊並使用你的帳戶，但你將會遺失部分已儲存的設定，如你的個人檔案資訊。<learnMore>了解更多</learnMore>。"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--NeedHelp--description--reglock": {
+    "messageformat": "PIN 碼是由你建立的 4 位數以上密碼，可以是數字或字母數字混合。如果忘記了你的 PIN 碼，須等待 7 天才能重新註冊你的帳戶。<learnMore>了解更多</learnMore>。"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--NeedHelp--skip-button--no-reglock": {
+    "messageformat": "略過即建立新的 PIN 碼"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--NeedHelp--contact-support-button": {
+    "messageformat": "聯絡支援"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--NeedHelp--cancel": {
+    "messageformat": "取消"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--FewRemainingTries--header": {
+    "messageformat": "錯誤的 PIN 碼"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--FewRemainingTries--description--no-reglock": {
+    "messageformat": "{triesRemaining, plural, other {你尚餘 {triesRemaining,number} 次嘗試機會。如果你用光了嘗試機會，可建立一個新的 PIN 碼。你可註冊並使用你的帳戶，但你將會遺失部分已儲存的設定，如你的個人檔案資訊。<learnMore>了解更多</learnMore>。}}"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--FewRemainingTries--description--reglock": {
+    "messageformat": "{triesRemaining, plural, other {你尚餘 {triesRemaining,number} 次嘗試機會。如果你用光了嘗試機會，你的帳戶會被鎖定 7 天。閒置 7 天後，你無需使用 PIN 碼便能重新註冊，但所有內容將會被刪除。<learnMore>了解更多</learnMore>。}}"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--FewRemainingTries--button": {
+    "messageformat": "好"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--NoRemainingTries--header": {
+    "messageformat": "錯誤的 PIN 碼"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--NoRemainingTries--description": {
+    "messageformat": "您已達到 PIN 碼最大嘗試次數，您仍可設定一組新的 PIN 碼來使用，但為了維護隱私和安全，舊有的個人資訊和設定將不會被回復。"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--NoRemainingTries--create-new-pin": {
+    "messageformat": "建立新的 PIN 碼"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--NoRemainingTries--learn-more": {
+    "messageformat": "了解更多有關 PIN 碼"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--menu--skip-pin": {
+    "messageformat": "跳過 PIN 碼"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--SkipPIN--header": {
+    "messageformat": "略過 PIN 碼輸入嗎？"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--SkipPIN--description": {
+    "messageformat": "如果你忘記 PIN 碼，可以建立一個新的 PIN 碼。你可註冊並使用你的帳戶，但你將會遺失部分已儲存的設定，如你的個人檔案資訊。學習更多。"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--SkipPIN--skip-button": {
+    "messageformat": "略過即建立新的 PIN 碼"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--SkipPIN--cancel-button": {
+    "messageformat": "取消"
+  },
+  "icu:StandaloneRegistration--CreatePIN--header": {
+    "messageformat": "建立你的 PIN 碼"
+  },
+  "icu:StandaloneRegistration--CreatePIN--description": {
+    "messageformat": "PIN 碼可協助你還原帳戶，並確保 Signal 內的資料安全加密。 <learnMore>了解更多</learnMore>"
+  },
+  "icu:StandaloneRegistration--CreatePIN--placeholder": {
+    "messageformat": "建立你的 PIN 碼"
+  },
+  "icu:StandaloneRegistration--CreatePIN--helper-text": {
+    "messageformat": "PIN瑪必須至少 4 個字元"
+  },
+  "icu:StandaloneRegistration--CreatePIN--continue": {
+    "messageformat": "繼續"
+  },
+  "icu:StandaloneRegistration--CreatePIN--open-menu": {
+    "messageformat": "開啟選單"
+  },
+  "icu:StandaloneRegistration--CreatePIN--menu--more-about": {
+    "messageformat": "更多 PIN 碼資訊"
+  },
+  "icu:StandaloneRegistration--CreatePIN--menu--disable": {
+    "messageformat": "停用 PIN 碼"
+  },
+  "icu:StandaloneRegistration--CreatePIN--DisableWarning--header": {
+    "messageformat": "警告"
+  },
+  "icu:StandaloneRegistration--CreatePIN--DisableWarning--description": {
+    "messageformat": "如果你停用PIN碼功能，你將失去所有的資料當重新註冊 Signal 的時候，除非你是從其他的 iOS 裝置轉移過來。 你停用PIN碼功能時無法啟用註冊鎖。"
+  },
+  "icu:StandaloneRegistration--CreatePIN--DisableWarning--disable-button": {
+    "messageformat": "停用 PIN 碼"
+  },
+  "icu:StandaloneRegistration--CreatePIN--DisableWarning--cancel": {
+    "messageformat": "取消"
+  },
+  "icu:StandaloneRegistration--CreatePIN--AboutPINs--header": {
+    "messageformat": "關於 Signal PIN 碼"
+  },
+  "icu:StandaloneRegistration--CreatePIN--AboutPINs--description": {
+    "messageformat": "PIN 碼讓在 Signal 中的資訊得以加密保存並僅供你存取。當你重新安裝時，你的個人資料、設定和聯絡人將會還原。"
+  },
+  "icu:StandaloneRegistration--CreatePIN--AboutPINs--learn-more-button": {
+    "messageformat": "了解更多"
+  },
+  "icu:StandaloneRegistration--CreatePIN--AboutPINs--ok-button": {
+    "messageformat": "好"
+  },
+  "icu:StandaloneRegistration--CreatePIN--confirming--header": {
+    "messageformat": "確認你的 PIN碼"
+  },
+  "icu:StandaloneRegistration--CreatePIN--confirming--description": {
+    "messageformat": "請重新輸入你剛建立的 PIN 碼。"
+  },
+  "icu:StandaloneRegistration--CreatePIN--confirming--placeholder": {
+    "messageformat": "輸入你的 PIN 碼"
+  },
+  "icu:StandaloneRegistration--AccountLocked--header": {
+    "messageformat": "帳號已被鎖定"
+  },
+  "icu:StandaloneRegistration--AccountLocked--description": {
+    "messageformat": "你的帳戶已被鎖定，以保護你的隱私和安全。在你的帳戶閒置 7 天後，你將可重新註冊此電話號碼，而無須使用你的 PIN 碼。但所有內容將會被刪除。"
+  },
+  "icu:StandaloneRegistration--AccountLocked--start-over-button": {
+    "messageformat": "使用不同的電話號碼"
+  },
+  "icu:StandaloneRegistration--AccountLocked--help-button": {
+    "messageformat": "了解有關帳戶鎖定的資訊"
+  },
+  "icu:StandaloneRegistration--UpdateRequired--header": {
+    "messageformat": "必須更新"
+  },
+  "icu:StandaloneRegistration--UpdateRequired--description": {
+    "messageformat": "如要繼續註冊，請更新至最新版本的 Signal。"
+  },
+  "icu:StandaloneRegistration--UpdateRequired--update": {
+    "messageformat": "更新"
+  },
+  "icu:StandaloneRegistration--UpdateRequired--cancel": {
+    "messageformat": "取消"
+  },
+  "icu:StandaloneRegistration--ConnectionProblem--header": {
+    "messageformat": "請檢查你的網絡連線"
+  },
+  "icu:StandaloneRegistration--ConnectionProblem--description": {
+    "messageformat": "如要繼續，請檢查你的電腦網絡連線，然後重試。"
+  },
+  "icu:StandaloneRegistration--ConnectionProblem--button": {
+    "messageformat": "好"
+  },
+  "icu:StandaloneRegistration--UnexpectedError--header": {
+    "messageformat": "無法完成註冊"
+  },
+  "icu:StandaloneRegistration--UnexpectedError--description": {
+    "messageformat": "發生錯誤，無法完成註冊。如果問題持續，請聯絡支援團隊。"
+  },
+  "icu:StandaloneRegistration--UnexpectedError--try-again-button": {
+    "messageformat": "再試一次"
+  },
+  "icu:StandaloneRegistration--UnexpectedError--contact-support-button": {
+    "messageformat": "聯絡支援"
   },
   "icu:NSIS__retry-dialog--first-line": {
     "messageformat": "Signal 無法關閉。",
@@ -6915,15 +7386,6 @@
   },
   "icu:SignalConnectionsModal__footer": {
     "messageformat": "除非你選擇隱藏，否則你的聯絡人能看到你的名稱、照片和「我的限時動態」貼文"
-  },
-  "icu:LocalDeleteWarningModal__header": {
-    "messageformat": "在你的裝置上同步刪除"
-  },
-  "icu:LocalDeleteWarningModal__description": {
-    "messageformat": "當你刪除訊息或聊天時，它們將從你所有裝置中刪除。"
-  },
-  "icu:LocalDeleteWarningModal__confirm": {
-    "messageformat": "收到"
   },
   "icu:Stories__title": {
     "messageformat": "限時動態"
@@ -7478,9 +7940,6 @@
   "icu:DraftGifMessageSendModal__SendButtonLabel": {
     "messageformat": "傳送"
   },
-  "icu:DraftGifMessageSendModal__CancelButtonLabel": {
-    "messageformat": "取消"
-  },
   "icu:EditHistoryMessagesModal__title": {
     "messageformat": "編輯歷史記錄"
   },
@@ -7759,9 +8218,6 @@
   },
   "icu:PreferencesDonations__privacy-modal-title": {
     "messageformat": "你的資料已保密"
-  },
-  "icu:PreferencesDonations__privacy-modal-content": {
-    "messageformat": "<paragraph>當你捐款時，Signal 不會收集或儲存任何個人資料。</paragraph><paragraph>我們使用 Stripe 作為接收捐款的付款處理商。我們不會存取、保存或儲存你向他們提供的任何資料。</paragraph><paragraph>Signal 不會也無法將你的捐款連結到你的 Signal 帳戶。</paragraph><paragraph>感謝你的支持！</paragraph>"
   },
   "icu:PreferencesDonations__privacy-modal-intro": {
     "messageformat": "作為一個獨立的非營利組織， Signal 致力於提供私密訊息和通話。無廣告、無追蹤、無監控。請立即捐款支持 Signal。"
@@ -8205,10 +8661,16 @@
     "messageformat": "細微的調整、問題修復和效能改善。感謝各位使用 Signal！",
     "ignoreUnused": true
   },
-  "icu:WhatsNew__8.12--0": {
-    "messageformat": "你可以在群組通話中用右手點擊舉手圖示。現在你還可以選擇用左手使用新的鍵盤快捷鍵（Shift-H）。"
+  "icu:WhatsNew__8.18--0": {
+    "messageformat": "現在你可以在個人聊天中建立投票了。為你那位優柔寡斷的朋友打造一份精心設計的選項清單，或者建立「你喜歡我嗎？是／否／也許」的投票，重拾向心儀對象傳紙條的情懷。"
   },
-  "icu:WhatsNew__8.13--0": {
-    "messageformat": "The new raised-hand indicators are now also displayed in the list of raised hands during group calls. It's a second-hand place to figure out who you should hand it over to when you're done speaking."
+  "icu:WhatsNew__8.19--0": {
+    "messageformat": "群組管理員現在可以透過群組設定中的新選項「解散群組」，讓聊天自然結束。解散群組可避免群組成員發送訊息或發起通話，同時邀請功能也會被停用。現在，你可以在開始籌備新一期的串珠手作聚會之前，先解散上期的聚會群組，這樣就能確保大家都能跟上正確的訊息串。"
+  },
+  "icu:WhatsNew__8.20--0": {
+    "messageformat": "Introducing disappearing call events: Missed, outgoing, and received calls that occur after you install this update will now automatically disappear in any chat where disappearing messages are enabled."
+  },
+  "icu:WhatsNew__8.20--1": {
+    "messageformat": "Now you can reorder installed sticker packs so your new favorites don’t get stuck in the back of the line."
   }
 }

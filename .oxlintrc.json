@@ -1704,6 +1704,7 @@
         "danger/**",
         "scripts/**",
         "test/test.m",
+        ".pnpmfile.mjs",
         ".babelrc.mjs",
         ".prettierrc.mjs",
         ".storybook/main.ts",
@@ -1762,9 +1763,13 @@
         ".storybook/**",
         "codemods/**",
         "danger/**",
-        "packages/**",
+        "packages/types/tsdown.config.mjs",
+        "packages/lame/**",
+        "packages/mute-state-change/**",
+        "packages/windows-ucv/**",
         "scripts/**",
         "test/test.mjs",
+        ".pnpmfile.mjs",
         ".babelrc.mjs",
         ".prettierrc.mjs",
         ".stylelintrc.mjs",
@@ -1776,6 +1781,15 @@
       ],
       "rules": {
         "signal-desktop/enforce-file-suffix": "off"
+      }
+    },
+    {
+      "files": ["packages/windows-ucv/**"],
+      "env": { "node": true },
+      "globals": {
+        "window": "readonly",
+        "process": "readonly",
+        "Buffer": "readonly"
       }
     },
     {

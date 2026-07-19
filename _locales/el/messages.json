@@ -14,6 +14,9 @@
   "icu:AxoTextField.Clear": {
     "messageformat": "Εκκαθάριση"
   },
+  "icu:AxoBadge.MaxOverflow": {
+    "messageformat": "{max,number}+"
+  },
   "icu:AddUserToAnotherGroupModal__title": {
     "messageformat": "Προσθήκη σε μια ομάδα"
   },
@@ -85,6 +88,9 @@
   },
   "icu:unknownContact": {
     "messageformat": "Άγνωστη επαφή"
+  },
+  "icu:deletedAccount": {
+    "messageformat": "Διαγραμμένος λογαριασμός"
   },
   "icu:unknownContactShort": {
     "messageformat": "Άγνωστο"
@@ -314,6 +320,9 @@
   "icu:LeftPaneChatFolders__ItemUnreadBadge__MaxCount": {
     "messageformat": "{maxCount,number}+"
   },
+  "icu:LeftPaneChatFolders__ItemUnreadBadge__AccessibleLabel": {
+    "messageformat": "{count, plural, one {{count,number} Unread Message} other {{count,number} Unread Messages}}"
+  },
   "icu:LeftPaneChatFolders__Item__ContextMenu__MarkAllRead": {
     "messageformat": "Σημείωση όλων ως αναγνωσμένα"
   },
@@ -449,8 +458,8 @@
   "icu:unpinConversation": {
     "messageformat": "Κατάργηση καρφιτσώματος"
   },
-  "icu:pinnedConversationsFull": {
-    "messageformat": "Μπορείς να καρφιτσώσεις μέχρι 4 συνομιλίες"
+  "icu:pinnedConversations--max": {
+    "messageformat": "{maxPinnedConversations, plural, one {Μπορείς να καρφιτσώσεις έως {maxPinnedConversations,number} συνομιλία} other {Μπορείς να καρφιτσώσεις έως {maxPinnedConversations,number} συνομιλίες}}"
   },
   "icu:view": {
     "messageformat": "Εμφάνιση"
@@ -2261,9 +2270,6 @@
   "icu:partiallySent": {
     "messageformat": "Στάλθηκε εν μέρει, κλικ για λεπτομέρειες"
   },
-  "icu:partiallyDeleted": {
-    "messageformat": "Διαγράφηκε εν μέρει, πάτα για επανάληψη"
-  },
   "icu:partiallyDeleted--clickForDetails": {
     "messageformat": "Διαγράφηκε μερικώς, πάτα για λεπτομέρειες"
   },
@@ -2466,7 +2472,7 @@
     "messageformat": "Η λήψη απέτυχε"
   },
   "icu:Toast--unable-download-from-backup-tier": {
-    "messageformat": "Attachment missing from backup CDN"
+    "messageformat": "Attachment missing from backup CDN, please share desktop & primary logs"
   },
   "icu:ToastManager__CannotAddMemberLabel": {
     "messageformat": "Μόνο οι διαχειριστές μπορούν να προσθέσουν ετικέτες μελών σε αυτήν την ομάδα."
@@ -2687,9 +2693,6 @@
   "icu:message--getDescription--gif": {
     "messageformat": "GIF"
   },
-  "icu:message--deletedForEveryone": {
-    "messageformat": "Αυτό το μήνυμα διαγράφτηκε."
-  },
   "icu:message--deletedByAdmin": {
     "messageformat": "Ο διαχειριστής {admin} διέγραψε αυτό το μήνυμα"
   },
@@ -2780,14 +2783,11 @@
   "icu:stickers--toast--InstallFailed": {
     "messageformat": "Το πακέτο αυτοκολλήτων δεν μπόρεσε να εγκατασταθεί"
   },
-  "icu:stickers--StickerManager--Available": {
-    "messageformat": "Διαθέσιμο"
+  "icu:stickers--StickerManager--MyStickers--None": {
+    "messageformat": "Δεν υπάρχουν πακέτα αυτοκόλλητων, πρόσθεσε αυτοκόλλητα για να τα στείλεις στους φίλους σου."
   },
-  "icu:stickers--StickerManager--InstalledPacks": {
-    "messageformat": "Έχει εγκατασταθεί"
-  },
-  "icu:stickers--StickerManager--InstalledPacks--Empty": {
-    "messageformat": "Δεν υπάρχουν εγκατεστημένα αυτοκόλλητα"
+  "icu:stickers--StickerManager--AddStickers": {
+    "messageformat": "Προσθήκη αυτοκόλλητων"
   },
   "icu:stickers--StickerManager--BlessedPacks": {
     "messageformat": "Σειρά καλλιτεχνών Signal"
@@ -2795,14 +2795,17 @@
   "icu:stickers--StickerManager--BlessedPacks--Empty": {
     "messageformat": "Δεν υπάρχουν αυτοκόλλητα καλλιτεχνών διαθέσιμα"
   },
-  "icu:stickers--StickerManager--ReceivedPacks": {
-    "messageformat": "Αυτοκόλλητα που έχεις λάβει"
+  "icu:stickers--StickerManager--ReceivedPacks2": {
+    "messageformat": "Κοινοποιήθηκαν σε σένα"
   },
-  "icu:stickers--StickerManager--ReceivedPacks--Empty": {
-    "messageformat": "Αυτοκόλλητα από εισερχόμενα μηνύματα θα εμφανίζονται εδώ"
+  "icu:stickers--StickerManager--ReceivedPacksDescription": {
+    "messageformat": "Όταν λάβεις ένα αυτοκόλλητο από κάποιον, το πακέτο αυτοκόλλητων θα εμφανιστεί εδώ."
   },
   "icu:stickers--StickerManager--Install": {
     "messageformat": "Εγκατάσταση"
+  },
+  "icu:stickers--StickerManager--Installed": {
+    "messageformat": "Έχει εγκατασταθεί"
   },
   "icu:stickers--StickerManager--Uninstall": {
     "messageformat": "Απεγκατάσταση"
@@ -2810,11 +2813,59 @@
   "icu:stickers--StickerManager--UninstallWarning": {
     "messageformat": "Ίσως να μη μπορέσεις να επανεγκαταστήσεις αυτό το πακέτο αυτοκολλήτων αν δεν έχεις πια το αρχικό μήνυμα."
   },
+  "icu:stickers--StickerManagerHeader--All": {
+    "messageformat": "Όλα"
+  },
+  "icu:stickers--StickerManagerHeader--MyStickers": {
+    "messageformat": "Τα αυτοκόλλητά μου"
+  },
+  "icu:stickers--StickerManagerPackContextMenu--Add": {
+    "messageformat": "Προσθήκη"
+  },
+  "icu:stickers--StickerManagerPackContextMenu--Remove": {
+    "messageformat": "Αφαίρεση"
+  },
+  "icu:stickers--StickerManagerPackDragHandle--Label": {
+    "messageformat": "Drag to reorder sticker pack"
+  },
+  "icu:stickers--StickerManagerBlessedPacksList--Label": {
+    "messageformat": "Signal Artist Series sticker packs"
+  },
+  "icu:stickers--StickerManagerReceivedPacksList--Label": {
+    "messageformat": "Received sticker packs"
+  },
+  "icu:stickers--StickerManagerInstalledPacksList--Label": {
+    "messageformat": "Installed sticker packs"
+  },
   "icu:stickers--StickerPreview--Title": {
     "messageformat": "Πακέτο αυτοκολλήτων"
   },
   "icu:stickers--StickerPreview--Error": {
     "messageformat": "Σφάλμα κατά το άνοιγμα του πακέτου αυτοκολλήτων. Έλεγξε τη σύνδεση στο διαδίκτυο και ξαναπροσπάθησε."
+  },
+  "icu:stickers--StickerPreview--Install": {
+    "messageformat": "Προσθήκη αυτοκόλλητων"
+  },
+  "icu:stickers--StickerPreview--Remove": {
+    "messageformat": "Αφαίρεση"
+  },
+  "icu:stickers--StickerPreview--Link": {
+    "messageformat": "Σύνδεσμος"
+  },
+  "icu:stickers--StickerPreview--LinkCopied": {
+    "messageformat": "Ο σύνδεσμος αντιγράφτηκε"
+  },
+  "icu:stickers--StickerPreview--StickerCount": {
+    "messageformat": "{count, plural, one {{count,number} αυτοκόλλητο} other {{count,number} αυτοκόλλητα}}"
+  },
+  "icu:stickers--StickerPreview--StickerNoEmojiAriaLabel": {
+    "messageformat": "Αυτοκόλλητο χωρίς emoji"
+  },
+  "icu:stickers--StickerPackLinkPreviewDescription": {
+    "messageformat": "Πακέτο αυτοκόλλητων από τον χρήστη {author}"
+  },
+  "icu:stickers--ViewPack": {
+    "messageformat": "Προβολή πακέτου"
   },
   "icu:FunPicker__Tab--Emojis": {
     "messageformat": "Emoji"
@@ -3028,6 +3079,18 @@
   },
   "icu:FunButton__Label--StickerPicker": {
     "messageformat": "Προσθήκη αυτοκολλήτου"
+  },
+  "icu:FunPicker__Label--StickerReply": {
+    "messageformat": "Reply"
+  },
+  "icu:FunPicker__Label--SendStickerReply": {
+    "messageformat": "Send"
+  },
+  "icu:FunPicker__Label--CancelStickerReply": {
+    "messageformat": "Cancel"
+  },
+  "icu:FunPicker__Label--Sticker": {
+    "messageformat": "Sticker"
   },
   "icu:confirmation-dialog--Cancel": {
     "messageformat": "Ακύρωση"
@@ -4700,9 +4763,6 @@
   "icu:CompositionArea--expand": {
     "messageformat": "Ανάπτυξη"
   },
-  "icu:CompositionArea--attach-file": {
-    "messageformat": "Επισύναψη αρχείου"
-  },
   "icu:CompositionArea__AttachMenu__PhotosAndVideos": {
     "messageformat": "Φωτογραφίες και βίντεο"
   },
@@ -5153,26 +5213,17 @@
   "icu:SelectModeActions--forwardSelectedMessages": {
     "messageformat": "Προώθηση επιλεγμένων μηνυμάτων"
   },
-  "icu:DeleteMessagesModal--title": {
-    "messageformat": "{count, plural, one {Διαγραφή μηνύματος;} other {Διαγραφή {count,number} μηνυμάτων;}}"
-  },
   "icu:DeleteMessagesModal--title-2": {
     "messageformat": "{count, plural, one {Διαγραφή επιλεγμένου μηνύματος;} other {Διαγραφή {count,number} επιλεγμένων μηνυμάτων;}}"
   },
   "icu:DeleteMessagesModal--description": {
     "messageformat": "{count, plural, one {Για ποια άτομα θα ήθελες να διαγράψεις αυτό το μήνυμα;} other {Για ποια άτομα θα ήθελες να διαγράψεις αυτά τα μηνύματα;}}"
   },
-  "icu:DeleteMessagesModal--description--noteToSelf": {
-    "messageformat": "{count, plural, one {Από ποιες συσκευές θέλεις να διαγράψεις αυτό το μήνυμα;} other {Από ποιες συσκευές θέλεις να διαγράψεις αυτά τα μηνύματα;}}"
-  },
   "icu:DeleteMessagesModal--description--noteToSelf--deleteSync": {
     "messageformat": "{count, plural, one {Αυτό το μήνυμα θα διαγραφεί από όλες τις συσκευές σου.} other {Αυτά τα μηνύματα θα διαγραφούν από όλες τις συσκευές σου.}}"
   },
   "icu:DeleteMessagesModal--deleteForMe": {
     "messageformat": "Διαγραφή για μένα"
-  },
-  "icu:DeleteMessagesModal--deleteFromThisDevice": {
-    "messageformat": "Διαγραφή από αυτή τη συσκευή"
   },
   "icu:DeleteMessagesModal--deleteForEveryone": {
     "messageformat": "Διαγραφή για όλους"
@@ -5186,9 +5237,6 @@
   },
   "icu:DeleteMessagesModal--adminDeleteConfirmation--description__rollout": {
     "messageformat": "{count, plural, one {Τα μέλη της ομάδας που χρησιμοποιούν τις πιο πρόσφατες εκδόσεις του Signal θα δουν ότι διέγραψες αυτό το μήνυμα.} other {Τα μέλη της ομάδας που χρησιμοποιούν τις πιο πρόσφατες εκδόσεις του Signal θα δουν ότι διέγραψες αυτά τα μηνύματα.}}"
-  },
-  "icu:DeleteMessagesModal--deleteFromAllDevices": {
-    "messageformat": "Διαγραφή από όλες τις συσκευές"
   },
   "icu:DeleteMessagesModal--noteToSelf--deleteSync": {
     "messageformat": "Διαγραφή"
@@ -6397,11 +6445,26 @@
   "icu:Preferences--local-backups-enter-backup-key": {
     "messageformat": "Εισαγωγή κλειδιού"
   },
-  "icu:Preferences--local-backups-record-recovery-key": {
-    "messageformat": "Κατάγραψε το κλειδί ανάκτησης"
+  "icu:Preferences--local-backups-recovery-key--title": {
+    "messageformat": "Το κλειδί ανάκτησής σου"
   },
-  "icu:Preferences--local-backups-record-backup-key-description": {
-    "messageformat": "Αυτό το κλειδί απαιτείται για την ανάκτηση του λογαριασμού και των δεδομένων σου. Αποθήκευσε αυτό το κλειδί με ασφάλεια. Εάν το χάσεις, δεν θα μπορείς να ανακτήσεις τον λογαριασμό σου. <learnMoreLink>Μάθε περισσότερα.</learnMoreLink>"
+  "icu:Preferences--local-backups-recovery-key--description": {
+    "messageformat": "Αυτό το κλειδί απαιτείται για την ανάκτηση του λογαριασμού και των δεδομένων σου. Αποθήκευσε το με ασφάλεια και μην το κοινοποιήσεις ποτέ σε κανέναν. Το Signal δεν θα επικοινωνήσει ποτέ μαζί σου για το κλειδί ανάκτησής σου. <learnMoreLink>Μάθε περισσότερα.</learnMoreLink>"
+  },
+  "icu:Preferences__recovery-key__do-not-share-title": {
+    "messageformat": "Μην κοινοποιήσεις το κλειδί ανάκτησής σου"
+  },
+  "icu:Preferences__recovery-key__do-not-share-confirm": {
+    "messageformat": "Εντάξει"
+  },
+  "icu:CompositionInput__recovery-key-paste__share-key": {
+    "messageformat": "Κοινοποίηση κλειδιού"
+  },
+  "icu:CompositionInput__recovery-key-paste__do-not-share-key": {
+    "messageformat": "Μην κοινοποιήσεις το κλειδί"
+  },
+  "icu:CompositionInput__recovery-key-warning--description": {
+    "messageformat": "Μην κοινοποιείς το κλειδί ανάκτησής σου σε κανέναν. Αυτό θα τους επιτρέψει να αποκτήσουν πρόσβαση στον λογαριασμό σου <strong>Το Signal δεν θα επικοινωνήσει ποτέ μαζί σου</strong> για το κλειδί ανάκτησής σου. Μην απαντάς ποτέ σε μηνύματα από το Signal. <learnMoreLink>Μάθε περισσότερα.</learnMoreLink>"
   },
   "icu:Preferences--local-backups-confirm-recovery-key": {
     "messageformat": "Επιβεβαίωσε το κλειδί ανάκτησης"
@@ -6465,6 +6528,9 @@
   },
   "icu:Preferences__local-backups-auth-error--unauthorized": {
     "messageformat": "Η ενέργεια αυτή δεν μπόρεσε να ολοκληρωθεί λόγω αποτυχίας της επαλήθευσης συστήματος. Δοκίμασε ξανά ή άνοιξε την εφαρμογή Signal στο κινητό σου και πήγαινε στις «Ρυθμίσεις αντιγράφων ασφαλείας» για να δεις το κλειδί ανάκτησης."
+  },
+  "icu:Preferences__local-backups-auth-error--unknown-error": {
+    "messageformat": "Παρουσιάστηκε σφάλμα κατά την αίτηση επαλήθευσης συστήματος για αυτήν την ενέργεια."
   },
   "icu:Preferences__view-key": {
     "messageformat": "Προβολή κλειδιού"
@@ -6631,6 +6697,12 @@
   "icu:DialogUpdate__downloaded": {
     "messageformat": "Έγινε λήψη της ενημέρωσης"
   },
+  "icu:DialogUpdate__upgrade-mas": {
+    "messageformat": "Κάνε κλικ για να μεταβείς στο App Store"
+  },
+  "icu:DialogExpiredBuild__upgrade-mas": {
+    "messageformat": "Κάνε κλικ για να μεταβείς στο App Store"
+  },
   "icu:CriticalIdlePrimaryDevice__title": {
     "messageformat": "Άνοιξε το Signal στο κινητό σου"
   },
@@ -6669,6 +6741,405 @@
   },
   "icu:InstallScreenUpdateDialog--cannot-update__body": {
     "messageformat": "Η ενημέρωση του Signal Desktop απέτυχε, αλλά υπάρχει διαθέσιμη νέα έκδοση. Πήγαινε στο {downloadUrl} και κάνε εγκατάσταση της νέας έκδοσης με μη αυτόματο τρόπο και, στη συνέχεια, επικοινώνησε με την υποστήριξη ή γράψε το σφάλμα σχετικά με αυτό το πρόβλημα."
+  },
+  "icu:StandaloneRegistration--signal-logo": {
+    "messageformat": "Λογότυπο Signal"
+  },
+  "icu:StandaloneRegistration--back": {
+    "messageformat": "Πίσω"
+  },
+  "icu:StandaloneRegistration--PhoneNumber--header": {
+    "messageformat": "Αριθμός τηλεφώνου"
+  },
+  "icu:StandaloneRegistration--PhoneNumber--description--line-1": {
+    "messageformat": "Γράψε τον αριθμό τηλεφώνου σου για να επαληθεύσεις τον λογαριασμού σου."
+  },
+  "icu:StandaloneRegistration--PhoneNumber--description--line-2": {
+    "messageformat": "Ενδέχεται να ισχύουν χρεώσεις εταιρείας κινητής τηλεφωνίας."
+  },
+  "icu:StandaloneRegistration--PhoneNumber--waiting": {
+    "messageformat": "Δοκίμασε ξανά σε {duration}."
+  },
+  "icu:StandaloneRegistration--PhoneNumber--placeholder": {
+    "messageformat": "Αριθμός τηλεφώνου"
+  },
+  "icu:StandaloneRegistration--PhoneNumber--button": {
+    "messageformat": "Συνέχεια"
+  },
+  "icu:StandaloneRegistration--PhoneNumber--Confirmation--description": {
+    "messageformat": "Είναι ο παραπάνω αριθμός τηλεφώνου σωστός;"
+  },
+  "icu:StandaloneRegistration--PhoneNumber--Confirmation--cancel": {
+    "messageformat": "Επεξεργασία αριθμού"
+  },
+  "icu:StandaloneRegistration--PhoneNumber--Confirmation--confirm": {
+    "messageformat": "Ναι"
+  },
+  "icu:StandaloneRegistration--Captcha--header": {
+    "messageformat": "Για να συνεχίσεις, επιβεβαίωσε ότι είσαι άνθρωπος"
+  },
+  "icu:StandaloneRegistration--Captcha--description": {
+    "messageformat": "Για να περιορίσουμε το spam στο Signal, παρακαλούμε ολοκλήρωσε την επαλήθευση. Αφού επιβεβαιώσεις, θα μπορέσεις να συνεχίσεις την εγγραφή."
+  },
+  "icu:StandaloneRegistration--Captcha--retry-button": {
+    "messageformat": "Επανάληψη επαλήθευσης"
+  },
+  "icu:StandaloneRegistration--Captcha--button": {
+    "messageformat": "Κάνε επαλήθευση σε ένα πρόγραμμα περιήγησης"
+  },
+  "icu:StandaloneRegistration--Captcha--button--wait": {
+    "messageformat": "Επαλήθευση σε {duration}"
+  },
+  "icu:StandaloneRegistration--Captcha--NeedAnother--header": {
+    "messageformat": "Απαιτείται πρόσθετη επαλήθευση"
+  },
+  "icu:StandaloneRegistration--Captcha--NeedAnother--description": {
+    "messageformat": "Συμπλήρωσε ένα άλλο captcha για να συνεχίσεις την εγγραφή."
+  },
+  "icu:StandaloneRegistration--Captcha--NeedAnother--cancel": {
+    "messageformat": "Ακύρωση"
+  },
+  "icu:StandaloneRegistration--Captcha--NeedAnother--retry": {
+    "messageformat": "Επανάληψη επαλήθευσης"
+  },
+  "icu:StandaloneRegistration--Captcha--MustWait--aria-title": {
+    "messageformat": "Δοκίμασε ξανά αργότερα"
+  },
+  "icu:StandaloneRegistration--Captcha--MustWait--line-1": {
+    "messageformat": "Δεν είναι δυνατή η ολοκλήρωση της επαλήθευσης αυτή τη στιγμή."
+  },
+  "icu:StandaloneRegistration--Captcha--MustWait--line-2": {
+    "messageformat": "Δοκίμασε ξανά σε {duration}"
+  },
+  "icu:StandaloneRegistration--Captcha--MustWait--button": {
+    "messageformat": "OK"
+  },
+  "icu:StandaloneRegistration--Captcha--Error--header": {
+    "messageformat": "Σφάλμα επαλήθευσης"
+  },
+  "icu:StandaloneRegistration--Captcha--Error--description": {
+    "messageformat": "Δοκίμασε να κάνεις ξανά επαλήθευση για να συνεχίσεις την εγγραφή."
+  },
+  "icu:StandaloneRegistration--Captcha--Error--try-again": {
+    "messageformat": "Ξαναπροσπάθησε"
+  },
+  "icu:StandaloneRegistration--Captcha--Error--cancel": {
+    "messageformat": "Ακύρωση"
+  },
+  "icu:StandaloneRegistration--VerificationCode--header": {
+    "messageformat": "Κωδικός επαλήθευσης"
+  },
+  "icu:StandaloneRegistration--VerificationCode--description": {
+    "messageformat": "Γράψε τον κωδικό που σου στείλαμε στο {phoneNumber}"
+  },
+  "icu:StandaloneRegistration--VerificationCode--button": {
+    "messageformat": "Συνέχεια"
+  },
+  "icu:StandaloneRegistration--VerificationCode--send-sms": {
+    "messageformat": "Νέα αποστολή κωδικού"
+  },
+  "icu:StandaloneRegistration--VerificationCode--send-sms--duration": {
+    "messageformat": "Επαναποστολή κωδικού σε {duration}"
+  },
+  "icu:StandaloneRegistration--VerificationCode--call-me": {
+    "messageformat": "Καλέστε με"
+  },
+  "icu:StandaloneRegistration--VerificationCode--call-me--duration": {
+    "messageformat": "\"Καλέστε με\" σε {duration}"
+  },
+  "icu:StandaloneRegistration--VerificationCode--wrong-number": {
+    "messageformat": "Λάθος αριθμός;"
+  },
+  "icu:StandaloneRegistration--VerificationCode--having-trouble": {
+    "messageformat": "Αντιμετωπίζεις προβλήματα με την εγγραφή;"
+  },
+  "icu:StandaloneRegistration--VerificationCode--IncorrectCode--aria-title": {
+    "messageformat": "Λάθος κωδικός"
+  },
+  "icu:StandaloneRegistration--VerificationCode--IncorrectCode--description": {
+    "messageformat": "Ο κωδικός που έγραψες δεν είναι έγκυρος. Έλεγξε των 6ψήφιο κωδικό και δοκίμασε ξανά."
+  },
+  "icu:StandaloneRegistration--VerificationCode--IncorrectCode--button": {
+    "messageformat": "OK"
+  },
+  "icu:StandaloneRegistration--VerificationCode--CodeInvalid--aria-title": {
+    "messageformat": "Μη έγκυρος κωδικός"
+  },
+  "icu:StandaloneRegistration--VerificationCode--CodeInvalid--description": {
+    "messageformat": "Ο κωδικός που έγραψες δεν είναι έγκυρος. Στείλε ξανά τον κωδικό και δοκίμασε ξανά."
+  },
+  "icu:StandaloneRegistration--VerificationCode--CodeInvalid--resend-button": {
+    "messageformat": "Νέα αποστολή κωδικού"
+  },
+  "icu:StandaloneRegistration--VerificationCode--CodeInvalid--edit-number-button": {
+    "messageformat": "Επεξεργασία αριθμού"
+  },
+  "icu:StandaloneRegistration--VerificationCode--SMSFailed--aria-title": {
+    "messageformat": "Δεν είναι δυνατή η αποστολή SMS"
+  },
+  "icu:StandaloneRegistration--VerificationCode--SMSFailed--description": {
+    "messageformat": "Δεν μπορέσαμε να σου στείλουμε κωδικό επαλήθευσης μέσω SMS. Δοκίμασε να λάβεις τον κωδικό μέσω κλήσης."
+  },
+  "icu:StandaloneRegistration--VerificationCode--SMSFailed--confirm": {
+    "messageformat": "Φωνητική κλήση"
+  },
+  "icu:StandaloneRegistration--VerificationCode--SMSFailed--cancel": {
+    "messageformat": "Ακύρωση"
+  },
+  "icu:StandaloneRegistration--VerificationCode--MustWait--aria-title": {
+    "messageformat": "Δοκίμασε ξανά αργότερα"
+  },
+  "icu:StandaloneRegistration--VerificationCode--MustWait--description": {
+    "messageformat": "Έχεις προσπαθήσει πάρα πολλές φορές να εισάγεις τον κωδικό. Δοκίμασε ξανά σε {duration}."
+  },
+  "icu:StandaloneRegistration--VerificationCode--MustWait--button": {
+    "messageformat": "OK"
+  },
+  "icu:StandaloneRegistration--VerificationCode--MaximumAttempts--aria-title": {
+    "messageformat": "Υπερβολικά πολλές προσπάθειες"
+  },
+  "icu:StandaloneRegistration--VerificationCode--MaximumAttempts--description": {
+    "messageformat": "Έχεις προσπαθήσει πάρα πολλές φορές να εισάγεις τον κωδικό. Στείλε ξανά τον κωδικό και δοκίμασε ξανά."
+  },
+  "icu:StandaloneRegistration--VerificationCode--MaximumAttempts--resend-button": {
+    "messageformat": "Νέα αποστολή κωδικού"
+  },
+  "icu:StandaloneRegistration--VerificationCode--MaximumAttempts--edit-number-button": {
+    "messageformat": "Επεξεργασία αριθμού"
+  },
+  "icu:StandaloneRegistration--VerificationCode--FailedToCall--aria-title": {
+    "messageformat": "Δεν είναι δυνατή η πραγματοποίηση κλήσης"
+  },
+  "icu:StandaloneRegistration--VerificationCode--FailedToCall--description": {
+    "messageformat": "Δεν καταφέραμε να καλέσουμε τον αριθμό τηλεφώνου που έγραψες. Βεβαιώσου ότι είναι σωστός και δοκίμασε ξανά."
+  },
+  "icu:StandaloneRegistration--VerificationCode--FailedToCall--ok-button": {
+    "messageformat": "OK"
+  },
+  "icu:StandaloneRegistration--VerificationCode--CannotSendCodePermanent--aria-title": {
+    "messageformat": "Δεν είναι δυνατή η αποστολή του κωδικού"
+  },
+  "icu:StandaloneRegistration--VerificationCode--CannotSendCodePermanent--description": {
+    "messageformat": "Δεν είναι δυνατή η αποστολή κωδικού επαλήθευσης στον αριθμό τηλεφώνου που έχεις πληκτρολογήσει. Βεβαιώσου ότι ο αριθμός είναι σωστός ή δοκίμασε έναν άλλο αριθμό."
+  },
+  "icu:StandaloneRegistration--VerificationCode--CannotSendCodePermanent--ok-button": {
+    "messageformat": "OK"
+  },
+  "icu:StandaloneRegistration--VerificationCode--CannotSendCodeTemporary--aria-title": {
+    "messageformat": "Δοκίμασε ξανά αργότερα"
+  },
+  "icu:StandaloneRegistration--VerificationCode--CannotSendCodeTemporary--description": {
+    "messageformat": "Παρουσιάστηκε σφάλμα και δεν ήταν δυνατή η αποστολή του κωδικού επαλήθευσης. Δοκίμασε ξανά σε {duration}."
+  },
+  "icu:StandaloneRegistration--VerificationCode--CannotSendCodeTemporary--ok-button": {
+    "messageformat": "OK"
+  },
+  "icu:StandaloneRegistration--ProfileEntry--header": {
+    "messageformat": "Δημιούργησε το προφίλ σου"
+  },
+  "icu:StandaloneRegistration--ProfileEntry--description": {
+    "messageformat": "Τα προφίλ είναι ορατά σε άτομα στα οποία στέλνεις μηνύματα, στις επαφές και στις ομάδες σου."
+  },
+  "icu:StandaloneRegistration--ProfileEntry--learn-more": {
+    "messageformat": "Μάθε περισσότερα"
+  },
+  "icu:StandaloneRegistration--ProfileEntry--add-photo": {
+    "messageformat": "Προσθήκη φωτογραφίας"
+  },
+  "icu:StandaloneRegistration--ProfileEntry--first-name": {
+    "messageformat": "Όνομα (απαιτείται)"
+  },
+  "icu:StandaloneRegistration--ProfileEntry--last-name": {
+    "messageformat": "Επώνυμο (προαιρετικό)"
+  },
+  "icu:StandaloneRegistration--ProfileEntry--discoverability": {
+    "messageformat": "Ποιοι χρήστες μπορούν να με βρουν με τον αριθμό τηλεφώνου μου"
+  },
+  "icu:StandaloneRegistration--ProfileEntry--discoverability--change-button": {
+    "messageformat": "Αλλαγή"
+  },
+  "icu:StandaloneRegistration--ProfileEntry--discoverability--done-button": {
+    "messageformat": "Τέλος"
+  },
+  "icu:StandaloneRegistration--ProfileEntry--continue": {
+    "messageformat": "Συνέχεια"
+  },
+  "icu:StandaloneRegistration--ProfileEntry--AvatarModal--header": {
+    "messageformat": "Η εικόνα προφίλ σου"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--header": {
+    "messageformat": "Γράψε το PIN σου"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--description": {
+    "messageformat": "Πληκτρολόγησε το PIN που δημιούργησες για τον λογαριασμό σου. Αυτό είναι διαφορετικό από τον κωδικό επαλήθευσης που έλαβες μέσω SMS. <needHelp>Χρειάζεσαι βοήθεια;</needHelp>"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--placeholder": {
+    "messageformat": "Γράψε το PIN σου"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--incorrect-pin": {
+    "messageformat": "Λάθος ΡΙΝ"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--incorrect-pin--with-count": {
+    "messageformat": "{triesRemaining, plural, one {Λάθος PIN. Απομένει {triesRemaining,number} προσπάθεια.} other {Λάθος PIN. Απομένουν {triesRemaining,number} προσπάθειες.}}"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--NeedHelp--header": {
+    "messageformat": "Χρειάζεσαι βοήθεια;"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--NeedHelp--description--no-reglock": {
+    "messageformat": "Το PIN σου είναι ένας κωδικός με 4+ ψηφία που δημιούργησες και μπορεί να αποτελείται από αριθμούς ή αλφαριθμητικά. Αν δεν μπορείς να θυμηθείς το PIN σου, μπορείς να δημιουργήσεις ένα νέο. Μπορείς να δημιουργήσεις και να χρησιμοποιήσεις τον λογαριασμό σου, αλλά θα χάσεις κάποιες αποθηκευμένες ρυθμίσεις όπως τις πληροφορίες προφίλ. <learnMore>Μάθε περισσότερα</learnMore>."
+  },
+  "icu:StandaloneRegistration--VerifyPIN--NeedHelp--description--reglock": {
+    "messageformat": "Το PIN σου είναι ένας κωδικός με 4+ ψηφία που δημιούργησες και μπορεί να αποτελείται από αριθμούς ή αλφαριθμητικά. Αν δεν μπορείς να θυμηθείς το PIN σου, θα πρέπει να περιμένεις 7 ημέρες για να εγγράψεις ξανά τον λογαριασμό σου. <learnMore>Μάθε περισσότερα</learnMore>."
+  },
+  "icu:StandaloneRegistration--VerifyPIN--NeedHelp--skip-button--no-reglock": {
+    "messageformat": "Παράλειψη και δημιουργία νέου PIN"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--NeedHelp--contact-support-button": {
+    "messageformat": "Επικοινωνία με την υποστήριξη"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--NeedHelp--cancel": {
+    "messageformat": "Ακύρωση"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--FewRemainingTries--header": {
+    "messageformat": "Λάθος ΡΙΝ"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--FewRemainingTries--description--no-reglock": {
+    "messageformat": "{triesRemaining, plural, one {Σου απομένει {triesRemaining,number} προσπάθεια. Αν εξαντλήσεις τις προσπάθειες, μπορείς να δημιουργήσεις νέο PIN. Μπορείς να εγγραφείς και να χρησιμοποιήσεις τον λογαριασμό σου, αλλά θα χάσεις κάποιες αποθηκευμένες ρυθμίσεις όπως τις πληροφορίες προφίλ. <learnMore>Μάθε περισσότερα</learnMore>.} other {Σου απομένουν {triesRemaining,number} προσπάθειες. Αν εξαντλήσεις τις προσπάθειες, μπορείς να δημιουργήσεις νέο PIN. Μπορείς να εγγραφείς και να χρησιμοποιήσεις τον λογαριασμό σου αλλά θα χάσεις κάποιες αποθηκευμένες ρυθμίσεις όπως τις πληροφορίες προφίλ. <learnMore>Μάθε περισσότερα</learnMore>.}}"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--FewRemainingTries--description--reglock": {
+    "messageformat": "{triesRemaining, plural, one {Σου απομένει {triesRemaining,number} προσπάθεια. Αν εξαντλήσεις τις προσπάθειές σου, ο λογαριασμός σου θα κλειδωθεί για 7 μέρες. Μετά από 7 ημέρες αδράνειας, μπορείς να εγγραφείς ξανά χωρίς το PIN σου.Όλα τα περιεχόμενα θα διαγραφούν. <learnMore>Μάθε περισσότερα</learnMore>.} other {Σου απομένουν {triesRemaining,number} προσπάθειες. Αν τις εξαντλήσεις, ο λογαριασμός σου θα κλειδωθεί για 7 μέρες. Μετά από 7 ημέρες αδράνειας, μπορείς να εγγραφείς ξανά χωρίς το PIN σου. Όλα τα περιεχόμενα θα διαγραφούν. <learnMore>Μάθε περισσότερα</learnMore>.}}"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--FewRemainingTries--button": {
+    "messageformat": "OK"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--NoRemainingTries--header": {
+    "messageformat": "Λάθος ΡΙΝ"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--NoRemainingTries--description": {
+    "messageformat": "Σου τέλειωσαν οι απόπειρες για το PIN, αλλά μπορείς να αποκτήσεις πρόσβαση στο λογαριασμό Signal σου δημιουργώντας νέο PIN. Για την ιδιωτικότητα και την ασφάλειά σου ο λογαριασμός δεν θα έχει προϋπάρχουσες πληροφορίες προφίλ και ρυθμίσεις."
+  },
+  "icu:StandaloneRegistration--VerifyPIN--NoRemainingTries--create-new-pin": {
+    "messageformat": "Δημιουργία νέου PIN"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--NoRemainingTries--learn-more": {
+    "messageformat": "Μάθε περισσότερα για τα PIN"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--menu--skip-pin": {
+    "messageformat": "Παράλειψη PIN"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--SkipPIN--header": {
+    "messageformat": "Παράλειψη της εισαγωγής του PIN;"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--SkipPIN--description": {
+    "messageformat": "Αν δεν μπορείς να θυμηθείς το PIN σου, μπορείς να δημιουργήσεις ένα νέο. Μπορείς να δημιουργήσεις και να χρησιμοποιήσεις τον λογαριασμό σου, αλλά θα χάσεις κάποιες αποθηκευμένες ρυθμίσεις όπως τις πληροφορίες προφίλ. Μάθε περισσότερα."
+  },
+  "icu:StandaloneRegistration--VerifyPIN--SkipPIN--skip-button": {
+    "messageformat": "Παράλειψη και δημιουργία νέου PIN"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--SkipPIN--cancel-button": {
+    "messageformat": "Ακύρωση"
+  },
+  "icu:StandaloneRegistration--CreatePIN--header": {
+    "messageformat": "Δημιουργία του PIN σου"
+  },
+  "icu:StandaloneRegistration--CreatePIN--description": {
+    "messageformat": "Τα PIN μπορούν να σε βοηθήσουν να επαναφέρεις τον λογαριασμό σου και να διατηρήσεις τις πληροφορίες σου κρυπτογραφημένες με το Signal. <learnMore>Μάθε περισσότερα</learnMore>"
+  },
+  "icu:StandaloneRegistration--CreatePIN--placeholder": {
+    "messageformat": "Δημιουργία του PIN σου"
+  },
+  "icu:StandaloneRegistration--CreatePIN--helper-text": {
+    "messageformat": "Το PIN πρέπει να έχει τουλάχιστον 4 χαρακτήρες"
+  },
+  "icu:StandaloneRegistration--CreatePIN--continue": {
+    "messageformat": "Συνέχεια"
+  },
+  "icu:StandaloneRegistration--CreatePIN--open-menu": {
+    "messageformat": "Άνοιγμα μενού"
+  },
+  "icu:StandaloneRegistration--CreatePIN--menu--more-about": {
+    "messageformat": "Περισσότερα για τα PIN"
+  },
+  "icu:StandaloneRegistration--CreatePIN--menu--disable": {
+    "messageformat": "Απενεργοποίηση PIN"
+  },
+  "icu:StandaloneRegistration--CreatePIN--DisableWarning--header": {
+    "messageformat": "Προσοχή"
+  },
+  "icu:StandaloneRegistration--CreatePIN--DisableWarning--description": {
+    "messageformat": "Αν απενεργοποιήσεις το PIN, θα χάσεις όλα τα δεδομένα σου όταν επανεγγραφείς στο Signal, εκτός αν τα μεταφέρεις από άλλη iOS συσκευή. Δεν θα μπορείς να ενεργοποιήσεις το Κλείδωμα Εγγραφής όσο το PIN είναι απενεργοποιημένο."
+  },
+  "icu:StandaloneRegistration--CreatePIN--DisableWarning--disable-button": {
+    "messageformat": "Απενεργοποίηση PIN"
+  },
+  "icu:StandaloneRegistration--CreatePIN--DisableWarning--cancel": {
+    "messageformat": "Ακύρωση"
+  },
+  "icu:StandaloneRegistration--CreatePIN--AboutPINs--header": {
+    "messageformat": "Σχετικά με τα PIN Signal"
+  },
+  "icu:StandaloneRegistration--CreatePIN--AboutPINs--description": {
+    "messageformat": "Τα PIN διατηρούν κρυπτογραφημένες τις πληροφορίες σου που είναι αποθηκευμένες στο Signal, ώστε μόνο εσύ να έχεις πρόσβαση σε αυτές. Το προφίλ σου, οι ρυθμίσεις και οι επαφές να επαναφερθούν όταν κάνεις επανεγκατάσταση."
+  },
+  "icu:StandaloneRegistration--CreatePIN--AboutPINs--learn-more-button": {
+    "messageformat": "Μάθε περισσότερα"
+  },
+  "icu:StandaloneRegistration--CreatePIN--AboutPINs--ok-button": {
+    "messageformat": "OK"
+  },
+  "icu:StandaloneRegistration--CreatePIN--confirming--header": {
+    "messageformat": "Επαλήθευσε το PIN σου"
+  },
+  "icu:StandaloneRegistration--CreatePIN--confirming--description": {
+    "messageformat": "Γράψε ξανά το PIN που μόλις δημιούργησες."
+  },
+  "icu:StandaloneRegistration--CreatePIN--confirming--placeholder": {
+    "messageformat": "Γράψε το PIN σου"
+  },
+  "icu:StandaloneRegistration--AccountLocked--header": {
+    "messageformat": "Κλειδωμένος λογαριασμός"
+  },
+  "icu:StandaloneRegistration--AccountLocked--description": {
+    "messageformat": "Ο λογαριασμός σου έχει κλειδωθεί για να προστατεύσουμε το απόρρητο και την ασφάλειά σου. Μετά από 7 ημέρες αδράνειας του λογαριασμού σου, θα μπορείς να επανεγγράψεις αυτό τον αριθμό τηλεφώνου χωρίς να χρειάζεται το PIN σου. Όλα τα περιεχόμενα θα διαγραφούν."
+  },
+  "icu:StandaloneRegistration--AccountLocked--start-over-button": {
+    "messageformat": "Χρήση διαφορετικού αριθμού"
+  },
+  "icu:StandaloneRegistration--AccountLocked--help-button": {
+    "messageformat": "Μάθε για τους κλειδωμένους λογαριασμούς"
+  },
+  "icu:StandaloneRegistration--UpdateRequired--header": {
+    "messageformat": "Απαιτείται αναβάθμιση"
+  },
+  "icu:StandaloneRegistration--UpdateRequired--description": {
+    "messageformat": "Για να συνεχίσεις με την εγγραφή, κάνε ενημέρωση στην τελευταία έκδοση του Signal."
+  },
+  "icu:StandaloneRegistration--UpdateRequired--update": {
+    "messageformat": "Ενημέρωση"
+  },
+  "icu:StandaloneRegistration--UpdateRequired--cancel": {
+    "messageformat": "Ακύρωση"
+  },
+  "icu:StandaloneRegistration--ConnectionProblem--header": {
+    "messageformat": "Έλεγξε τη σύνδεση σου"
+  },
+  "icu:StandaloneRegistration--ConnectionProblem--description": {
+    "messageformat": "Για να συνεχίσεις, έλεγξε τη σύνδεσή του υπολογιστή σου στο διαδίκτυο και προσπάθησε ξανά."
+  },
+  "icu:StandaloneRegistration--ConnectionProblem--button": {
+    "messageformat": "OK"
+  },
+  "icu:StandaloneRegistration--UnexpectedError--header": {
+    "messageformat": "Δεν είναι δυνατή η ολοκλήρωση της εγγραφής"
+  },
+  "icu:StandaloneRegistration--UnexpectedError--description": {
+    "messageformat": "Παρουσιάστηκε σφάλμα και η εγγραφή δεν μπορεί να ολοκληρωθεί. Εάν το πρόβλημα παραμένει, επικοινώνησε με την υποστήριξη."
+  },
+  "icu:StandaloneRegistration--UnexpectedError--try-again-button": {
+    "messageformat": "Ξαναπροσπάθησε"
+  },
+  "icu:StandaloneRegistration--UnexpectedError--contact-support-button": {
+    "messageformat": "Επικοινωνία με την υποστήριξη"
   },
   "icu:NSIS__retry-dialog--first-line": {
     "messageformat": "Το Signal δεν μπορεί να κλείσει.",
@@ -6915,15 +7386,6 @@
   },
   "icu:SignalConnectionsModal__footer": {
     "messageformat": "Οι επαφές σου μπορούν να δουν το όνομα και τη φωτογραφία σου, και μπορούν να δουν δημοσιεύσεις στην ενότητα \"Η ιστορία μου\", εκτός αν την κρύψεις από αυτές."
-  },
-  "icu:LocalDeleteWarningModal__header": {
-    "messageformat": "Η διαγραφή έχει συγχρονιστεί με όλες τις συσκευές σου"
-  },
-  "icu:LocalDeleteWarningModal__description": {
-    "messageformat": "Όταν διαγράφεις μηνύματα ή συνομιλίες, θα διαγραφούν από όλες τις συσκευές σου."
-  },
-  "icu:LocalDeleteWarningModal__confirm": {
-    "messageformat": "Εντάξει"
   },
   "icu:Stories__title": {
     "messageformat": "Ιστορίες"
@@ -7478,9 +7940,6 @@
   "icu:DraftGifMessageSendModal__SendButtonLabel": {
     "messageformat": "Αποστολή"
   },
-  "icu:DraftGifMessageSendModal__CancelButtonLabel": {
-    "messageformat": "Ακύρωση"
-  },
   "icu:EditHistoryMessagesModal__title": {
     "messageformat": "Ιστορικό επεξεργασίας"
   },
@@ -7759,9 +8218,6 @@
   },
   "icu:PreferencesDonations__privacy-modal-title": {
     "messageformat": "Τα στοιχεία σου είναι ιδιωτικά"
-  },
-  "icu:PreferencesDonations__privacy-modal-content": {
-    "messageformat": "<paragraph>Το Signal δεν συλλέγει ούτε αποθηκεύει τα προσωπικά στοιχεία σου όταν κάνεις δωρεά.</paragraph><paragraph>Χρησιμοποιούμε τη Stripe για την επεξεργασία πληρωμών, ώστε να λαμβάνουμε τις δωρεές μας. Δεν επεξεργαζόμαστε ούτε αποθηκεύουμε κανένα από τα στοιχεία που της παρέχεις.</paragraph><paragraph>Το Signal δεν μπορεί να συνδέσει τη δωρεά με τον λογαριασμό σου στο Signal.</paragraph><paragraph>Ευχαριστούμε για την υποστήριξή σου!</paragraph>"
   },
   "icu:PreferencesDonations__privacy-modal-intro": {
     "messageformat": "Ως ανεξάρτητος μη κερδοσκοπικός οργανισμός, το Signal έχει δεσμευτεί για ιδιωτικά μηνύματα και κλήσεις. Χωρίς διαφημίσεις, παρακολούθηση, επιτήρηση. Κάνε σήμερα μια δωρεά για να στηρίξεις το Signal."
@@ -8205,10 +8661,16 @@
     "messageformat": "Μικρές τροποποιήσεις, επιδιορθώσεις σφαλμάτων και βελτιώσεις απόδοσης. Ευχαριστούμε που χρησιμοποιείς το Signal!",
     "ignoreUnused": true
   },
-  "icu:WhatsNew__8.12--0": {
-    "messageformat": "Προσθέσαμε μια νέα συντόμευση πληκτρολογίου για να σηκώνεις το χέρι σου κατά τη διάρκεια ομαδικών κλήσεων (Shift-H)."
+  "icu:WhatsNew__8.18--0": {
+    "messageformat": "Πλέον, μπορούν να δημιουργούνται δημοσκοπήσεις και σε ατομικές συνομιλίες. Κάνε δώρο μια επιλεγμένη λίστα επιλογών στο αναποφάσιστο φιλαράκι σου ή ξαναζήσε τη μαγεία του να δίνεις ένα σημείωμα στο άτομο που σου αρέσει, δημιουργώντας μια ψηφοφορία με θέμα «Σου αρέσω; Ναι/Όχι/Ίσως»."
   },
-  "icu:WhatsNew__8.13--0": {
-    "messageformat": "The new raised-hand indicators are now also displayed in the list of raised hands during group calls. It's a second-hand place to figure out who you should hand it over to when you're done speaking."
+  "icu:WhatsNew__8.19--0": {
+    "messageformat": "Οι διαχειριστές των ομάδων μπορούν πλέον να κλείσουν τις συνομιλίες χρησιμοποιώντας τη νέα επιλογή «Τερματισμός ομάδας» στις ρυθμίσεις της ομάδας. Ο τερματισμός μιας ομάδας εμποδίζει τα μέλη της να στέλνουν μηνύματα ή να ξεκινάνε κλήσεις, ενώ απενεργοποιεί και τις προσκλήσεις."
+  },
+  "icu:WhatsNew__8.20--0": {
+    "messageformat": "Introducing disappearing call events: Missed, outgoing, and received calls that occur after you install this update will now automatically disappear in any chat where disappearing messages are enabled."
+  },
+  "icu:WhatsNew__8.20--1": {
+    "messageformat": "Now you can reorder installed sticker packs so your new favorites don’t get stuck in the back of the line."
   }
 }

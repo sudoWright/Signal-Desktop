@@ -381,6 +381,16 @@ async function generateManifest(
       };
       identifierType = ITEM_TYPE.CONTACT;
     } else if (conversationType === ConversationTypes.GroupV2) {
+      // Group just added via an incoming message, get updates from the server
+      // first before syncing it to storage service.
+      if (conversation.get('needsGroupUpdate') === true) {
+        log.warn(
+          `upload(${version}): ` +
+            `dropping group=${conversation.idForLogging()} until it is updated`
+        );
+        continue;
+      }
+
       storageRecord = {
         record: {
           groupV2: toGroupV2Record(conversation),
@@ -2326,7 +2336,10 @@ async function sync({
 
     strictAssert(manifest.version != null, 'Manifest without version');
     const version = toNumber(manifest.version) ?? 0;
-    if (version <= localManifestVersion) {
+    if (
+      version <= localManifestVersion &&
+      (version !== 0 || localManifestVersion !== 0)
+    ) {
       log.error(
         'sync: remote manifest version mismatch ' +
           `${version} <= ${localManifestVersion}`
@@ -2473,6 +2486,41 @@ export function enableStorageService(): void {
       reason: 'storageServiceNeedsUploadAfterEnabled',
     });
   }
+}
+
+export async function updateWithNewKey(reason: string): Promise<void> {
+  const logId = `updateWithNewKey(reason='${reason}')`;
+  const masterKeyBase64 = itemStorage.get('masterKey');
+
+  if (!masterKeyBase64) {
+    return;
+  }
+
+  const masterKey = Bytes.fromBase64(masterKeyBase64);
+  const storageServiceKey = deriveStorageServiceKey(masterKey);
+  const storageServiceKeyBase64 = Bytes.toBase64(storageServiceKey);
+  if (itemStorage.get('storageKey') === storageServiceKeyBase64) {
+    log.info(
+      `${logId}: storage service key didn't change, fetching manifest anyway`
+    );
+  } else {
+    log.info(
+      `${logId}: updated storage service key, erasing state and fetching`
+    );
+    try {
+      await itemStorage.put('storageKey', storageServiceKeyBase64);
+      await eraseAllStorageServiceState({
+        keepUnknownFields: true,
+      });
+    } catch (error) {
+      log.info(
+        'onKeysSync: Failed to erase storage service data, starting sync job anyway',
+        Errors.toLogFormat(error)
+      );
+    }
+  }
+
+  runStorageServiceSyncJob({ reason });
 }
 
 export function disableStorageService(reason: string): void {

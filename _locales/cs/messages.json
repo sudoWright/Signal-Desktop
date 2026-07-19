@@ -14,6 +14,9 @@
   "icu:AxoTextField.Clear": {
     "messageformat": "Vymazat"
   },
+  "icu:AxoBadge.MaxOverflow": {
+    "messageformat": "{max,number}+"
+  },
   "icu:AddUserToAnotherGroupModal__title": {
     "messageformat": "Přidat do skupiny"
   },
@@ -85,6 +88,9 @@
   },
   "icu:unknownContact": {
     "messageformat": "Neznámý kontakt"
+  },
+  "icu:deletedAccount": {
+    "messageformat": "Smazaný účet"
   },
   "icu:unknownContactShort": {
     "messageformat": "Neznámý"
@@ -314,6 +320,9 @@
   "icu:LeftPaneChatFolders__ItemUnreadBadge__MaxCount": {
     "messageformat": "{maxCount,number}+"
   },
+  "icu:LeftPaneChatFolders__ItemUnreadBadge__AccessibleLabel": {
+    "messageformat": "{count, plural, one {{count,number} Unread Message} other {{count,number} Unread Messages}}"
+  },
   "icu:LeftPaneChatFolders__Item__ContextMenu__MarkAllRead": {
     "messageformat": "Označit vše jako přečtené"
   },
@@ -449,8 +458,8 @@
   "icu:unpinConversation": {
     "messageformat": "Odepnout chat"
   },
-  "icu:pinnedConversationsFull": {
-    "messageformat": "Připnout lze nejvýše 4 chaty"
+  "icu:pinnedConversations--max": {
+    "messageformat": "{maxPinnedConversations, plural, one {Můžete připnout nanejvýš {maxPinnedConversations,number} chat} few {Můžete připnout nanejvýš {maxPinnedConversations,number} chaty} many {Můžete připnout nanejvýš {maxPinnedConversations,number} chatů} other {Můžete připnout nanejvýš {maxPinnedConversations,number} chatů}}"
   },
   "icu:view": {
     "messageformat": "Zobrazit"
@@ -2261,9 +2270,6 @@
   "icu:partiallySent": {
     "messageformat": "Odesláno částečně, klepněte pro zobrazení podrobností"
   },
-  "icu:partiallyDeleted": {
-    "messageformat": "Částečně odstraněno, kliknutím pokus zopakujete"
-  },
   "icu:partiallyDeleted--clickForDetails": {
     "messageformat": "Odstraněno částečně, kliknutím zobrazíte podrobnosti"
   },
@@ -2466,7 +2472,7 @@
     "messageformat": "Stahování se nezdařilo"
   },
   "icu:Toast--unable-download-from-backup-tier": {
-    "messageformat": "Attachment missing from backup CDN"
+    "messageformat": "Attachment missing from backup CDN, please share desktop & primary logs"
   },
   "icu:ToastManager__CannotAddMemberLabel": {
     "messageformat": "V této skupině mohou štítky členů přidávat pouze správci."
@@ -2687,9 +2693,6 @@
   "icu:message--getDescription--gif": {
     "messageformat": "GIF"
   },
-  "icu:message--deletedForEveryone": {
-    "messageformat": "Tato zpráva byla odstraněna."
-  },
   "icu:message--deletedByAdmin": {
     "messageformat": "Správce {admin} tuto zprávu odstranil"
   },
@@ -2780,14 +2783,11 @@
   "icu:stickers--toast--InstallFailed": {
     "messageformat": "Balíček nálepek nelze nainstalovat"
   },
-  "icu:stickers--StickerManager--Available": {
-    "messageformat": "Dostupné"
+  "icu:stickers--StickerManager--MyStickers--None": {
+    "messageformat": "Žádné nainstalované balíčky nálepek. Přidejte si nálepky, abyste je mohli posílat přátelům."
   },
-  "icu:stickers--StickerManager--InstalledPacks": {
-    "messageformat": "Instalované"
-  },
-  "icu:stickers--StickerManager--InstalledPacks--Empty": {
-    "messageformat": "Nejsou instalovány žádné nálepky"
+  "icu:stickers--StickerManager--AddStickers": {
+    "messageformat": "Přidat nálepky"
   },
   "icu:stickers--StickerManager--BlessedPacks": {
     "messageformat": "Umělecká série Signal"
@@ -2795,14 +2795,17 @@
   "icu:stickers--StickerManager--BlessedPacks--Empty": {
     "messageformat": "Žádné umělecké nálepky Signal nejsou k dispozici"
   },
-  "icu:stickers--StickerManager--ReceivedPacks": {
-    "messageformat": "Přijaté nálepky"
+  "icu:stickers--StickerManager--ReceivedPacks2": {
+    "messageformat": "Sdíleno s vámi"
   },
-  "icu:stickers--StickerManager--ReceivedPacks--Empty": {
-    "messageformat": "Nálepky z příchozích zpráv se objeví zde"
+  "icu:stickers--StickerManager--ReceivedPacksDescription": {
+    "messageformat": "Jakmile od někoho dostanete nálepku, její balíček se zobrazí zde."
   },
   "icu:stickers--StickerManager--Install": {
     "messageformat": "Instalovat"
+  },
+  "icu:stickers--StickerManager--Installed": {
+    "messageformat": "Instalované"
   },
   "icu:stickers--StickerManager--Uninstall": {
     "messageformat": "Odinstalovat"
@@ -2810,11 +2813,59 @@
   "icu:stickers--StickerManager--UninstallWarning": {
     "messageformat": "Pravděpodobně nebudete moci přeinstalovat tento balíček nálepek, pokud již nemáte zdrojovou zprávu."
   },
+  "icu:stickers--StickerManagerHeader--All": {
+    "messageformat": "Vše"
+  },
+  "icu:stickers--StickerManagerHeader--MyStickers": {
+    "messageformat": "Moje nálepky"
+  },
+  "icu:stickers--StickerManagerPackContextMenu--Add": {
+    "messageformat": "Přidat"
+  },
+  "icu:stickers--StickerManagerPackContextMenu--Remove": {
+    "messageformat": "Odebrat"
+  },
+  "icu:stickers--StickerManagerPackDragHandle--Label": {
+    "messageformat": "Drag to reorder sticker pack"
+  },
+  "icu:stickers--StickerManagerBlessedPacksList--Label": {
+    "messageformat": "Signal Artist Series sticker packs"
+  },
+  "icu:stickers--StickerManagerReceivedPacksList--Label": {
+    "messageformat": "Received sticker packs"
+  },
+  "icu:stickers--StickerManagerInstalledPacksList--Label": {
+    "messageformat": "Installed sticker packs"
+  },
   "icu:stickers--StickerPreview--Title": {
     "messageformat": "Balíček nálepek"
   },
   "icu:stickers--StickerPreview--Error": {
     "messageformat": "Při otevírání balíčku nálepek se vyskytla chyba. Zkontrolujte vaše připojení k internetu a zkuste to znovu."
+  },
+  "icu:stickers--StickerPreview--Install": {
+    "messageformat": "Přidat nálepky"
+  },
+  "icu:stickers--StickerPreview--Remove": {
+    "messageformat": "Odebrat"
+  },
+  "icu:stickers--StickerPreview--Link": {
+    "messageformat": "Odkaz"
+  },
+  "icu:stickers--StickerPreview--LinkCopied": {
+    "messageformat": "Odkaz zkopírován"
+  },
+  "icu:stickers--StickerPreview--StickerCount": {
+    "messageformat": "{count, plural, one {{count,number} nálepka} few {{count,number} nálepky} many {{count,number} nálepek} other {{count,number} nálepek}}"
+  },
+  "icu:stickers--StickerPreview--StickerNoEmojiAriaLabel": {
+    "messageformat": "Nálepka bez emoji"
+  },
+  "icu:stickers--StickerPackLinkPreviewDescription": {
+    "messageformat": "Balíček nálepek od {author}"
+  },
+  "icu:stickers--ViewPack": {
+    "messageformat": "Zobrazit balíček"
   },
   "icu:FunPicker__Tab--Emojis": {
     "messageformat": "Emoji"
@@ -3028,6 +3079,18 @@
   },
   "icu:FunButton__Label--StickerPicker": {
     "messageformat": "Přidat nálepku"
+  },
+  "icu:FunPicker__Label--StickerReply": {
+    "messageformat": "Reply"
+  },
+  "icu:FunPicker__Label--SendStickerReply": {
+    "messageformat": "Send"
+  },
+  "icu:FunPicker__Label--CancelStickerReply": {
+    "messageformat": "Cancel"
+  },
+  "icu:FunPicker__Label--Sticker": {
+    "messageformat": "Sticker"
   },
   "icu:confirmation-dialog--Cancel": {
     "messageformat": "Zrušit"
@@ -4700,9 +4763,6 @@
   "icu:CompositionArea--expand": {
     "messageformat": "Rozbalit"
   },
-  "icu:CompositionArea--attach-file": {
-    "messageformat": "Připojit soubor"
-  },
   "icu:CompositionArea__AttachMenu__PhotosAndVideos": {
     "messageformat": "Fotky a videa"
   },
@@ -5153,26 +5213,17 @@
   "icu:SelectModeActions--forwardSelectedMessages": {
     "messageformat": "Přeposlat vybrané zprávy"
   },
-  "icu:DeleteMessagesModal--title": {
-    "messageformat": "{count, plural, one {Odstranit zprávu?} few {Odstranit {count,number} zprávy?} many {Odstranit {count,number} zpráv?} other {Odstranit {count,number} zpráv?}}"
-  },
   "icu:DeleteMessagesModal--title-2": {
     "messageformat": "{count, plural, one {Odstranit vybranou zprávu?} few {Odstranit {count,number} vybrané zprávy?} many {Odstranit {count,number} vybraných zpráv?} other {Odstranit {count,number} vybraných zpráv?}}"
   },
   "icu:DeleteMessagesModal--description": {
     "messageformat": "{count, plural, one {Pro koho chcete tuto zprávu odstranit?} few {Pro koho chcete tyto zprávy odstranit?} many {Pro koho chcete tyto zprávy odstranit?} other {Pro koho chcete tyto zprávy odstranit?}}"
   },
-  "icu:DeleteMessagesModal--description--noteToSelf": {
-    "messageformat": "{count, plural, one {Z jakých zařízení chcete tuto zprávu odstranit?} few {Z jakých zařízení chcete tyto zprávy odstranit?} many {Z jakých zařízení chcete tyto zprávy odstranit?} other {Z jakých zařízení chcete tyto zprávy odstranit?}}"
-  },
   "icu:DeleteMessagesModal--description--noteToSelf--deleteSync": {
     "messageformat": "{count, plural, one {Tato zpráva bude odstraněna ze všech vašich zařízení.} few {Tyto zprávy budou odstraněny ze všech vašich zařízení.} many {Tyto zprávy budou odstraněny ze všech vašich zařízení.} other {Tyto zprávy budou odstraněny ze všech vašich zařízení.}}"
   },
   "icu:DeleteMessagesModal--deleteForMe": {
     "messageformat": "Odstranit pro mě"
-  },
-  "icu:DeleteMessagesModal--deleteFromThisDevice": {
-    "messageformat": "Odstranit z tohoto zařízení"
   },
   "icu:DeleteMessagesModal--deleteForEveryone": {
     "messageformat": "Odstranit pro všechny"
@@ -5186,9 +5237,6 @@
   },
   "icu:DeleteMessagesModal--adminDeleteConfirmation--description__rollout": {
     "messageformat": "{count, plural, one {Členové skupiny s nejnovější verzí aplikace Signal uvidí, že jste tuto zprávu odstranili.} few {Členové skupiny s nejnovější verzí aplikace Signal uvidí, že jste tyto zprávy odstranili.} many {Členové skupiny s nejnovější verzí aplikace Signal uvidí, že jste tyto zprávy odstranili.} other {Členové skupiny s nejnovější verzí aplikace Signal uvidí, že jste tyto zprávy odstranili.}}"
-  },
-  "icu:DeleteMessagesModal--deleteFromAllDevices": {
-    "messageformat": "Odstranit ze všech zařízení"
   },
   "icu:DeleteMessagesModal--noteToSelf--deleteSync": {
     "messageformat": "Odstranit"
@@ -6397,11 +6445,26 @@
   "icu:Preferences--local-backups-enter-backup-key": {
     "messageformat": "Zadat klíč"
   },
-  "icu:Preferences--local-backups-record-recovery-key": {
-    "messageformat": "Nahrajte svůj klíč pro obnovení"
+  "icu:Preferences--local-backups-recovery-key--title": {
+    "messageformat": "Váš klíč pro obnovení"
   },
-  "icu:Preferences--local-backups-record-backup-key-description": {
-    "messageformat": "Tento klíč je nutný k obnovení vašeho účtu a dat. Uložte tento klíč na bezpečné místo. Pokud jej ztratíte, nebudete moci svůj účet obnovit. <learnMoreLink>Víc informací.</learnMoreLink>"
+  "icu:Preferences--local-backups-recovery-key--description": {
+    "messageformat": "Tento klíč je nutný k obnovení vašeho účtu a dat. Uložte jej na bezpečném místě a s nikým jej nikdy nesdílejte. Signal od vás nikdy nebude ve zprávě vyžadovat váš klíč pro obnovení. <learnMoreLink>Víc informací.</learnMoreLink>"
+  },
+  "icu:Preferences__recovery-key__do-not-share-title": {
+    "messageformat": "Klíč pro obnovení nesdílejte"
+  },
+  "icu:Preferences__recovery-key__do-not-share-confirm": {
+    "messageformat": "Rozumím"
+  },
+  "icu:CompositionInput__recovery-key-paste__share-key": {
+    "messageformat": "Sdílet klíč"
+  },
+  "icu:CompositionInput__recovery-key-paste__do-not-share-key": {
+    "messageformat": "Nesdílet klíč"
+  },
+  "icu:CompositionInput__recovery-key-warning--description": {
+    "messageformat": "Svůj klíč pro obnovení s nikým nesdílejte. Útočník by pomocí něj mohl ovládnout váš účet. <strong>Signal od vás nikdy nebude ve zprávě</strong> vyžadovat váš klíč pro obnovení. Nikdy neodpovídejte na chat, který se tváří jako Signal. <learnMoreLink>Zjistit více</learnMoreLink>"
   },
   "icu:Preferences--local-backups-confirm-recovery-key": {
     "messageformat": "Potvrďte svůj klíč pro obnovení"
@@ -6465,6 +6528,9 @@
   },
   "icu:Preferences__local-backups-auth-error--unauthorized": {
     "messageformat": "Tuto akci nebylo možné dokončit, protože se nezdařilo systémové ověření. Zkuste to prosím znovu, nebo otevřete aplikaci Signal v mobilním zařízení a v nastavení zálohování si zobrazte svůj klíč pro obnovení."
+  },
+  "icu:Preferences__local-backups-auth-error--unknown-error": {
+    "messageformat": "Při ověřování v systému se vyskytla chyba."
   },
   "icu:Preferences__view-key": {
     "messageformat": "Zobrazit klíč"
@@ -6631,6 +6697,12 @@
   "icu:DialogUpdate__downloaded": {
     "messageformat": "Aktualizace stažena"
   },
+  "icu:DialogUpdate__upgrade-mas": {
+    "messageformat": "Kliknutím přejdete do App Store"
+  },
+  "icu:DialogExpiredBuild__upgrade-mas": {
+    "messageformat": "Kliknutím přejdete do App Store"
+  },
   "icu:CriticalIdlePrimaryDevice__title": {
     "messageformat": "Otevřete Signal na svém telefonu"
   },
@@ -6669,6 +6741,405 @@
   },
   "icu:InstallScreenUpdateDialog--cannot-update__body": {
     "messageformat": "Aplikaci Signal Desktop se nepodařilo aktualizovat, ale je k dispozici nová verze. Přejděte na {downloadUrl} a nainstalujte si novou verzi ručně, poté se obraťte na podporu nebo chybu nahlaste."
+  },
+  "icu:StandaloneRegistration--signal-logo": {
+    "messageformat": "Logo Signal"
+  },
+  "icu:StandaloneRegistration--back": {
+    "messageformat": "Zpět"
+  },
+  "icu:StandaloneRegistration--PhoneNumber--header": {
+    "messageformat": "Telefonní číslo"
+  },
+  "icu:StandaloneRegistration--PhoneNumber--description--line-1": {
+    "messageformat": "Zadejte své telefonní číslo pro ověření vašeho účtu."
+  },
+  "icu:StandaloneRegistration--PhoneNumber--description--line-2": {
+    "messageformat": "Zaslání může být zpoplatněno."
+  },
+  "icu:StandaloneRegistration--PhoneNumber--waiting": {
+    "messageformat": "Zkuste to prosím znovu za {duration}"
+  },
+  "icu:StandaloneRegistration--PhoneNumber--placeholder": {
+    "messageformat": "Telefonní číslo"
+  },
+  "icu:StandaloneRegistration--PhoneNumber--button": {
+    "messageformat": "Pokračovat"
+  },
+  "icu:StandaloneRegistration--PhoneNumber--Confirmation--description": {
+    "messageformat": "Je výše uvedené telefonní číslo správné?"
+  },
+  "icu:StandaloneRegistration--PhoneNumber--Confirmation--cancel": {
+    "messageformat": "Upravit číslo"
+  },
+  "icu:StandaloneRegistration--PhoneNumber--Confirmation--confirm": {
+    "messageformat": "Ano"
+  },
+  "icu:StandaloneRegistration--Captcha--header": {
+    "messageformat": "Pokračujte ověřením, že nejste robot"
+  },
+  "icu:StandaloneRegistration--Captcha--description": {
+    "messageformat": "Pomozte nám předcházet spamu v aplikaci Signal a dokončete ověření. Po ověření můžete pokračovat v registraci."
+  },
+  "icu:StandaloneRegistration--Captcha--retry-button": {
+    "messageformat": "Zkusit ověření znovu"
+  },
+  "icu:StandaloneRegistration--Captcha--button": {
+    "messageformat": "Ověřit v prohlížeči"
+  },
+  "icu:StandaloneRegistration--Captcha--button--wait": {
+    "messageformat": "Ověřit za {duration}"
+  },
+  "icu:StandaloneRegistration--Captcha--NeedAnother--header": {
+    "messageformat": "Je vyžadováno další ověření"
+  },
+  "icu:StandaloneRegistration--Captcha--NeedAnother--description": {
+    "messageformat": "Pro pokračování v registraci dokončete další kontrolu captcha."
+  },
+  "icu:StandaloneRegistration--Captcha--NeedAnother--cancel": {
+    "messageformat": "Zrušit"
+  },
+  "icu:StandaloneRegistration--Captcha--NeedAnother--retry": {
+    "messageformat": "Zkusit ověření znovu"
+  },
+  "icu:StandaloneRegistration--Captcha--MustWait--aria-title": {
+    "messageformat": "Zkuste to znovu později"
+  },
+  "icu:StandaloneRegistration--Captcha--MustWait--line-1": {
+    "messageformat": "Ověření momentálně nelze dokončit."
+  },
+  "icu:StandaloneRegistration--Captcha--MustWait--line-2": {
+    "messageformat": "Zkuste to znovu za {duration}"
+  },
+  "icu:StandaloneRegistration--Captcha--MustWait--button": {
+    "messageformat": "OK"
+  },
+  "icu:StandaloneRegistration--Captcha--Error--header": {
+    "messageformat": "Chyba ověření"
+  },
+  "icu:StandaloneRegistration--Captcha--Error--description": {
+    "messageformat": "Chcete-li pokračovat v registraci, zkuste ověření provést znovu."
+  },
+  "icu:StandaloneRegistration--Captcha--Error--try-again": {
+    "messageformat": "Zkusit znovu"
+  },
+  "icu:StandaloneRegistration--Captcha--Error--cancel": {
+    "messageformat": "Zrušit"
+  },
+  "icu:StandaloneRegistration--VerificationCode--header": {
+    "messageformat": "Ověřovací kód"
+  },
+  "icu:StandaloneRegistration--VerificationCode--description": {
+    "messageformat": "Zadejte kód, který jsme vám zaslali {phoneNumber}"
+  },
+  "icu:StandaloneRegistration--VerificationCode--button": {
+    "messageformat": "Pokračovat"
+  },
+  "icu:StandaloneRegistration--VerificationCode--send-sms": {
+    "messageformat": "Znovu odeslat kód"
+  },
+  "icu:StandaloneRegistration--VerificationCode--send-sms--duration": {
+    "messageformat": "Znovu odeslat kód za {duration}"
+  },
+  "icu:StandaloneRegistration--VerificationCode--call-me": {
+    "messageformat": "Zavolejte mi"
+  },
+  "icu:StandaloneRegistration--VerificationCode--call-me--duration": {
+    "messageformat": "Zavolejte mi za {duration}"
+  },
+  "icu:StandaloneRegistration--VerificationCode--wrong-number": {
+    "messageformat": "Špatné číslo?"
+  },
+  "icu:StandaloneRegistration--VerificationCode--having-trouble": {
+    "messageformat": "Máte potíže s registrací?"
+  },
+  "icu:StandaloneRegistration--VerificationCode--IncorrectCode--aria-title": {
+    "messageformat": "Nesprávný kód"
+  },
+  "icu:StandaloneRegistration--VerificationCode--IncorrectCode--description": {
+    "messageformat": "Zadaný kód je nesprávný. Zkontrolujte 6místný kód a zkuste to znovu."
+  },
+  "icu:StandaloneRegistration--VerificationCode--IncorrectCode--button": {
+    "messageformat": "OK"
+  },
+  "icu:StandaloneRegistration--VerificationCode--CodeInvalid--aria-title": {
+    "messageformat": "Neplatný kód"
+  },
+  "icu:StandaloneRegistration--VerificationCode--CodeInvalid--description": {
+    "messageformat": "Zadaný kód není platný. Znovu odešlete kód a zkuste to ještě jednou."
+  },
+  "icu:StandaloneRegistration--VerificationCode--CodeInvalid--resend-button": {
+    "messageformat": "Znovu odeslat kód"
+  },
+  "icu:StandaloneRegistration--VerificationCode--CodeInvalid--edit-number-button": {
+    "messageformat": "Upravit číslo"
+  },
+  "icu:StandaloneRegistration--VerificationCode--SMSFailed--aria-title": {
+    "messageformat": "SMS se nepodařilo odeslat"
+  },
+  "icu:StandaloneRegistration--VerificationCode--SMSFailed--description": {
+    "messageformat": "Nepodařilo se nám zaslat ověřovací kód prostřednictvím SMS. Zkuste místo toho kód získat prostřednictvím hlasového hovoru."
+  },
+  "icu:StandaloneRegistration--VerificationCode--SMSFailed--confirm": {
+    "messageformat": "Hlasový hovor"
+  },
+  "icu:StandaloneRegistration--VerificationCode--SMSFailed--cancel": {
+    "messageformat": "Zrušit"
+  },
+  "icu:StandaloneRegistration--VerificationCode--MustWait--aria-title": {
+    "messageformat": "Zkuste to znovu později"
+  },
+  "icu:StandaloneRegistration--VerificationCode--MustWait--description": {
+    "messageformat": "Učinili jste příliš mnoho pokusů o zadání kódu. Zkuste to znovu za {duration}."
+  },
+  "icu:StandaloneRegistration--VerificationCode--MustWait--button": {
+    "messageformat": "OK"
+  },
+  "icu:StandaloneRegistration--VerificationCode--MaximumAttempts--aria-title": {
+    "messageformat": "Příliš mnoho pokusů"
+  },
+  "icu:StandaloneRegistration--VerificationCode--MaximumAttempts--description": {
+    "messageformat": "Učinili jste příliš mnoho pokusů o zadání kódu. Znovu odešlete kód a zkuste to ještě jednou."
+  },
+  "icu:StandaloneRegistration--VerificationCode--MaximumAttempts--resend-button": {
+    "messageformat": "Znovu odeslat kód"
+  },
+  "icu:StandaloneRegistration--VerificationCode--MaximumAttempts--edit-number-button": {
+    "messageformat": "Upravit číslo"
+  },
+  "icu:StandaloneRegistration--VerificationCode--FailedToCall--aria-title": {
+    "messageformat": "Hovor se nepodařilo uskutečnit"
+  },
+  "icu:StandaloneRegistration--VerificationCode--FailedToCall--description": {
+    "messageformat": "Na vámi zadané telefonní číslo se nepodařilo zavolat. Ujistěte se, že jste zadali správné telefonní číslo, a zkuste to znovu."
+  },
+  "icu:StandaloneRegistration--VerificationCode--FailedToCall--ok-button": {
+    "messageformat": "OK"
+  },
+  "icu:StandaloneRegistration--VerificationCode--CannotSendCodePermanent--aria-title": {
+    "messageformat": "Kód nelze odeslat"
+  },
+  "icu:StandaloneRegistration--VerificationCode--CannotSendCodePermanent--description": {
+    "messageformat": "Na vámi zadané telefonní číslo nelze odeslat ověřovací kód. Ujistěte se, že jste zadali správné číslo, nebo zkuste zadat jiné."
+  },
+  "icu:StandaloneRegistration--VerificationCode--CannotSendCodePermanent--ok-button": {
+    "messageformat": "OK"
+  },
+  "icu:StandaloneRegistration--VerificationCode--CannotSendCodeTemporary--aria-title": {
+    "messageformat": "Zkuste to znovu později"
+  },
+  "icu:StandaloneRegistration--VerificationCode--CannotSendCodeTemporary--description": {
+    "messageformat": "Došlo k chybě a ověřovací kód se nepodařilo odeslat. Zkuste to znovu za {duration}."
+  },
+  "icu:StandaloneRegistration--VerificationCode--CannotSendCodeTemporary--ok-button": {
+    "messageformat": "OK"
+  },
+  "icu:StandaloneRegistration--ProfileEntry--header": {
+    "messageformat": "Nastavte si profil"
+  },
+  "icu:StandaloneRegistration--ProfileEntry--description": {
+    "messageformat": "Profily jsou viditelné pro lidi, se kterými si píšete, které máte v kontaktech, a pro členy skupin."
+  },
+  "icu:StandaloneRegistration--ProfileEntry--learn-more": {
+    "messageformat": "Zjistit více"
+  },
+  "icu:StandaloneRegistration--ProfileEntry--add-photo": {
+    "messageformat": "Přidat fotku"
+  },
+  "icu:StandaloneRegistration--ProfileEntry--first-name": {
+    "messageformat": "Křestní jméno (povinné)"
+  },
+  "icu:StandaloneRegistration--ProfileEntry--last-name": {
+    "messageformat": "Příjmení (nepovinné)"
+  },
+  "icu:StandaloneRegistration--ProfileEntry--discoverability": {
+    "messageformat": "Kdo mě může najít podle telefonního čísla"
+  },
+  "icu:StandaloneRegistration--ProfileEntry--discoverability--change-button": {
+    "messageformat": "Změnit"
+  },
+  "icu:StandaloneRegistration--ProfileEntry--discoverability--done-button": {
+    "messageformat": "Hotovo"
+  },
+  "icu:StandaloneRegistration--ProfileEntry--continue": {
+    "messageformat": "Pokračovat"
+  },
+  "icu:StandaloneRegistration--ProfileEntry--AvatarModal--header": {
+    "messageformat": "Váš avatar"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--header": {
+    "messageformat": "Zadejte svůj PIN"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--description": {
+    "messageformat": "Zadejte PIN, který jste si vytvořili pro svůj účet. Je to jiný kód, než ten v ověřovací SMS. <needHelp>Potřebujete pomoc?</needHelp>"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--placeholder": {
+    "messageformat": "Zadejte svůj PIN"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--incorrect-pin": {
+    "messageformat": "Nesprávný PIN"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--incorrect-pin--with-count": {
+    "messageformat": "{triesRemaining, plural, one {Nesprávný PIN. Zbývá {triesRemaining,number} pokus.} few {Nesprávný PIN. Zbývají {triesRemaining,number} pokusy.} many {Nesprávný PIN. Zbývá {triesRemaining,number} pokusů.} other {Nesprávný PIN. Zbývá {triesRemaining,number} pokusů.}}"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--NeedHelp--header": {
+    "messageformat": "Potřebujete pomoc?"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--NeedHelp--description--no-reglock": {
+    "messageformat": "PIN je vámi vytvořený nejméně 4místný kód, který může být numerický nebo alfanumerický. Pokud si svůj PIN nepamatujete, můžete si vytvořit nový. Můžete se zaregistrovat a používat svůj účet, ale přijdete o některá uložená nastavení, například o informace o profilu. <learnMore>Zjistit více</learnMore>."
+  },
+  "icu:StandaloneRegistration--VerifyPIN--NeedHelp--description--reglock": {
+    "messageformat": "PIN je vámi vytvořený nejméně 4místný kód, který může být numerický nebo alfanumerický. Pokud si svůj PIN nepamatujete, budete muset počkat 7 dní, než si účet budete moci znovu zaregistrovat. <learnMore>Zjistit více</learnMore>."
+  },
+  "icu:StandaloneRegistration--VerifyPIN--NeedHelp--skip-button--no-reglock": {
+    "messageformat": "Přeskočit a vytvořit nový PIN"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--NeedHelp--contact-support-button": {
+    "messageformat": "Kontaktovat podporu"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--NeedHelp--cancel": {
+    "messageformat": "Zrušit"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--FewRemainingTries--header": {
+    "messageformat": "Nesprávný PIN"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--FewRemainingTries--description--no-reglock": {
+    "messageformat": "{triesRemaining, plural, one {Zbývá vám {triesRemaining,number} pokus. Pokud vyčerpáte všechny pokusy, můžete si vytvořit nový PIN. Můžete se zaregistrovat a účet používat, ale přijdete o některá uložená nastavení, například o informace o vašem profilu. <learnMore>Zjistit více</learnMore>.} few {Zbývají vám {triesRemaining,number} pokusy. Pokud vyčerpáte všechny pokusy, můžete si vytvořit nový PIN. Můžete se zaregistrovat a účet používat, ale přijdete o některá uložená nastavení, například o informace o vašem profilu. <learnMore>Zjistit více</learnMore>.} many {Zbývá vám {triesRemaining,number} pokusů. Pokud vyčerpáte všechny pokusy, můžete si vytvořit nový PIN. Můžete se zaregistrovat a účet používat, ale přijdete o některá uložená nastavení, například o informace o vašem profilu. <learnMore>Zjistit více</learnMore>.} other {Zbývá vám {triesRemaining,number} pokusů. Pokud vyčerpáte všechny pokusy, můžete si vytvořit nový PIN. Můžete se zaregistrovat a účet používat, ale přijdete o některá uložená nastavení, například o informace o vašem profilu. <learnMore>Zjistit více</learnMore>.}}"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--FewRemainingTries--description--reglock": {
+    "messageformat": "{triesRemaining, plural, one {Zbývá vám {triesRemaining,number} pokus. Pokud vyčerpáte všechny pokusy, bude váš účet na 7 dní zablokován. Po 7 dnech nečinnosti se můžete znovu zaregistrovat bez PIN kódu. Veškerý obsah bude smazán. <learnMore>Zjistit více</learnMore>.} few {Zbývají vám {triesRemaining,number} pokusy. Pokud vyčerpáte všechny pokusy, bude váš účet na 7 dní zablokován. Po 7 dnech nečinnosti se můžete znovu zaregistrovat bez PIN kódu. Veškerý obsah bude smazán. <learnMore>Zjistit více</learnMore>.} many {Zbývá vám {triesRemaining,number} pokusů. Pokud vyčerpáte všechny pokusy, bude váš účet na 7 dní zablokován. Po 7 dnech nečinnosti se můžete znovu zaregistrovat bez PIN kódu. Veškerý obsah bude smazán. <learnMore>Zjistit více</learnMore>.} other {Zbývá vám {triesRemaining,number} pokusů. Pokud vyčerpáte všechny pokusy, bude váš účet na 7 dní zablokován. Po 7 dnech nečinnosti se můžete znovu zaregistrovat bez PIN kódu. Veškerý obsah bude smazán. <learnMore>Zjistit více</learnMore>.}}"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--FewRemainingTries--button": {
+    "messageformat": "OK"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--NoRemainingTries--header": {
+    "messageformat": "Nesprávný PIN"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--NoRemainingTries--description": {
+    "messageformat": "Vyčerpali jste pokusy o zadání PIN, ale k účtu Signal můžete stále získat přístup vytvořením nového PINu. Z důvodu ochrany vašeho soukromí a bezpečnosti bude váš účet obnoven bez jakýchkoli uložených informací o profilu nebo nastavení."
+  },
+  "icu:StandaloneRegistration--VerifyPIN--NoRemainingTries--create-new-pin": {
+    "messageformat": "Vytvořit nový PIN?"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--NoRemainingTries--learn-more": {
+    "messageformat": "Zjistěte více o PIN kódech"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--menu--skip-pin": {
+    "messageformat": "Přeskočit PIN"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--SkipPIN--header": {
+    "messageformat": "Přeskočit zadání PIN kódu?"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--SkipPIN--description": {
+    "messageformat": "Pokud si svůj PIN nepamatujete, můžete si vytvořit nový. Můžete se zaregistrovat a používat svůj účet, ale přijdete o některá uložená nastavení, například o informace o profilu. Zjistit více."
+  },
+  "icu:StandaloneRegistration--VerifyPIN--SkipPIN--skip-button": {
+    "messageformat": "Přeskočit a vytvořit nový PIN"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--SkipPIN--cancel-button": {
+    "messageformat": "Zrušit"
+  },
+  "icu:StandaloneRegistration--CreatePIN--header": {
+    "messageformat": "Vytvořte si PIN"
+  },
+  "icu:StandaloneRegistration--CreatePIN--description": {
+    "messageformat": "PIN vám pomůže obnovit účet a uchovat vaše informace zašifrované pomocí aplikace Signal. <learnMore>Zjistit více</learnMore>"
+  },
+  "icu:StandaloneRegistration--CreatePIN--placeholder": {
+    "messageformat": "Vytvořte si PIN"
+  },
+  "icu:StandaloneRegistration--CreatePIN--helper-text": {
+    "messageformat": "PIN musí mít alespoň 4 znaky"
+  },
+  "icu:StandaloneRegistration--CreatePIN--continue": {
+    "messageformat": "Pokračovat"
+  },
+  "icu:StandaloneRegistration--CreatePIN--open-menu": {
+    "messageformat": "Otevřít nabídku"
+  },
+  "icu:StandaloneRegistration--CreatePIN--menu--more-about": {
+    "messageformat": "Více o PIN kódech"
+  },
+  "icu:StandaloneRegistration--CreatePIN--menu--disable": {
+    "messageformat": "Vypnout PIN"
+  },
+  "icu:StandaloneRegistration--CreatePIN--DisableWarning--header": {
+    "messageformat": "Varování"
+  },
+  "icu:StandaloneRegistration--CreatePIN--DisableWarning--description": {
+    "messageformat": "Pokud PIN vypnete, přijdete při opětovné registraci aplikace Signal o všechna data, ledaže byste je převedli z jiného zařízení s iOS. Dokud je PIN vypnutý, nemůžete zapnout Zámek registrace."
+  },
+  "icu:StandaloneRegistration--CreatePIN--DisableWarning--disable-button": {
+    "messageformat": "Vypnout PIN"
+  },
+  "icu:StandaloneRegistration--CreatePIN--DisableWarning--cancel": {
+    "messageformat": "Zrušit"
+  },
+  "icu:StandaloneRegistration--CreatePIN--AboutPINs--header": {
+    "messageformat": "O PIN kódech v aplikaci Signal"
+  },
+  "icu:StandaloneRegistration--CreatePIN--AboutPINs--description": {
+    "messageformat": "PIN uchovává vaše informace ve službě  Signal zašifrované tak, abyste k nim měli přístup pouze vy. Váš profil, nastavení a kontakty se po opětovné instalaci obnoví."
+  },
+  "icu:StandaloneRegistration--CreatePIN--AboutPINs--learn-more-button": {
+    "messageformat": "Zjistit více"
+  },
+  "icu:StandaloneRegistration--CreatePIN--AboutPINs--ok-button": {
+    "messageformat": "OK"
+  },
+  "icu:StandaloneRegistration--CreatePIN--confirming--header": {
+    "messageformat": "Potvrďte svůj PIN"
+  },
+  "icu:StandaloneRegistration--CreatePIN--confirming--description": {
+    "messageformat": "Znovu zadejte PIN, který jste právě vytvořili."
+  },
+  "icu:StandaloneRegistration--CreatePIN--confirming--placeholder": {
+    "messageformat": "Zadejte svůj PIN"
+  },
+  "icu:StandaloneRegistration--AccountLocked--header": {
+    "messageformat": "Účet je zablokován"
+  },
+  "icu:StandaloneRegistration--AccountLocked--description": {
+    "messageformat": "Váš účet byl zablokován z důvodu ochrany vašeho soukromí a bezpečnosti. Po 7 dnech nečinnosti na vašem účtu budete moci toto telefonní číslo znovu zaregistrovat, aniž byste potřebovali svůj PIN. Veškerý obsah bude smazán."
+  },
+  "icu:StandaloneRegistration--AccountLocked--start-over-button": {
+    "messageformat": "Použít jiné číslo"
+  },
+  "icu:StandaloneRegistration--AccountLocked--help-button": {
+    "messageformat": "Zjistěte víc o zablokovaných účtech"
+  },
+  "icu:StandaloneRegistration--UpdateRequired--header": {
+    "messageformat": "Je vyžadována aktualizace"
+  },
+  "icu:StandaloneRegistration--UpdateRequired--description": {
+    "messageformat": "Chcete-li pokračovat v registraci, aktualizujte aplikaci Signal na nejnovější verzi."
+  },
+  "icu:StandaloneRegistration--UpdateRequired--update": {
+    "messageformat": "Aktualizovat"
+  },
+  "icu:StandaloneRegistration--UpdateRequired--cancel": {
+    "messageformat": "Zrušit"
+  },
+  "icu:StandaloneRegistration--ConnectionProblem--header": {
+    "messageformat": "Zkontrolujte připojení"
+  },
+  "icu:StandaloneRegistration--ConnectionProblem--description": {
+    "messageformat": "Chcete-li pokračovat, zkontrolujte připojení počítače k internetu a zkuste to znovu."
+  },
+  "icu:StandaloneRegistration--ConnectionProblem--button": {
+    "messageformat": "OK"
+  },
+  "icu:StandaloneRegistration--UnexpectedError--header": {
+    "messageformat": "Registraci nelze dokončit"
+  },
+  "icu:StandaloneRegistration--UnexpectedError--description": {
+    "messageformat": "Došlo k chybě a registraci nelze dokončit. Pokud problém přetrvává, kontaktujte prosím podporu."
+  },
+  "icu:StandaloneRegistration--UnexpectedError--try-again-button": {
+    "messageformat": "Zkusit znovu"
+  },
+  "icu:StandaloneRegistration--UnexpectedError--contact-support-button": {
+    "messageformat": "Kontaktovat podporu"
   },
   "icu:NSIS__retry-dialog--first-line": {
     "messageformat": "Aplikaci Signal nelze zavřít.",
@@ -6915,15 +7386,6 @@
   },
   "icu:SignalConnectionsModal__footer": {
     "messageformat": "Vaše spojení vidí vaše jméno a fotografii a mohou vidět příspěvky v sekci „Můj příběh“, pokud je před nimi neskryjete."
-  },
-  "icu:LocalDeleteWarningModal__header": {
-    "messageformat": "Odstraňování zpráv je synchronizováno ve všech vašich zařízeních"
-  },
-  "icu:LocalDeleteWarningModal__description": {
-    "messageformat": "Pokud odstraníte zprávy nebo chaty, budou odstraněny ze všech vašich zařízení."
-  },
-  "icu:LocalDeleteWarningModal__confirm": {
-    "messageformat": "Rozumím"
   },
   "icu:Stories__title": {
     "messageformat": "Příběhy"
@@ -7478,9 +7940,6 @@
   "icu:DraftGifMessageSendModal__SendButtonLabel": {
     "messageformat": "Odeslat"
   },
-  "icu:DraftGifMessageSendModal__CancelButtonLabel": {
-    "messageformat": "Zrušit"
-  },
   "icu:EditHistoryMessagesModal__title": {
     "messageformat": "Historie úprav"
   },
@@ -7759,9 +8218,6 @@
   },
   "icu:PreferencesDonations__privacy-modal-title": {
     "messageformat": "Vaše informace jsou soukromé"
-  },
-  "icu:PreferencesDonations__privacy-modal-content": {
-    "messageformat": "<paragraph>Signal při poskytnutí příspěvku neshromažďuje ani neukládá žádné vaše osobní údaje.</paragraph> <paragraph>K přijímání vašich příspěvků používáme jako zpracovatele plateb službu Stripe. K žádným informacím, které jim poskytnete, nemáme přístup, neshromažďujeme je, ani je neukládáme. </paragraph><paragraph>Signal nepropojuje a nemůže propojit váš příspěvek s vaším účtem Signal. </paragraph><paragraph>Děkujeme za vaši podporu!</paragraph>"
   },
   "icu:PreferencesDonations__privacy-modal-intro": {
     "messageformat": "Jako nezávislá nezisková organizace se společnost  Signal zavázala k ochraně soukromí zpráv a hovorů. Žádné reklamy, žádné sledování, žádný dohled. Přispějte ještě dnes na podporu služby Signal."
@@ -8205,10 +8661,16 @@
     "messageformat": "Drobná vylepšení, opravy chyb a zvýšení výkonu. Děkujeme, že používáte Signal!",
     "ignoreUnused": true
   },
-  "icu:WhatsNew__8.12--0": {
-    "messageformat": "Přidali jsme novou klávesovou zkratku pro zvednutí ruky během skupinových hovorů (Shift H)."
+  "icu:WhatsNew__8.18--0": {
+    "messageformat": "Ankety teď můžete vytvářet i v soukromých chatech."
   },
-  "icu:WhatsNew__8.13--0": {
-    "messageformat": "The new raised-hand indicators are now also displayed in the list of raised hands during group calls. It's a second-hand place to figure out who you should hand it over to when you're done speaking."
+  "icu:WhatsNew__8.19--0": {
+    "messageformat": "Správci skupin nyní mohou chaty ukončit pomocí nové možnosti Ukončit skupinu v nastavení skupiny. Ukončení skupiny zabrání jejím členům v posílání zpráv nebo zahajovaní hovorů a také deaktivuje pozvánky."
+  },
+  "icu:WhatsNew__8.20--0": {
+    "messageformat": "Introducing disappearing call events: Missed, outgoing, and received calls that occur after you install this update will now automatically disappear in any chat where disappearing messages are enabled."
+  },
+  "icu:WhatsNew__8.20--1": {
+    "messageformat": "Now you can reorder installed sticker packs so your new favorites don’t get stuck in the back of the line."
   }
 }

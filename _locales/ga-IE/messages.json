@@ -14,6 +14,9 @@
   "icu:AxoTextField.Clear": {
     "messageformat": "Glan"
   },
+  "icu:AxoBadge.MaxOverflow": {
+    "messageformat": "{max,number}+"
+  },
   "icu:AddUserToAnotherGroupModal__title": {
     "messageformat": "Add to a Group"
   },
@@ -85,6 +88,9 @@
   },
   "icu:unknownContact": {
     "messageformat": "Teagmhálaí Anaithnid"
+  },
+  "icu:deletedAccount": {
+    "messageformat": "Cuntas Scriosta"
   },
   "icu:unknownContactShort": {
     "messageformat": "Anaithnid"
@@ -314,6 +320,9 @@
   "icu:LeftPaneChatFolders__ItemUnreadBadge__MaxCount": {
     "messageformat": "{maxCount,number}+"
   },
+  "icu:LeftPaneChatFolders__ItemUnreadBadge__AccessibleLabel": {
+    "messageformat": "{count, plural, one {{count,number} Unread Message} other {{count,number} Unread Messages}}"
+  },
   "icu:LeftPaneChatFolders__Item__ContextMenu__MarkAllRead": {
     "messageformat": "Marcáil iad uile léite"
   },
@@ -449,8 +458,8 @@
   "icu:unpinConversation": {
     "messageformat": "Díphionnáil comhrá"
   },
-  "icu:pinnedConversationsFull": {
-    "messageformat": "Ní féidir leat ach suas le 4 chomhrá a phionnáil"
+  "icu:pinnedConversations--max": {
+    "messageformat": "{maxPinnedConversations, plural, one {Ní féidir leat ach suas le {maxPinnedConversations,number} chomhrá a phionnáil} two {Ní féidir leat ach suas le {maxPinnedConversations,number} chomhrá a phionnáil} few {Ní féidir leat ach suas le {maxPinnedConversations,number} chomhrá a phionnáil} many {Ní féidir leat ach suas le {maxPinnedConversations,number} gcomhrá a phionnáil} other {Ní féidir leat ach suas le {maxPinnedConversations,number} comhrá a phionnáil}}"
   },
   "icu:view": {
     "messageformat": "Amharc ar"
@@ -2261,9 +2270,6 @@
   "icu:partiallySent": {
     "messageformat": "Cuid di seolta, cliceáil le sonraí a fháil"
   },
-  "icu:partiallyDeleted": {
-    "messageformat": "Cuid di scriosta, cliceáil lena atriail"
-  },
   "icu:partiallyDeleted--clickForDetails": {
     "messageformat": "Cuid di scriosta, cliceáil le sonraí a fháil"
   },
@@ -2466,7 +2472,7 @@
     "messageformat": "Theip ar íoslódáil"
   },
   "icu:Toast--unable-download-from-backup-tier": {
-    "messageformat": "Attachment missing from backup CDN"
+    "messageformat": "Attachment missing from backup CDN, please share desktop & primary logs"
   },
   "icu:ToastManager__CannotAddMemberLabel": {
     "messageformat": "Ní féidir ach le riarthóirí lipéid na mball a chur leis sa ghrúpa seo."
@@ -2687,9 +2693,6 @@
   "icu:message--getDescription--gif": {
     "messageformat": "GIF"
   },
-  "icu:message--deletedForEveryone": {
-    "messageformat": "Scriosadh an teachtaireacht seo."
-  },
   "icu:message--deletedByAdmin": {
     "messageformat": "Scrios an riarthóir {admin} an teachtaireacht seo"
   },
@@ -2780,14 +2783,11 @@
   "icu:stickers--toast--InstallFailed": {
     "messageformat": "Níorbh fhéidir beart greamán a shuiteáil"
   },
-  "icu:stickers--StickerManager--Available": {
-    "messageformat": "Ar fáil"
+  "icu:stickers--StickerManager--MyStickers--None": {
+    "messageformat": "Níl aon bheart greamán ann, cuir greamáin leis le seoladh chuig do chairde."
   },
-  "icu:stickers--StickerManager--InstalledPacks": {
-    "messageformat": "Suiteáilte"
-  },
-  "icu:stickers--StickerManager--InstalledPacks--Empty": {
-    "messageformat": "Níl aon ghreamáin suiteáilte"
+  "icu:stickers--StickerManager--AddStickers": {
+    "messageformat": "Cuir greamáin leis"
   },
   "icu:stickers--StickerManager--BlessedPacks": {
     "messageformat": "Sraith Ealaíontóirí Signal"
@@ -2795,14 +2795,17 @@
   "icu:stickers--StickerManager--BlessedPacks--Empty": {
     "messageformat": "Níl greamáin Cruthaitheoirí Signal ar fáil"
   },
-  "icu:stickers--StickerManager--ReceivedPacks": {
-    "messageformat": "Greamáin a bhFuair Tú"
+  "icu:stickers--StickerManager--ReceivedPacks2": {
+    "messageformat": "Comhroinnte Leat"
   },
-  "icu:stickers--StickerManager--ReceivedPacks--Empty": {
-    "messageformat": "Taispeánfar greamáin ó theachtaireachtaí isteach anseo"
+  "icu:stickers--StickerManager--ReceivedPacksDescription": {
+    "messageformat": "Nuair a fhaigheann tú greamán ó dhuine, taispeánfar an beart greamán anseo."
   },
   "icu:stickers--StickerManager--Install": {
     "messageformat": "Suiteáil"
+  },
+  "icu:stickers--StickerManager--Installed": {
+    "messageformat": "Suiteáilte"
   },
   "icu:stickers--StickerManager--Uninstall": {
     "messageformat": "Díshuiteáil"
@@ -2810,11 +2813,59 @@
   "icu:stickers--StickerManager--UninstallWarning": {
     "messageformat": "Seans nach mbeidh tú in ann an beart greamán seo a athshuiteáil mura bhfuil an teachtaireacht fhoinseach agat a thuilleadh."
   },
+  "icu:stickers--StickerManagerHeader--All": {
+    "messageformat": "Iad uile"
+  },
+  "icu:stickers--StickerManagerHeader--MyStickers": {
+    "messageformat": "Mo Ghreamáin"
+  },
+  "icu:stickers--StickerManagerPackContextMenu--Add": {
+    "messageformat": "Cuir leis"
+  },
+  "icu:stickers--StickerManagerPackContextMenu--Remove": {
+    "messageformat": "Bain de"
+  },
+  "icu:stickers--StickerManagerPackDragHandle--Label": {
+    "messageformat": "Drag to reorder sticker pack"
+  },
+  "icu:stickers--StickerManagerBlessedPacksList--Label": {
+    "messageformat": "Signal Artist Series sticker packs"
+  },
+  "icu:stickers--StickerManagerReceivedPacksList--Label": {
+    "messageformat": "Received sticker packs"
+  },
+  "icu:stickers--StickerManagerInstalledPacksList--Label": {
+    "messageformat": "Installed sticker packs"
+  },
   "icu:stickers--StickerPreview--Title": {
     "messageformat": "Beart Greamán"
   },
   "icu:stickers--StickerPreview--Error": {
     "messageformat": "Earráid agus beart greamán á oscailt. Seiceáil do nasc Idirlín agus triail arís."
+  },
+  "icu:stickers--StickerPreview--Install": {
+    "messageformat": "Cuir Greamáin Leis"
+  },
+  "icu:stickers--StickerPreview--Remove": {
+    "messageformat": "Bain de é"
+  },
+  "icu:stickers--StickerPreview--Link": {
+    "messageformat": "Nasc"
+  },
+  "icu:stickers--StickerPreview--LinkCopied": {
+    "messageformat": "Nasc cóipeáilte"
+  },
+  "icu:stickers--StickerPreview--StickerCount": {
+    "messageformat": "{count, plural, one {{count,number} ghreamán} two {{count,number} ghreamán} few {{count,number} ghreamán} many {{count,number} ngreamán} other {{count,number} greamán}}"
+  },
+  "icu:stickers--StickerPreview--StickerNoEmojiAriaLabel": {
+    "messageformat": "Greamán gan emoji"
+  },
+  "icu:stickers--StickerPackLinkPreviewDescription": {
+    "messageformat": "Beart Greamán le {author}"
+  },
+  "icu:stickers--ViewPack": {
+    "messageformat": "Féach ar an mBeart"
   },
   "icu:FunPicker__Tab--Emojis": {
     "messageformat": "Emoji"
@@ -3028,6 +3079,18 @@
   },
   "icu:FunButton__Label--StickerPicker": {
     "messageformat": "Cuir Greamán leis"
+  },
+  "icu:FunPicker__Label--StickerReply": {
+    "messageformat": "Reply"
+  },
+  "icu:FunPicker__Label--SendStickerReply": {
+    "messageformat": "Send"
+  },
+  "icu:FunPicker__Label--CancelStickerReply": {
+    "messageformat": "Cancel"
+  },
+  "icu:FunPicker__Label--Sticker": {
+    "messageformat": "Sticker"
   },
   "icu:confirmation-dialog--Cancel": {
     "messageformat": "Cuir ar ceal"
@@ -4700,9 +4763,6 @@
   "icu:CompositionArea--expand": {
     "messageformat": "Fairsingigh"
   },
-  "icu:CompositionArea--attach-file": {
-    "messageformat": "Cuir comhad i gceangal"
-  },
   "icu:CompositionArea__AttachMenu__PhotosAndVideos": {
     "messageformat": "Grianghraif agus físeáin"
   },
@@ -5153,26 +5213,17 @@
   "icu:SelectModeActions--forwardSelectedMessages": {
     "messageformat": "Seol na teachtaireachtaí roghnaithe ar aghaidh"
   },
-  "icu:DeleteMessagesModal--title": {
-    "messageformat": "{count, plural, one {Scrios an teachtaireacht?} two {Scrios {count,number} theachtaireacht?} few {Scrios {count,number} theachtaireacht?} many {Scrios {count,number} dteachtaireacht?} other {Scrios {count,number} teachtaireacht?}}"
-  },
   "icu:DeleteMessagesModal--title-2": {
     "messageformat": "{count, plural, one {Scrios an teachtaireacht roghnaithe?} two {Scrios {count,number} theachtaireacht roghnaithe?} few {Scrios {count,number} theachtaireacht roghnaithe?} many {Scrios {count,number} dteachtaireacht roghnaithe?} other {Scrios {count,number} teachtaireacht roghnaithe?}}"
   },
   "icu:DeleteMessagesModal--description": {
     "messageformat": "{count, plural, one {Cé dó ar mhaith leat an teachtaireacht seo a scriosadh?} two {Cé dó ar mhaith leat na teachtaireachtaí seo a scriosadh?} few {Cé dó ar mhaith leat na teachtaireachtaí seo a scriosadh?} many {Cé dó ar mhaith leat na teachtaireachtaí seo a scriosadh?} other {Cé dó ar mhaith leat na teachtaireachtaí seo a scriosadh?}}"
   },
-  "icu:DeleteMessagesModal--description--noteToSelf": {
-    "messageformat": "{count, plural, one {Cé acu gléasanna ar mhaith leat an teachtaireacht seo a scriosadh uathu?} two {Cé acu gléasanna ar mhaith leat na teachtaireachtaí seo a scriosadh uathu?} few {Cé acu gléasanna ar mhaith leat na teachtaireachtaí seo a scriosadh uathu?} many {Cé acu gléasanna ar mhaith leat na teachtaireachtaí seo a scriosadh uathu?} other {Cé acu gléasanna ar mhaith leat na teachtaireachtaí seo a scriosadh uathu?}}"
-  },
   "icu:DeleteMessagesModal--description--noteToSelf--deleteSync": {
     "messageformat": "{count, plural, one {Scriosfar an teachtaireacht seo ó do ghléasanna uile.} two {Scriosfar na teachtaireachtaí seo ó do ghléasanna uile.} few {Scriosfar na teachtaireachtaí seo ó do ghléasanna uile.} many {Scriosfar na teachtaireachtaí seo ó do ghléasanna uile.} other {Scriosfar na teachtaireachtaí seo ó do ghléasanna uile.}}"
   },
   "icu:DeleteMessagesModal--deleteForMe": {
     "messageformat": "Scrios domsa"
-  },
-  "icu:DeleteMessagesModal--deleteFromThisDevice": {
-    "messageformat": "Scrios ón ngléas seo"
   },
   "icu:DeleteMessagesModal--deleteForEveryone": {
     "messageformat": "Scrios do chách"
@@ -5186,9 +5237,6 @@
   },
   "icu:DeleteMessagesModal--adminDeleteConfirmation--description__rollout": {
     "messageformat": "{count, plural, one {Feicfidh baill den ghrúpa ar na leaganacha is déanaí de Signal gur scrios tú an teachtaireacht sin.} two {Feicfidh baill den ghrúpa ar na leaganacha is déanaí de Signal gur scrios tú na teachtaireachtaí sin.} few {Feicfidh baill den ghrúpa ar na leaganacha is déanaí de Signal gur scrios tú na teachtaireachtaí sin.} many {Feicfidh baill den ghrúpa ar na leaganacha is déanaí de Signal gur scrios tú na teachtaireachtaí sin.} other {Feicfidh baill den ghrúpa ar na leaganacha is déanaí de Signal gur scrios tú na teachtaireachtaí sin.}}"
-  },
-  "icu:DeleteMessagesModal--deleteFromAllDevices": {
-    "messageformat": "Scrios ó na gléasanna uile"
   },
   "icu:DeleteMessagesModal--noteToSelf--deleteSync": {
     "messageformat": "Scrios"
@@ -6397,11 +6445,26 @@
   "icu:Preferences--local-backups-enter-backup-key": {
     "messageformat": "Cuir isteach an eochair"
   },
-  "icu:Preferences--local-backups-record-recovery-key": {
-    "messageformat": "Taifead d'eochair athshlánaithe"
+  "icu:Preferences--local-backups-recovery-key--title": {
+    "messageformat": "D'eochair athshlánaithe"
   },
-  "icu:Preferences--local-backups-record-backup-key-description": {
-    "messageformat": "Tá an eochair seo ag teastáil chun do chuntas agus do shonraí a athshlánú. Stóráil an eochair in áit shábháilte. Má chailleann tú í, ní bheidh tú in ann do chuntas a athshlánú. <learnMoreLink>Tuilleadh faisnéise.</learnMoreLink>"
+  "icu:Preferences--local-backups-recovery-key--description": {
+    "messageformat": "Tá an eochair seo ag teastáil chun do chuntas agus do shonraí a athshlánú. Stóráil in áit shlán shábháilte í agus ná comhroinn choíche le duine ar bith í. Ní sheolfaidh Signal teachtaireacht chugat choíche chun d'eochair athshlánaithe a iarraidh ort. <learnMoreLink>Tuilleadh faisnéise.</learnMoreLink>"
+  },
+  "icu:Preferences__recovery-key__do-not-share-title": {
+    "messageformat": "Ná comhroinn an eochair athshlánaithe"
+  },
+  "icu:Preferences__recovery-key__do-not-share-confirm": {
+    "messageformat": "Tuigim"
+  },
+  "icu:CompositionInput__recovery-key-paste__share-key": {
+    "messageformat": "Comhroinn an eochair"
+  },
+  "icu:CompositionInput__recovery-key-paste__do-not-share-key": {
+    "messageformat": "Ná comhroinn an eochair"
+  },
+  "icu:CompositionInput__recovery-key-warning--description": {
+    "messageformat": "Ná comhroinn d'eochair athshlánaithe le haon duine. Óir beidh an duine sin in ann teacht i gceannas ar do chuntas. <strong>Ní sheolfaidh Signal teachtaireacht chugat choíche</strong> chun d'eochair athshlánaithe a iarraidh ort. Ná freagair comhrá choíche a ligeann gur Signal atá ann. <learnMoreLink>Tuilleadh faisnéise.</learnMoreLink>"
   },
   "icu:Preferences--local-backups-confirm-recovery-key": {
     "messageformat": "Deimhnigh d'eochair athshlánaithe"
@@ -6465,6 +6528,9 @@
   },
   "icu:Preferences__local-backups-auth-error--unauthorized": {
     "messageformat": "Níorbh fhéidir an gníomh sin a chur i gcrích toisc gur theip ar fhíordheimhniú an chórais. Triail arís é nó oscail an aip Signal ar do ghléas móibíleach agus téigh chuig Socruithe Cúltacaí le féachaint ar d'eochair athshlánaithe."
+  },
+  "icu:Preferences__local-backups-auth-error--unknown-error": {
+    "messageformat": "Tharla earráid agus fíordheimhniú córais á iarraidh don ghníomh seo."
   },
   "icu:Preferences__view-key": {
     "messageformat": "Féach ar an eochair"
@@ -6631,6 +6697,12 @@
   "icu:DialogUpdate__downloaded": {
     "messageformat": "Nuashonrú Íoslódáilte"
   },
+  "icu:DialogUpdate__upgrade-mas": {
+    "messageformat": "Cliceáil le dul chuig an App Store"
+  },
+  "icu:DialogExpiredBuild__upgrade-mas": {
+    "messageformat": "Cliceáil le dul chuig an App Store"
+  },
   "icu:CriticalIdlePrimaryDevice__title": {
     "messageformat": "Oscail Signal ar do ghuthán"
   },
@@ -6669,6 +6741,405 @@
   },
   "icu:InstallScreenUpdateDialog--cannot-update__body": {
     "messageformat": "Theip ar nuashonrú Dheasc Signal, ach tá leagan nua ar fáil. Téigh chuig {downloadUrl} agus suiteáil an leagan nua de láimh, ansin déan teagmháil leis an bhfoireann tacaíochta nó tuairiscigh fabht faoin bhfadhb sin."
+  },
+  "icu:StandaloneRegistration--signal-logo": {
+    "messageformat": "Lógó Signal"
+  },
+  "icu:StandaloneRegistration--back": {
+    "messageformat": "Siar"
+  },
+  "icu:StandaloneRegistration--PhoneNumber--header": {
+    "messageformat": "Uimhir ghutháin"
+  },
+  "icu:StandaloneRegistration--PhoneNumber--description--line-1": {
+    "messageformat": "Cuir isteach d'uimhir ghutháin le do chuntas a fhíorú."
+  },
+  "icu:StandaloneRegistration--PhoneNumber--description--line-2": {
+    "messageformat": "Féadfaidh rátaí iompróra a bheith i bhfeidhm."
+  },
+  "icu:StandaloneRegistration--PhoneNumber--waiting": {
+    "messageformat": "Triail arís i gceann {duration}"
+  },
+  "icu:StandaloneRegistration--PhoneNumber--placeholder": {
+    "messageformat": "Uimhir ghutháin"
+  },
+  "icu:StandaloneRegistration--PhoneNumber--button": {
+    "messageformat": "Ar aghaidh"
+  },
+  "icu:StandaloneRegistration--PhoneNumber--Confirmation--description": {
+    "messageformat": "An bhfuil an uimhir ghutháin thuas ceart?"
+  },
+  "icu:StandaloneRegistration--PhoneNumber--Confirmation--cancel": {
+    "messageformat": "Cuir an uimhir in eagar"
+  },
+  "icu:StandaloneRegistration--PhoneNumber--Confirmation--confirm": {
+    "messageformat": "Tá"
+  },
+  "icu:StandaloneRegistration--Captcha--header": {
+    "messageformat": "Fíoraigh gur duine thú le leanúint leis"
+  },
+  "icu:StandaloneRegistration--Captcha--description": {
+    "messageformat": "Chun cabhrú le turscar ar Signal a chosc, cuir an fíorú i gcrích. Tar éis fíorú, is féidir leat leanúint le clárú."
+  },
+  "icu:StandaloneRegistration--Captcha--retry-button": {
+    "messageformat": "Triail an fíorú arís"
+  },
+  "icu:StandaloneRegistration--Captcha--button": {
+    "messageformat": "Fíoraigh sa bhrabhsálaí"
+  },
+  "icu:StandaloneRegistration--Captcha--button--wait": {
+    "messageformat": "Fíoraigh i gceann {duration}"
+  },
+  "icu:StandaloneRegistration--Captcha--NeedAnother--header": {
+    "messageformat": "Tuilleadh fíoraithe de dhíth"
+  },
+  "icu:StandaloneRegistration--Captcha--NeedAnother--description": {
+    "messageformat": "Déan CAPTCHA eile le leanúint leis an gclárú."
+  },
+  "icu:StandaloneRegistration--Captcha--NeedAnother--cancel": {
+    "messageformat": "Cuir ar ceal"
+  },
+  "icu:StandaloneRegistration--Captcha--NeedAnother--retry": {
+    "messageformat": "Triail an fíorú arís"
+  },
+  "icu:StandaloneRegistration--Captcha--MustWait--aria-title": {
+    "messageformat": "Triail arís níos déanaí"
+  },
+  "icu:StandaloneRegistration--Captcha--MustWait--line-1": {
+    "messageformat": "Ní féidir an fíorú a chur i gcrích díreach anois."
+  },
+  "icu:StandaloneRegistration--Captcha--MustWait--line-2": {
+    "messageformat": "Triail arís i gceann {duration}"
+  },
+  "icu:StandaloneRegistration--Captcha--MustWait--button": {
+    "messageformat": "OK"
+  },
+  "icu:StandaloneRegistration--Captcha--Error--header": {
+    "messageformat": "Earráid le fíorú"
+  },
+  "icu:StandaloneRegistration--Captcha--Error--description": {
+    "messageformat": "Triail an fíorú arís le leanúint le clárú."
+  },
+  "icu:StandaloneRegistration--Captcha--Error--try-again": {
+    "messageformat": "Triail arís"
+  },
+  "icu:StandaloneRegistration--Captcha--Error--cancel": {
+    "messageformat": "Cuir ar ceal"
+  },
+  "icu:StandaloneRegistration--VerificationCode--header": {
+    "messageformat": "Cód fíoraithe"
+  },
+  "icu:StandaloneRegistration--VerificationCode--description": {
+    "messageformat": "Cuir isteach an cód a sheolamar chuig {phoneNumber}"
+  },
+  "icu:StandaloneRegistration--VerificationCode--button": {
+    "messageformat": "Ar aghaidh"
+  },
+  "icu:StandaloneRegistration--VerificationCode--send-sms": {
+    "messageformat": "Athsheol Cód"
+  },
+  "icu:StandaloneRegistration--VerificationCode--send-sms--duration": {
+    "messageformat": "Resend Code in {duration}"
+  },
+  "icu:StandaloneRegistration--VerificationCode--call-me": {
+    "messageformat": "Call Me"
+  },
+  "icu:StandaloneRegistration--VerificationCode--call-me--duration": {
+    "messageformat": "Call Me in {duration}"
+  },
+  "icu:StandaloneRegistration--VerificationCode--wrong-number": {
+    "messageformat": "Uimhir mhícheart?"
+  },
+  "icu:StandaloneRegistration--VerificationCode--having-trouble": {
+    "messageformat": "Deacracht agat le clárú?"
+  },
+  "icu:StandaloneRegistration--VerificationCode--IncorrectCode--aria-title": {
+    "messageformat": "Cód mícheart"
+  },
+  "icu:StandaloneRegistration--VerificationCode--IncorrectCode--description": {
+    "messageformat": "Tá an cód a chuir tú isteach mícheart. Breathnaigh ar an gcód 6 dhigit agus triail arís."
+  },
+  "icu:StandaloneRegistration--VerificationCode--IncorrectCode--button": {
+    "messageformat": "OK"
+  },
+  "icu:StandaloneRegistration--VerificationCode--CodeInvalid--aria-title": {
+    "messageformat": "Cód neamhbhailí"
+  },
+  "icu:StandaloneRegistration--VerificationCode--CodeInvalid--description": {
+    "messageformat": "Níl an cód a chuir tú isteach bailí. Seol an cód arís agus triail arís."
+  },
+  "icu:StandaloneRegistration--VerificationCode--CodeInvalid--resend-button": {
+    "messageformat": "Athsheol Cód"
+  },
+  "icu:StandaloneRegistration--VerificationCode--CodeInvalid--edit-number-button": {
+    "messageformat": "Cuir an uimhir in eagar"
+  },
+  "icu:StandaloneRegistration--VerificationCode--SMSFailed--aria-title": {
+    "messageformat": "Ní féidir SMS a sheoladh"
+  },
+  "icu:StandaloneRegistration--VerificationCode--SMSFailed--description": {
+    "messageformat": "Níorbh fhéidir linn cód fíoraithe a sheoladh trí SMS. Triail do chód a fháil trí ghuthghlao ina ionad."
+  },
+  "icu:StandaloneRegistration--VerificationCode--SMSFailed--confirm": {
+    "messageformat": "Guthghlao"
+  },
+  "icu:StandaloneRegistration--VerificationCode--SMSFailed--cancel": {
+    "messageformat": "Cuir ar ceal"
+  },
+  "icu:StandaloneRegistration--VerificationCode--MustWait--aria-title": {
+    "messageformat": "Triail arís níos déanaí"
+  },
+  "icu:StandaloneRegistration--VerificationCode--MustWait--description": {
+    "messageformat": "Rinne tú an iomarca iarrachtaí ar an gcód a chur isteach. Triail arís i gceann {duration}."
+  },
+  "icu:StandaloneRegistration--VerificationCode--MustWait--button": {
+    "messageformat": "OK"
+  },
+  "icu:StandaloneRegistration--VerificationCode--MaximumAttempts--aria-title": {
+    "messageformat": "An iomarca iarrachtaí"
+  },
+  "icu:StandaloneRegistration--VerificationCode--MaximumAttempts--description": {
+    "messageformat": "Rinne tú an iomarca iarrachtaí ar an gcód a chur isteach. Seol an cód arís agus triail arís."
+  },
+  "icu:StandaloneRegistration--VerificationCode--MaximumAttempts--resend-button": {
+    "messageformat": "Athsheol Cód"
+  },
+  "icu:StandaloneRegistration--VerificationCode--MaximumAttempts--edit-number-button": {
+    "messageformat": "Cuir an uimhir in eagar"
+  },
+  "icu:StandaloneRegistration--VerificationCode--FailedToCall--aria-title": {
+    "messageformat": "Ní féidir glao a chur"
+  },
+  "icu:StandaloneRegistration--VerificationCode--FailedToCall--description": {
+    "messageformat": "Níorbh fhéidir linn glao a chur ar an uimhir ghutháin a chuir tú isteach. Cinntigh go bhfuil an uimhir ghutháin ceart agus triail arís."
+  },
+  "icu:StandaloneRegistration--VerificationCode--FailedToCall--ok-button": {
+    "messageformat": "OK"
+  },
+  "icu:StandaloneRegistration--VerificationCode--CannotSendCodePermanent--aria-title": {
+    "messageformat": "Ní féidir an cód a sheoladh"
+  },
+  "icu:StandaloneRegistration--VerificationCode--CannotSendCodePermanent--description": {
+    "messageformat": "Ní féidir cód fíoraithe a sheoladh chuig an uimhir ghutháin a chuir tú isteach. Cinntigh go bhfuil an uimhir a chuir tú isteach ceart, nó triail uimhir dhifriúil."
+  },
+  "icu:StandaloneRegistration--VerificationCode--CannotSendCodePermanent--ok-button": {
+    "messageformat": "OK"
+  },
+  "icu:StandaloneRegistration--VerificationCode--CannotSendCodeTemporary--aria-title": {
+    "messageformat": "Triail arís níos déanaí"
+  },
+  "icu:StandaloneRegistration--VerificationCode--CannotSendCodeTemporary--description": {
+    "messageformat": "Tharla earráid agus níorbh fhéidir an cód fíoraithe a sheoladh. Triail arís i gceann {duration}."
+  },
+  "icu:StandaloneRegistration--VerificationCode--CannotSendCodeTemporary--ok-button": {
+    "messageformat": "OK"
+  },
+  "icu:StandaloneRegistration--ProfileEntry--header": {
+    "messageformat": "Socraigh do phróifíl"
+  },
+  "icu:StandaloneRegistration--ProfileEntry--description": {
+    "messageformat": "Bíonn próifílí infheicthe ag daoine a fhaigheann teachtaireachtaí uait, ag do theagmhálaithe agus ag do ghrúpaí."
+  },
+  "icu:StandaloneRegistration--ProfileEntry--learn-more": {
+    "messageformat": "Tuilleadh faisnéise"
+  },
+  "icu:StandaloneRegistration--ProfileEntry--add-photo": {
+    "messageformat": "Cuir grianghraf leis"
+  },
+  "icu:StandaloneRegistration--ProfileEntry--first-name": {
+    "messageformat": "Céadainm (Riachtanach)"
+  },
+  "icu:StandaloneRegistration--ProfileEntry--last-name": {
+    "messageformat": "Sloinne (Roghnach)"
+  },
+  "icu:StandaloneRegistration--ProfileEntry--discoverability": {
+    "messageformat": "Na daoine atá in ann mé a aimsiú le m'uimhir ghutháin"
+  },
+  "icu:StandaloneRegistration--ProfileEntry--discoverability--change-button": {
+    "messageformat": "Athraigh"
+  },
+  "icu:StandaloneRegistration--ProfileEntry--discoverability--done-button": {
+    "messageformat": "Déanta"
+  },
+  "icu:StandaloneRegistration--ProfileEntry--continue": {
+    "messageformat": "Ar aghaidh"
+  },
+  "icu:StandaloneRegistration--ProfileEntry--AvatarModal--header": {
+    "messageformat": "D'Abhatár"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--header": {
+    "messageformat": "Cuir isteach do UAP"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--description": {
+    "messageformat": "Cuir isteach an UAP a chruthaigh tú do do chuntas. Tá sé sin difriúil ó do chód fíoraithe SMS. <needHelp>Cabhair uait?</needHelp>"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--placeholder": {
+    "messageformat": "Cuir isteach do UAP"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--incorrect-pin": {
+    "messageformat": "UAP mhícheart"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--incorrect-pin--with-count": {
+    "messageformat": "{triesRemaining, plural, one {UAP mícheart. {triesRemaining,number} iarracht fágtha.} two {UAP mícheart. {triesRemaining,number} iarracht fágtha.} few {UAP mícheart. {triesRemaining,number} iarracht fágtha.} many {UAP mícheart. {triesRemaining,number} n-iarracht fágtha.} other {UAP mícheart. {triesRemaining,number} iarracht fágtha.}}"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--NeedHelp--header": {
+    "messageformat": "An bhfuil cúnamh uait?"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--NeedHelp--description--no-reglock": {
+    "messageformat": "Cód 4+ dhigit is ea an UAP a chruthaigh tú, ar féidir leis a bheith uimhriúil nó alfa-uimhriúil. Mura féidir leat cuimhneamh ar d'UAP, is féidir leat ceann nua a chruthú. Is féidir leat do chuntas a chlárú agus a úsáid ach caillfidh tú roinnt socruithe amhail an fhaisnéis i do phróifíl. <learnMore>Tuilleadh faisnéise</learnMore>."
+  },
+  "icu:StandaloneRegistration--VerifyPIN--NeedHelp--description--reglock": {
+    "messageformat": "Cód 4+ dhigit is ea an UAP a chruthaigh tú, ar féidir leis a bheith uimhriúil nó alfa-uimhriúil. Mura bhfuil tú in ann cuimhneamh ar d'UAP, beidh ort fanacht 7 lá chun do chuntas a athchlárú. <learnMore>Tuilleadh faisnéise</learnMore>."
+  },
+  "icu:StandaloneRegistration--VerifyPIN--NeedHelp--skip-button--no-reglock": {
+    "messageformat": "Scipeáil agus Cruthaigh UAP nua"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--NeedHelp--contact-support-button": {
+    "messageformat": "Déan Teagmháil le Foireann Tacaíochta Signal"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--NeedHelp--cancel": {
+    "messageformat": "Cuir ar ceal"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--FewRemainingTries--header": {
+    "messageformat": "UAP mhícheart"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--FewRemainingTries--description--no-reglock": {
+    "messageformat": "{triesRemaining, plural, one {Tá {triesRemaining,number} iarracht fágtha agat. Má úsáideann tú gach iarracht, is féidir leat UAP nua a chruthú. Is féidir leat clárú agus do chuntas a úsáid ach caillfidh tú socruithe áirithe sábháilte, amhail an fhaisnéis i do phróifíl. <learnMore>Tuilleadh faisnéise</learnMore>.} two {Tá {triesRemaining,number} iarracht fágtha agat. Má úsáideann tú gach iarracht, is féidir leat UAP nua a chruthú. Is féidir leat clárú agus do chuntas a úsáid ach caillfidh tú socruithe áirithe sábháilte, amhail an fhaisnéis i do phróifíl. <learnMore>Tuilleadh faisnéise</learnMore>.} few {Tá {triesRemaining,number} iarracht fágtha agat. Má úsáideann tú gach iarracht, is féidir leat UAP nua a chruthú. Is féidir leat clárú agus do chuntas a úsáid ach caillfidh tú socruithe áirithe sábháilte, amhail an fhaisnéis i do phróifíl. <learnMore>Tuilleadh faisnéise</learnMore>.} many {Tá {triesRemaining,number} n-iarracht fágtha agat. Má úsáideann tú gach iarracht, is féidir leat UAP nua a chruthú. Is féidir leat clárú agus do chuntas a úsáid ach caillfidh tú socruithe áirithe sábháilte, amhail an fhaisnéis i do phróifíl. <learnMore>Tuilleadh faisnéise</learnMore>.} other {Tá {triesRemaining,number} iarracht fágtha agat. Má úsáideann tú gach iarracht, is féidir leat UAP nua a chruthú. Is féidir leat clárú agus do chuntas a úsáid ach caillfidh tú socruithe áirithe sábháilte, amhail an fhaisnéis i do phróifíl. <learnMore>Tuilleadh faisnéise</learnMore>.}}"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--FewRemainingTries--description--reglock": {
+    "messageformat": "{triesRemaining, plural, one {Tá {triesRemaining,number} iarracht fágtha agat. Má úsáideann tú gach iarracht, glasálfar do chuntas ar feadh 7 lá. Tar éis 7 lá neamhghníomhaíochta is féidir leat athchlárú gan do UAP. Scriosfar an t-ábhar ar fad. <learnMore>Tuilleadh faisnéise</learnMore>.} two {Tá {triesRemaining,number} iarracht fágtha agat. Má úsáideann tú gach iarracht, glasálfar do chuntas ar feadh 7 lá. Tar éis 7 lá neamhghníomhaíochta is féidir leat athchlárú gan do UAP. Scriosfar an t-ábhar ar fad. <learnMore>Tuilleadh faisnéise</learnMore>.} few {Tá {triesRemaining,number} iarracht fágtha agat. Má úsáideann tú gach iarracht, glasálfar do chuntas ar feadh 7 lá. Tar éis 7 lá neamhghníomhaíochta is féidir leat athchlárú gan do UAP. Scriosfar an t-ábhar ar fad. <learnMore>Tuilleadh faisnéise</learnMore>.} many {Tá {triesRemaining,number} n-iarracht fágtha agat. Má úsáideann tú gach iarracht, glasálfar do chuntas ar feadh 7 lá. Tar éis 7 lá neamhghníomhaíochta is féidir leat athchlárú gan do UAP. Scriosfar an t-ábhar ar fad. <learnMore>Tuilleadh faisnéise</learnMore>.} other {Tá {triesRemaining,number} iarracht fágtha agat. Má úsáideann tú gach iarracht, glasálfar do chuntas ar feadh 7 lá. Tar éis 7 lá neamhghníomhaíochta is féidir leat athchlárú gan do UAP. Scriosfar an t-ábhar ar fad. <learnMore>Tuilleadh faisnéise</learnMore>.}}"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--FewRemainingTries--button": {
+    "messageformat": "OK"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--NoRemainingTries--header": {
+    "messageformat": "UAP mhícheart"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--NoRemainingTries--description": {
+    "messageformat": "Níl aon deiseanna fágtha agat an UAP a thomhas, ach beidh tú fós in ann teacht ar do chuntas Signal trí UAP nua a chruthú. Mar gheall ar chúrsaí slándála agus príobháideachais, athshocrófar do chuntas gan aon fhaisnéis phearsanta ná socruithe."
+  },
+  "icu:StandaloneRegistration--VerifyPIN--NoRemainingTries--create-new-pin": {
+    "messageformat": "Cruthaigh UAP nua"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--NoRemainingTries--learn-more": {
+    "messageformat": "Tuilleadh faisnéise faoi UAPanna"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--menu--skip-pin": {
+    "messageformat": "Scipeáil an UAP"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--SkipPIN--header": {
+    "messageformat": "Ná Bac le UAP?"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--SkipPIN--description": {
+    "messageformat": "Mura féidir leat cuimhneamh ar d'UAP, is féidir leat ceann nua a chruthú. Is féidir leat do chuntas a chlárú agus a úsáid ach caillfidh tú roinnt socruithe amhail an fhaisnéis i do phróifíl. Learn more."
+  },
+  "icu:StandaloneRegistration--VerifyPIN--SkipPIN--skip-button": {
+    "messageformat": "Scipeáil agus Cruthaigh UAP nua"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--SkipPIN--cancel-button": {
+    "messageformat": "Cuir ar ceal"
+  },
+  "icu:StandaloneRegistration--CreatePIN--header": {
+    "messageformat": "Cruthaigh do UAP"
+  },
+  "icu:StandaloneRegistration--CreatePIN--description": {
+    "messageformat": "Is féidir le UAPanna cabhrú leat do chuntas a aischur agus d'fhaisnéis a choinneáil criptithe le Signal. <learnMore>Tuilleadh Faisnéise</learnMore>"
+  },
+  "icu:StandaloneRegistration--CreatePIN--placeholder": {
+    "messageformat": "Cruthaigh do UAP"
+  },
+  "icu:StandaloneRegistration--CreatePIN--helper-text": {
+    "messageformat": "Ní cheadaítear UAP atá níos giorra ná 4 charachtar"
+  },
+  "icu:StandaloneRegistration--CreatePIN--continue": {
+    "messageformat": "Ar aghaidh"
+  },
+  "icu:StandaloneRegistration--CreatePIN--open-menu": {
+    "messageformat": "Oscail an roghchlár"
+  },
+  "icu:StandaloneRegistration--CreatePIN--menu--more-about": {
+    "messageformat": "Tuilleadh faisnéise faoi UAPanna"
+  },
+  "icu:StandaloneRegistration--CreatePIN--menu--disable": {
+    "messageformat": "Díchumasaigh an UAP"
+  },
+  "icu:StandaloneRegistration--CreatePIN--DisableWarning--header": {
+    "messageformat": "Rabhadh"
+  },
+  "icu:StandaloneRegistration--CreatePIN--DisableWarning--description": {
+    "messageformat": "Má dhíchumasaíonn tú an UAP, caillfidh tú do chuid sonraí go léir nuair a athchláróidh tú Signal, mura bhfuil siad ar fáil le haistriú ó ghléas iOS eile. Ní féidir leat Glas Clárúcháin a chur ar siúl agus an UAP díchumasaithe."
+  },
+  "icu:StandaloneRegistration--CreatePIN--DisableWarning--disable-button": {
+    "messageformat": "Díchumasaigh an UAP"
+  },
+  "icu:StandaloneRegistration--CreatePIN--DisableWarning--cancel": {
+    "messageformat": "Cuir ar ceal"
+  },
+  "icu:StandaloneRegistration--CreatePIN--AboutPINs--header": {
+    "messageformat": "Eolas faoi UAPanna Signal"
+  },
+  "icu:StandaloneRegistration--CreatePIN--AboutPINs--description": {
+    "messageformat": "Coinníonn UAPanna d'fhaisnéis a stóráiltear le Signal criptithe ionas nach mbeidh ach tusa in ann í a rochtain. Aischuirfear do phróifíl, socruithe agus teagmhálaithe tar éis athshuiteáil duit."
+  },
+  "icu:StandaloneRegistration--CreatePIN--AboutPINs--learn-more-button": {
+    "messageformat": "Tuilleadh faisnéise"
+  },
+  "icu:StandaloneRegistration--CreatePIN--AboutPINs--ok-button": {
+    "messageformat": "OK"
+  },
+  "icu:StandaloneRegistration--CreatePIN--confirming--header": {
+    "messageformat": "Deimhnigh do UAP"
+  },
+  "icu:StandaloneRegistration--CreatePIN--confirming--description": {
+    "messageformat": "Cuir isteach arís an UAP a chruthaigh tú."
+  },
+  "icu:StandaloneRegistration--CreatePIN--confirming--placeholder": {
+    "messageformat": "Cuir isteach do UAP"
+  },
+  "icu:StandaloneRegistration--AccountLocked--header": {
+    "messageformat": "Cuntas glasáilte"
+  },
+  "icu:StandaloneRegistration--AccountLocked--description": {
+    "messageformat": "Glasáladh do chuntas chun do phríobháideachas agus slándáil a chosaint. Tar éis 7 lá neamhghníomhaíochta i do chuntas beidh tú in ann an uimhir ghutháin seo a athchlárú gan do UAP a bheith de dhíth ort. Scriosfar an t-ábhar ar fad atá ann."
+  },
+  "icu:StandaloneRegistration--AccountLocked--start-over-button": {
+    "messageformat": "Úsáid uimhir dhifriúil"
+  },
+  "icu:StandaloneRegistration--AccountLocked--help-button": {
+    "messageformat": "Faisnéis faoi chuntais ghlasáilte"
+  },
+  "icu:StandaloneRegistration--UpdateRequired--header": {
+    "messageformat": "Nuashonrú de dhíth"
+  },
+  "icu:StandaloneRegistration--UpdateRequired--description": {
+    "messageformat": "Le leanúint leis gan chlárú, nuashonraigh chuig an leagan is déanaí de Signal."
+  },
+  "icu:StandaloneRegistration--UpdateRequired--update": {
+    "messageformat": "Nuashonraigh"
+  },
+  "icu:StandaloneRegistration--UpdateRequired--cancel": {
+    "messageformat": "Cuir ar ceal"
+  },
+  "icu:StandaloneRegistration--ConnectionProblem--header": {
+    "messageformat": "Seiceáil do nasc"
+  },
+  "icu:StandaloneRegistration--ConnectionProblem--description": {
+    "messageformat": "Le leanúint leis, seiceáil nasc Idirlín do ríomhaire agus triail arís."
+  },
+  "icu:StandaloneRegistration--ConnectionProblem--button": {
+    "messageformat": "OK"
+  },
+  "icu:StandaloneRegistration--UnexpectedError--header": {
+    "messageformat": "Ní féidir an clárú a chur i gcrích"
+  },
+  "icu:StandaloneRegistration--UnexpectedError--description": {
+    "messageformat": "Tharla earráid agus ní féidir an clárú a chur i gcrích. Má leanann an fhadhb, déan teagmháil leis an bhfoireann tacaíochta."
+  },
+  "icu:StandaloneRegistration--UnexpectedError--try-again-button": {
+    "messageformat": "Triail arís"
+  },
+  "icu:StandaloneRegistration--UnexpectedError--contact-support-button": {
+    "messageformat": "Déan teagmháil leis an bhfoireann tacaíochta"
   },
   "icu:NSIS__retry-dialog--first-line": {
     "messageformat": "Ní féidir Signal a dhúnadh.",
@@ -6915,15 +7386,6 @@
   },
   "icu:SignalConnectionsModal__footer": {
     "messageformat": "Is féidir le do theagmhálaithe d'ainm agus do ghrianghraf, agus postálacha \"Mo Scéal\", a fheiceáil, mura gcuireann tú na rudaí sin i bhfolach orthu"
-  },
-  "icu:LocalDeleteWarningModal__header": {
-    "messageformat": "Tá scriosadh sioncronaithe thar raon do ghléasanna go léir"
-  },
-  "icu:LocalDeleteWarningModal__description": {
-    "messageformat": "Nuair a scriosann tú teachtaireachtaí nó comhráite, scriosfar ó do ghléasanna go léir iad."
-  },
-  "icu:LocalDeleteWarningModal__confirm": {
-    "messageformat": "Tuigim"
   },
   "icu:Stories__title": {
     "messageformat": "Scéalta"
@@ -7478,9 +7940,6 @@
   "icu:DraftGifMessageSendModal__SendButtonLabel": {
     "messageformat": "Seol"
   },
-  "icu:DraftGifMessageSendModal__CancelButtonLabel": {
-    "messageformat": "Cuir ar ceal"
-  },
   "icu:EditHistoryMessagesModal__title": {
     "messageformat": "Stair eagarthóireachta"
   },
@@ -7759,9 +8218,6 @@
   },
   "icu:PreferencesDonations__privacy-modal-title": {
     "messageformat": "Tá d'fhaisnéis príobháideach"
-  },
-  "icu:PreferencesDonations__privacy-modal-content": {
-    "messageformat": "<paragraph>Ní dhéanann Signal d'fhaisnéis phearsanta a bhailiú ná a stóráil nuair a thugann tú tabhartas.</paragraph><paragraph>Úsáidimid Stripe mar ár bpróiseálaí íocaíochtaí chun do thabhartais a fháil. Ní dhéanaimid aon fhaisnéis a thugann tú dóibh a rochtain, a stóráil ná a shábháil.</paragraph><paragraph>Níl cead ag Signal do thabhartas a cheangal le do chuntas Signal agus ní déanann sé amhlaidh.</paragraph><paragraph>Go raibh maith agat as do thacaíocht!</paragraph>"
   },
   "icu:PreferencesDonations__privacy-modal-intro": {
     "messageformat": "Mar eagraíocht neamhbhrabúis neamhspleách, tá Signal tiomanta do theachtaireachtaí agus do ghlaonna príobháideacha. Gan aon fhógraí, gan aon rianairí, gan aon fhaireachas. Tabhair airgead inniu chun tacú le Signal."
@@ -8205,10 +8661,16 @@
     "messageformat": "Mionathruithe, paistí fabhtanna agus feabhsuithe ar fheidhmíocht. Go raibh maith agat as Signal a úsáid!",
     "ignoreUnused": true
   },
-  "icu:WhatsNew__8.12--0": {
-    "messageformat": "Chuireamar aicearra méarchláir nua leis chun do lámh a ardú le linn grúpghlaonna (eochair Shift-H)."
+  "icu:WhatsNew__8.18--0": {
+    "messageformat": "Is féidir suirbhéanna a chruthú i gcomhráite aonair anois freisin."
   },
-  "icu:WhatsNew__8.13--0": {
-    "messageformat": "The new raised-hand indicators are now also displayed in the list of raised hands during group calls. It's a second-hand place to figure out who you should hand it over to when you're done speaking."
+  "icu:WhatsNew__8.19--0": {
+    "messageformat": "Féadann riarthóirí grúpa comhráite críoch a chur le teachtaireachtaí anois leis an rogha nua \"Cuir Deireadh leis an nGrúpa\" i socruithe an ghrúpa. Cuirtear cosc ar bhaill den ghrúpa teachtaireachtaí a sheoladh nó glaonna a chur, agus díchumasaítear cuirí freisin, trí dheireadh a chur le grúpa."
+  },
+  "icu:WhatsNew__8.20--0": {
+    "messageformat": "Introducing disappearing call events: Missed, outgoing, and received calls that occur after you install this update will now automatically disappear in any chat where disappearing messages are enabled."
+  },
+  "icu:WhatsNew__8.20--1": {
+    "messageformat": "Now you can reorder installed sticker packs so your new favorites don’t get stuck in the back of the line."
   }
 }

@@ -14,6 +14,9 @@
   "icu:AxoTextField.Clear": {
     "messageformat": "साफ करा"
   },
+  "icu:AxoBadge.MaxOverflow": {
+    "messageformat": "{max,number}+"
+  },
   "icu:AddUserToAnotherGroupModal__title": {
     "messageformat": "गटात जोडा"
   },
@@ -85,6 +88,9 @@
   },
   "icu:unknownContact": {
     "messageformat": "अज्ञात संपर्क"
+  },
+  "icu:deletedAccount": {
+    "messageformat": "हटवलेले अकाऊंट"
   },
   "icu:unknownContactShort": {
     "messageformat": "अज्ञात"
@@ -314,6 +320,9 @@
   "icu:LeftPaneChatFolders__ItemUnreadBadge__MaxCount": {
     "messageformat": "{maxCount,number}+"
   },
+  "icu:LeftPaneChatFolders__ItemUnreadBadge__AccessibleLabel": {
+    "messageformat": "{count, plural, one {{count,number} Unread Message} other {{count,number} Unread Messages}}"
+  },
   "icu:LeftPaneChatFolders__Item__ContextMenu__MarkAllRead": {
     "messageformat": "सर्व वाचले म्हणून चिन्हांकित करा"
   },
@@ -449,8 +458,8 @@
   "icu:unpinConversation": {
     "messageformat": "चॅट अनपिन करा"
   },
-  "icu:pinnedConversationsFull": {
-    "messageformat": "आपण फक्त 4 चॅट्स पिन करू शकता"
+  "icu:pinnedConversations--max": {
+    "messageformat": "{maxPinnedConversations, plural, one {तुम्ही जास्तीत जास्त {maxPinnedConversations,number} चॅट पिन करु शकता} other {तुम्ही जास्तीत जास्त {maxPinnedConversations,number} चॅट्स पिन करु शकता}}"
   },
   "icu:view": {
     "messageformat": "पहा"
@@ -2261,9 +2270,6 @@
   "icu:partiallySent": {
     "messageformat": "अर्धवट पाठविले, तपशीलांसाठी क्लिक करा"
   },
-  "icu:partiallyDeleted": {
-    "messageformat": "अंशतः हटवले, पुन्हा प्रयत्न करा"
-  },
   "icu:partiallyDeleted--clickForDetails": {
     "messageformat": "अंशतः हटवले, तपशील पाहण्यासाठी क्लिक करा"
   },
@@ -2466,7 +2472,7 @@
     "messageformat": "डाऊनलोड झाले नाही"
   },
   "icu:Toast--unable-download-from-backup-tier": {
-    "messageformat": "Attachment missing from backup CDN"
+    "messageformat": "Attachment missing from backup CDN, please share desktop & primary logs"
   },
   "icu:ToastManager__CannotAddMemberLabel": {
     "messageformat": "या गटात फक्त अ‍ॅडमिनच सदस्य लेबल समाविष्ट करू शकतात."
@@ -2687,9 +2693,6 @@
   "icu:message--getDescription--gif": {
     "messageformat": "GIF"
   },
-  "icu:message--deletedForEveryone": {
-    "messageformat": "हा संदेश हटविला गेला होता."
-  },
   "icu:message--deletedByAdmin": {
     "messageformat": "ॲडमिन {admin} यांनी हा संदेश हटवला"
   },
@@ -2780,14 +2783,11 @@
   "icu:stickers--toast--InstallFailed": {
     "messageformat": "स्टिकर पॅक स्थापित करू शकले नाही"
   },
-  "icu:stickers--StickerManager--Available": {
-    "messageformat": "उपलब्ध"
+  "icu:stickers--StickerManager--MyStickers--None": {
+    "messageformat": "कोणतेही स्टिकर पॅक नाहीत, तुमच्या मित्रांना पाठवण्यासाठी स्टिकर समाविष्ट करा."
   },
-  "icu:stickers--StickerManager--InstalledPacks": {
-    "messageformat": "स्थापना केली"
-  },
-  "icu:stickers--StickerManager--InstalledPacks--Empty": {
-    "messageformat": "कुठलेही स्थापन केलेले स्टिकर नाहीत"
+  "icu:stickers--StickerManager--AddStickers": {
+    "messageformat": "स्टिकर समाविष्ट करा"
   },
   "icu:stickers--StickerManager--BlessedPacks": {
     "messageformat": "Signal कलाकार सिरीझ"
@@ -2795,14 +2795,17 @@
   "icu:stickers--StickerManager--BlessedPacks--Empty": {
     "messageformat": "कुठलेही Signal कलाकार स्टिकर उपलब्ध नाहीत"
   },
-  "icu:stickers--StickerManager--ReceivedPacks": {
-    "messageformat": "आपल्याला प्राप्त झालेले स्टिकर"
+  "icu:stickers--StickerManager--ReceivedPacks2": {
+    "messageformat": "तुम्हाला पाठवलेले"
   },
-  "icu:stickers--StickerManager--ReceivedPacks--Empty": {
-    "messageformat": "येणाऱ्या संदेशांवरील स्टिकर येथे दिसतील."
+  "icu:stickers--StickerManager--ReceivedPacksDescription": {
+    "messageformat": "तुम्हाला कोणाकडूनही स्टिकर मिळतो, तेव्हा स्टिकर पॅक इथे दिसेल."
   },
   "icu:stickers--StickerManager--Install": {
     "messageformat": "स्थापना करा"
+  },
+  "icu:stickers--StickerManager--Installed": {
+    "messageformat": "स्थापना केली"
   },
   "icu:stickers--StickerManager--Uninstall": {
     "messageformat": "अस्थापना"
@@ -2810,11 +2813,59 @@
   "icu:stickers--StickerManager--UninstallWarning": {
     "messageformat": "आपण हा स्टिकर पॅक पुन्हा स्थापित करू शकणार नाहीत कारण आपल्याकडे आता मूळ संदेश नाही."
   },
+  "icu:stickers--StickerManagerHeader--All": {
+    "messageformat": "सर्व"
+  },
+  "icu:stickers--StickerManagerHeader--MyStickers": {
+    "messageformat": "माझे स्टिकर"
+  },
+  "icu:stickers--StickerManagerPackContextMenu--Add": {
+    "messageformat": "जोडा"
+  },
+  "icu:stickers--StickerManagerPackContextMenu--Remove": {
+    "messageformat": "काढून टाका"
+  },
+  "icu:stickers--StickerManagerPackDragHandle--Label": {
+    "messageformat": "Drag to reorder sticker pack"
+  },
+  "icu:stickers--StickerManagerBlessedPacksList--Label": {
+    "messageformat": "Signal Artist Series sticker packs"
+  },
+  "icu:stickers--StickerManagerReceivedPacksList--Label": {
+    "messageformat": "Received sticker packs"
+  },
+  "icu:stickers--StickerManagerInstalledPacksList--Label": {
+    "messageformat": "Installed sticker packs"
+  },
   "icu:stickers--StickerPreview--Title": {
     "messageformat": "स्टिकर पॅक"
   },
   "icu:stickers--StickerPreview--Error": {
     "messageformat": "स्टिकर पॅक उघडण्यात त्रुटी. आपले इंटरनेट कनेक्शन तपासा आणि पुन्हा प्रयत्न करा."
+  },
+  "icu:stickers--StickerPreview--Install": {
+    "messageformat": "स्टिकर समाविष्ट करा"
+  },
+  "icu:stickers--StickerPreview--Remove": {
+    "messageformat": "काढून टाका"
+  },
+  "icu:stickers--StickerPreview--Link": {
+    "messageformat": "लिंक"
+  },
+  "icu:stickers--StickerPreview--LinkCopied": {
+    "messageformat": "दुवा कॉपी केला"
+  },
+  "icu:stickers--StickerPreview--StickerCount": {
+    "messageformat": "{count, plural, one {{count,number} स्टिकर} other {{count,number} स्टिकर्स}}"
+  },
+  "icu:stickers--StickerPreview--StickerNoEmojiAriaLabel": {
+    "messageformat": "इमोजी नसलेला स्टिकर"
+  },
+  "icu:stickers--StickerPackLinkPreviewDescription": {
+    "messageformat": "स्टिकर पॅककर्ता {author}"
+  },
+  "icu:stickers--ViewPack": {
+    "messageformat": "पॅक पाहा"
   },
   "icu:FunPicker__Tab--Emojis": {
     "messageformat": "ईमोजी"
@@ -3028,6 +3079,18 @@
   },
   "icu:FunButton__Label--StickerPicker": {
     "messageformat": "स्टिकर जोडा"
+  },
+  "icu:FunPicker__Label--StickerReply": {
+    "messageformat": "Reply"
+  },
+  "icu:FunPicker__Label--SendStickerReply": {
+    "messageformat": "Send"
+  },
+  "icu:FunPicker__Label--CancelStickerReply": {
+    "messageformat": "Cancel"
+  },
+  "icu:FunPicker__Label--Sticker": {
+    "messageformat": "Sticker"
   },
   "icu:confirmation-dialog--Cancel": {
     "messageformat": "रद्द करा"
@@ -4700,9 +4763,6 @@
   "icu:CompositionArea--expand": {
     "messageformat": "विस्तारित करा"
   },
-  "icu:CompositionArea--attach-file": {
-    "messageformat": "फाईल संलग्न करा"
-  },
   "icu:CompositionArea__AttachMenu__PhotosAndVideos": {
     "messageformat": "फोटोस आणि व्हिडिओस"
   },
@@ -5153,26 +5213,17 @@
   "icu:SelectModeActions--forwardSelectedMessages": {
     "messageformat": "निवडलेले संदेश अग्रेषित करा"
   },
-  "icu:DeleteMessagesModal--title": {
-    "messageformat": "{count, plural, one {संदेश {count,number} हटवायचा?} other {संदेश {count,number} हटवायचे?}}"
-  },
   "icu:DeleteMessagesModal--title-2": {
     "messageformat": "{count, plural, one {निवडलेला संदेश हटवायचा का?} other {निवडलेले {count,number} संदेश हटवायचे का?}}"
   },
   "icu:DeleteMessagesModal--description": {
     "messageformat": "{count, plural, one {हा संदेश आपणाला कुणासाठी हटवणे आवडेल?} other {हे संदेश आपणाला कुणासाठी हटवणे आवडेल?}}"
   },
-  "icu:DeleteMessagesModal--description--noteToSelf": {
-    "messageformat": "{count, plural, one {हा संदेश आपणाला कोणत्या डिव्हाइसेस वरून हटवणे आवडेल?} other {हे संदेश आपणाला कोणत्या डिव्हाइसेस वरून हटवणे आवडेल?}}"
-  },
   "icu:DeleteMessagesModal--description--noteToSelf--deleteSync": {
     "messageformat": "{count, plural, one {हा संदेश आपल्या सर्व डिव्हाइसेसवरून हटवला जाईल.} other {हे संदेश आपल्या सर्व डिव्हाइसेसवरून हटविले जातील.}}"
   },
   "icu:DeleteMessagesModal--deleteForMe": {
     "messageformat": "माझ्यासाठी हटवा"
-  },
-  "icu:DeleteMessagesModal--deleteFromThisDevice": {
-    "messageformat": "या डिव्हाइस वरून हटवा"
   },
   "icu:DeleteMessagesModal--deleteForEveryone": {
     "messageformat": "प्रत्येकासाठी हटवा"
@@ -5186,9 +5237,6 @@
   },
   "icu:DeleteMessagesModal--adminDeleteConfirmation--description__rollout": {
     "messageformat": "{count, plural, one {Signalच्या नवीन आवृत्तीवरील गट सदस्यांना तुम्ही हा संदेश हटवल्याचे दिसेल.} other {Signalच्या नवीन आवृत्तीवरील गट सदस्यांना तुम्ही हे संदेश हटवल्याचे दिसेल.}}"
-  },
-  "icu:DeleteMessagesModal--deleteFromAllDevices": {
-    "messageformat": "सर्व डिव्हाइसेस वरून हटवा"
   },
   "icu:DeleteMessagesModal--noteToSelf--deleteSync": {
     "messageformat": "हटवा"
@@ -6397,11 +6445,26 @@
   "icu:Preferences--local-backups-enter-backup-key": {
     "messageformat": "की प्रविष्ट करा"
   },
-  "icu:Preferences--local-backups-record-recovery-key": {
-    "messageformat": "तुमची रीकव्हरी की नोंदवा"
+  "icu:Preferences--local-backups-recovery-key--title": {
+    "messageformat": "तुमची रीकव्हरी की"
   },
-  "icu:Preferences--local-backups-record-backup-key-description": {
-    "messageformat": "ही की आपले अकाऊंट आणि डेटा पुर्नप्राप्त करण्यासाठी आवश्यक आहे. ही की कोठेतरी सुरक्षित ठेवा. आपण जी ती गहाळ केल्यास, आपण आपले अकाऊंट पुर्नप्राप्त करू शकणार नाही. <learnMoreLink>अधिक जाणा.</learnMoreLink>"
+  "icu:Preferences--local-backups-recovery-key--description": {
+    "messageformat": "ही की तुमचे खाते आणि डेटा पुन्हा मिळवण्यासाठी आवश्यक आहे. ती कुठेतरी सुरक्षित ठिकाणी साठवून ठेवा आणि कधीही कोणालाही देऊ नका. Signal कधीही तुमची रीकव्हरी की मागण्यासाठी तुम्हाला संदेश पाठवणार नाही. <learnMoreLink>अधिक जाणून घ्या.</learnMoreLink>"
+  },
+  "icu:Preferences__recovery-key__do-not-share-title": {
+    "messageformat": "रीकव्हरी की कोणालाही देऊ नका"
+  },
+  "icu:Preferences__recovery-key__do-not-share-confirm": {
+    "messageformat": "कळले"
+  },
+  "icu:CompositionInput__recovery-key-paste__share-key": {
+    "messageformat": "की द्या"
+  },
+  "icu:CompositionInput__recovery-key-paste__do-not-share-key": {
+    "messageformat": "की देऊ नका"
+  },
+  "icu:CompositionInput__recovery-key-warning--description": {
+    "messageformat": "तुमची रीकव्हरी की कोणालाही देऊ नका. असे केल्यास त्यांना तुमच्या खात्याचा ताबा घेता येईल. <strong>Signal कधीही तुमची रीकव्हरी की मागण्यासाठी</strong> तुम्हाला संदेश पाठवणार नाही. Signal असल्याची बतावणी करणाऱ्या कोणत्याही चॅटला उत्तर देऊ नका. <learnMoreLink>अधिक जाणून घ्या.</learnMoreLink>"
   },
   "icu:Preferences--local-backups-confirm-recovery-key": {
     "messageformat": "तुमची रीकव्हरी की निश्चित करा"
@@ -6465,6 +6528,9 @@
   },
   "icu:Preferences__local-backups-auth-error--unauthorized": {
     "messageformat": "ही क्रिया पूर्ण करता आली नाही कारण यंत्रणेकडून अधिस्वीकृती मिळाली नाही. कृपया पुन्हा प्रयत्न करा किंवा तुमच्या मोबाईल डिव्हाईसवर Signal ॲप उघडा आणि बॅकअप सेटिंग्जमध्ये जा व तुमची रीकव्हरी की पाहा."
+  },
+  "icu:Preferences__local-backups-auth-error--unknown-error": {
+    "messageformat": "या कृतीसाठी यंत्रणेची अधिस्वीकृती मागविताना एक त्रुटी उद्भवली."
   },
   "icu:Preferences__view-key": {
     "messageformat": "की पहा"
@@ -6631,6 +6697,12 @@
   "icu:DialogUpdate__downloaded": {
     "messageformat": "अपडेट डाउनलोड केली"
   },
+  "icu:DialogUpdate__upgrade-mas": {
+    "messageformat": "ॲप स्टोरवर जाण्यासाठी क्लिक करा"
+  },
+  "icu:DialogExpiredBuild__upgrade-mas": {
+    "messageformat": "ॲप स्टोरवर जाण्यासाठी क्लिक करा"
+  },
   "icu:CriticalIdlePrimaryDevice__title": {
     "messageformat": "आपल्या फोनवर Signal उघडा"
   },
@@ -6669,6 +6741,405 @@
   },
   "icu:InstallScreenUpdateDialog--cannot-update__body": {
     "messageformat": "Signal डेस्कटॉप अद्यतन करण्यात अपयशी, परंतु एक नवीन आवृत्ती उपलब्ध आहे. {downloadUrl} वर जावा आणि नवीन आवृत्ती स्वत: इन्स्टॉल करा, नंतर या समस्येसाठी एकतर सपोर्ट शी संपर्क साधा किंवा दोष म्हणून फाईल करा."
+  },
+  "icu:StandaloneRegistration--signal-logo": {
+    "messageformat": "Signal लोगो"
+  },
+  "icu:StandaloneRegistration--back": {
+    "messageformat": "मागे"
+  },
+  "icu:StandaloneRegistration--PhoneNumber--header": {
+    "messageformat": "फोन क्रमांक"
+  },
+  "icu:StandaloneRegistration--PhoneNumber--description--line-1": {
+    "messageformat": "तुमच्या खात्याची पडताळणी करण्यासाठी तुमचा फोन नंबर प्रविष्ट करा."
+  },
+  "icu:StandaloneRegistration--PhoneNumber--description--line-2": {
+    "messageformat": "कॅरियर दर लागू शकतात."
+  },
+  "icu:StandaloneRegistration--PhoneNumber--waiting": {
+    "messageformat": "कृपया {duration} झाल्यावर पुन्हा प्रयत्न करा"
+  },
+  "icu:StandaloneRegistration--PhoneNumber--placeholder": {
+    "messageformat": "फोन क्रमांक"
+  },
+  "icu:StandaloneRegistration--PhoneNumber--button": {
+    "messageformat": "सुरू ठेवा"
+  },
+  "icu:StandaloneRegistration--PhoneNumber--Confirmation--description": {
+    "messageformat": "आपला वरील फोन नंबर बरोबर आहे?"
+  },
+  "icu:StandaloneRegistration--PhoneNumber--Confirmation--cancel": {
+    "messageformat": "नंबर संपादित करा"
+  },
+  "icu:StandaloneRegistration--PhoneNumber--Confirmation--confirm": {
+    "messageformat": "हो"
+  },
+  "icu:StandaloneRegistration--Captcha--header": {
+    "messageformat": "चालू ठेवण्यासाठी तुम्ही माणूस आहात याची पडताळणी करा"
+  },
+  "icu:StandaloneRegistration--Captcha--description": {
+    "messageformat": "Signal वर स्पॅम टाळण्यास मदत करण्यासाठी, कृपया पडताळणी पूर्ण करा. पडताळणी केल्यावर, तुम्ही नोंदणी चालू ठेवू शकता."
+  },
+  "icu:StandaloneRegistration--Captcha--retry-button": {
+    "messageformat": "पुन्हा पडताळणी करून पाहा"
+  },
+  "icu:StandaloneRegistration--Captcha--button": {
+    "messageformat": "ब्राऊझरमध्ये पडताळणी करा"
+  },
+  "icu:StandaloneRegistration--Captcha--button--wait": {
+    "messageformat": "{duration} मध्ये पडताळणी करा"
+  },
+  "icu:StandaloneRegistration--Captcha--NeedAnother--header": {
+    "messageformat": "अधिक पडताळणी आवश्यक"
+  },
+  "icu:StandaloneRegistration--Captcha--NeedAnother--description": {
+    "messageformat": "कृपया नोंदणी चालू ठेवण्यासाठी दुसरा कॅप्चा पूर्ण करा."
+  },
+  "icu:StandaloneRegistration--Captcha--NeedAnother--cancel": {
+    "messageformat": "रद्द करा"
+  },
+  "icu:StandaloneRegistration--Captcha--NeedAnother--retry": {
+    "messageformat": "पुन्हा पडताळणी करून पाहा"
+  },
+  "icu:StandaloneRegistration--Captcha--MustWait--aria-title": {
+    "messageformat": "नंतर पुन्हा प्रयत्न करा"
+  },
+  "icu:StandaloneRegistration--Captcha--MustWait--line-1": {
+    "messageformat": "आता पडताळणी पूर्ण करता येत नाही."
+  },
+  "icu:StandaloneRegistration--Captcha--MustWait--line-2": {
+    "messageformat": "{duration} मध्ये पुन्हा प्रयत्न करा"
+  },
+  "icu:StandaloneRegistration--Captcha--MustWait--button": {
+    "messageformat": "ठीक"
+  },
+  "icu:StandaloneRegistration--Captcha--Error--header": {
+    "messageformat": "पडताळणीत त्रुटी"
+  },
+  "icu:StandaloneRegistration--Captcha--Error--description": {
+    "messageformat": "नोंदणी सुरु ठेवण्यासाठी पडताळणी करण्याचा पुन्हा प्रयत्न करून पाहा."
+  },
+  "icu:StandaloneRegistration--Captcha--Error--try-again": {
+    "messageformat": "पुन्हा प्रयत्न करा"
+  },
+  "icu:StandaloneRegistration--Captcha--Error--cancel": {
+    "messageformat": "रद्द करा"
+  },
+  "icu:StandaloneRegistration--VerificationCode--header": {
+    "messageformat": "सत्यापन कोड"
+  },
+  "icu:StandaloneRegistration--VerificationCode--description": {
+    "messageformat": "{phoneNumber} वर पाठवलेला कोड प्रविष्ट करा"
+  },
+  "icu:StandaloneRegistration--VerificationCode--button": {
+    "messageformat": "सुरू ठेवा"
+  },
+  "icu:StandaloneRegistration--VerificationCode--send-sms": {
+    "messageformat": "कोड पुन्हा पाठवा"
+  },
+  "icu:StandaloneRegistration--VerificationCode--send-sms--duration": {
+    "messageformat": "{duration}मध्ये कोड पुन्हा पाठवा"
+  },
+  "icu:StandaloneRegistration--VerificationCode--call-me": {
+    "messageformat": "मला कॉल करा"
+  },
+  "icu:StandaloneRegistration--VerificationCode--call-me--duration": {
+    "messageformat": "मला {duration}मध्ये कॉल करा"
+  },
+  "icu:StandaloneRegistration--VerificationCode--wrong-number": {
+    "messageformat": "चुकीचा नंबर?"
+  },
+  "icu:StandaloneRegistration--VerificationCode--having-trouble": {
+    "messageformat": "नोंदणी करण्यामध्ये समस्या आली?"
+  },
+  "icu:StandaloneRegistration--VerificationCode--IncorrectCode--aria-title": {
+    "messageformat": "चुकीचा कोड"
+  },
+  "icu:StandaloneRegistration--VerificationCode--IncorrectCode--description": {
+    "messageformat": "तुम्ही प्रविष्ट केलेला कोड चुकीचा आहे. कृपया 6 अंकी कोड पुन्हा पाहा आणि पुन्हा प्रयत्न करा."
+  },
+  "icu:StandaloneRegistration--VerificationCode--IncorrectCode--button": {
+    "messageformat": "ठीक"
+  },
+  "icu:StandaloneRegistration--VerificationCode--CodeInvalid--aria-title": {
+    "messageformat": "अवैध कोड"
+  },
+  "icu:StandaloneRegistration--VerificationCode--CodeInvalid--description": {
+    "messageformat": "आपण प्रविष्ट केलेला कोड वैध नाही. कृपया कोड पुन्हा पाठवा आणि पुन्हा प्रयत्न करा."
+  },
+  "icu:StandaloneRegistration--VerificationCode--CodeInvalid--resend-button": {
+    "messageformat": "कोड पुन्हा पाठवा"
+  },
+  "icu:StandaloneRegistration--VerificationCode--CodeInvalid--edit-number-button": {
+    "messageformat": "नंबर संपादित करा"
+  },
+  "icu:StandaloneRegistration--VerificationCode--SMSFailed--aria-title": {
+    "messageformat": "SMS पाठवता येत नाही"
+  },
+  "icu:StandaloneRegistration--VerificationCode--SMSFailed--description": {
+    "messageformat": "आम्ही SMS मार्फत आपणाला सत्यापन कोड पाठवू शकत नाही. त्याऐवजी व्हॉइस कॉल मार्फत आपला कोड प्राप्त करण्याचा प्रयत्न करा."
+  },
+  "icu:StandaloneRegistration--VerificationCode--SMSFailed--confirm": {
+    "messageformat": "व्हॉईस कॉल"
+  },
+  "icu:StandaloneRegistration--VerificationCode--SMSFailed--cancel": {
+    "messageformat": "रद्द करा"
+  },
+  "icu:StandaloneRegistration--VerificationCode--MustWait--aria-title": {
+    "messageformat": "नंतर पुन्हा प्रयत्न करा"
+  },
+  "icu:StandaloneRegistration--VerificationCode--MustWait--description": {
+    "messageformat": "आपण कोड प्रविष्ट करण्याचे अनेक प्रयत्न केले आहेत. {duration} नंतर पुन्हा प्रयत्न करा."
+  },
+  "icu:StandaloneRegistration--VerificationCode--MustWait--button": {
+    "messageformat": "ठीक"
+  },
+  "icu:StandaloneRegistration--VerificationCode--MaximumAttempts--aria-title": {
+    "messageformat": "खूप जास्त प्रयत्न"
+  },
+  "icu:StandaloneRegistration--VerificationCode--MaximumAttempts--description": {
+    "messageformat": "आपण कोड प्रविष्ट करण्याचे अनेक प्रयत्न केले आहेत. कृपया कोड पुन्हा पाठवा आणि पुन्हा प्रयत्न करा."
+  },
+  "icu:StandaloneRegistration--VerificationCode--MaximumAttempts--resend-button": {
+    "messageformat": "कोड पुन्हा पाठवा"
+  },
+  "icu:StandaloneRegistration--VerificationCode--MaximumAttempts--edit-number-button": {
+    "messageformat": "नंबर संपादित करा"
+  },
+  "icu:StandaloneRegistration--VerificationCode--FailedToCall--aria-title": {
+    "messageformat": "कॉल लावता येत नाही"
+  },
+  "icu:StandaloneRegistration--VerificationCode--FailedToCall--description": {
+    "messageformat": "आम्ही तुम्ही दिलेल्या फोन नंबर वर कॉल लावू शकलो नाही. तुमचा फोन नंबर बरोबर असल्याची खात्री करा आणि पुन्हा प्रयत्न करा."
+  },
+  "icu:StandaloneRegistration--VerificationCode--FailedToCall--ok-button": {
+    "messageformat": "ठीक"
+  },
+  "icu:StandaloneRegistration--VerificationCode--CannotSendCodePermanent--aria-title": {
+    "messageformat": "कोड पाठवता येत नाही"
+  },
+  "icu:StandaloneRegistration--VerificationCode--CannotSendCodePermanent--description": {
+    "messageformat": "तुम्ही दिलेल्या फोन नंबर वर पडताळणी कोड पाठवता येत नाही. तुम्ही दिलेला क्रमांक बरोबर असल्याची खात्री करा, किंवा वेगळा क्रमांक वापरून पाहा."
+  },
+  "icu:StandaloneRegistration--VerificationCode--CannotSendCodePermanent--ok-button": {
+    "messageformat": "ठीक"
+  },
+  "icu:StandaloneRegistration--VerificationCode--CannotSendCodeTemporary--aria-title": {
+    "messageformat": "नंतर पुन्हा प्रयत्न करा"
+  },
+  "icu:StandaloneRegistration--VerificationCode--CannotSendCodeTemporary--description": {
+    "messageformat": "एक त्रुटी उद्भवली आणि पडताळणी कोड पाठवता आला नाही. {duration} झाल्यावर पुन्हा प्रयत्न करा."
+  },
+  "icu:StandaloneRegistration--VerificationCode--CannotSendCodeTemporary--ok-button": {
+    "messageformat": "ठीक"
+  },
+  "icu:StandaloneRegistration--ProfileEntry--header": {
+    "messageformat": "आपली प्रोफाईल सेट अप करा"
+  },
+  "icu:StandaloneRegistration--ProfileEntry--description": {
+    "messageformat": "आपण संदेश पाठवता असे लोक, संपर्क आणि गटांना प्रोफाइल्स दृश्यमान असतील."
+  },
+  "icu:StandaloneRegistration--ProfileEntry--learn-more": {
+    "messageformat": "अधिक जाणून घ्या"
+  },
+  "icu:StandaloneRegistration--ProfileEntry--add-photo": {
+    "messageformat": "फोटो जोडा"
+  },
+  "icu:StandaloneRegistration--ProfileEntry--first-name": {
+    "messageformat": "पहिले नाव (आवश्यक)"
+  },
+  "icu:StandaloneRegistration--ProfileEntry--last-name": {
+    "messageformat": "शेवटचे नाव (पर्यायी)"
+  },
+  "icu:StandaloneRegistration--ProfileEntry--discoverability": {
+    "messageformat": "मला फोन नंबर वापरून कोण शोधू शकेल"
+  },
+  "icu:StandaloneRegistration--ProfileEntry--discoverability--change-button": {
+    "messageformat": "बदला"
+  },
+  "icu:StandaloneRegistration--ProfileEntry--discoverability--done-button": {
+    "messageformat": "ठीक"
+  },
+  "icu:StandaloneRegistration--ProfileEntry--continue": {
+    "messageformat": "सुरू ठेवा"
+  },
+  "icu:StandaloneRegistration--ProfileEntry--AvatarModal--header": {
+    "messageformat": "तुमचा अवतार"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--header": {
+    "messageformat": "आपला PIN प्रविष्ट करा"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--description": {
+    "messageformat": "तुमच्या खात्यासाठी तुम्ही तयार केलेला पिन प्रविष्ट करा. हा तुमच्या SMS पडताळणी कोड पेक्षा वेगळा आहे. <needHelp>मदत हवी आहे?</needHelp>"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--placeholder": {
+    "messageformat": "आपला PIN प्रविष्ट करा"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--incorrect-pin": {
+    "messageformat": "चुकीचा PIN"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--incorrect-pin--with-count": {
+    "messageformat": "{triesRemaining, plural, one {चुकीचा PIN. {triesRemaining,number} प्रयत्न उर्वरित.} other {चुकीचा PIN. {triesRemaining,number} प्रयत्न उर्वरित.}}"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--NeedHelp--header": {
+    "messageformat": "मदत हवी?"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--NeedHelp--description--no-reglock": {
+    "messageformat": "तुमचा पिन तुम्ही तयार केलेला 4+ अंकांचा कोड असतो जो न्यूमेरिक किंवा अल्फान्यूमेरिक असू शकतो. तुम्हाला तुमचा पिन आठवत नसेल, तर तुम्ही नवीन तयार करू शकता. तुम्ही नोंदणी करुन तुमचे खाते वापरु शकता, पण तुमच्या प्रोफाईल माहितीसारख्या काही जतन केलेल्या सेटिंग्ज तुम्ही गमावून बसाल. <learnMore>अधिक जाणून घ्या</learnMore>."
+  },
+  "icu:StandaloneRegistration--VerifyPIN--NeedHelp--description--reglock": {
+    "messageformat": "तुमचा पिन तुम्ही तयार केलेला 4+ अंकांचा कोड असतो जो न्यूमेरिक किंवा अल्फान्यूमेरिक असू शकतो. तुम्हाला तुमचा पिन आठवत नसेल, तर तुम्हाला तुमचे खाते पुन्हा नोंदणी करण्यासाठी 7 दिवस थांबावे लागेल. <learnMore>अधिक जाणून घ्या</learnMore>."
+  },
+  "icu:StandaloneRegistration--VerifyPIN--NeedHelp--skip-button--no-reglock": {
+    "messageformat": "वगळा आणि नवीन PIN तयार करा"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--NeedHelp--contact-support-button": {
+    "messageformat": "समर्थन सोबत संपर्क साधा"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--NeedHelp--cancel": {
+    "messageformat": "रद्द करा"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--FewRemainingTries--header": {
+    "messageformat": "चुकीचा PIN"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--FewRemainingTries--description--no-reglock": {
+    "messageformat": "{triesRemaining, plural, one {तुमच्याकडे {triesRemaining,number} प्रयत्न शिल्लक आहे. जर तुमचे प्रयत्न संपले, तर तुम्ही एक नवीन पिन तयार करू शकता. तुम्ही तुमचे खाते नोंदवू शकता आणि वापरू शकता पण तुमच्या प्रोफाईल माहितीसारख्या तुमच्या काही जतन केलेल्या सेटिंग्ज तुम्ही गमावून बसाल. <learnMore>अधिक जाणून घ्या</learnMore>.} other {तुमच्याकडे {triesRemaining,number} प्रयत्न शिल्लक आहेत. जर तुमचे प्रयत्न संपले, तर तुम्ही एक नवीन पिन तयार करू शकता. तुम्ही तुमचे खाते नोंदवू शकता आणि वापरू शकता पण तुमच्या प्रोफाईल माहितीसारख्या तुमच्या काही जतन केलेल्या सेटिंग्ज तुम्ही गमावून बसाल. <learnMore>अधिक जाणून घ्या</learnMore>.}}"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--FewRemainingTries--description--reglock": {
+    "messageformat": "{triesRemaining, plural, one {तुमच्याकडे {triesRemaining,number} प्रयत्न शिल्लक आहे. जर तुमच्याकडचे प्रयत्न संपले, तर तुमचे खाते 7 दिवसांसाठी लॉक होईल. 7 दिवसांच्या निष्क्रियतेनंतर, तुम्ही तुमचा पिन न वापरता पुन्हा नोंदणी करू शकता. सगळा मजकूर हटवला जाईल. <learnMore>अधिक जाणून घ्या</learnMore>.} other {तुमच्याकडे {triesRemaining,number} प्रयत्न शिल्लक आहेत. जर तुमच्याकडचे प्रयत्न संपले, तर तुमचे खाते 7 दिवसांसाठी लॉक होईल. 7 दिवसांच्या निष्क्रियतेनंतर, तुम्ही तुमचा पिन न वापरता पुन्हा नोंदणी करू शकता. सगळा मजकूर हटवला जाईल. <learnMore>अधिक जाणून घ्या</learnMore>.}}"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--FewRemainingTries--button": {
+    "messageformat": "ठीक"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--NoRemainingTries--header": {
+    "messageformat": "चुकीचा PIN"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--NoRemainingTries--description": {
+    "messageformat": "आपले PIN अंदाज संपले आहेत, पण तरीही नवीन PIN तयार करून आपण आपले Signal खाते अॅक्सेस करू शकता. आपल्या गोपनीयता आणि सुरक्षेसाठी आपले खाते कुठल्याही जतन केलेल्या प्रोफाईल माहिती किंवा सेटिंग विना पुनर्स्थित केले जाईल."
+  },
+  "icu:StandaloneRegistration--VerifyPIN--NoRemainingTries--create-new-pin": {
+    "messageformat": "नवीन PIN तयार करा"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--NoRemainingTries--learn-more": {
+    "messageformat": "PIN बद्दल अधिक जाणा"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--menu--skip-pin": {
+    "messageformat": "पिन वगळा"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--SkipPIN--header": {
+    "messageformat": "PIN प्रविष्टी वगळायची?"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--SkipPIN--description": {
+    "messageformat": "तुम्हाला तुमचा पिन आठवत नसेल, तर तुम्ही नवीन तयार करू शकता. तुम्ही नोंदणी करुन तुमचे खाते वापरु शकता, पण तुमच्या प्रोफाईल माहितीसारख्या काही जतन केलेल्या सेटिंग्ज तुम्ही गमावून बसाल. अधिक जाणा."
+  },
+  "icu:StandaloneRegistration--VerifyPIN--SkipPIN--skip-button": {
+    "messageformat": "वगळा आणि नवीन PIN तयार करा"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--SkipPIN--cancel-button": {
+    "messageformat": "रद्द करा"
+  },
+  "icu:StandaloneRegistration--CreatePIN--header": {
+    "messageformat": "आपला PIN तयार करा"
+  },
+  "icu:StandaloneRegistration--CreatePIN--description": {
+    "messageformat": "पिन आपणाला आपले अकाऊंट पुनर्संचयित करण्यास आणि Signal सह आपली माहिती कूटबद्ध ठेवण्यास मदत करु शकतात. <learnMore>अधिक जाणा</learnMore>"
+  },
+  "icu:StandaloneRegistration--CreatePIN--placeholder": {
+    "messageformat": "आपला PIN तयार करा"
+  },
+  "icu:StandaloneRegistration--CreatePIN--helper-text": {
+    "messageformat": "PIN कमीतकमी 4 कॅरेक्टर असावा"
+  },
+  "icu:StandaloneRegistration--CreatePIN--continue": {
+    "messageformat": "सुरू ठेवा"
+  },
+  "icu:StandaloneRegistration--CreatePIN--open-menu": {
+    "messageformat": "मेनू उघडा"
+  },
+  "icu:StandaloneRegistration--CreatePIN--menu--more-about": {
+    "messageformat": "पिन बद्दल अधिक"
+  },
+  "icu:StandaloneRegistration--CreatePIN--menu--disable": {
+    "messageformat": "PIN अक्षम करा"
+  },
+  "icu:StandaloneRegistration--CreatePIN--DisableWarning--header": {
+    "messageformat": "चेतावणी"
+  },
+  "icu:StandaloneRegistration--CreatePIN--DisableWarning--description": {
+    "messageformat": "आपण PIN अक्षम केल्यास, आपण दुसऱ्या iOS डिव्हाईसवरून त्याचे स्थानांतरण केल्याशिवाय आपण Signal वर पुन्हा नोंदणी करताना आपण सर्व डेटा गमवाल. PIN अक्षम केलेले असताना आपण नोंदणी लॉक चालू करू शकत नाही."
+  },
+  "icu:StandaloneRegistration--CreatePIN--DisableWarning--disable-button": {
+    "messageformat": "PIN अक्षम करा"
+  },
+  "icu:StandaloneRegistration--CreatePIN--DisableWarning--cancel": {
+    "messageformat": "रद्द करा"
+  },
+  "icu:StandaloneRegistration--CreatePIN--AboutPINs--header": {
+    "messageformat": "Signal पिन बद्दल"
+  },
+  "icu:StandaloneRegistration--CreatePIN--AboutPINs--description": {
+    "messageformat": "पिन हे Signal सह आपली संग्रहित केलेली माहिती कूटबद्ध करून ठेवतात ज्यामुळे ती फक्त आपणच अ‍ॅक्सेस करू शकता. आपण पुर्नस्थापना कराल तेव्हा आपले प्रोफाईल, सेटिंग्ज आणि संपर्क पुनर्संचयित केले जातील."
+  },
+  "icu:StandaloneRegistration--CreatePIN--AboutPINs--learn-more-button": {
+    "messageformat": "अधिक जाणून घ्या"
+  },
+  "icu:StandaloneRegistration--CreatePIN--AboutPINs--ok-button": {
+    "messageformat": "ठीक"
+  },
+  "icu:StandaloneRegistration--CreatePIN--confirming--header": {
+    "messageformat": "आपल्या पिनची पुष्टी करा"
+  },
+  "icu:StandaloneRegistration--CreatePIN--confirming--description": {
+    "messageformat": "आपण आता तयार केलेला पिन पुन्हा-प्रविष्ट करा."
+  },
+  "icu:StandaloneRegistration--CreatePIN--confirming--placeholder": {
+    "messageformat": "आपला PIN प्रविष्ट करा"
+  },
+  "icu:StandaloneRegistration--AccountLocked--header": {
+    "messageformat": "खाते लॉक केले गेले"
+  },
+  "icu:StandaloneRegistration--AccountLocked--description": {
+    "messageformat": "तुमची गोपनीयता आणि सुरक्षितता यांचे रक्षण करण्यासाठी तुमचे खाते लॉक करण्यात आले आहे. तुमच्या खात्यामध्ये 7 दिवसांच्या निष्क्रियतेनंतर तुम्ही हा फोन नंबर तुमच्या पिन शिवाय पुन्हा नोंदवू शकाल. सर्व मजकूर हटवला जाईल."
+  },
+  "icu:StandaloneRegistration--AccountLocked--start-over-button": {
+    "messageformat": "वेगळा नंबर वापरा"
+  },
+  "icu:StandaloneRegistration--AccountLocked--help-button": {
+    "messageformat": "लॉक केलेल्या खात्यांबद्दल समजून घ्या"
+  },
+  "icu:StandaloneRegistration--UpdateRequired--header": {
+    "messageformat": "अद्यतन आवश्यक आहे"
+  },
+  "icu:StandaloneRegistration--UpdateRequired--description": {
+    "messageformat": "नोंदणीकरण पुढे सुरु ठेवण्यासाठी, कृपया Signal च्या नवीनतम आवृत्तीसह अद्यतन करा."
+  },
+  "icu:StandaloneRegistration--UpdateRequired--update": {
+    "messageformat": "अद्यतन"
+  },
+  "icu:StandaloneRegistration--UpdateRequired--cancel": {
+    "messageformat": "रद्द करा"
+  },
+  "icu:StandaloneRegistration--ConnectionProblem--header": {
+    "messageformat": "तुमचे कनेक्शन तपासा"
+  },
+  "icu:StandaloneRegistration--ConnectionProblem--description": {
+    "messageformat": "चालू ठेवण्यासाठी, तुमच्या कंप्युटरचे इंटरनेट कनेक्शन तपासा आणि पुन्हा प्रयत्न करा."
+  },
+  "icu:StandaloneRegistration--ConnectionProblem--button": {
+    "messageformat": "ठीक"
+  },
+  "icu:StandaloneRegistration--UnexpectedError--header": {
+    "messageformat": "नोंदणी पूर्ण करता येत नाही"
+  },
+  "icu:StandaloneRegistration--UnexpectedError--description": {
+    "messageformat": "एक त्रुटी उद्भवली आणि नोंदणी पूर्ण करता आली नाही. जर ही समस्या उद्भवत राहिली, तर कृपया सपोर्टशी संपर्क साधा."
+  },
+  "icu:StandaloneRegistration--UnexpectedError--try-again-button": {
+    "messageformat": "पुन्हा प्रयत्न करा"
+  },
+  "icu:StandaloneRegistration--UnexpectedError--contact-support-button": {
+    "messageformat": "सपोर्टशी संपर्क साधा"
   },
   "icu:NSIS__retry-dialog--first-line": {
     "messageformat": "Signal बंद करता येत नाही.",
@@ -6915,15 +7386,6 @@
   },
   "icu:SignalConnectionsModal__footer": {
     "messageformat": "आपले कनेक्शन्स आपले नाव आणि फोटो पाहू शकतात, आपण त्यांच्यापासून लपवत नाही तोपर्यंत ते \"माझ्या स्टोरी\" वर पोस्ट्स पाहू शकतात"
-  },
-  "icu:LocalDeleteWarningModal__header": {
-    "messageformat": "आपल्या डिव्हाइसेस वर हटवणे आता सिंक केले आहे"
-  },
-  "icu:LocalDeleteWarningModal__description": {
-    "messageformat": "जेव्हा आपण संदेश किंवा चॅट हटवता, तेव्हा त्यांना आपल्या सर्व डिव्हाइसेसवरून हटवले जाईल."
-  },
-  "icu:LocalDeleteWarningModal__confirm": {
-    "messageformat": "कळले"
   },
   "icu:Stories__title": {
     "messageformat": "स्टोरीज"
@@ -7478,9 +7940,6 @@
   "icu:DraftGifMessageSendModal__SendButtonLabel": {
     "messageformat": "पाठवा"
   },
-  "icu:DraftGifMessageSendModal__CancelButtonLabel": {
-    "messageformat": "रद्द करा"
-  },
   "icu:EditHistoryMessagesModal__title": {
     "messageformat": "संपादनाचा इतिहास"
   },
@@ -7759,9 +8218,6 @@
   },
   "icu:PreferencesDonations__privacy-modal-title": {
     "messageformat": "आपली माहिती गोपनीय आहे"
-  },
-  "icu:PreferencesDonations__privacy-modal-content": {
-    "messageformat": "<paragraph>तुम्ही जेव्हा देणगी देता तेव्हा Signal तुमची कोणतीही वैयक्तिक माहिती संग्रहित किंवा संकलित करत नाही.</paragraph> <paragraph>तुमच्या देणग्या प्राप्त करण्यासाठी आम्ही आमचा पेमेंट्स प्रोसेसर म्हणून स्ट्राईपचा वापर करतो. तुम्ही त्यांना प्रदान करत असलेली कोणतीही माहिती आम्ही मिळवत नाही, किंवा ती संग्रहित किंवा जतन करत नाही.</paragraph> <paragraph>Signal तुमच्या देणग्या तुमच्या Signal खात्याशी जोडत नाही आणि जोडू शकत नाही.</paragraph><paragraph>तुमच्या सपोर्टबद्दल धन्यवाद!</paragraph>"
   },
   "icu:PreferencesDonations__privacy-modal-intro": {
     "messageformat": "एक स्वतंत्र ना-नफा संस्था असणारी Signal खासगी संदेशवहन आणि कॉल्ससाठी कायम कटिबद्ध आहे. कोणत्याही जाहिराती नाहीत, कोणतेही ट्रॅकर्स नाहीत, कोणावरही पाळत नाही. Signal ला सपोर्ट करण्यासाठी आजच देणगी द्या."
@@ -8205,10 +8661,16 @@
     "messageformat": "लहान ट्विक्स, दोष निवारण, आणि कामगिरी सुधारणा. Signal वापरल्याबद्दल आभारी आहोत!",
     "ignoreUnused": true
   },
-  "icu:WhatsNew__8.12--0": {
-    "messageformat": "गट कॉल्स दरम्यान तुम्ही हात वर करण्याचा आयकॉन क्लिक करू शकता. आम्ही एक नवा कीबोर्ड शॉर्टकट जोडला आहे (Shift-H)."
+  "icu:WhatsNew__8.18--0": {
+    "messageformat": "पोल आता स्वतंत्र चॅट्स मध्ये सुद्धा तयार करता येतात. तुमच्या मित्राला निर्णय घ्यायला मदत करण्यासाठी चांगले पर्याय नेमून द्या, किंवा तुमच्या क्रशला टीप पाठवण्याची मजा \"तुला मी आवडतो का? हो/नाही/कदाचित\" पोल तयार करून अनुभवा."
   },
-  "icu:WhatsNew__8.13--0": {
-    "messageformat": "The new raised-hand indicators are now also displayed in the list of raised hands during group calls. It's a second-hand place to figure out who you should hand it over to when you're done speaking."
+  "icu:WhatsNew__8.19--0": {
+    "messageformat": "गट ॲडमिन आता गट सेटिंग्ज मधील नवीन \"गट बंद करा\" पर्याय वापरून चॅट्स समाप्त करू शकतात. गट बंद केल्याने गट सदस्यांना संदेश पाठवता येत नाहीत किंवा कॉल्स सुरु करता येत नाहीत, आणि निमंत्रणेसुद्धा बंद होतात."
+  },
+  "icu:WhatsNew__8.20--0": {
+    "messageformat": "Introducing disappearing call events: Missed, outgoing, and received calls that occur after you install this update will now automatically disappear in any chat where disappearing messages are enabled."
+  },
+  "icu:WhatsNew__8.20--1": {
+    "messageformat": "Now you can reorder installed sticker packs so your new favorites don’t get stuck in the back of the line."
   }
 }

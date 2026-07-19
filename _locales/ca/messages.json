@@ -14,6 +14,9 @@
   "icu:AxoTextField.Clear": {
     "messageformat": "Neteja"
   },
+  "icu:AxoBadge.MaxOverflow": {
+    "messageformat": "{max,number}+"
+  },
   "icu:AddUserToAnotherGroupModal__title": {
     "messageformat": "Afegeix-lo a un grup"
   },
@@ -85,6 +88,9 @@
   },
   "icu:unknownContact": {
     "messageformat": "Contacte desconegut"
+  },
+  "icu:deletedAccount": {
+    "messageformat": "Eliminar el compte"
   },
   "icu:unknownContactShort": {
     "messageformat": "Desconegut"
@@ -314,6 +320,9 @@
   "icu:LeftPaneChatFolders__ItemUnreadBadge__MaxCount": {
     "messageformat": "{maxCount,number}+"
   },
+  "icu:LeftPaneChatFolders__ItemUnreadBadge__AccessibleLabel": {
+    "messageformat": "{count, plural, one {{count,number} Unread Message} other {{count,number} Unread Messages}}"
+  },
   "icu:LeftPaneChatFolders__Item__ContextMenu__MarkAllRead": {
     "messageformat": "Marca-ho tot com a llegit"
   },
@@ -449,8 +458,8 @@
   "icu:unpinConversation": {
     "messageformat": "No fixar xat"
   },
-  "icu:pinnedConversationsFull": {
-    "messageformat": "Només pots fixar fins a 4 xats."
+  "icu:pinnedConversations--max": {
+    "messageformat": "{maxPinnedConversations, plural, one {Pots compartir un màxim d''{maxPinnedConversations,number} xat.} other {Pots compartir un màxim de {maxPinnedConversations,number} xats.}}"
   },
   "icu:view": {
     "messageformat": "Mostra"
@@ -2261,9 +2270,6 @@
   "icu:partiallySent": {
     "messageformat": "Enviat parcialment. Cliqueu per a més detalls."
   },
-  "icu:partiallyDeleted": {
-    "messageformat": "Suprimit parcialment. Cliqueu per tornar-ho a provar."
-  },
   "icu:partiallyDeleted--clickForDetails": {
     "messageformat": "Parcialment eliminat, fes clic per obtenir més informació"
   },
@@ -2466,7 +2472,7 @@
     "messageformat": "Descàrrega fallida"
   },
   "icu:Toast--unable-download-from-backup-tier": {
-    "messageformat": "Attachment missing from backup CDN"
+    "messageformat": "Attachment missing from backup CDN, please share desktop & primary logs"
   },
   "icu:ToastManager__CannotAddMemberLabel": {
     "messageformat": "Només els admins poden definir categories de membres en aquest grup."
@@ -2687,9 +2693,6 @@
   "icu:message--getDescription--gif": {
     "messageformat": "GIF"
   },
-  "icu:message--deletedForEveryone": {
-    "messageformat": "Aquest missatge s'ha suprimit."
-  },
   "icu:message--deletedByAdmin": {
     "messageformat": "{admin} (admin) ha eliminat aquest missatge"
   },
@@ -2780,14 +2783,11 @@
   "icu:stickers--toast--InstallFailed": {
     "messageformat": "No s'ha pogut instal·lar el paquet d'adhesius."
   },
-  "icu:stickers--StickerManager--Available": {
-    "messageformat": "Disponible"
+  "icu:stickers--StickerManager--MyStickers--None": {
+    "messageformat": "No tens paquets d'stickers, afegeix stickers per enviar als teus amics."
   },
-  "icu:stickers--StickerManager--InstalledPacks": {
-    "messageformat": "Instal·lat"
-  },
-  "icu:stickers--StickerManager--InstalledPacks--Empty": {
-    "messageformat": "No hi ha adhesius instal·lats."
+  "icu:stickers--StickerManager--AddStickers": {
+    "messageformat": "Afegir stickers"
   },
   "icu:stickers--StickerManager--BlessedPacks": {
     "messageformat": "Sèries d'artistes de Signal"
@@ -2795,14 +2795,17 @@
   "icu:stickers--StickerManager--BlessedPacks--Empty": {
     "messageformat": "No hi ha adhesius d'artistes de Signal disponibles."
   },
-  "icu:stickers--StickerManager--ReceivedPacks": {
-    "messageformat": "Adhesius que heu rebut"
+  "icu:stickers--StickerManager--ReceivedPacks2": {
+    "messageformat": "Compartit amb tu"
   },
-  "icu:stickers--StickerManager--ReceivedPacks--Empty": {
-    "messageformat": "Els adhesius dels missatges d'entrada apareixeran aquí."
+  "icu:stickers--StickerManager--ReceivedPacksDescription": {
+    "messageformat": "Quan rebis un sticker d'algú, el paquet d'stickers apareixerà aquí."
   },
   "icu:stickers--StickerManager--Install": {
     "messageformat": "Instal·la"
+  },
+  "icu:stickers--StickerManager--Installed": {
+    "messageformat": "Instal·lat"
   },
   "icu:stickers--StickerManager--Uninstall": {
     "messageformat": "Desinstal·la"
@@ -2810,11 +2813,59 @@
   "icu:stickers--StickerManager--UninstallWarning": {
     "messageformat": "Potser no podreu reinstal·lar aquest paquet d'adhesius si ja no teniu el missatge original."
   },
+  "icu:stickers--StickerManagerHeader--All": {
+    "messageformat": "Tot"
+  },
+  "icu:stickers--StickerManagerHeader--MyStickers": {
+    "messageformat": "Els meus stickers"
+  },
+  "icu:stickers--StickerManagerPackContextMenu--Add": {
+    "messageformat": "Afegeix"
+  },
+  "icu:stickers--StickerManagerPackContextMenu--Remove": {
+    "messageformat": "Eliminar"
+  },
+  "icu:stickers--StickerManagerPackDragHandle--Label": {
+    "messageformat": "Drag to reorder sticker pack"
+  },
+  "icu:stickers--StickerManagerBlessedPacksList--Label": {
+    "messageformat": "Signal Artist Series sticker packs"
+  },
+  "icu:stickers--StickerManagerReceivedPacksList--Label": {
+    "messageformat": "Received sticker packs"
+  },
+  "icu:stickers--StickerManagerInstalledPacksList--Label": {
+    "messageformat": "Installed sticker packs"
+  },
   "icu:stickers--StickerPreview--Title": {
     "messageformat": "Paquet d'adhesius"
   },
   "icu:stickers--StickerPreview--Error": {
     "messageformat": "Error en processar el paquet d'adhesius. Comproveu la connexió a Internet i torneu-ho a provar."
+  },
+  "icu:stickers--StickerPreview--Install": {
+    "messageformat": "Afegir stickers"
+  },
+  "icu:stickers--StickerPreview--Remove": {
+    "messageformat": "Eliminar"
+  },
+  "icu:stickers--StickerPreview--Link": {
+    "messageformat": "enllaç"
+  },
+  "icu:stickers--StickerPreview--LinkCopied": {
+    "messageformat": "Enllaç copiat"
+  },
+  "icu:stickers--StickerPreview--StickerCount": {
+    "messageformat": "{count, plural, one {{count,number} sticker} other {{count,number} stickers}}"
+  },
+  "icu:stickers--StickerPreview--StickerNoEmojiAriaLabel": {
+    "messageformat": "Sticker sense emoji"
+  },
+  "icu:stickers--StickerPackLinkPreviewDescription": {
+    "messageformat": "Paquet d'stickers de {author}"
+  },
+  "icu:stickers--ViewPack": {
+    "messageformat": "Veure paquet"
   },
   "icu:FunPicker__Tab--Emojis": {
     "messageformat": "Emoticones"
@@ -3028,6 +3079,18 @@
   },
   "icu:FunButton__Label--StickerPicker": {
     "messageformat": "Afegiu-hi un adhesiu"
+  },
+  "icu:FunPicker__Label--StickerReply": {
+    "messageformat": "Reply"
+  },
+  "icu:FunPicker__Label--SendStickerReply": {
+    "messageformat": "Send"
+  },
+  "icu:FunPicker__Label--CancelStickerReply": {
+    "messageformat": "Cancel"
+  },
+  "icu:FunPicker__Label--Sticker": {
+    "messageformat": "Sticker"
   },
   "icu:confirmation-dialog--Cancel": {
     "messageformat": "Cancel·la"
@@ -4700,9 +4763,6 @@
   "icu:CompositionArea--expand": {
     "messageformat": "Expandeix"
   },
-  "icu:CompositionArea--attach-file": {
-    "messageformat": "Adjunta un fitxer"
-  },
   "icu:CompositionArea__AttachMenu__PhotosAndVideos": {
     "messageformat": "Fotos i vídeos"
   },
@@ -5153,26 +5213,17 @@
   "icu:SelectModeActions--forwardSelectedMessages": {
     "messageformat": "Reenvia els missatges seleccionats"
   },
-  "icu:DeleteMessagesModal--title": {
-    "messageformat": "{count, plural, one {Vols eliminar {count,number} missatge?} other {Vols eliminar {count,number} missatges?}}"
-  },
   "icu:DeleteMessagesModal--title-2": {
     "messageformat": "{count, plural, one {Vols eliminar el missatge seleccionat?} other {Vols eliminar els {count,number} missatges seleccionats?}}"
   },
   "icu:DeleteMessagesModal--description": {
     "messageformat": "{count, plural, one {Per a qui vols eliminar aquest missatge?} other {Per a qui vols eliminar aquests missatges?}}"
   },
-  "icu:DeleteMessagesModal--description--noteToSelf": {
-    "messageformat": "{count, plural, one {De quins dispositius t'agradaria eliminar aquest missatge?} other {De quins dispositius t'agradaria eliminar aquests missatges?}}"
-  },
   "icu:DeleteMessagesModal--description--noteToSelf--deleteSync": {
     "messageformat": "{count, plural, one {Aquest missatge s'eliminarà de tots els teus dispositius.} other {Aquests missatges s'eliminaran de tots els teus dispositius.}}"
   },
   "icu:DeleteMessagesModal--deleteForMe": {
     "messageformat": "Eliminar per a mi"
-  },
-  "icu:DeleteMessagesModal--deleteFromThisDevice": {
-    "messageformat": "Eliminar d'aquest dispositiu"
   },
   "icu:DeleteMessagesModal--deleteForEveryone": {
     "messageformat": "Eliminar per a tothom"
@@ -5186,9 +5237,6 @@
   },
   "icu:DeleteMessagesModal--adminDeleteConfirmation--description__rollout": {
     "messageformat": "{count, plural, one {Els membres del grup que tinguin la versió més recent de Signal podran veure que has eliminat aquest missatge.} other {Els membres del grup que tinguin la versió més recent de Signal podran veure que has eliminat aquests missatges.}}"
-  },
-  "icu:DeleteMessagesModal--deleteFromAllDevices": {
-    "messageformat": "Eliminar de tots els dispositius"
   },
   "icu:DeleteMessagesModal--noteToSelf--deleteSync": {
     "messageformat": "Suprimeix"
@@ -6397,11 +6445,26 @@
   "icu:Preferences--local-backups-enter-backup-key": {
     "messageformat": "Introduir clau"
   },
-  "icu:Preferences--local-backups-record-recovery-key": {
-    "messageformat": "Registra la teva clau de recuperació"
+  "icu:Preferences--local-backups-recovery-key--title": {
+    "messageformat": "La teva clau de recuperació"
   },
-  "icu:Preferences--local-backups-record-backup-key-description": {
-    "messageformat": "Aquesta clau és necessària per recuperar el teu compte i les teves dades. Guarda-la en un lloc segur. Si la perds, no podràs recuperar el teu compte. <learnMoreLink>Més informació.</learnMoreLink>"
+  "icu:Preferences--local-backups-recovery-key--description": {
+    "messageformat": "Aquesta clau és necessària per recuperar el teu compte i les teves dades. Guarda-la en un lloc segur i no la comparteixis mai amb ningú. Signal no t'enviarà mai un missatge per demanar-te la teva clau de recuperació. <learnMoreLink>Més informació.</learnMoreLink>"
+  },
+  "icu:Preferences__recovery-key__do-not-share-title": {
+    "messageformat": "No comparteixis la clau de recuperació"
+  },
+  "icu:Preferences__recovery-key__do-not-share-confirm": {
+    "messageformat": "Entesos"
+  },
+  "icu:CompositionInput__recovery-key-paste__share-key": {
+    "messageformat": "Compartir la clau"
+  },
+  "icu:CompositionInput__recovery-key-paste__do-not-share-key": {
+    "messageformat": "No compartir la clau"
+  },
+  "icu:CompositionInput__recovery-key-warning--description": {
+    "messageformat": "No comparteixis la teva clau de recuperació amb ningú. Això li permetria prendre el control del teu compte. <strong>Signal no t'enviarà mai un missatge</strong> per demanar-te la teva clau de recuperació. No responguis mai a missatges que es facin passar per Signal. <learnMoreLink>Més informació.</learnMoreLink>"
   },
   "icu:Preferences--local-backups-confirm-recovery-key": {
     "messageformat": "Confirma la teva clau de recuperació"
@@ -6465,6 +6528,9 @@
   },
   "icu:Preferences__local-backups-auth-error--unauthorized": {
     "messageformat": "No s'ha pogut completar aquesta acció perquè el sistema d'autentificació ha fallat. Torna-ho a provar o obre l'app de Signal al teu dispositiu mòbil i ves als Ajustos de còpia de seguretat per veure la teva clau de recuperació."
+  },
+  "icu:Preferences__local-backups-auth-error--unknown-error": {
+    "messageformat": "Hi ha hagut un error en sol·licitar l'autentificació del sistema per a aquesta acció."
   },
   "icu:Preferences__view-key": {
     "messageformat": "Veure clau"
@@ -6631,6 +6697,12 @@
   "icu:DialogUpdate__downloaded": {
     "messageformat": "Actualització descarregada"
   },
+  "icu:DialogUpdate__upgrade-mas": {
+    "messageformat": "Fes clic per anar a l'App Store"
+  },
+  "icu:DialogExpiredBuild__upgrade-mas": {
+    "messageformat": "Fes clic per anar a l'App Store"
+  },
   "icu:CriticalIdlePrimaryDevice__title": {
     "messageformat": "Obriu el Signal al telèfon."
   },
@@ -6669,6 +6741,405 @@
   },
   "icu:InstallScreenUpdateDialog--cannot-update__body": {
     "messageformat": "Signal per a Escriptori no s'ha pogut actualitzar, però hi ha una versió nova disponible. Ves a {downloadUrl}, instal·la la versió nova manualment i després posat en contacte amb el servei d'assistència o envia un informe sobre aquest problema."
+  },
+  "icu:StandaloneRegistration--signal-logo": {
+    "messageformat": "Logo de Signal"
+  },
+  "icu:StandaloneRegistration--back": {
+    "messageformat": "Enrere"
+  },
+  "icu:StandaloneRegistration--PhoneNumber--header": {
+    "messageformat": "Número de telèfon"
+  },
+  "icu:StandaloneRegistration--PhoneNumber--description--line-1": {
+    "messageformat": "Introdueix el teu número de telèfon per verificar el teu compte."
+  },
+  "icu:StandaloneRegistration--PhoneNumber--description--line-2": {
+    "messageformat": "El teu operador pot aplicar tarifes."
+  },
+  "icu:StandaloneRegistration--PhoneNumber--waiting": {
+    "messageformat": "Si us plau, torna-ho a provar en {duration}"
+  },
+  "icu:StandaloneRegistration--PhoneNumber--placeholder": {
+    "messageformat": "Número de telèfon"
+  },
+  "icu:StandaloneRegistration--PhoneNumber--button": {
+    "messageformat": "Continua"
+  },
+  "icu:StandaloneRegistration--PhoneNumber--Confirmation--description": {
+    "messageformat": "És correcte aquest número de telèfon?"
+  },
+  "icu:StandaloneRegistration--PhoneNumber--Confirmation--cancel": {
+    "messageformat": "Edita el número"
+  },
+  "icu:StandaloneRegistration--PhoneNumber--Confirmation--confirm": {
+    "messageformat": "Sí"
+  },
+  "icu:StandaloneRegistration--Captcha--header": {
+    "messageformat": "Verifica que ets humà per continuar"
+  },
+  "icu:StandaloneRegistration--Captcha--description": {
+    "messageformat": "Per a ajudar a prevenir el correu brossa al Signal, completa la verificació. Després de verificar-te, pots continuar amb el procés de registre."
+  },
+  "icu:StandaloneRegistration--Captcha--retry-button": {
+    "messageformat": "Tornar a provar la verificació"
+  },
+  "icu:StandaloneRegistration--Captcha--button": {
+    "messageformat": "Verificar al navegador"
+  },
+  "icu:StandaloneRegistration--Captcha--button--wait": {
+    "messageformat": "Verificar en {duration}"
+  },
+  "icu:StandaloneRegistration--Captcha--NeedAnother--header": {
+    "messageformat": "Cal verificació addicional"
+  },
+  "icu:StandaloneRegistration--Captcha--NeedAnother--description": {
+    "messageformat": "Completa un altre captcha per continuar amb el registre."
+  },
+  "icu:StandaloneRegistration--Captcha--NeedAnother--cancel": {
+    "messageformat": "Cancel·la"
+  },
+  "icu:StandaloneRegistration--Captcha--NeedAnother--retry": {
+    "messageformat": "Tornar a provar la verificació"
+  },
+  "icu:StandaloneRegistration--Captcha--MustWait--aria-title": {
+    "messageformat": "Torna-ho a provar més tard"
+  },
+  "icu:StandaloneRegistration--Captcha--MustWait--line-1": {
+    "messageformat": "No es pot completar la verificació en aquest moment."
+  },
+  "icu:StandaloneRegistration--Captcha--MustWait--line-2": {
+    "messageformat": "Torna-ho a provar en {duration}"
+  },
+  "icu:StandaloneRegistration--Captcha--MustWait--button": {
+    "messageformat": "D'acord"
+  },
+  "icu:StandaloneRegistration--Captcha--Error--header": {
+    "messageformat": "Error de verificació"
+  },
+  "icu:StandaloneRegistration--Captcha--Error--description": {
+    "messageformat": "Intenta verificar-te de nou per continuar amb el registre."
+  },
+  "icu:StandaloneRegistration--Captcha--Error--try-again": {
+    "messageformat": "Torna a provar-ho"
+  },
+  "icu:StandaloneRegistration--Captcha--Error--cancel": {
+    "messageformat": "Cancel·la"
+  },
+  "icu:StandaloneRegistration--VerificationCode--header": {
+    "messageformat": "Codi de verificació"
+  },
+  "icu:StandaloneRegistration--VerificationCode--description": {
+    "messageformat": "Marqueu el codi que hem enviat a {phoneNumber}"
+  },
+  "icu:StandaloneRegistration--VerificationCode--button": {
+    "messageformat": "Continua"
+  },
+  "icu:StandaloneRegistration--VerificationCode--send-sms": {
+    "messageformat": "Torna a enviar el codi."
+  },
+  "icu:StandaloneRegistration--VerificationCode--send-sms--duration": {
+    "messageformat": "Torna a enviar el codi d'aquí a {duration}"
+  },
+  "icu:StandaloneRegistration--VerificationCode--call-me": {
+    "messageformat": "Truca'm"
+  },
+  "icu:StandaloneRegistration--VerificationCode--call-me--duration": {
+    "messageformat": "Truca'm d'aquí a {duration}"
+  },
+  "icu:StandaloneRegistration--VerificationCode--wrong-number": {
+    "messageformat": "El número no és correcte?"
+  },
+  "icu:StandaloneRegistration--VerificationCode--having-trouble": {
+    "messageformat": "Problemes per registrar-te?"
+  },
+  "icu:StandaloneRegistration--VerificationCode--IncorrectCode--aria-title": {
+    "messageformat": "Codi incorrecte"
+  },
+  "icu:StandaloneRegistration--VerificationCode--IncorrectCode--description": {
+    "messageformat": "El codi que has introduït no és correcte. Revisa el codi de 6 dígits i torna-ho a provar."
+  },
+  "icu:StandaloneRegistration--VerificationCode--IncorrectCode--button": {
+    "messageformat": "D'acord"
+  },
+  "icu:StandaloneRegistration--VerificationCode--CodeInvalid--aria-title": {
+    "messageformat": "Codi no vàlid"
+  },
+  "icu:StandaloneRegistration--VerificationCode--CodeInvalid--description": {
+    "messageformat": "El codi que has introduït no és vàlid. Torna a enviar el codi i torna-ho a provar."
+  },
+  "icu:StandaloneRegistration--VerificationCode--CodeInvalid--resend-button": {
+    "messageformat": "Torna a enviar el codi."
+  },
+  "icu:StandaloneRegistration--VerificationCode--CodeInvalid--edit-number-button": {
+    "messageformat": "Edita el número"
+  },
+  "icu:StandaloneRegistration--VerificationCode--SMSFailed--aria-title": {
+    "messageformat": "No s'ha pogut enviar un SMS"
+  },
+  "icu:StandaloneRegistration--VerificationCode--SMSFailed--description": {
+    "messageformat": "No t'hem pogut enviar un codi de verificació per SMS. Prova de rebre el teu codi mitjançant una trucada de veu."
+  },
+  "icu:StandaloneRegistration--VerificationCode--SMSFailed--confirm": {
+    "messageformat": "Trucada de veu"
+  },
+  "icu:StandaloneRegistration--VerificationCode--SMSFailed--cancel": {
+    "messageformat": "Cancel·la"
+  },
+  "icu:StandaloneRegistration--VerificationCode--MustWait--aria-title": {
+    "messageformat": "Torna-ho a provar més tard"
+  },
+  "icu:StandaloneRegistration--VerificationCode--MustWait--description": {
+    "messageformat": "Has fet massa intents per introduir el codi. Torna-ho a provar en {duration}."
+  },
+  "icu:StandaloneRegistration--VerificationCode--MustWait--button": {
+    "messageformat": "D'acord"
+  },
+  "icu:StandaloneRegistration--VerificationCode--MaximumAttempts--aria-title": {
+    "messageformat": "Massa intents"
+  },
+  "icu:StandaloneRegistration--VerificationCode--MaximumAttempts--description": {
+    "messageformat": "Has fet massa intents per introduir el codi. Torna a enviar el codi i torna-ho a provar."
+  },
+  "icu:StandaloneRegistration--VerificationCode--MaximumAttempts--resend-button": {
+    "messageformat": "Torna a enviar el codi."
+  },
+  "icu:StandaloneRegistration--VerificationCode--MaximumAttempts--edit-number-button": {
+    "messageformat": "Edita el número"
+  },
+  "icu:StandaloneRegistration--VerificationCode--FailedToCall--aria-title": {
+    "messageformat": "No s'ha pogut trucar"
+  },
+  "icu:StandaloneRegistration--VerificationCode--FailedToCall--description": {
+    "messageformat": "No t'hem pogut trucar al número de telèfon que has introduït. Assegura't que el número és correcte i torna-ho a provar."
+  },
+  "icu:StandaloneRegistration--VerificationCode--FailedToCall--ok-button": {
+    "messageformat": "D'acord"
+  },
+  "icu:StandaloneRegistration--VerificationCode--CannotSendCodePermanent--aria-title": {
+    "messageformat": "No es pot enviar el codi"
+  },
+  "icu:StandaloneRegistration--VerificationCode--CannotSendCodePermanent--description": {
+    "messageformat": "No es pot enviar una clau de verificació al número que has introduït. Assegura't que el número que has introduït és correcte, o prova'n un de diferent."
+  },
+  "icu:StandaloneRegistration--VerificationCode--CannotSendCodePermanent--ok-button": {
+    "messageformat": "D'acord"
+  },
+  "icu:StandaloneRegistration--VerificationCode--CannotSendCodeTemporary--aria-title": {
+    "messageformat": "Torna-ho a provar més tard"
+  },
+  "icu:StandaloneRegistration--VerificationCode--CannotSendCodeTemporary--description": {
+    "messageformat": "S'ha produït un error i no s'ha pogut enviar la clau de verificació. Torna-ho a provar en {duration}."
+  },
+  "icu:StandaloneRegistration--VerificationCode--CannotSendCodeTemporary--ok-button": {
+    "messageformat": "D'acord"
+  },
+  "icu:StandaloneRegistration--ProfileEntry--header": {
+    "messageformat": "Establiu el perfil"
+  },
+  "icu:StandaloneRegistration--ProfileEntry--description": {
+    "messageformat": "Els perfils són visibles per la gent a la qual enviïs un missatge, els teus contactes i els teus grups."
+  },
+  "icu:StandaloneRegistration--ProfileEntry--learn-more": {
+    "messageformat": "Més informació"
+  },
+  "icu:StandaloneRegistration--ProfileEntry--add-photo": {
+    "messageformat": "Afegiu-hi una fotografia"
+  },
+  "icu:StandaloneRegistration--ProfileEntry--first-name": {
+    "messageformat": "Nom (cal)"
+  },
+  "icu:StandaloneRegistration--ProfileEntry--last-name": {
+    "messageformat": "Cognoms (opcional)"
+  },
+  "icu:StandaloneRegistration--ProfileEntry--discoverability": {
+    "messageformat": "Qui pot trobar-me a través del meu número de telèfon"
+  },
+  "icu:StandaloneRegistration--ProfileEntry--discoverability--change-button": {
+    "messageformat": "Canviar"
+  },
+  "icu:StandaloneRegistration--ProfileEntry--discoverability--done-button": {
+    "messageformat": "Fet"
+  },
+  "icu:StandaloneRegistration--ProfileEntry--continue": {
+    "messageformat": "Continua"
+  },
+  "icu:StandaloneRegistration--ProfileEntry--AvatarModal--header": {
+    "messageformat": "El vostre avatar"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--header": {
+    "messageformat": "Marqueu el PIN"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--description": {
+    "messageformat": "Marca el PIN que has creat pel compte. Aquest és diferent del codi de verificació d'SMS. <needHelp>Necessites ajuda?</needHelp>"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--placeholder": {
+    "messageformat": "Marqueu el PIN"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--incorrect-pin": {
+    "messageformat": "PIN incorrecte"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--incorrect-pin--with-count": {
+    "messageformat": "{triesRemaining, plural, one {PIN incorrecte. Us resta {triesRemaining,number} intent.} other {PIN incorrecte. Us resten {triesRemaining,number} intents.}}"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--NeedHelp--header": {
+    "messageformat": "Us cal ajuda?"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--NeedHelp--description--no-reglock": {
+    "messageformat": "El teu PIN és un codi creat per tu d'almenys 4+ caràcters, i pot ser numèric o alfanumèric. Si no recordes el teu PIN, pots crear-ne un de nou. Pots registrar-te i utilitzar el teu compte, però perdràs alguns dels teus ajustos, com ara la informació del perfil. <learnMore>Més informació</learnMore>."
+  },
+  "icu:StandaloneRegistration--VerifyPIN--NeedHelp--description--reglock": {
+    "messageformat": "El teu PIN és un codi creat per tu d'almenys 4+ caràcters, i pot ser numèric o alfanumèric. Si oblides el teu PIN, hauràs d’esperar 7 dies per tornar a registrar el teu compte. <learnMore>Més informació</learnMore>."
+  },
+  "icu:StandaloneRegistration--VerifyPIN--NeedHelp--skip-button--no-reglock": {
+    "messageformat": "Omet i crea un PIN nou"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--NeedHelp--contact-support-button": {
+    "messageformat": "Contacteu amb l'Assistència"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--NeedHelp--cancel": {
+    "messageformat": "Cancel·la"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--FewRemainingTries--header": {
+    "messageformat": "PIN incorrecte"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--FewRemainingTries--description--no-reglock": {
+    "messageformat": "{triesRemaining, plural, one {Et queda {triesRemaining,number} intent. Si esgotes els intents, pots crear un PIN nou. Pots registrar-te i utilitzar el teu compte, però perdràs algunes configuracions, com ara la informació del perfil. <learnMore>Més informació</learnMore>.} other {Et queden {triesRemaining,number} intents. Si esgotes els intents, podràs crear un PIN nou. Pots registrar-te i utilitzar el teu compte, però perdràs alguns dels teus ajustos, com ara la informació del perfil. <learnMore>Més informació</learnMore>.}}"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--FewRemainingTries--description--reglock": {
+    "messageformat": "{triesRemaining, plural, one {Et queda {triesRemaining,number} intent. Si esgotes els intents, el teu compte es bloquejarà durant 7 dies. Després de 7 dies d'inactivitat, pots tornar a registrar-te sense el teu PIN. Tot el contingut serà eliminat. <learnMore>Més informació</learnMore>.} other {Et queden {triesRemaining,number} intents. Si esgotes els intents, el teu compte es bloquejarà durant 7 dies. Després de 7 dies d'inactivitat, pots tornar a registrar-te sense el teu PIN. Tot el contingut serà eliminat. <learnMore>Més informació</learnMore>.}}"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--FewRemainingTries--button": {
+    "messageformat": "D'acord"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--NoRemainingTries--header": {
+    "messageformat": "PIN incorrecte"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--NoRemainingTries--description": {
+    "messageformat": "Se us han acabat els intents del PIN, però encara podeu accedir al compte del Signal creant un PIN nou. Per a la vostra privadesa i seguretat, el vostre compte es restaurarà sense cap tipus d'informació ni configuració de perfil."
+  },
+  "icu:StandaloneRegistration--VerifyPIN--NoRemainingTries--create-new-pin": {
+    "messageformat": "Crea un PIN nou"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--NoRemainingTries--learn-more": {
+    "messageformat": "Apreneu més coses sobre els PIN"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--menu--skip-pin": {
+    "messageformat": "Ometre PIN"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--SkipPIN--header": {
+    "messageformat": "Voleu ometre l'entrada del PIN?"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--SkipPIN--description": {
+    "messageformat": "Si no recordes el teu PIN, pots crear-ne un de nou. Pots registrar-te i utilitzar el teu compte, però perdràs alguns dels teus ajustos, com ara la informació del perfil. Més informació"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--SkipPIN--skip-button": {
+    "messageformat": "Omet i crea un PIN nou"
+  },
+  "icu:StandaloneRegistration--VerifyPIN--SkipPIN--cancel-button": {
+    "messageformat": "Cancel·la"
+  },
+  "icu:StandaloneRegistration--CreatePIN--header": {
+    "messageformat": "Creeu el PIN"
+  },
+  "icu:StandaloneRegistration--CreatePIN--description": {
+    "messageformat": "Els PINs et poden ajudar a restaurar el teu compte i mantenir la teva informació xifrada amb Signal. <learnMore>Més informació</learnMore>"
+  },
+  "icu:StandaloneRegistration--CreatePIN--placeholder": {
+    "messageformat": "Creeu el PIN"
+  },
+  "icu:StandaloneRegistration--CreatePIN--helper-text": {
+    "messageformat": "El PIN ha de tenir un mínim de 4 caràcters."
+  },
+  "icu:StandaloneRegistration--CreatePIN--continue": {
+    "messageformat": "Continua"
+  },
+  "icu:StandaloneRegistration--CreatePIN--open-menu": {
+    "messageformat": "Obrir menú"
+  },
+  "icu:StandaloneRegistration--CreatePIN--menu--more-about": {
+    "messageformat": "Més sobre els PINs"
+  },
+  "icu:StandaloneRegistration--CreatePIN--menu--disable": {
+    "messageformat": "Desactiva el PIN"
+  },
+  "icu:StandaloneRegistration--CreatePIN--DisableWarning--header": {
+    "messageformat": "Advertiment"
+  },
+  "icu:StandaloneRegistration--CreatePIN--DisableWarning--description": {
+    "messageformat": "Si desactiveu el PIN, perdreu totes les dades quan torneu a registrar-vos al Signal, si no és que les transferiu des d'un altre dispositiu iOS. No podeu activar el blocatge de registre mentre el PIN estigui desactivat."
+  },
+  "icu:StandaloneRegistration--CreatePIN--DisableWarning--disable-button": {
+    "messageformat": "Desactiva el PIN"
+  },
+  "icu:StandaloneRegistration--CreatePIN--DisableWarning--cancel": {
+    "messageformat": "Cancel·la"
+  },
+  "icu:StandaloneRegistration--CreatePIN--AboutPINs--header": {
+    "messageformat": "Sobre els PINs de Signal"
+  },
+  "icu:StandaloneRegistration--CreatePIN--AboutPINs--description": {
+    "messageformat": "Els PINs mantenen xifrada la teva informació emmagatzemada a Signal de manera que no hi pugui accedir ningú més a part de tu. El teu perfil, ajustos i contactes es restauraran quan reinstal·lis."
+  },
+  "icu:StandaloneRegistration--CreatePIN--AboutPINs--learn-more-button": {
+    "messageformat": "Més informació"
+  },
+  "icu:StandaloneRegistration--CreatePIN--AboutPINs--ok-button": {
+    "messageformat": "D'acord"
+  },
+  "icu:StandaloneRegistration--CreatePIN--confirming--header": {
+    "messageformat": "Confirma el teu PIN"
+  },
+  "icu:StandaloneRegistration--CreatePIN--confirming--description": {
+    "messageformat": "Torna a introduir el PIN que acabes de crear."
+  },
+  "icu:StandaloneRegistration--CreatePIN--confirming--placeholder": {
+    "messageformat": "Marqueu el PIN"
+  },
+  "icu:StandaloneRegistration--AccountLocked--header": {
+    "messageformat": "Compte blocat"
+  },
+  "icu:StandaloneRegistration--AccountLocked--description": {
+    "messageformat": "S'ha bloquejat el teu compte per protegir la teva privacitat i seguretat. Després de 7 dies d’inactivitat, podràs tornar a registrar aquest número de telèfon sense necessitar el PIN. Tot el contingut serà eliminat."
+  },
+  "icu:StandaloneRegistration--AccountLocked--start-over-button": {
+    "messageformat": "Utilitzar un número diferent"
+  },
+  "icu:StandaloneRegistration--AccountLocked--help-button": {
+    "messageformat": "Informació sobre els comptes bloquejats"
+  },
+  "icu:StandaloneRegistration--UpdateRequired--header": {
+    "messageformat": "Actualització necessària"
+  },
+  "icu:StandaloneRegistration--UpdateRequired--description": {
+    "messageformat": "Per continuar amb el registre, actualitza a la darrera versió de Signal."
+  },
+  "icu:StandaloneRegistration--UpdateRequired--update": {
+    "messageformat": "Actualitza-la"
+  },
+  "icu:StandaloneRegistration--UpdateRequired--cancel": {
+    "messageformat": "Cancel·la"
+  },
+  "icu:StandaloneRegistration--ConnectionProblem--header": {
+    "messageformat": "Comprova la teva connexió"
+  },
+  "icu:StandaloneRegistration--ConnectionProblem--description": {
+    "messageformat": "Per continuar, comprova la connexió a Internet de l'ordinador i torna-ho a provar."
+  },
+  "icu:StandaloneRegistration--ConnectionProblem--button": {
+    "messageformat": "D'acord"
+  },
+  "icu:StandaloneRegistration--UnexpectedError--header": {
+    "messageformat": "No es pot completar el registre"
+  },
+  "icu:StandaloneRegistration--UnexpectedError--description": {
+    "messageformat": "S'ha produït un error i el procés de registre no s'ha pogut completar. Si el problema persisteix, posa't en contacte amb el servei d'assistència."
+  },
+  "icu:StandaloneRegistration--UnexpectedError--try-again-button": {
+    "messageformat": "Torna a provar-ho"
+  },
+  "icu:StandaloneRegistration--UnexpectedError--contact-support-button": {
+    "messageformat": "Contacta amb el servei d'assistència"
   },
   "icu:NSIS__retry-dialog--first-line": {
     "messageformat": "No es pot tancar el Signal.",
@@ -6915,15 +7386,6 @@
   },
   "icu:SignalConnectionsModal__footer": {
     "messageformat": "Els teus contactes poden veure el teu nom i la teva foto, i poden veure el que pugis a \"La meva història\" tret que decideixis ocultar-los-hi."
-  },
-  "icu:LocalDeleteWarningModal__header": {
-    "messageformat": "L'eliminació de continguts es sincronitza a tots els teus dispositius"
-  },
-  "icu:LocalDeleteWarningModal__description": {
-    "messageformat": "Quan elimines missatges o xats, s'eliminen de tots els teus dispositius connectats."
-  },
-  "icu:LocalDeleteWarningModal__confirm": {
-    "messageformat": "Entesos"
   },
   "icu:Stories__title": {
     "messageformat": "Històries"
@@ -7478,9 +7940,6 @@
   "icu:DraftGifMessageSendModal__SendButtonLabel": {
     "messageformat": "Envia"
   },
-  "icu:DraftGifMessageSendModal__CancelButtonLabel": {
-    "messageformat": "Cancel·la"
-  },
   "icu:EditHistoryMessagesModal__title": {
     "messageformat": "Historial de canvis"
   },
@@ -7759,9 +8218,6 @@
   },
   "icu:PreferencesDonations__privacy-modal-title": {
     "messageformat": "La teva informació és privada"
-  },
-  "icu:PreferencesDonations__privacy-modal-content": {
-    "messageformat": "<paragraph>Signal no recopila ni emmagatzema la teva informació personal quan fas una donació.</paragraph><paragraph>Utilitzem Stripe com a processador de pagaments per rebre les teves donacions. No accedim, emmagatzemem ni desem la informació que els proporciones.</paragraph><paragraph>Signal no connecta i no pot connectar la teva donació al teu compte de Signal.</paragraph><paragraph>Gràcies per comptar amb nosaltres!</paragraph>"
   },
   "icu:PreferencesDonations__privacy-modal-intro": {
     "messageformat": "Com a organització independent sense ànim de lucre, Signal té un compromís amb la privacitat en missatges i trucades. Sense anuncis, ni rastrejadors, ni vigilància. Fes avui una donació per ajudar a Signal."
@@ -8205,10 +8661,16 @@
     "messageformat": "Petits ajustos, correccions d'errors i tasques de millora de rendiment. Gràcies per utilitzar Signal!",
     "ignoreUnused": true
   },
-  "icu:WhatsNew__8.12--0": {
-    "messageformat": "També hem afegit una nova drecera de teclat per aixecar la mà durant les trucades grupals (Shift-H)."
+  "icu:WhatsNew__8.18--0": {
+    "messageformat": "A partir d'ara, també podràs crear enquestes als xats individuals."
   },
-  "icu:WhatsNew__8.13--0": {
-    "messageformat": "The new raised-hand indicators are now also displayed in the list of raised hands during group calls. It's a second-hand place to figure out who you should hand it over to when you're done speaking."
+  "icu:WhatsNew__8.19--0": {
+    "messageformat": "Ara, els admins de grup poden finalitzar els xats amb la nova opció \"Tancar grup\" als ajustos del grup. Tancar un grup evita que els seus membres puguin enviar missatges o iniciar trucades. També desactiva les invitacions al grup."
+  },
+  "icu:WhatsNew__8.20--0": {
+    "messageformat": "Introducing disappearing call events: Missed, outgoing, and received calls that occur after you install this update will now automatically disappear in any chat where disappearing messages are enabled."
+  },
+  "icu:WhatsNew__8.20--1": {
+    "messageformat": "Now you can reorder installed sticker packs so your new favorites don’t get stuck in the back of the line."
   }
 }
