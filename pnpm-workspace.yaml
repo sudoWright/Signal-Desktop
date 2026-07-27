@@ -41,6 +41,12 @@ auditConfig:
     - GHSA-9wfr-w7mm-pc7f # react-devtools > electron
     - GHSA-c27g-q93r-2cwf # sticker-creator > vite
     - GHSA-2w69-qvjg-hvjx # sticker-creator > @remix-run/router
+    - GHSA-23hp-3jrh-7fpw # dev-time usage
+    - GHSA-3jxr-9vmj-r5cp # dev tools
+    - GHSA-52cp-r559-cp3m # dev tools
+    - GHSA-8x88-c5mf-7j5w # dev-time usage
+    - GHSA-395f-4hp3-45gv # dev tools
+    - GHSA-gcfj-64vw-6mp9 # storybook
 
 overrides:
   '@electron/rebuild>node-gyp': '12.4.0'
@@ -81,7 +87,7 @@ allowBuilds:
   '@signalapp/libsignal-client@0.92.2': true # duplicate package
   '@signalapp/libsignal-client@0.97.3': true
   '@signalapp/ringrtc@2.69.4': true
-  '@signalapp/sqlcipher@3.3.9': true
+  '@signalapp/sqlcipher@4.0.3': true
   '@signalapp/windows-ucv@1.0.1': true
   '@swc/core@1.10.16': true
   '@tailwindcss/oxide@4.3.0': true

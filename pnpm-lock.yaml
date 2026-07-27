@@ -50,11 +50,11 @@ importers:
         specifier: workspace:*
         version: link:packages/mute-state-change
       '@signalapp/ringrtc':
-        specifier: 2.69.7
-        version: 2.69.7
+        specifier: 2.70.0
+        version: 2.70.0
       '@signalapp/sqlcipher':
-        specifier: 3.3.9
-        version: 3.3.9
+        specifier: 4.0.3
+        version: 4.0.3
       '@signalapp/types':
         specifier: workspace:*
         version: link:packages/types
@@ -153,8 +153,8 @@ importers:
         specifier: 1.0.1
         version: 1.0.1
       '@signalapp/mock-server':
-        specifier: 24.0.3
-        version: 24.0.3(bufferutil@4.0.9)(utf-8-validate@5.0.10)
+        specifier: 25.0.0
+        version: 25.0.0(bufferutil@4.0.9)(utf-8-validate@5.0.10)
       '@signalapp/parchment-cjs':
         specifier: 3.0.1
         version: 3.0.1
@@ -4473,8 +4473,8 @@ packages:
   '@signalapp/minimask@1.0.1':
     resolution: {integrity: sha512-QAwo0joA60urTNbW9RIz6vLKQjy+jdVtH7cvY0wD9PVooD46MAjE40MLssp4xUJrph91n2XvtJ3pbEUDrmT2AA==, tarball: https://registry.npmjs.org/@signalapp/minimask/-/minimask-1.0.1.tgz}
 
-  '@signalapp/mock-server@24.0.3':
-    resolution: {integrity: sha512-SGV0S6WvYYZRBx+F2Z+xLiTrxxtDaF8wU+orqKXWs4KU8/u1es+di6Eaoat2U9hC/eOU85hEZrpqMHVO5ad9CA==, tarball: https://registry.npmjs.org/@signalapp/mock-server/-/mock-server-24.0.3.tgz}
+  '@signalapp/mock-server@25.0.0':
+    resolution: {integrity: sha512-gEOYKlwppfs8XT7feg82NQKab8XOVAaQw2rAOGth60BVpzeZI0eiTF2JoNBjVdLbJamFX8Cz2CrZAyXvJhp7Jg==, tarball: https://registry.npmjs.org/@signalapp/mock-server/-/mock-server-25.0.0.tgz}
 
   '@signalapp/parchment-cjs@3.0.1':
     resolution: {integrity: sha512-hSBMQ1M7wE4GcC8ZeNtvpJF+DAJg3eIRRf1SiHS3I3Algav/sgJJNm6HIYm6muHuK7IJmuEjkL3ILSXgmu0RfQ==, tarball: https://registry.npmjs.org/@signalapp/parchment-cjs/-/parchment-cjs-3.0.1.tgz}
@@ -4483,12 +4483,12 @@ packages:
     resolution: {integrity: sha512-y2sgqdivlrG41J4Zvt/82xtH/PZjDlgItqlD2g/Cv3ZbjlR6cGhTNXbfNygCJB8nXj+C7I28pjt1Zm3k0pv2mg==, tarball: https://registry.npmjs.org/@signalapp/quill-cjs/-/quill-cjs-2.1.2.tgz}
     engines: {npm: '>=8.2.3'}
 
-  '@signalapp/ringrtc@2.69.7':
-    resolution: {integrity: sha512-tWtsA6i7MnAyqAz3/m1KEYiKOYYcUB1OrkRLm2DGMuP2IBOJWSPuZ9KFbgU1cNkTMm62ewmHWcVs5X6Zsq+MQA==, tarball: https://registry.npmjs.org/@signalapp/ringrtc/-/ringrtc-2.69.7.tgz}
+  '@signalapp/ringrtc@2.70.0':
+    resolution: {integrity: sha512-CrDVqvSLqwmkYZA6ZWuhULlr3/MpVcBxGN0rjMOsWOnK4jDkKeYR//7pIAxcXBU/K7w5uMhe1hiRz2WmbRydyA==, tarball: https://registry.npmjs.org/@signalapp/ringrtc/-/ringrtc-2.70.0.tgz}
     hasBin: true
 
-  '@signalapp/sqlcipher@3.3.9':
-    resolution: {integrity: sha512-51NAV0CqIEreGx3r0hq85vjHC8NXZhGr9efywaqHRsjpbEdvdYARmFxObmMI55rjyqE5eLQ/QsPJzigBoQ6thw==, tarball: https://registry.npmjs.org/@signalapp/sqlcipher/-/sqlcipher-3.3.9.tgz}
+  '@signalapp/sqlcipher@4.0.3':
+    resolution: {integrity: sha512-Xp8H+pcOjBacqBh+ohE44gJUJIa/95JqBYWC70A08xhOcqogbnbvweu3gUmyKqNGnVehs7ukeSsuGO6QxdVTVw==, tarball: https://registry.npmjs.org/@signalapp/sqlcipher/-/sqlcipher-4.0.3.tgz}
 
   '@sinclair/typebox@0.27.8':
     resolution: {integrity: sha512-+Fj43pSMwJs4KRrH/938Uf+uAELIgVBmQzg/q1YG10djyfA3TnrU8N8XzqCh/okZdszqBQTZf96idMfE5lnwTA==, tarball: https://registry.npmjs.org/@sinclair/typebox/-/typebox-0.27.8.tgz}
@@ -15249,7 +15249,7 @@ snapshots:
 
   '@signalapp/minimask@1.0.1': {}
 
-  '@signalapp/mock-server@24.0.3(bufferutil@4.0.9)(utf-8-validate@5.0.10)':
+  '@signalapp/mock-server@25.0.0(bufferutil@4.0.9)(utf-8-validate@5.0.10)':
     dependencies:
       '@indutny/parallel-prettier': 3.0.0(prettier@3.8.3)
       '@indutny/protopiler': 4.0.0
@@ -15280,14 +15280,14 @@ snapshots:
       lodash: 4.18.1
       quill-delta: 5.1.0
 
-  '@signalapp/ringrtc@2.69.7':
+  '@signalapp/ringrtc@2.70.0':
     dependencies:
       https-proxy-agent: 7.0.6
       tar: 7.5.15
     transitivePeerDependencies:
       - supports-color
 
-  '@signalapp/sqlcipher@3.3.9':
+  '@signalapp/sqlcipher@4.0.3':
     dependencies:
       node-addon-api: 8.8.0
       node-gyp-build: 4.8.4
