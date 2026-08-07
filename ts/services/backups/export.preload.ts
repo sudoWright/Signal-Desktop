@@ -174,7 +174,7 @@ import {
   isTestOrMockEnvironment,
 } from '../../environment.std.ts';
 import { calculateLightness } from '../../util/getHSL.std.ts';
-import { isSignalServiceId } from '../../util/isSignalConversation.dom.ts';
+import { isSignalServiceId } from '../../types/SignalConversation.std.ts';
 import { isValidE164 } from '../../util/isValidE164.std.ts';
 import { toDayOfWeekArray } from '../../types/NotificationProfile.std.ts';
 import {
@@ -2470,6 +2470,20 @@ export class BackupExportStream extends Readable {
         throw new Error(
           `${logId}: Message was verifiedChange, but missing verifiedChange!`
         );
+      }
+
+      const verifiedChangedContact = window.ConversationController.get(
+        message.verifiedChanged
+      );
+      if (
+        verifiedChangedContact &&
+        !isAciString(verifiedChangedContact.get('serviceId')) &&
+        !verifiedChangedContact.get('e164')
+      ) {
+        log.warn(
+          `${logId}: Dropping verified change for contact without ACI or E164`
+        );
+        return { kind: NonBubbleResultKind.Drop };
       }
 
       updateMessage.update = {

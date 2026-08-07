@@ -7,7 +7,7 @@ import type { z } from 'zod';
 import { createLogger } from '../logging/log.std.ts';
 import * as Errors from '../types/errors.std.ts';
 
-import { isStory } from './helpers.std.ts';
+import { isIncomingStory, isStory } from './helpers.std.ts';
 import { getAuthor } from './sources.preload.ts';
 import { messageHasPaymentEvent } from './payments.std.ts';
 import { getMessageIdForLogging } from '../util/idForLogging.preload.ts';
@@ -50,7 +50,7 @@ import { findStoryMessage } from '../util/findStoryMessage.preload.ts';
 import { getValidLinkPreviews } from '../util/getValidLinkPreviews.node.ts';
 import { normalizeServiceId } from '../types/ServiceId.std.ts';
 import { BodyRange, trimMessageWhitespace } from '../types/BodyRange.std.ts';
-import { hydrateStoryContext } from '../util/hydrateStoryContext.preload.ts';
+import { getStoryReplyContext } from '../util/getStoryReplyContext.std.ts';
 import { isMessageEmpty } from '../util/isMessageEmpty.preload.ts';
 import { isValidTapToView } from '../util/isValidTapToView.std.ts';
 import { getNotificationTextForMessage } from '../util/getNotificationTextForMessage.preload.ts';
@@ -322,7 +322,7 @@ export async function handleDataMessage(
     // Drop an incoming GroupV2 message if we or the sender are not part of the group
     //   after applying the message's associated group changes.
     if (
-      type === 'incoming' &&
+      (type === 'incoming' || isIncomingStory(message.attributes, ourAci)) &&
       !isDirectConversation(conversation.attributes) &&
       hasGroupV2Prop &&
       (!areWeMember ||
@@ -576,13 +576,10 @@ export async function handleDataMessage(
             }
           : undefined,
         storyId: dataMessage.storyId,
+        storyReplyContext: storyQuote
+          ? getStoryReplyContext(storyQuote)
+          : undefined,
       });
-
-      if (storyQuote) {
-        await hydrateStoryContext(message.id, storyQuote, {
-          shouldSave: true,
-        });
-      }
 
       const isSupported = !isUnsupportedMessage(message.attributes);
       if (!isSupported) {
